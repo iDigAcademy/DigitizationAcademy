@@ -1,0 +1,37 @@
+GET|HEAD  / ...................................................................................................................................... home › HomeController@index
+  POST      _ignition/execute-solution ........................................................... ignition.executeSolution › Spatie\LaravelIgnition › ExecuteSolutionController
+  GET|HEAD  _ignition/health-check ....................................................................... ignition.healthCheck › Spatie\LaravelIgnition › HealthCheckController
+  POST      _ignition/update-config .................................................................... ignition.updateConfig › Spatie\LaravelIgnition › UpdateConfigController
+  GET|HEAD  about ................................................................................................................................. about › HomeController@about
+  GET|HEAD  api/user ............................................................................................................................... generated::Hfmi1qfn0cehse4P
+  GET|HEAD  calendar ........................................................................................................................ calendar › HomeController@calendar
+  GET|HEAD  community ..................................................................................................................... community › HomeController@community
+  GET|HEAD  courses ........................................................................................................................... courses › HomeController@courses
+  POST      email/verification-notification ................................................ verification.send › Laravel\Fortify › EmailVerificationNotificationController@store
+  GET|HEAD  email/verify .................................................................... verification.notice › Laravel\Fortify › EmailVerificationPromptController@__invoke
+  GET|HEAD  email/verify/{id}/{hash} .................................................................... verification.verify › Laravel\Fortify › VerifyEmailController@__invoke
+  GET|HEAD  forgot-password ............................................................................ password.request › Laravel\Fortify › PasswordResetLinkController@create
+  POST      forgot-password ............................................................................... password.email › Laravel\Fortify › PasswordResetLinkController@store
+  GET|HEAD  login .............................................................................................. login › Laravel\Fortify › AuthenticatedSessionController@create
+  POST      login ......................................................................... generated::82tjKWHyYpjb1PMy › Laravel\Fortify › AuthenticatedSessionController@store
+  POST      logout ........................................................................................... logout › Laravel\Fortify › AuthenticatedSessionController@destroy
+  GET|HEAD  register .............................................................................................. register › Laravel\Fortify › RegisteredUserController@create
+  POST      register ............................................................................ generated::9hGzDDRekB7E1YdI › Laravel\Fortify › RegisteredUserController@store
+  POST      reset-password ..................................................................................... password.update › Laravel\Fortify › NewPasswordController@store
+  GET|HEAD  reset-password/{token} ............................................................................. password.reset › Laravel\Fortify › NewPasswordController@create
+  GET|HEAD  sanctum/csrf-cookie .............................................................................. sanctum.csrf-cookie › Laravel\Sanctum › CsrfCookieController@show
+  GET|HEAD  two-factor-challenge ........................................................... two-factor.login › Laravel\Fortify › TwoFactorAuthenticatedSessionController@create
+  POST      two-factor-challenge ................................................. generated::MpqLkhcHgUFEHaJV › Laravel\Fortify › TwoFactorAuthenticatedSessionController@store
+  GET|HEAD  user/confirm-password ........................................................... generated::nAP7iae2dKoj7F5b › Laravel\Fortify › ConfirmablePasswordController@show
+  POST      user/confirm-password ..................................................................... password.confirm › Laravel\Fortify › ConfirmablePasswordController@store
+  GET|HEAD  user/confirmed-password-status .................................................... password.confirmation › Laravel\Fortify › ConfirmedPasswordStatusController@show
+  POST      user/confirmed-two-factor-authentication ................................... two-factor.confirm › Laravel\Fortify › ConfirmedTwoFactorAuthenticationController@store
+  PUT       user/password ................................................................................... user-password.update › Laravel\Fortify › PasswordController@update
+  PUT       user/profile-information ................................................... user-profile-information.update › Laravel\Fortify › ProfileInformationController@update
+  POST      user/two-factor-authentication ....................................................... two-factor.enable › Laravel\Fortify › TwoFactorAuthenticationController@store
+  DELETE    user/two-factor-authentication .................................................... two-factor.disable › Laravel\Fortify › TwoFactorAuthenticationController@destroy
+  GET|HEAD  user/two-factor-qr-code ...................................................................... two-factor.qr-code › Laravel\Fortify › TwoFactorQrCodeController@show
+  GET|HEAD  user/two-factor-recovery-codes .......................................................... two-factor.recovery-codes › Laravel\Fortify › RecoveryCodeController@index
+  POST      user/two-factor-recovery-codes ........................................................ generated::ZJlsfNsSNJcf00PX › Laravel\Fortify › RecoveryCodeController@store
+  GET|HEAD  user/two-factor-secret-key ............................................................. two-factor.secret-key › Laravel\Fortify › TwoFactorSecretKeyController@show
+
