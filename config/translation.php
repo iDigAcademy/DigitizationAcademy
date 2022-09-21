@@ -1,12 +1,12 @@
 <?php
 return [
-    'key' => '30d816131f204547b6a60204c37340c2',
+    'key' => env('TRANSLATIONIO_KEY'),
     'source_locale' => 'en',
-    'target_locales' => ['fr'],
+    'target_locales' => ['en-US'],
 
     /* Directories to scan for Gettext strings */
     'gettext_parse_paths' => ['app', 'resources'],
 
     /* Where the Gettext translations are stored */
-    'gettext_locales_path' => 'resources/lang/gettext'
+    'gettext_locales_path' => 'lang/gettext'
 ];

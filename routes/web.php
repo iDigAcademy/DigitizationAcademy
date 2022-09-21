@@ -34,4 +34,3 @@ Route::get('/register-retry', function(){
     return redirect('/');
  })->name('register-retry');
 
-Route::get('logout', [HomeController::class, 'logout'])->name('logout');
