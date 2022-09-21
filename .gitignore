@@ -21,3 +21,4 @@ _ide_helper.php
 
 # Project exclude paths
 /storage/
+/public/vendor
