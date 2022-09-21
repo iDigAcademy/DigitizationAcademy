@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "54b59fac365be8ffff6c7c57bce80884",
+    "content-hash": "64c5b60ae1802d2a149610e830018da1",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -606,6 +606,152 @@
             "time": "2022-02-20T15:07:15+00:00"
         },
         {
+            "name": "gettext/gettext",
+            "version": "v4.8.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-gettext/Gettext.git",
+                "reference": "3f7bc5ef23302a9059e64934f3d59e454516bec0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-gettext/Gettext/zipball/3f7bc5ef23302a9059e64934f3d59e454516bec0",
+                "reference": "3f7bc5ef23302a9059e64934f3d59e454516bec0",
+                "shasum": ""
+            },
+            "require": {
+                "gettext/languages": "^2.3",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "illuminate/view": "^5.0.x-dev",
+                "phpunit/phpunit": "^4.8|^5.7|^6.5",
+                "squizlabs/php_codesniffer": "^3.0",
+                "symfony/yaml": "~2",
+                "twig/extensions": "*",
+                "twig/twig": "^1.31|^2.0"
+            },
+            "suggest": {
+                "illuminate/view": "Is necessary if you want to use the Blade extractor",
+                "symfony/yaml": "Is necessary if you want to use the Yaml extractor/generator",
+                "twig/extensions": "Is necessary if you want to use the Twig extractor",
+                "twig/twig": "Is necessary if you want to use the Twig extractor"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Gettext\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oscar Otero",
+                    "email": "oom@oscarotero.com",
+                    "homepage": "http://oscarotero.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP gettext manager",
+            "homepage": "https://github.com/oscarotero/Gettext",
+            "keywords": [
+                "JS",
+                "gettext",
+                "i18n",
+                "mo",
+                "po",
+                "translation"
+            ],
+            "support": {
+                "email": "oom@oscarotero.com",
+                "issues": "https://github.com/oscarotero/Gettext/issues",
+                "source": "https://github.com/php-gettext/Gettext/tree/v4.8.7"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/oscarotero",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/oscarotero",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/misteroom",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2022-08-02T09:42:10+00:00"
+        },
+        {
+            "name": "gettext/languages",
+            "version": "2.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-gettext/Languages.git",
+                "reference": "38ea0482f649e0802e475f0ed19fa993bcb7a618"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-gettext/Languages/zipball/38ea0482f649e0802e475f0ed19fa993bcb7a618",
+                "reference": "38ea0482f649e0802e475f0ed19fa993bcb7a618",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.16.0",
+                "phpunit/phpunit": "^4.8 || ^5.7 || ^6.5 || ^7.5 || ^8.4"
+            },
+            "bin": [
+                "bin/export-plural-rules"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Gettext\\Languages\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michele Locati",
+                    "email": "mlocati@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "gettext languages with plural rules",
+            "homepage": "https://github.com/php-gettext/Languages",
+            "keywords": [
+                "cldr",
+                "i18n",
+                "internationalization",
+                "l10n",
+                "language",
+                "languages",
+                "localization",
+                "php",
+                "plural",
+                "plural rules",
+                "plurals",
+                "translate",
+                "translations",
+                "unicode"
+            ],
+            "support": {
+                "issues": "https://github.com/php-gettext/Languages/issues",
+                "source": "https://github.com/php-gettext/Languages/tree/2.6.0"
+            },
+            "time": "2019-11-13T10:30:21+00:00"
+        },
+        {
             "name": "graham-campbell/result-type",
             "version": "v1.1.0",
             "source": {
@@ -1063,16 +1209,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v9.30.1",
+            "version": "v9.31.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "9533f7926f31939f25a620fbbf545318c18c943f"
+                "reference": "75013d4fffe3b24748d313fbbea53206351214f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/9533f7926f31939f25a620fbbf545318c18c943f",
-                "reference": "9533f7926f31939f25a620fbbf545318c18c943f",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/75013d4fffe3b24748d313fbbea53206351214f7",
+                "reference": "75013d4fffe3b24748d313fbbea53206351214f7",
                 "shasum": ""
             },
             "require": {
@@ -1102,6 +1248,7 @@
                 "symfony/mime": "^6.0",
                 "symfony/process": "^6.0",
                 "symfony/routing": "^6.0",
+                "symfony/uid": "^6.0",
                 "symfony/var-dumper": "^6.0",
                 "tijsverkoyen/css-to-inline-styles": "^2.2.2",
                 "vlucas/phpdotenv": "^5.4.1",
@@ -1165,8 +1312,7 @@
                 "phpstan/phpstan": "^1.4.7",
                 "phpunit/phpunit": "^9.5.8",
                 "predis/predis": "^1.1.9|^2.0",
-                "symfony/cache": "^6.0",
-                "symfony/uid": "^6.0"
+                "symfony/cache": "^6.0"
             },
             "suggest": {
                 "ably/ably-php": "Required to use the Ably broadcast driver (^1.0).",
@@ -1201,8 +1347,7 @@
                 "symfony/http-client": "Required to enable support for the Symfony API mail transports (^6.0).",
                 "symfony/mailgun-mailer": "Required to enable support for the Mailgun mail transport (^6.0).",
                 "symfony/postmark-mailer": "Required to enable support for the Postmark mail transport (^6.0).",
-                "symfony/psr-http-message-bridge": "Required to use PSR-7 bridging features (^2.0).",
-                "symfony/uid": "Required to generate ULIDs for Eloquent (^6.0)."
+                "symfony/psr-http-message-bridge": "Required to use PSR-7 bridging features (^2.0)."
             },
             "type": "library",
             "extra": {
@@ -1246,7 +1391,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2022-09-15T13:15:47+00:00"
+            "time": "2022-09-20T13:32:50+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -4729,6 +4874,88 @@
             "time": "2022-05-24T11:49:31+00:00"
         },
         {
+            "name": "symfony/polyfill-uuid",
+            "version": "v1.26.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-uuid.git",
+                "reference": "a41886c1c81dc075a09c71fe6db5b9d68c79de23"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-uuid/zipball/a41886c1c81dc075a09c71fe6db5b9d68c79de23",
+                "reference": "a41886c1c81dc075a09c71fe6db5b9d68c79de23",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "provide": {
+                "ext-uuid": "*"
+            },
+            "suggest": {
+                "ext-uuid": "For best performance"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.26-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Uuid\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Grégoire Pineau",
+                    "email": "lyrixx@lyrixx.info"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for uuid functions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "polyfill",
+                "portable",
+                "uuid"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-uuid/tree/v1.26.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-05-24T11:49:31+00:00"
+        },
+        {
             "name": "symfony/process",
             "version": "v6.1.3",
             "source": {
@@ -5225,6 +5452,80 @@
             "time": "2022-06-27T17:24:16+00:00"
         },
         {
+            "name": "symfony/uid",
+            "version": "v6.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/uid.git",
+                "reference": "ea2ccf0fdb88c83e626105b68e5bab5c132d812b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/uid/zipball/ea2ccf0fdb88c83e626105b68e5bab5c132d812b",
+                "reference": "ea2ccf0fdb88c83e626105b68e5bab5c132d812b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "symfony/polyfill-uuid": "^1.15"
+            },
+            "require-dev": {
+                "symfony/console": "^5.4|^6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Uid\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Grégoire Pineau",
+                    "email": "lyrixx@lyrixx.info"
+                },
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Provides an object-oriented API to generate and represent UIDs",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "UID",
+                "ulid",
+                "uuid"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/uid/tree/v6.1.3"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-07-20T13:46:29+00:00"
+        },
+        {
             "name": "symfony/var-dumper",
             "version": "v6.1.3",
             "source": {
@@ -5364,6 +5665,82 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/2.2.5"
             },
             "time": "2022-09-12T13:28:28+00:00"
+        },
+        {
+            "name": "tio/laravel",
+            "version": "v1.20",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/translation/laravel.git",
+                "reference": "41213ecf8f70270df6dd7e4dd18c090bdca58df1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/translation/laravel/zipball/41213ecf8f70270df6dd7e4dd18c090bdca58df1",
+                "reference": "41213ecf8f70270df6dd7e4dd18c090bdca58df1",
+                "shasum": ""
+            },
+            "require": {
+                "gettext/gettext": "^4.8.4",
+                "gettext/languages": "<=2.6.0",
+                "guzzlehttp/guzzle": ">=6.3",
+                "illuminate/config": ">=5.5",
+                "illuminate/console": ">=5.5",
+                "illuminate/filesystem": ">=5.5",
+                "illuminate/support": ">=5.5",
+                "illuminate/translation": ">=5.5",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": ">=3.1",
+                "php-vcr/php-vcr": "^1.3",
+                "phpunit/phpunit": ">=5.7.27",
+                "squizlabs/php_codesniffer": "~3.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Tio\\Laravel\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/Helpers/translator_functions.php"
+                ],
+                "psr-4": {
+                    "Tio\\Laravel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Armands Leinieks",
+                    "email": "armands.leinieks@gmail.com"
+                },
+                {
+                    "name": "Michaël Hoste",
+                    "email": "michael.hoste@gmail.com"
+                }
+            ],
+            "description": "Add this package to localize your Laravel application (PHP, JSON or GetText).",
+            "homepage": "https://github.com/translation/laravel",
+            "keywords": [
+                "gettext",
+                "laravel",
+                "localization",
+                "translation",
+                "translation.io"
+            ],
+            "support": {
+                "issues": "https://github.com/translation/laravel/issues",
+                "source": "https://github.com/translation/laravel/tree/v1.20"
+            },
+            "time": "2022-06-16T14:31:10+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

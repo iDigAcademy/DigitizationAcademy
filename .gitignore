@@ -17,6 +17,7 @@ yarn-error.log
 _ide_helper.php
 .editorconfig
 /A-Notes
+.phpstorm.meta.php
 
 # Project exclude paths
 /storage/
