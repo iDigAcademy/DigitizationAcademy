@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header">{{ __('Login') }}</div>
+                    <div class="card-header">{{ t('Login') }}</div>
                     <div class="card-body">
                         @if (session('status'))
                             <div class="mb-4 font-medium text-sm text-green-600">
@@ -15,9 +15,9 @@
                             <x:form::input name="password" type="password" id="password"
                                            label="{{ trans('Password') }}"/>
                             <div class="d-block text-center">
-                                <x:form::button.submit>{{ __('Login') }}</x:form::button.submit>
+                                <x:form::button.submit>{{ t('Login') }}</x:form::button.submit>
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
+                                    {{ t('Forgot Your Password?') }}
                                 </a>
                             </div>
                         </x-form::form>
