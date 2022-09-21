@@ -1,0 +1,71 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: FSU Digitization Academy | Digital Biodiversity Specimens\n"
+"Report-Msgid-Bugs-To: contact@translation.io\n"
+"Last-Translator: \n"
+"Language-Team: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-09-21T15:12:13+00:00\n"
+"PO-Revision-Date: 2022-09-21 17:12+0200\n"
+"Language: en_US\n"
+"Plural-Forms: nplurals=2; plural=n!=1;\n"
+
+#: resources/views/auth/forgot-password.blade.php:6
+#: resources/views/auth/reset-password.blade.php:6
+#: resources/views/auth/reset-password.blade.php:14
+msgid "Reset Password"
+msgstr ""
+
+#: resources/views/auth/forgot-password.blade.php:17
+msgid "Send Password Reset Link"
+msgstr ""
+
+#: resources/views/auth/login.blade.php:6
+#: resources/views/auth/login.blade.php:19
+msgid "Login"
+msgstr ""
+
+#: resources/views/auth/login.blade.php:21
+#: resources/views/auth/passwords/confirm.blade.php:52
+msgid "Forgot Your Password?"
+msgstr ""
+
+#: resources/views/auth/passwords/confirm.blade.php:6
+#: resources/views/auth/passwords/confirm.blade.php:46
+msgid "Confirm Password"
+msgstr ""
+
+#: resources/views/auth/passwords/confirm.blade.php:9
+msgid "Please confirm your password before continuing."
+msgstr ""
+
+#: resources/views/auth/passwords/confirm.blade.php:16
+msgid "Password"
+msgstr ""
+
+#: resources/views/auth/register.blade.php:6
+#: resources/views/auth/register.blade.php:14
+msgid "Register"
+msgstr ""
+
+#: resources/views/auth/verify-email.blade.php:6
+msgid "Verify Your Email Address"
+msgstr ""
+
+#: resources/views/auth/verify-email.blade.php:10
+msgid "A fresh verification link has been sent to your email address."
+msgstr ""
+
+#: resources/views/auth/verify-email.blade.php:15
+msgid "Before proceeding, please check your email for a verification link."
+msgstr ""
+
+#: resources/views/auth/verify-email.blade.php:17
+msgid "If you did not receive the email"
+msgstr ""
+
+#: resources/views/auth/verify-email.blade.php:20
+msgid "click here to request another"
+msgstr ""
