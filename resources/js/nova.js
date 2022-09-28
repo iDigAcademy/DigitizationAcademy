@@ -1,4 +1,3 @@
-<?php
 /*
  * Copyright (c) 2022. Digitization Academy
  * idigacademy@gmail.com
@@ -17,30 +16,24 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace App\Providers;
+document.addEventListener("DOMContentLoaded", () => {
+    [...document.querySelectorAll('.sidebar-section-title')].forEach(item => {
+        if(item.href === undefined) return;
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\ServiceProvider;
+        if (item.href.includes('/nova') === 0) {
+            console.log(item.href.value);
+            return;
+        }
 
-class AppServiceProvider extends ServiceProvider
-{
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
-    }
+        let newItem = Object.assign(
+            document.createElement('a'),
+            {
+                classList: item.className,
+                innerHTML: item.innerHTML,
+                href: item.href
+            }
+        );
 
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        Schema::defaultStringLength(191);
-    }
-}
+        item.parentNode.replaceChild(newItem, item);
+    })
+});

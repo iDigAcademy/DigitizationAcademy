@@ -69,32 +69,6 @@
                         free, unless otherwise noted. A major goal of the Digitization Academy is to build long-term
                         sustainability into it, with the possibility that some courses and/or webinars might have
                         fees in the future.</p>
-
-                    <h4 class="title mb--30" data-sal="slide-up" data-sal-duration="500" data-sal-delay="100">Lorem
-                        ipsum per feugiat aliquam luctus</h4>
-                    <p>The Digitization Academy team is associated with iDigBio’s Digitization, Workforce
-                        Development, and Citizen Science domain. In addition to their work with the Digitization
-                        Academy they curate iDigBio’s digitization-related web content, provide digitization help
-                        desk services, and other activities. Their portfolio of activities provides them with
-                        regular opportunities to identify new digitization approaches, as well as gaps that they can
-                        subsequently fill in the collection community’s digitization protocols, best practices, and
-                        other resources.</p></p>
-
-                    <blockquote class="wp-block-quote">
-                        <p>“Nunc sed mattis diam. Suspendisse mi libero, sagittis nec varius quis, pulvinar eu nisl.
-                            Nulla in accumsan orci, a varius velit. Maecenas tincidunt mauris rutrum, eleifend sem
-                            at, sollicitudin ante.”</p>
-                    </blockquote>
-
-                    <h4 class="title mb--30" data-sal="slide-up" data-sal-duration="500" data-sal-delay="100">
-                        Habitasse per feugiat aliquam luctus accumsan curae</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                    <ul class="list-style" data-sal="slide-up" data-sal-duration="500" data-sal-delay="100">
-                        <li>ECore Vaule 1</li>
-                        <li>ECore Vaule 2</li>
-                        <li>ECore Vaule 3</li>
-                        <li>ECore Vaule 4</li>
-                    </ul>
                 </div>
             </div>
         </div>

@@ -2,7 +2,11 @@
 
 namespace App\Providers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Itsmejoshua\Novaspatiepermissions\Novaspatiepermissions;
+use Laravel\Nova\Menu\Menu;
+use Laravel\Nova\Menu\MenuSection;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
 
@@ -16,6 +20,15 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function boot()
     {
         parent::boot();
+
+        Nova::style('novajs', resource_path('css/nova.css'));
+        Nova::script('novajs', resource_path('js/nova.js'));
+
+        Nova::mainMenu(function (Request $request, Menu $menu){
+            return $menu->prepend(
+                MenuSection::make('Academy Dashboard', [], 'home')->path('../dashboard')
+            );
+        });
     }
 
     /**
@@ -41,9 +54,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function gate()
     {
         Gate::define('viewNova', function ($user) {
-            return in_array($user->email, [
-                //
-            ]);
+            return $user->is_admin;
         });
     }
 
@@ -66,7 +77,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     public function tools()
     {
-        return [];
+        return [
+            Novaspatiepermissions::make(),
+        ];
     }
 
     /**
@@ -76,6 +89,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     public function register()
     {
-        //
+        //Nova::initialPath('');
     }
 }

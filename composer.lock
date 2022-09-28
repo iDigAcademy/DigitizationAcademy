@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "57d248c6b9a39c62bdc3403edb0bc47e",
+    "content-hash": "c68a9723241afd561a8bee0cdebeec7d",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1609,6 +1609,56 @@
             "time": "2022-06-27T23:21:15+00:00"
         },
         {
+            "name": "itsmejoshua/novaspatiepermissions",
+            "version": "v1.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/itsmejoshua/novaspatiepermissions.git",
+                "reference": "6d665c310586627802a4dd03a36bfd45b05eef33"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/itsmejoshua/novaspatiepermissions/zipball/6d665c310586627802a4dd03a36bfd45b05eef33",
+                "reference": "6d665c310586627802a4dd03a36bfd45b05eef33",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/nova": "^4.0",
+                "php": "^8.0",
+                "spatie/laravel-permission": "^5.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Itsmejoshua\\Novaspatiepermissions\\ToolServiceProvider",
+                        "Itsmejoshua\\Novaspatiepermissions\\NovaSpatiePermissionsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Itsmejoshua\\Novaspatiepermissions\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Laravel Nova tool for managing spaties roles/permissions in laravel's nova package.",
+            "keywords": [
+                "laravel",
+                "nova",
+                "permissions",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/itsmejoshua/novaspatiepermissions/issues",
+                "source": "https://github.com/itsmejoshua/novaspatiepermissions/tree/v1.0.7"
+            },
+            "time": "2022-05-16T01:34:26+00:00"
+        },
+        {
             "name": "laravel/fortify",
             "version": "v1.13.3",
             "source": {
@@ -1859,17 +1909,17 @@
         },
         {
             "name": "laravel/nova",
-            "version": "4.15.0",
+            "version": "4.15.1",
             "source": {
                 "type": "git",
                 "url": "git@github.com:laravel/nova.git",
-                "reference": "410656f7acc68d5a9eb6478cc0589f87568c1da5"
+                "reference": "2d5d95ee17334d33040ec75cc52bc54235e9875f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-410656f7acc68d5a9eb6478cc0589f87568c1da5-zip-cf0b7d.zip",
-                "reference": "410656f7acc68d5a9eb6478cc0589f87568c1da5",
-                "shasum": "acf203fb745a49d2e8619db0a6dc1d78886244d8"
+                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-2d5d95ee17334d33040ec75cc52bc54235e9875f-zip-d0fc38.zip",
+                "reference": "2d5d95ee17334d33040ec75cc52bc54235e9875f",
+                "shasum": "d192a02cbdf2f3448b06cd8a2ae8468e1e49e2c3"
             },
             "require": {
                 "brick/money": "^0.5.0|^0.6.0",
@@ -1963,9 +2013,9 @@
                 "laravel"
             ],
             "support": {
-                "source": "https://github.com/laravel/nova/tree/v4.15.0"
+                "source": "https://github.com/laravel/nova/tree/v4.15.1"
             },
-            "time": "2022-09-20T16:37:33+00:00"
+            "time": "2022-09-21T16:08:58+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -4197,6 +4247,88 @@
             "time": "2022-07-21T14:21:25+00:00"
         },
         {
+            "name": "spatie/laravel-permission",
+            "version": "5.5.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-permission.git",
+                "reference": "f2303a70be60919811ca8afc313e8244fda00974"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/f2303a70be60919811ca8afc313e8244fda00974",
+                "reference": "f2303a70be60919811ca8afc313e8244fda00974",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/auth": "^7.0|^8.0|^9.0",
+                "illuminate/container": "^7.0|^8.0|^9.0",
+                "illuminate/contracts": "^7.0|^8.0|^9.0",
+                "illuminate/database": "^7.0|^8.0|^9.0",
+                "php": "^7.3|^8.0|^8.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^5.0|^6.0|^7.0",
+                "phpunit/phpunit": "^9.4",
+                "predis/predis": "^1.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\Permission\\PermissionServiceProvider"
+                    ]
+                },
+                "branch-alias": {
+                    "dev-main": "5.x-dev",
+                    "dev-master": "5.x-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Spatie\\Permission\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Permission handling for Laravel 6.0 and up",
+            "homepage": "https://github.com/spatie/laravel-permission",
+            "keywords": [
+                "acl",
+                "laravel",
+                "permission",
+                "permissions",
+                "rbac",
+                "roles",
+                "security",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-permission/issues",
+                "source": "https://github.com/spatie/laravel-permission/tree/5.5.5"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-06-29T23:11:42+00:00"
+        },
+        {
             "name": "spatie/once",
             "version": "3.1.0",
             "source": {
@@ -4257,6 +4389,75 @@
                 }
             ],
             "time": "2022-04-21T12:23:20+00:00"
+        },
+        {
+            "name": "spiritix/lada-cache",
+            "version": "v5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spiritix/lada-cache.git",
+                "reference": "8cbe8d37a3f414ebb384c4e098d5638ad2f5a3e4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spiritix/lada-cache/zipball/8cbe8d37a3f414ebb384c4e098d5638ad2f5a3e4",
+                "reference": "8cbe8d37a3f414ebb384c4e098d5638ad2f5a3e4",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^7.0|^8.0|^9.0",
+                "illuminate/redis": "^7.0|^8.0|^9.0",
+                "illuminate/support": "^7.0|^8.0|^9.0",
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "barryvdh/laravel-debugbar": "^3.2",
+                "mockery/mockery": "^1.3",
+                "orchestra/testbench": "^6.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "suggest": {
+                "barryvdh/laravel-debugbar": "Provides debug information about the cache"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spiritix\\LadaCache\\LadaCacheServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spiritix\\LadaCache\\": "src/Spiritix/LadaCache/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matthias Isler",
+                    "email": "mi@matthias-isler.ch"
+                }
+            ],
+            "description": "A Redis based, automated and scalable database caching layer for Laravel",
+            "keywords": [
+                "cache",
+                "caching",
+                "database",
+                "eloquent",
+                "laravel",
+                "model",
+                "php",
+                "redis"
+            ],
+            "support": {
+                "issues": "https://github.com/spiritix/lada-cache/issues",
+                "source": "https://github.com/spiritix/lada-cache/tree/v5.2"
+            },
+            "time": "2022-02-14T07:47:46+00:00"
         },
         {
             "name": "symfony/console",
@@ -7918,6 +8119,261 @@
                 }
             ],
             "time": "2022-08-29T09:11:20+00:00"
+        },
+        {
+            "name": "pestphp/pest",
+            "version": "v1.22.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pestphp/pest.git",
+                "reference": "af6240b4eed8b049ac43c91184141ee337305df7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pestphp/pest/zipball/af6240b4eed8b049ac43c91184141ee337305df7",
+                "reference": "af6240b4eed8b049ac43c91184141ee337305df7",
+                "shasum": ""
+            },
+            "require": {
+                "nunomaduro/collision": "^5.10.0|^6.0",
+                "pestphp/pest-plugin": "^1.0.0",
+                "php": "^7.3 || ^8.0",
+                "phpunit/phpunit": "^9.5.5"
+            },
+            "require-dev": {
+                "illuminate/console": "^8.47.0",
+                "illuminate/support": "^8.47.0",
+                "laravel/dusk": "^6.15.0",
+                "pestphp/pest-dev-tools": "dev-master",
+                "pestphp/pest-plugin-parallel": "^1.0"
+            },
+            "bin": [
+                "bin/pest"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "pest": {
+                    "plugins": [
+                        "Pest\\Plugins\\Coverage",
+                        "Pest\\Plugins\\Init",
+                        "Pest\\Plugins\\Version",
+                        "Pest\\Plugins\\Environment"
+                    ]
+                },
+                "laravel": {
+                    "providers": [
+                        "Pest\\Laravel\\PestServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/Functions.php",
+                    "src/Pest.php"
+                ],
+                "psr-4": {
+                    "Pest\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nuno Maduro",
+                    "email": "enunomaduro@gmail.com"
+                }
+            ],
+            "description": "An elegant PHP Testing Framework.",
+            "keywords": [
+                "framework",
+                "pest",
+                "php",
+                "test",
+                "testing",
+                "unit"
+            ],
+            "support": {
+                "issues": "https://github.com/pestphp/pest/issues",
+                "source": "https://github.com/pestphp/pest/tree/v1.22.1"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.com/paypalme/enunomaduro",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/lukeraymonddowning",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/nunomaduro",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/octoper",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/olivernybroe",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/owenvoke",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/nunomaduro",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2022-08-29T10:42:13+00:00"
+        },
+        {
+            "name": "pestphp/pest-plugin",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pestphp/pest-plugin.git",
+                "reference": "606c5f79c6a339b49838ffbee0151ca519efe378"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pestphp/pest-plugin/zipball/606c5f79c6a339b49838ffbee0151ca519efe378",
+                "reference": "606c5f79c6a339b49838ffbee0151ca519efe378",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.1.0 || ^2.0.0",
+                "php": "^7.3 || ^8.0"
+            },
+            "conflict": {
+                "pestphp/pest": "<1.0"
+            },
+            "require-dev": {
+                "composer/composer": "^2.4.2",
+                "pestphp/pest": "^1.22.1",
+                "pestphp/pest-dev-tools": "^1.0.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                },
+                "class": "Pest\\Plugin\\Manager"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Pest\\Plugin\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "The Pest plugin manager",
+            "keywords": [
+                "framework",
+                "manager",
+                "pest",
+                "php",
+                "plugin",
+                "test",
+                "testing",
+                "unit"
+            ],
+            "support": {
+                "source": "https://github.com/pestphp/pest-plugin/tree/v1.1.0"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=66BYDWAT92N6L",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/nunomaduro",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/nunomaduro",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2022-09-18T13:18:17+00:00"
+        },
+        {
+            "name": "pestphp/pest-plugin-laravel",
+            "version": "v1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pestphp/pest-plugin-laravel.git",
+                "reference": "561930875e0336441f93fbd120fd53a2a890a8f5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pestphp/pest-plugin-laravel/zipball/561930875e0336441f93fbd120fd53a2a890a8f5",
+                "reference": "561930875e0336441f93fbd120fd53a2a890a8f5",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^7.30.6 || ^8.83.23 || ^9.30.1",
+                "pestphp/pest": "^1.22.1",
+                "php": "^7.3 || ^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^5.20.0 || ^6.25.0 || ^7.7.0",
+                "pestphp/pest-dev-tools": "dev-master"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/Autoload.php"
+                ],
+                "psr-4": {
+                    "Pest\\Laravel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "The Pest Laravel Plugin",
+            "keywords": [
+                "framework",
+                "laravel",
+                "pest",
+                "php",
+                "test",
+                "testing",
+                "unit"
+            ],
+            "support": {
+                "source": "https://github.com/pestphp/pest-plugin-laravel/tree/v1.3.0"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.com/paypalme/enunomaduro",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/nunomaduro",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/nunomaduro",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2022-09-18T13:04:53+00:00"
         },
         {
             "name": "phar-io/manifest",

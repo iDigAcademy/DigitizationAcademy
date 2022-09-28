@@ -3375,8 +3375,6 @@ blog-grid .title {
     font-size: 14px;
     color: var(--color-gray-2);
     letter-spacing: -0.025em; }
-.testimonial-grid:hover, .testimonial-grid.active {
-    border-top-color: var(--color-primary); }
 .testimonial-grid.testimonial-light p {
     color: var(--color-white); }
 .testimonial-grid.testimonial-light .author-info .content .name {
@@ -4016,7 +4014,7 @@ blog-grid .title {
     justify-content: center; }
 
 .header-offcanvasmenu {
-    width: 60vw;
+    /*width: 60vw;*/
     min-width: 300px;
     transition: all 0.8s cubic-bezier(0.77, 0.2, 0.05, 1); }
 @media only screen and (max-width: 1199px) {
@@ -4286,7 +4284,7 @@ blog-grid .title {
 .footer-widget .widget-title {
     font-weight: 700; }
 .footer-widget.border-end {
-    border-right-color: var(--color-ghost) !important;
+    border-right: none !important;
     padding-right: 80px;
     margin-right: 40px; }
 @media only screen and (max-width: 1199px) {

@@ -21,6 +21,8 @@ Route::get('courses', [HomeController::class, 'courses'])->name('courses');
 Route::get('calendar', [HomeController::class, 'calendar'])->name('calendar');
 Route::get('community', [HomeController::class, 'community'])->name('community');
 Route::get('about', [HomeController::class, 'about'])->name('about');
+Route::get('contact', [HomeController::class, 'contact'])->name('contact');
+Route::post('contact', [HomeController::class, 'contact'])->name('contact.post');
 
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 

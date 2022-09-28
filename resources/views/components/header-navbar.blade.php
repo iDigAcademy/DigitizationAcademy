@@ -38,16 +38,17 @@
                 </div>
                 <div class="header-action">
                     <ul class="list-unstyled">
-                        <!-- button associated with large screen aside
-                        <li class="sidemenu-btn d-lg-block d-none">
-                            <button class="btn-wrap" data-bs-toggle="offcanvas"
-                                    data-bs-target="#offcanvasMenuRight">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </button>
-                        </li>
-                        -->
+                        @can('access-nova')
+                        <!-- button associated with large screen aside -->
+                            <li class="sidemenu-btn d-lg-block d-none">
+                                <button class="btn-wrap" data-bs-toggle="offcanvas"
+                                        data-bs-target="#offcanvasMenuRight">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </button>
+                            </li>
+                        @endcan
                         <li class="mobile-menu-btn sidemenu-btn d-lg-none d-block">
                             <button class="btn-wrap" data-bs-toggle="offcanvas" data-bs-target="#mobilemenu-popup">
                                 <span></span>

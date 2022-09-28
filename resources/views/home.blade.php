@@ -278,7 +278,7 @@
                     <h2 class="title">Courses like this one introduce you<br> to the people behind the projects.
                     </h2>
 
-                    <div class="col-lg-5 offset-4">
+                    <div class="d-flex justify-content-center">
                         <!-- sample flip card -->
                         <div class="flip-card home salanimate banner-form"
                              style="display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-pack: end; -webkit-justify-content: flex-end; -ms-flex-pack: end; display-content: flex-end;"

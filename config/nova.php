@@ -103,6 +103,7 @@ return [
         HandleInertiaRequests::class,
         DispatchServingNovaEvent::class,
         BootTools::class,
+        \Itsmejoshua\Novaspatiepermissions\ForgetCachedPermissions::class,
     ],
 
     'api_middleware' => [
@@ -162,15 +163,15 @@ return [
     |
     */
 
-    // 'brand' => [
-    //     'logo' => resource_path('/img/example-logo.svg'),
+    'brand' => [
+         'logo' => resource_path('/media/logo.svg'),
 
-    //     'colors' => [
-    //         "400" => "24, 182, 155, 0.5",
-    //         "500" => "24, 182, 155",
-    //         "600" => "24, 182, 155, 0.75",
-    //     ]
-    // ],
+         'colors' => [
+             "400" => "24, 182, 155, 0.5",
+             "500" => "24, 182, 155",
+             "600" => "24, 182, 155, 0.75",
+         ]
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -203,4 +204,13 @@ return [
         'stopped' => '/',
     ],
 
+    /*
+     * Using custom routes so Nova login/logout do not show
+     */
+    'routes' => [
+        'logout' => '/logout',
+        'login' => '/login',
+        'forgot_password' => '/forgot-password',
+        'reset_password' => '/reset-password'
+    ]
 ];
