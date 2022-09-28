@@ -12,11 +12,22 @@
         <div class="row ">
             <div class="col-lg-5 col-xl-6">
                 <ul class="main-navigation list-unstyled">
-                    <li><a href="index.html">Digitization Academy</a></li>
-                    <li><a href="courses.html">Courses</a></li>
-                    <li><a href="calendar.html">Calendar</a></li>
-                    <li><a href="community.html">Community</a></li>
-                    <li><a href="about.html">About</a></li>
+                    @auth
+                        <li><a href="{{ route('logout') }}" id="logout">{{ t('Logout') }}</a></li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                            @csrf
+                        </form>
+                        <li><a href="{{ route('dashboard') }}" id="logout">{{ t('Dashboard') }}</a></li>
+                        @can('accessNova')
+                            <li><a href="{{ route('nova.pages.home') }}" id="logout">{{ t('Admin') }}</a></li>
+                        @endcan
+                    @endauth
+                    @guest
+                        <li><a href="{{ route('login') }}">{{ t('Login') }}</a></li>
+                        @if(\Laravel\Fortify\Features::enabled('register'))
+                            <li><a href="{{ route('register') }}">{{ t('Register') }}</a></li>
+                        @endif
+                    @endguest
                 </ul>
             </div>
             <div class="col-lg-7 col-xl-6">

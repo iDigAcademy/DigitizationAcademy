@@ -3,6 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
+
                     <div class="card-header">{{ t('Register') }}</div>
                     <div class="card-body">
                         <x-form::form method="POST" action="{{ route('register') }}">

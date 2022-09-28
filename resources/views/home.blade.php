@@ -464,8 +464,6 @@
                 </div>
             </div>
 
-            <hr class="mt-0 mb-0">
-
             <ul class="shape-group-17 list-unstyled">
                 <li class="shape shape-1"><img src="{{ vite_asset('resources/media/others/bubble-24.png') }}"
                                                alt="Bubble" style="opacity:.2">
@@ -475,8 +473,7 @@
                 </li>
                 <li class="shape shape-4"><img src="{{ vite_asset('resources/media/others/line-5.png') }}"
                                                alt="Line"></li>
-                <li class="shape shape-6"><img src="{{ vite_asset('resources/media/others/line-5.png') }}"
-                                               alt="Line"></li>
+
             </ul>
         </article>
     </section>
