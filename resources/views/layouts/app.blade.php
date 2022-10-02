@@ -47,5 +47,6 @@
     <x-aside-menu />
     @endauth
 </div>
+@include('sweetalert::alert')
 </body>
 </html>

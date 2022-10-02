@@ -15,13 +15,15 @@
                             <x:form::input name="password" type="password" id="password"
                                            label="{{ trans('Password') }}"/>
                             <x:form::checkbox name="remember" label="{{ t('Remember Me') }}"/>
-                            <div class="d-block text-center">
+                            {!! NoCaptcha::display() !!}
+                            <div class="d-block text-center mt-4">
                                 <x:form::button.submit>{{ t('Login') }}</x:form::button.submit>
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ t('Forgot Your Password?') }}
                                 </a>
                             </div>
                         </x-form::form>
+                        {!! NoCaptcha::renderJs() !!}
                     </div>
                 </div>
             </div>

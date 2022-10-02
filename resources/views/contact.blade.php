@@ -3,16 +3,15 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header">{{ t('Register') }}</div>
+                    <div class="card-header">{{ t('Contact') }}</div>
                     <div class="card-body">
-                        <x-form::form method="POST" action="{{ route('register') }}">
-                            <x:form::input name="name" type="text" id="name" label="{{ trans('Full Name') }}"/>
+                        <x-form::form method="POST" action="{{ route('contact.post') }}">
+                            <x:form::input name="name" type="text" id="name" label="{{ trans('Name') }}"/>
                             <x:form::input name="email" type="email" id="email" label="{{ trans('Email') }}"/>
-                            <x:form::input name="password" type="password" id="password" label="{{ trans('Password') }}"/>
-                            <x:form::input name="password_confirmation" type="password" id="password_confirmation" label="{{ trans('Confirm Password') }}"/>
+                            <x:form::textarea name="message" id="message" label="{{ trans('Message') }}"/>
                             {!! NoCaptcha::display() !!}
                             <div class="d-block text-center mt-4">
-                                <x:form::button.submit>{{ t('Register') }}</x:form::button.submit>
+                                <x:form::button.submit>{{ t('Send') }}</x:form::button.submit>
                             </div>
                         </x-form::form>
                         {!! NoCaptcha::renderJs() !!}

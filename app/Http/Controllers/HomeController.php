@@ -19,9 +19,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PageImages;
+use App\Http\Requests\ContactFormRequest;
 use App\Models\Services\PageService;
+use App\Models\User;
+use App\Notifications\Contact;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Notification;
+use Alert;
 
 class HomeController extends Controller
 {
@@ -95,6 +100,31 @@ class HomeController extends Controller
     {
         $topImage = $this->pageService->getAboutImage();
         return view('about', compact('topImage'));
+    }
+
+    public function contact()
+    {
+        return view('contact');
+    }
+
+    /**
+     * Send contact form.
+     *
+     * @param \App\Http\Requests\ContactFormRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postContact(ContactFormRequest $request): RedirectResponse
+    {
+        try{
+            $users = User::whereHas("roles", function($q){ $q->where("name", "Super Admin"); })->get();
+            Notification::send($users, new Contact($request->all()));
+
+            return redirect()->back()->with('toast_success', trans('Contact message sent successfully.'));
+        }
+        catch (\Throwable $exception)
+        {
+            return redirect()->back()->with('toast_error', trans('An error occurred sending your message. ' . $exception->getMessage()));
+        }
     }
 
     /**
