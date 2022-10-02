@@ -11,7 +11,7 @@
                     tempor incididunt ut labore et dolore magna aliqua. Dolore eu fugiat nulla pariatur.</p>
             </div>
             <div class="banner-thumbnail" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="400">
-                <img class="paralax-image" src="{{ vite_asset('resources/media/banner/banner-lichen.png') }}"
+                <img class="paralax-image" src="{{ $topImage }}"
                      alt="Illustration">
             </div>
         </div>

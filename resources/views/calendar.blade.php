@@ -14,7 +14,7 @@
                     cillum dolore eu fugiat nulla pariatur.</p>
             </div>
             <div class="banner-thumbnail" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="400">
-                <img class="paralax-image" src="{{ vite_asset('resources/media/banner/banner-lichen.png') }}"
+                <img class="paralax-image" src="{{ $topImage }}"
                      alt="Illustration">
             </div>
         </div>
@@ -48,6 +48,11 @@
                         cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                         proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 </div>
+            </div>
+            <div class="row justify-content-center">
+                <iframe
+                    src="https://calendar.google.com/calendar/embed?src=ukdvcg3pe6vmg7m9vjtgpkqh85qtgn0q%40import.calendar.google.com&ctz=America%2FNew_York"
+                    style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
             </div>
         </div>
         <ul class="shape-group-6 list-unstyled">

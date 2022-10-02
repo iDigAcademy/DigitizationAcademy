@@ -19,19 +19,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PageImages;
+use App\Models\Services\PageService;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     /**
+     * @var \App\Models\Services\PageService
+     */
+    private PageService $pageService;
+
+    /**
      * Create a new controller instance.
      *
-     * @return void
+     * @param \App\Models\Services\PageService $pageService
      */
-    public function __construct()
+    public function __construct(PageService $pageService)
     {
-        //$this->middleware('auth');
+        $this->pageService = $pageService;
     }
 
     /**
@@ -41,7 +47,10 @@ class HomeController extends Controller
      */
     public function index(): Renderable
     {
-        return view('home');
+        $topImage = $this->pageService->getHomeTopImage();
+        $bottomImage = $this->pageService->getHomeBottomImage();
+
+        return view('home', compact('topImage', 'bottomImage'));
     }
 
     /**
@@ -51,7 +60,8 @@ class HomeController extends Controller
      */
     public function courses(): Renderable
     {
-        return view('courses');
+        $topImage = $this->pageService->getCourseImage();
+        return view('courses', compact('topImage'));
     }
 
     /**
@@ -61,7 +71,8 @@ class HomeController extends Controller
      */
     public function calendar(): Renderable
     {
-        return view('calendar');
+        $topImage = $this->pageService->getCalendarImage();
+        return view('calendar', compact('topImage'));
     }
 
     /**
@@ -71,7 +82,8 @@ class HomeController extends Controller
      */
     public function community(): Renderable
     {
-        return view('community');
+        $topImage = $this->pageService->getCommunityImage();
+        return view('community', compact('topImage'));
     }
 
     /**
@@ -81,9 +93,15 @@ class HomeController extends Controller
      */
     public function about(): Renderable
     {
-        return view('about');
+        $topImage = $this->pageService->getAboutImage();
+        return view('about', compact('topImage'));
     }
 
+    /**
+     * Custom log out.
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function logout()
     {
         \Auth::logout();

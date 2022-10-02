@@ -20,10 +20,10 @@
         </div>
         <ul class="list-unstyled shape-group-18">
             <li class="shape shape-1" data-sal="slide-left" data-sal-duration="1000" data-sal-delay="100"
-                style="top:-1px;"><img src="{{ vite_asset('resources/media/banner/banner-shape-1.png') }}"
+                style="top:-1px;"><img src="{{ $topImage }}"
                                        alt="Butterfly Specimen"></li>
             <li class="shape shape-2" data-sal="slide-right" data-sal-duration="1000" data-sal-delay="100"><img
-                    src="{{ vite_asset('resources/media/banner/banner-shape-2.png') }}" alt="Shape"></li>
+                    src="{{ $bottomImage }}" alt="Shape"></li>
             <li class="shape shape-3 sal-animate" data-sal="zoom-in" data-sal-duration="500"
                 data-sal-delay="600"
                 style="opacity:.22;"><img src="{{ vite_asset('resources/media/others/bubble-16.png') }}"
