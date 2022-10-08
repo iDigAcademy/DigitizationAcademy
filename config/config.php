@@ -18,5 +18,7 @@
  */
 
 return [
+    'app_path' => base_path(),
+    'server_user' => env('SERVER_USER', 'ubuntu'),
     'page_image_dir' => 'page_image'
 ];

@@ -22,7 +22,7 @@ return [
     | Do not change this value in production, it will cause unexpected behavior.
     |
     */
-    'prefix' => 'academy:',
+    'prefix' => env('LADA_CACHE_PREFIX','lada:'),
 
     /*
     |--------------------------------------------------------------------------
