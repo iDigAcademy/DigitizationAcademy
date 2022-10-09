@@ -66,7 +66,6 @@ class HomeController extends Controller
     public function courses(): Renderable
     {
         $topImage = $this->pageService->getCourseImage();
-        dd($topImage);
         return view('courses', compact('topImage'));
     }
 
