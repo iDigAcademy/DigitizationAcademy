@@ -6,6 +6,8 @@
 /vendor
 .env
 .env.backup
+.env.digitprod
+.env.digitdev
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
