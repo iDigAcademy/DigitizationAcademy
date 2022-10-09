@@ -189,6 +189,7 @@ return [
         ],
         'development' => [
             'supervisor-1' => [
+                'queue' => ['default-dev', 'mail-dev'],
                 'maxProcesses' => 10,
                 'balanceMaxShift' => 1,
                 'balanceCooldown' => 3,
