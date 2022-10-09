@@ -8,7 +8,7 @@
                 <div class="col-lg-6">
                     <div class="banner-content" data-sal="slide-up" data-sal-duration="1000"
                          data-sal-delay="100">
-                        <h1 class="title mb-2">Coming Soono</h1>
+                        <h1 class="title mb-2">Coming Soon. Explore. Discover. Connect.</h1>
                         <h6 class="text-light text">Catalyzing excellence in the creation of digital data about
                             biodiversity specimens.</h6>
                     </div>
