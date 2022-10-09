@@ -52,13 +52,10 @@ class HomeController extends Controller
      */
     public function index(): Renderable
     {
-        /*
         $topImage = $this->pageService->getHomeTopImage();
         $bottomImage = $this->pageService->getHomeBottomImage();
 
-        return view('home', compact('topImage', 'bottomImage'));
-        */
-        return view('tmpHome');
+        return view('tmpHome', compact('topImage', 'bottomImage'));
     }
 
     /**
