@@ -33,7 +33,7 @@ class PageService
     {
         $topResult = PageImages::pageImage('home', 2)->inRandomOrder()->first();
         return $topResult === null ?
-            vite_asset('resources/media/banner/banner-shape-1.png') :
+            Storage::url('page_image/banner-shape-1.png') :
             Storage::url($topResult->image);
     }
 
@@ -46,7 +46,7 @@ class PageService
     {
         $topResult = PageImages::pageImage('home', 1)->inRandomOrder()->first();
         return $topResult === null ?
-            vite_asset('resources/media/banner/banner-shape-2.png') :
+            Storage::url('page_image/banner-shape-2.png') :
             Storage::url($topResult->image);
     }
 
@@ -59,7 +59,7 @@ class PageService
     {
         $topResult = PageImages::pageImage('courses')->first();
         return $topResult === null ?
-            vite_asset('resources/media/banner/banner-shape-2.png') :
+            Storage::url('page_image/banner-butterfly.png') :
             Storage::url($topResult->image);
     }
 
@@ -72,7 +72,7 @@ class PageService
     {
         $topResult = PageImages::pageImage('calendar')->first();
         return $topResult === null ?
-            vite_asset('resources/media/banner/banner-lichen.png') :
+            Storage::url('page_image/banner-lichen.png') :
             Storage::url($topResult->image);
     }
 
@@ -85,7 +85,7 @@ class PageService
     {
         $topResult = PageImages::pageImage('community')->first();
         return $topResult === null ?
-            vite_asset('resources/media/banner/banner-fossil.png') :
+            Storage::url('page_image/banner-fossil.png') :
             Storage::url($topResult->image);
     }
 
@@ -98,7 +98,7 @@ class PageService
     {
         $topResult = PageImages::pageImage('about')->first();
         return $topResult === null ?
-            vite_asset('resources/media/banner/banner-lichen.png') :
+            Storage::url('page_image/banner-lichen.png') :
             Storage::url($topResult->image);
     }
 }
