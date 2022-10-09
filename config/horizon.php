@@ -182,10 +182,6 @@ return [
     'environments' => [
         'production' => [
             'supervisor-1' => [
-                'queue' => [
-                    'prod-default',
-                    'prod-mail'
-                ],
                 'maxProcesses' => 10,
                 'balanceMaxShift' => 1,
                 'balanceCooldown' => 3,
@@ -193,10 +189,6 @@ return [
         ],
         'development' => [
             'supervisor-1' => [
-                'queue' => [
-                    'dev-default',
-                    'dev-mail'
-                ],
                 'maxProcesses' => 10,
                 'balanceMaxShift' => 1,
                 'balanceCooldown' => 3,
