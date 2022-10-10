@@ -17,8 +17,9 @@ class PageImages extends Model
      */
     protected $fillable = [
         'page',
+        'image',
         'image_name',
-        'image_path',
+        'image_size',
         'active'
     ];
 
