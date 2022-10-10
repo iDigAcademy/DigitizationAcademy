@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spiritix\LadaCache\Database\LadaCacheTrait;
 
-class PageImages extends Model
+class PageImage extends Model
 {
     use HasFactory, LadaCacheTrait;
 
