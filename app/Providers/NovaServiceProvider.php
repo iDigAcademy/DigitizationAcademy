@@ -22,12 +22,18 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         parent::boot();
 
         Nova::style('novajs', resource_path('css/nova.css'));
-        Nova::script('novajs', resource_path('js/nova.js'));
 
+        /* Used to link member dashboard
+        Nova::script('novajs', resource_path('js/nova.js'));
         Nova::mainMenu(function (Request $request, Menu $menu){
             return $menu->prepend(
                 MenuSection::make('Academy Dashboard', [], 'home')->path('../dashboard')
             );
+        });
+        */
+
+        Nova::userTimezone(function (Request $request) {
+            return $request->user()->timezone;
         });
     }
 

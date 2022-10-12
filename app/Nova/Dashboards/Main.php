@@ -2,6 +2,7 @@
 
 namespace App\Nova\Dashboards;
 
+use App\Nova\Metrics\NewCourses;
 use App\Nova\Metrics\NewUsers;
 use App\Nova\Metrics\UsersPerDay;
 use Laravel\Nova\Cards\Help;
@@ -19,7 +20,7 @@ class Main extends Dashboard
         return [
             new NewUsers,
             new UsersPerDay,
-            new Help,
+            new NewCourses,
         ];
     }
 
@@ -30,7 +31,7 @@ class Main extends Dashboard
      */
     public function name()
     {
-        return 'Admin Dashboard';
+        return 'Dashboard';
     }
 
 }

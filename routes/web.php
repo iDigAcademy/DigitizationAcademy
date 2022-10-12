@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Cookie;
@@ -25,6 +26,8 @@ Route::get('contact', [HomeController::class, 'contact'])->name('contact');
 Route::post('contact', [HomeController::class, 'postContact'])->name('contact.post');
 
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::post('timezone', [AjaxController::class, 'timezone'])->name('timezone');
 
 Route::get('/register-retry', function(){
     // Chrome F12 Headers - my_first_application_session=eyJpdiI6ImNnRH...

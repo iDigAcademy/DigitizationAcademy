@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('page');
             $table->boolean('position')->default(0);
             $table->string('image')->nullable();
-            $table->string('image_name');
-            $table->string('image_size');
+            $table->string('image_name')->nullable();
+            $table->string('image_size')->nullable();
             $table->boolean('active')->default(0);
             $table->timestamps();
         });

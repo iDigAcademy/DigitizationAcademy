@@ -11,14 +11,14 @@ use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class PageImages extends Resource
+class PageImage extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\PageImages::class;
+    public static $model = \App\Models\PageImage::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -54,7 +54,7 @@ class PageImages extends Resource
                 'community' => 'Community',
                 'courses'   => 'Courses',
                 'home'      => 'Home',
-            ])->displayUsingLabels(),
+            ])->displayUsingLabels()->rules('required'),
             Select::make('Position', 'position')->hide()->dependsOn(
                 ['page'],
                 function (Select $field, NovaRequest $request, FormData $formData) {
@@ -75,7 +75,13 @@ class PageImages extends Resource
                         'image_name' => $request->image->getClientOriginalName(),
                         'image_size' => $request->image->getSize(),
                     ];
-                })->maxWidth(100),
+                })->maxWidth(100)
+                ->creationRules('required', 'image', 'mimes:jpg,jpeg,png')
+                ->updateRules(function (NovaRequest $request) {
+                    $model = $request->findModelOrFail();
+
+                    return $model->image ? [] : ['required'];
+                })->prunable(),
             Boolean::make('Active')
         ];
     }

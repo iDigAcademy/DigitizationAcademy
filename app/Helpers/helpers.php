@@ -17,9 +17,28 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+use Illuminate\Support\Carbon;
+
 if (! function_exists('vite_asset')) {
 
-    function vite_asset($path) {
+    function vite_asset($path): string
+    {
         return \Illuminate\Support\Facades\Vite::asset($path);
+    }
+}
+
+if (! function_exists('date_day_string')) {
+    function date_day_string(Carbon $date): string
+    {
+        return $date->toFormattedDayDateString();
+    }
+}
+
+if (! function_exists('date_timezone')) {
+    function date_timezone_string(Carbon $date): string
+    {
+        $timezone = isset(Auth::user()->timezone) ? Auth::user()->timezone : Session::get('timezone');
+
+        return $date->tz($timezone)->toFormattedDayDateString();
     }
 }

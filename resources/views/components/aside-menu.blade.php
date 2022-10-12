@@ -7,7 +7,7 @@
             <div class="col-lg-5 col-xl-6">
                 <ul class="main-navigation list-unstyled">
                     <li><a href="{{ route('dashboard') }}" id="dashboard">{{ t('Dashboard') }}</a></li>
-                    <li><a href="{{ route('nova.pages.home') }}" id="nova">{{ t('Admin') }}</a></li>
+                    <li><a href="{{ route('nova.pages.home') }}" target="_blank" id="nova">{{ t('Admin') }}</a></li>
                     <li><a href="{{ route('horizon.index') }}" target="_blank" id="horizon">{{ t('Horizon') }}</a></li>
                     <li><a href="{{ route('logout') }}" id="logout">{{ t('Logout') }}</a></li>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST">

@@ -275,8 +275,8 @@
             <div class="text-dark row pt-1" style="text-align: center">
                 <div class="mt-2">
                     <span class="subtitle-right">Connecting you with resources for success.</span>
-                    <h2 class="title">Courses like this one introduce you<br> to the people behind the projects.
-                    </h2>
+                    @isset($course)
+                    <h2 class="title">Courses like this one introduce you<br> to the people behind the projects.</h2>
 
                     <div class="d-flex justify-content-center">
                         <!-- sample flip card -->
@@ -287,13 +287,17 @@
                                 <div class="flip-card-front">
                                     <div class="card shadow-box">
                                         <img class="card-img-top"
-                                             src="{{ vite_asset('resources/media/project/project-4.png') }}"
+                                             src="{{ Storage::url($course->front_image) }}"
                                              alt="Card image cap" style="border-radius: 20px;">
-                                        <div class="card-body pb-4">
-                                            <h4 class="card-title">Introduction to Biodiversity Specimen
-                                                Digitization</h4>
-                                            <p class="card-text"></p>
-                                            <p>&nbsp;</p>
+                                        <div class="card-body pb-0">
+                                            <h4 class="card-title">{{ $course->title }}</h4>
+                                            <div class="card-text">
+                                                Start: {{ date_day_string($course->start_date) }}<br>
+                                                End: {{ date_day_string($course->end_date) }}
+                                            </div>
+                                            <div class="card-text">
+                                                {{ $course->schedule_details }}
+                                            </div>
                                         </div>
                                     </div><!-- card -->
                                 </div> <!-- card front -->
@@ -301,36 +305,12 @@
                                 <div class="flip-card-back home">
                                     <div class="card shadow-box">
                                         <img class="card-img-top"
-                                             src="{{ vite_asset('resources/media/project/project-4.png') }}"
+                                             src="{{ Storage::url($course->back_image) }}"
                                              alt="Card image cap"
                                              style="border-radius: 20px; max-height: 100px;">
                                         <div class="card-body text-left">
                                             <h5 class="card-title">Objectives</h5>
-                                            <p class="text-left">The aims of the course are to empower
-                                                participants
-                                                with
-                                                the knowledge and skills to (1) identify and describe relevant
-                                                facets of
-                                                information or potential information related to biodiversity
-                                                specimens,
-                                                (2) identify and describe common digitization protocols and best
-                                                practices related to transcription, imaging, and georeferencing,
-                                                (3)
-                                                identify downstream uses that are relevant to digitization
-                                                decision-making, (4) recognize basic principles of data
-                                                management
-                                                including the importance of identifiers, (5) identify
-                                                collections
-                                                management system (CMS) options and the major differences among
-                                                them,
-                                                and (6) outline a digitization project, including quality
-                                                control
-                                                and a
-                                                data management plan that includes data sharing. The course
-                                                includes
-                                                a
-                                                conversation with representatives from the major CMS
-                                                projects.</p>
+                                            <p class="text-left">{{ $course->objectives }}</p>
                                             <a href="#" class="btn btn-primary">Learn More</a>
                                         </div>
                                     </div><!-- card -->
@@ -338,6 +318,7 @@
                             </div><!-- flip card inner -->
                         </div><!-- flip card -->
                     </div>
+                    @endisset
                 </div>
             </div>
         </article>

@@ -54,8 +54,9 @@ class HomeController extends Controller
     {
         $topImage = $this->pageService->getHomeTopImage();
         $bottomImage = $this->pageService->getHomeBottomImage();
+        $course = $this->pageService->getCourse();
 
-        return view('home', compact('topImage', 'bottomImage'));
+        return view('home', compact('topImage', 'bottomImage', 'course'));
     }
 
     /**

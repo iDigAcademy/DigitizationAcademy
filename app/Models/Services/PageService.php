@@ -19,7 +19,8 @@
 
 namespace App\Models\Services;
 
-use App\Models\PageImages;
+use App\Models\Course;
+use App\Models\PageImage;
 use Illuminate\Support\Facades\Storage;
 
 class PageService
@@ -31,7 +32,7 @@ class PageService
      */
     public function getHomeTopImage(): string
     {
-        $topResult = PageImages::pageImage('home', 2)->inRandomOrder()->first();
+        $topResult = PageImage::pageImage('home', 2)->first();
         return $topResult === null ?
             Storage::url('page_image/banner-shape-1.png') :
             Storage::url($topResult->image);
@@ -44,7 +45,7 @@ class PageService
      */
     public function getHomeBottomImage(): string
     {
-        $topResult = PageImages::pageImage('home', 1)->inRandomOrder()->first();
+        $topResult = PageImage::pageImage('home', 1)->first();
         return $topResult === null ?
             Storage::url('page_image/banner-shape-2.png') :
             Storage::url($topResult->image);
@@ -57,7 +58,7 @@ class PageService
      */
     public function getCourseImage(): string
     {
-        $topResult = PageImages::pageImage('courses')->first();
+        $topResult = PageImage::pageImage('courses')->first();
         return $topResult === null ?
             Storage::url('page_image/banner-butterfly.png') :
             Storage::url($topResult->image);
@@ -70,7 +71,7 @@ class PageService
      */
     public function getCalendarImage(): string
     {
-        $topResult = PageImages::pageImage('calendar')->first();
+        $topResult = PageImage::pageImage('calendar')->first();
         return $topResult === null ?
             Storage::url('page_image/banner-lichen.png') :
             Storage::url($topResult->image);
@@ -83,7 +84,7 @@ class PageService
      */
     public function getCommunityImage(): string
     {
-        $topResult = PageImages::pageImage('community')->first();
+        $topResult = PageImage::pageImage('community')->first();
         return $topResult === null ?
             Storage::url('page_image/banner-fossil.png') :
             Storage::url($topResult->image);
@@ -96,9 +97,19 @@ class PageService
      */
     public function getAboutImage(): string
     {
-        $topResult = PageImages::pageImage('about')->first();
+        $topResult = PageImage::pageImage('about')->first();
         return $topResult === null ?
             Storage::url('page_image/banner-lichen.png') :
             Storage::url($topResult->image);
+    }
+
+    /**
+     * Get course for home page.
+     *
+     * @return mixed
+     */
+    public function getCourse(): mixed
+    {
+        return Course::active()->home()->first();
     }
 }
