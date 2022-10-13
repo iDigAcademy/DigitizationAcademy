@@ -84,7 +84,7 @@ class Course extends Resource
                 })->prunable(),
             Date::make('Start Date')->rules('required'),
             Date::make('End Date')->rules('required'),
-            Text::make('Schedule Details')->rules('required', 'string', 'max: 150'),
+            Text::make('Schedule Details')->rules('required', 'string', 'max: 150')->hideFromIndex(),
             Boolean::make('Active'),
             Boolean::make('Home Page'),
         ];

@@ -278,9 +278,9 @@
                     @isset($course)
                     <h2 class="title">Courses like this one introduce you<br> to the people behind the projects.</h2>
 
-                    <div class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center course-row">
                         <!-- sample flip card -->
-                        <div class="flip-card home salanimate banner-form"
+                        <div class="flip-card salanimate banner-form"
                              style="display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-pack: end; -webkit-justify-content: flex-end; -ms-flex-pack: end; display-content: flex-end;"
                              data-sal="slide-up" data-sal-duration="900" data-sal-delay="300">
                             <div class="flip-card-inner">
@@ -302,7 +302,7 @@
                                     </div><!-- card -->
                                 </div> <!-- card front -->
 
-                                <div class="flip-card-back home">
+                                <div class="flip-card-back">
                                     <div class="card shadow-box">
                                         <img class="card-img-top"
                                              src="{{ Storage::url($course->back_image) }}"

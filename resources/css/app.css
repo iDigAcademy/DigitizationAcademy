@@ -2808,10 +2808,6 @@ Pagination
 .project-column-4 .project-grid .content {
     padding: 40px 30px; }
 
-.courses .flip-card {
-    width: 99%;
-    margin: 50px; }
-
 /*-------------------------
     Service
 -------------------------*/
@@ -2985,10 +2981,13 @@ Pagination
     Team
 -------------------------*/
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.course-row {
+    min-height: 610px;
+}
 .flip-card {
     background-color: transparent;
     width: 500px;
-    height: 600px;
+    height: 100%;
     perspective: 1000px;
     /* Remove this if you don't want the 3D effect */
     margin-bottom: 50px;
@@ -3036,6 +3035,10 @@ Pagination
     padding: .5rem 1rem;
     background-color: transparent;
     border-top: none; }
+
+.courses .flip-card {
+    width: 99%;
+    margin: 50px; }
 
 .team-grid {
     text-align: center;
@@ -3108,10 +3111,6 @@ Pagination
 
 .team-details-thumb img {
     border-radius: 10px; }
-
-.flip-card.home, .flip-card-back.home {
-    height: 575px;
-    margin-bottom: 0; }
 
 .blog-grid {
     margin-bottom: 80px; }
