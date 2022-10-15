@@ -287,7 +287,7 @@
                                 <div class="flip-card-front">
                                     <div class="card shadow-box">
                                         <img class="card-img-top"
-                                             src="{{ Storage::url($course->front_image) }}"
+                                             src="{{ $course->present()->front_image }}"
                                              alt="Card image cap" style="border-radius: 20px;">
                                         <div class="card-body pb-0">
                                             <h4 class="card-title">{{ $course->title }}</h4>
@@ -305,7 +305,7 @@
                                 <div class="flip-card-back">
                                     <div class="card shadow-box">
                                         <img class="card-img-top"
-                                             src="{{ Storage::url($course->back_image) }}"
+                                             src="{{ $course->present()->back_image }}"
                                              alt="Card image cap"
                                              style="border-radius: 20px; max-height: 100px;">
                                         <div class="card-body text-left">
