@@ -1,6 +1,11 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\CommunityController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Cookie;
@@ -18,12 +23,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('courses', [HomeController::class, 'courses'])->name('courses');
-Route::get('calendar', [HomeController::class, 'calendar'])->name('calendar');
-Route::get('community', [HomeController::class, 'community'])->name('community');
-Route::get('about', [HomeController::class, 'about'])->name('about');
-Route::get('contact', [HomeController::class, 'contact'])->name('contact');
-Route::post('contact', [HomeController::class, 'postContact'])->name('contact.post');
+Route::get('courses', [CourseController::class, 'index'])->name('course.index');
+Route::get('calendar', [CalendarController::class, 'index'])->name('calendar.index');
+Route::get('community', [CommunityController::class, 'index'])->name('community.index');
+Route::get('about', [AboutController::class, 'index'])->name('about.index');
+Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
 
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 

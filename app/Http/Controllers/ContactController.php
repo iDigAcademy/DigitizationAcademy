@@ -20,53 +20,41 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactFormRequest;
-use App\Models\Services\PageService;
 use App\Models\User;
 use App\Notifications\Contact;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Notification;
-use Alert;
 
-class HomeController extends Controller
+class ContactController extends Controller
 {
     /**
-     * @var \App\Models\Services\PageService
-     */
-    private PageService $pageService;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @param \App\Models\Services\PageService $pageService
-     */
-    public function __construct(PageService $pageService)
-    {
-        $this->pageService = $pageService;
-    }
-
-    /**
-     * Show home page.
+     * Contact index.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(): Renderable
     {
-        $topImage = $this->pageService->getHomeTopImage();
-        $bottomImage = $this->pageService->getHomeBottomImage();
-        $course = $this->pageService->getCourse();
-
-        return view('home', compact('topImage', 'bottomImage', 'course'));
+        return view('contact');
     }
 
     /**
-     * Custom log out.
+     * Send contact form.
      *
+     * @param \App\Http\Requests\ContactFormRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function logout(): RedirectResponse
+    public function store(ContactFormRequest $request): RedirectResponse
     {
-        \Auth::logout();
-        return redirect('/');
+        try{
+            $users = User::whereHas("roles", function($q){ $q->where("name", "Super Admin"); })->get();
+            Notification::send($users, new Contact($request->all()));
+
+            return redirect()->back()->with('toast_success', trans('Contact message sent successfully.'));
+        }
+        catch (\Throwable $exception)
+        {
+            return redirect()->back()->with('toast_error', trans('An error occurred sending your message. ' . $exception->getMessage()));
+        }
     }
 }

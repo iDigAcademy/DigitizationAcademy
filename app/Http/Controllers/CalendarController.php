@@ -19,16 +19,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ContactFormRequest;
 use App\Models\Services\PageService;
-use App\Models\User;
-use App\Notifications\Contact;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Notification;
-use Alert;
+use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class CalendarController extends Controller
 {
     /**
      * @var \App\Models\Services\PageService
@@ -36,37 +31,22 @@ class HomeController extends Controller
     private PageService $pageService;
 
     /**
-     * Create a new controller instance.
-     *
      * @param \App\Models\Services\PageService $pageService
      */
     public function __construct(PageService $pageService)
     {
+
         $this->pageService = $pageService;
     }
 
     /**
-     * Show home page.
+     * Show calendar page.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(): Renderable
     {
-        $topImage = $this->pageService->getHomeTopImage();
-        $bottomImage = $this->pageService->getHomeBottomImage();
-        $course = $this->pageService->getCourse();
-
-        return view('home', compact('topImage', 'bottomImage', 'course'));
-    }
-
-    /**
-     * Custom log out.
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function logout(): RedirectResponse
-    {
-        \Auth::logout();
-        return redirect('/');
+        $topImage = $this->pageService->getCalendarImage();
+        return view('calendar', compact('topImage'));
     }
 }

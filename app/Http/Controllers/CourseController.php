@@ -19,16 +19,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ContactFormRequest;
 use App\Models\Services\PageService;
-use App\Models\User;
-use App\Notifications\Contact;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Notification;
-use Alert;
 
-class HomeController extends Controller
+class CourseController extends Controller
 {
     /**
      * @var \App\Models\Services\PageService
@@ -36,37 +30,22 @@ class HomeController extends Controller
     private PageService $pageService;
 
     /**
-     * Create a new controller instance.
-     *
      * @param \App\Models\Services\PageService $pageService
      */
     public function __construct(PageService $pageService)
     {
+
         $this->pageService = $pageService;
     }
 
     /**
-     * Show home page.
+     * Show courses page.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(): Renderable
     {
-        $topImage = $this->pageService->getHomeTopImage();
-        $bottomImage = $this->pageService->getHomeBottomImage();
-        $course = $this->pageService->getCourse();
-
-        return view('home', compact('topImage', 'bottomImage', 'course'));
-    }
-
-    /**
-     * Custom log out.
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function logout(): RedirectResponse
-    {
-        \Auth::logout();
-        return redirect('/');
+        $topImage = $this->pageService->getCourseImage();
+        return view('courses', compact('topImage'));
     }
 }

@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header">{{ t('Contact') }}</div>
                     <div class="card-body">
-                        <x-form::form method="POST" action="{{ route('contact.post') }}">
+                        <x-form::form method="POST" action="{{ route('contact.store') }}">
                             <x:form::input name="name" type="text" id="name" label="{{ trans('Name') }}"/>
                             <x:form::input name="email" type="email" id="email" label="{{ trans('Email') }}"/>
                             <x:form::textarea name="message" id="message" label="{{ trans('Message') }}"/>

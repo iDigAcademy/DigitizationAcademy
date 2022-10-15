@@ -29,11 +29,11 @@
                         <!--=             header menu           =-->
                         <!--=====================================-->
                         <ul class="mainmenu">
-                            <li><a href="{{ route('courses') }}">{{ trans('Courses') }}</a></li>
-                            <li><a href="{{ route('calendar') }}">{{ trans('Calendar') }}</a></li>
-                            <li><a href="{{ route('community') }}">{{ trans('Community') }}</a></li>
-                            <li><a href="{{ route('about') }}">{{ trans('About') }}</a></li>
-                            <li><a href="{{ route('contact') }}">{{ trans('Contact') }}</a></li>
+                            <li><a href="{{ route('course.index') }}">{{ trans('Courses') }}</a></li>
+                            <li><a href="{{ route('calendar.index') }}">{{ trans('Calendar') }}</a></li>
+                            <li><a href="{{ route('community.index') }}">{{ trans('Community') }}</a></li>
+                            <li><a href="{{ route('about.index') }}">{{ trans('About') }}</a></li>
+                            <li><a href="{{ route('contact.index') }}">{{ trans('Contact') }}</a></li>
                         </ul>
                     </nav>
                 </div>

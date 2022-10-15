@@ -2987,7 +2987,8 @@ Pagination
 .flip-card {
     background-color: transparent;
     width: 500px;
-    height: 100%;
+    height: 600px;
+    /*height: 100%;*/
     perspective: 1000px;
     /* Remove this if you don't want the 3D effect */
     margin-bottom: 50px;
@@ -3026,6 +3027,7 @@ Pagination
     height: 600px; }
 
 .card.shadow-box {
+    height: 100%;
     box-shadow: 0 0 25px -9px black;
     border-radius: 20px;
     padding: 15px; }
