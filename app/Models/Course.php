@@ -2,13 +2,20 @@
 
 namespace App\Models;
 
+use App\Models\Presenters\CoursePresenter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spiritix\LadaCache\Database\LadaCacheTrait;
+use TheHiveTeam\Presentable\HasPresentable;
 
 class Course extends Model
 {
-    use HasFactory, LadaCacheTrait;
+    use HasFactory, LadaCacheTrait, HasPresentable;
+
+    /**
+     * @var string
+     */
+    protected string $presenter = CoursePresenter::class;
 
     /**
      * The attributes that are mass assignable.
@@ -64,5 +71,16 @@ class Course extends Model
     public function scopeHome($query): mixed
     {
         return $query->where('home_page', 1);
+    }
+
+    /**
+     * Sope for index page, excluding home project.
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function scopeIndex($query): mixed
+    {
+        return $query->where('home_page', 0);
     }
 }
