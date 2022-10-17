@@ -2987,7 +2987,7 @@ Pagination
 .flip-card {
     background-color: transparent;
     width: 500px;
-    height: 620px;
+    height: 650px;
     /*height: 610px;*/
     /*height: 100%;*/
     perspective: 1000px;
@@ -2997,7 +2997,7 @@ Pagination
 
 @media only screen and (max-width: 1400px) {
     .courses .flip-card {
-        height: 620px !important; }}
+        height: 650px !important; }}
 
 @media only screen and (max-width: 1200px) {
     .courses .flip-card {
