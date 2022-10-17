@@ -17,38 +17,35 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace App\Http\Controllers;
+namespace App\View\Components;
 
-use App\Models\Course;
-use App\Models\Services\PageService;
-use Illuminate\Contracts\Support\Renderable;
+use Illuminate\View\Component;
 
-class CourseController extends Controller
+class Course extends Component
 {
     /**
-     * @var \App\Models\Services\PageService
+     * @var \App\Models\Course
      */
-    private PageService $pageService;
+    public \App\Models\Course $course;
 
     /**
-     * @param \App\Models\Services\PageService $pageService
+     * Create a new component instance.
+     *
+     * @return void
      */
-    public function __construct(PageService $pageService)
+    public function __construct(\App\Models\Course $course)
     {
 
-        $this->pageService = $pageService;
+        $this->course = $course;
     }
 
     /**
-     * Show courses page.
+     * Get the view / contents that represent the component.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Contracts\View\View|\Closure|string
      */
-    public function index(): Renderable
+    public function render()
     {
-        $topImage = $this->pageService->getCourseImage();
-        $courses = Course::active()->index()->get();
-
-        return view('courses', compact('topImage', 'courses'));
+        return view('components.course');
     }
 }

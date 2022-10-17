@@ -398,7 +398,7 @@ input {
         height: auto;
         padding: 0; } }
 .input-group:before {
-    content: url("../../assets/media/icon/message.png");
+    content: url("/build/assets/media/icon/message.png");
     position: absolute;
     left: 30px;
     top: 24px;
@@ -2987,12 +2987,33 @@ Pagination
 .flip-card {
     background-color: transparent;
     width: 500px;
-    height: 600px;
+    height: 620px;
+    /*height: 610px;*/
     /*height: 100%;*/
     perspective: 1000px;
     /* Remove this if you don't want the 3D effect */
     margin-bottom: 50px;
     border-radius: 25px; }
+
+@media only screen and (max-width: 1400px) {
+    .courses .flip-card {
+        height: 620px !important; }}
+
+@media only screen and (max-width: 1200px) {
+    .courses .flip-card {
+        height: 650px !important; }}
+
+@media only screen and (max-width: 991px) {
+    .courses .flip-card {
+        height: 850px !important; }}
+
+@media only screen and (max-width: 767px) {
+    .courses .flip-card {
+        height: 700px !important; }}
+
+@media only screen and (max-width: 576px) {
+    .courses .flip-card {
+        height: 700px !important; }}
 
 /* This container is needed to position the front and back side */
 .flip-card-inner {
@@ -3023,8 +3044,7 @@ Pagination
 /* Style the front side (fallback if image is missing) */
 /* Style the back side */
 .flip-card-back {
-    transform: rotateY(180deg);
-    height: 600px; }
+    transform: rotateY(180deg); }
 
 .card.shadow-box {
     height: 100%;

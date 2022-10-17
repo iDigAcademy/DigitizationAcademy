@@ -7,8 +7,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-09-21T15:12:13+00:00\n"
-"PO-Revision-Date: 2022-09-21 17:12+0200\n"
+"POT-Creation-Date: 2022-10-17T19:05:15+00:00\n"
+"PO-Revision-Date: 2022-10-17 21:05+0200\n"
 "Language: en_US\n"
 "Plural-Forms: nplurals=2; plural=n!=1;\n"
 
@@ -23,11 +23,16 @@ msgid "Send Password Reset Link"
 msgstr ""
 
 #: resources/views/auth/login.blade.php:6
-#: resources/views/auth/login.blade.php:19
+#: resources/views/auth/login.blade.php:22
+#: resources/views/components/aside-menu.blade.php:17
 msgid "Login"
 msgstr ""
 
-#: resources/views/auth/login.blade.php:21
+#: resources/views/auth/login.blade.php:18
+msgid "Remember Me"
+msgstr ""
+
+#: resources/views/auth/login.blade.php:24
 #: resources/views/auth/passwords/confirm.blade.php:52
 msgid "Forgot Your Password?"
 msgstr ""
@@ -46,7 +51,9 @@ msgid "Password"
 msgstr ""
 
 #: resources/views/auth/register.blade.php:6
-#: resources/views/auth/register.blade.php:14
+#: resources/views/auth/register.blade.php:16
+#: resources/views/components/aside-menu.blade.php:19
+#: resources/views/components/course.blade.php:35
 msgid "Register"
 msgstr ""
 
@@ -68,4 +75,179 @@ msgstr ""
 
 #: resources/views/auth/verify-email.blade.php:20
 msgid "click here to request another"
+msgstr ""
+
+#: resources/views/components/aside-menu.blade.php:9
+msgid "Dashboard"
+msgstr ""
+
+#: resources/views/components/aside-menu.blade.php:10
+msgid "Admin"
+msgstr ""
+
+#: resources/views/components/aside-menu.blade.php:11
+msgid "Horizon"
+msgstr ""
+
+#: resources/views/components/aside-menu.blade.php:12
+msgid "Logout"
+msgstr ""
+
+#: resources/views/components/course.blade.php:33
+#: resources/views/home.blade.php:295
+msgid "Objectives"
+msgstr ""
+
+#: resources/views/contact.blade.php:6
+#: resources/views/notifications/contact.blade.php:2
+msgid "Contact"
+msgstr ""
+
+#: resources/views/contact.blade.php:15
+msgid "Send"
+msgstr ""
+
+#: resources/views/courses.blade.php:9
+msgid "Courses"
+msgstr ""
+
+#: resources/views/courses.blade.php:39
+msgid "Current Courses"
+msgstr ""
+
+#: resources/views/courses.blade.php:42
+msgid "Past / Present"
+msgstr ""
+
+#: resources/views/courses.blade.php:45
+msgid "All Courses"
+msgstr ""
+
+#: resources/views/courses.blade.php:46
+msgid "Past"
+msgstr ""
+
+#: resources/views/courses.blade.php:47
+msgid "Present"
+msgstr ""
+
+#: resources/views/home.blade.php:11
+msgid "Explore. Discover. Connect."
+msgstr ""
+
+#: resources/views/home.blade.php:12
+msgid "Catalyzing excellence in the creation of digital data about biodiversity specimens."
+msgstr ""
+
+#: resources/views/home.blade.php:14
+msgid "Read More"
+msgstr ""
+
+#: resources/views/home.blade.php:63
+msgid "A strategy built for you"
+msgstr ""
+
+#: resources/views/home.blade.php:64
+msgid "Our Approach"
+msgstr ""
+
+#: resources/views/home.blade.php:65
+msgid "Our offerings combine these three elements to level you up on a topic. We aim to provision you with more than an academic understanding. Leave the course with new inspiration and connections to a cohort of professionals from around the world who are tackling the same challenges."
+msgstr ""
+
+#: resources/views/home.blade.php:82
+msgid "Our systematic overview builds the foundation."
+msgstr ""
+
+#: resources/views/home.blade.php:88
+msgid "We deliver content featuring major dimensions of a topic in engaging ways. All content advances a core set of carefully curated learning objectives."
+msgstr ""
+
+#: resources/views/home.blade.php:103
+msgid "Your experience provides the nuance and motivation."
+msgstr ""
+
+#: resources/views/home.blade.php:108
+msgid "We aspire to create a learning community with each offering where you feel empowered to share your experience for everyone’s enrichment."
+msgstr ""
+
+#: resources/views/home.blade.php:122
+msgid "And an expert panel identifies the leading edge of the possible."
+msgstr ""
+
+#: resources/views/home.blade.php:127
+msgid "We feature thought leaders or tool providers who share their latest developments on the topic and address questions from participants."
+msgstr ""
+
+#: resources/views/home.blade.php:162
+msgid "Built on iDigBio’s professional development experience."
+msgstr ""
+
+#: resources/views/home.blade.php:163
+msgid "Deep experience with digitization and training."
+msgstr ""
+
+#: resources/views/home.blade.php:164
+msgid ""
+"Since its founding in 2012, iDigBio has offered over 100 training opportunities, and many\n"
+"                    involved the Digitization Academy’s core staff. iDigBio is the US National Science Foundation’s\n"
+"                    National Resource for Advancing Digitization of Biodiversity Collections and home to the Digitization\n"
+"                    Academy. The Digitization Academy offerings from iDigBio represent a standardized strategy\n"
+"                    for delivery of a subset of iDigBio’s training options to ensure that we have all high-value\n"
+"                    topics covered for you in complementary ways."
+msgstr ""
+
+#: resources/views/home.blade.php:183
+msgid "years of experience"
+msgstr ""
+
+#: resources/views/home.blade.php:196
+msgid "specimens digitized"
+msgstr ""
+
+#: resources/views/home.blade.php:210
+msgid "worldwide contributors"
+msgstr ""
+
+#: resources/views/home.blade.php:258
+msgid "Connecting you with resources for success."
+msgstr ""
+
+#: resources/views/home.blade.php:260
+msgid "Courses like this one introduce you<br>to the people behind the projects."
+msgstr ""
+
+#: resources/views/home.blade.php:297
+msgid "Learn More"
+msgstr ""
+
+#: resources/views/home.blade.php:385
+msgid "What participants are saying."
+msgstr ""
+
+#: resources/views/home.blade.php:386
+msgid "Evaluations help us further refine our courses with each iteration."
+msgstr ""
+
+#: resources/views/home.blade.php:393
+msgid ""
+"Topics were discussed in great detail. The instructors were very\n"
+"                            helpful and enthusiastic in answering queries and sharing resources. The activities were\n"
+"                            practical in that the questions were centered around our individual research."
+msgstr ""
+
+#: resources/views/notifications/contact.blade.php:5
+msgid "Name"
+msgstr ""
+
+#: resources/views/notifications/contact.blade.php:8
+msgid "Email"
+msgstr ""
+
+#: resources/views/notifications/contact.blade.php:11
+msgid "Message"
+msgstr ""
+
+#: resources/views/notifications/contact.blade.php:14
+msgid "Thank you"
 msgstr ""

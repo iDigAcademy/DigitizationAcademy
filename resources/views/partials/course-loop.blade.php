@@ -1,0 +1,1 @@
+<x-course :course="$course"/>
