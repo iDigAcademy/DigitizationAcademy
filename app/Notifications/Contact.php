@@ -50,15 +50,14 @@ class Contact extends Notification implements ShouldQueue
     }
 
     /**
-     * Get the array representation of the notification.
+     * Determine which queues should be used for each notification channel.
      *
-     * @param  mixed  $notifiable
      * @return array
      */
-    public function toArray($notifiable)
+    public function viaQueues()
     {
         return [
-            //
+            'mail' => 'mail',
         ];
     }
 }
