@@ -4,7 +4,10 @@ namespace App\Nova;
 
 use DateTimeZone;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Validation\Rules;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MorphToMany;
@@ -69,6 +72,7 @@ class User extends Resource
                 $tzList = DateTimeZone::listIdentifiers(DateTimeZone::ALL);
                 return array_combine($tzList, $tzList);
             })->displayUsingLabels(),
+            Date::make('Verified Date', 'email_verified_at'),
             MorphToMany::make('Roles', 'roles', \Itsmejoshua\Novaspatiepermissions\Role::class),
             MorphToMany::make('Permissions', 'permissions', \Itsmejoshua\Novaspatiepermissions\Permission::class),
         ];
