@@ -20,6 +20,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Services\PageService;
+use App\Models\Team;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 
@@ -47,6 +48,7 @@ class AboutController extends Controller
     public function index(): Renderable
     {
         $topImage = $this->pageService->getAboutImage();
-        return view('about', compact('topImage'));
+        $teams = Team::orderBy('order')->get();
+        return view('about', compact('topImage', 'teams'));
     }
 }

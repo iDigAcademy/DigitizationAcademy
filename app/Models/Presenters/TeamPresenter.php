@@ -17,10 +17,17 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-return [
-    'app_path'         => base_path(),
-    'server_user'      => env('SERVER_USER', 'ubuntu'),
-    'page_image_dir'   => 'page_image',
-    'course_image_dir' => 'course_image',
-    'team_image_dir'   => 'team_image',
-];
+namespace App\Models\Presenters;
+
+use Illuminate\Support\Facades\Storage;
+use TheHiveTeam\Presentable\Presenter;
+
+class TeamPresenter extends Presenter
+{
+    public function team_image()
+    {
+        return isset($this->model->image) ?
+            Storage::url($this->model->image) :
+            Storage::url('team_image/default.jpg');
+    }
+}

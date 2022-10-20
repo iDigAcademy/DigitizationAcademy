@@ -2,32 +2,38 @@
 
 namespace App\Nova;
 
-use DateTimeZone;
-use Illuminate\Validation\Rules;
-use Laravel\Nova\Fields\Date;
-use Laravel\Nova\Fields\Gravatar;
-use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\MorphToMany;
-use Laravel\Nova\Fields\Password;
-use Laravel\Nova\Fields\Select;
+use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Email;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Fields\ID;
+use PixelCreation\NovaFieldSortable\Concerns\SortsIndexEntries;
+use PixelCreation\NovaFieldSortable\Sortable;
 
-class User extends Resource
+class Team extends Resource
 {
+    use SortsIndexEntries;
+
+    /**
+     * @var string
+     */
+    public static $defaultSortField = 'order';
+
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\User::class;
+    public static $model = \App\Models\Team::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'id';
 
     /**
      * The columns that should be searched.
@@ -35,7 +41,7 @@ class User extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'name', 'email',
+        'id',
     ];
 
     /**
@@ -48,30 +54,24 @@ class User extends Resource
     {
         return [
             ID::make()->sortable(),
+            Text::make('Name')->required(),
+            Text::make('Title')->required(),
+            Textarea::make('About')->required(),
+            Image::make('Image')
+                ->store(function (Request $request, $model) {
+                    return [
+                        'image' => $request->image->store(config('config.team_image_dir'), 'public'),
+                        'image_name' => $request->image->getClientOriginalName(),
+                        'image_size' => $request->image->getSize(),
+                    ];
+                })->maxWidth(100)
+                ->creationRules('required', 'image', 'mimes:jpg,jpeg,png', 'dimensions:min_width=410,min_height=410')
+                ->updateRules(function (NovaRequest $request) {
+                    $model = $request->findModelOrFail();
 
-            Gravatar::make()->maxWidth(50),
-
-            Text::make('Name')
-                ->sortable()
-                ->rules('required', 'max:255'),
-
-            Text::make('Email')
-                ->sortable()
-                ->rules('required', 'email', 'max:254')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}'),
-
-            Password::make('Password')
-                ->onlyOnForms()
-                ->creationRules('required', Rules\Password::defaults())
-                ->updateRules('nullable', Rules\Password::defaults()),
-            Select::make('Timezone')->searchable()->options(function (){
-                $tzList = DateTimeZone::listIdentifiers(DateTimeZone::ALL);
-                return array_combine($tzList, $tzList);
-            })->displayUsingLabels(),
-            Date::make('Verified Date', 'email_verified_at'),
-            MorphToMany::make('Roles', 'roles', \Itsmejoshua\Novaspatiepermissions\Role::class),
-            MorphToMany::make('Permissions', 'permissions', \Itsmejoshua\Novaspatiepermissions\Permission::class),
+                    return $model->image ? [] : ['required'];
+                })->prunable(),
+            Sortable::make('Order')->onlyOnIndex()
         ];
     }
 
