@@ -81,12 +81,8 @@ class Course extends Resource
                         'front_image_size' => $request->front_image->getSize(),
                     ];
                 })->maxWidth(100)
-                ->creationRules('required', 'image', 'mimes:jpg,jpeg,png', 'dimensions:min_width=468,min_height=353')
-                ->updateRules(function (NovaRequest $request) {
-                    $model = $request->findModelOrFail();
-
-                    return $model->front_image ? [] : ['required'];
-                })->prunable(),
+                ->creationRules('image', 'mimes:jpg,jpeg,png', 'dimensions:min_width=468,min_height=353')
+                ->prunable(),
             Image::make('Back Image')
                 ->store(function (Request $request) {
                     return [
@@ -95,12 +91,8 @@ class Course extends Resource
                         'back_image_size' => $request->back_image->getSize(),
                     ];
                 })->maxWidth(100)
-                ->creationRules('required', 'image', 'mimes:jpg,jpeg,png', 'dimensions:min_width=468,min_height=100')
-                ->updateRules(function (NovaRequest $request) {
-                    $model = $request->findModelOrFail();
-
-                    return $model->back_image ? [] : ['required'];
-                })->prunable(),
+                ->creationRules('image', 'mimes:jpg,jpeg,png', 'dimensions:min_width=468,min_height=100')
+                ->prunable(),
             Date::make('Start Date')->rules('required'),
             Date::make('End Date')->rules('required'),
             Text::make('Schedule Details')->rules('required', 'string', 'max: 150')->hideFromIndex(),
