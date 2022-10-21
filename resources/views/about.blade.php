@@ -99,13 +99,15 @@
                 <span class="subtitle">{{ t('Digitization Academy') }}</span>
                 <h2 class="title text-light">{{ t('Our Team') }}</h2>
             </div>
-            @foreach($teams as $team)
+            @forelse ($teams as $team)
                 @if($loop->odd)
                     <x-team-member :team="$team"/>
                 @else
                     <x-team-member :team="$team" class="content-reverse" data-sal="slide-left"/>
                 @endif
-            @endforeach
+            @empty
+
+            @endforelse
         </div>
 
         <ul class="list-unstyled shape-group-10">

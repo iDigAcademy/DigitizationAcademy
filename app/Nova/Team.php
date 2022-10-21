@@ -75,6 +75,12 @@ class Team extends Resource
             ID::make()->sortable(),
             Text::make('Name')->required(),
             Text::make('Title')->required(),
+            Email::make('Email')->required(),
+            Text::make('Twitter Handle')->withMeta([
+                'extraAttributes' => [
+                   'placeholder' => 'User name only, no @ symbol',
+                ],
+            ]),
             Textarea::make('About')->required(),
             Image::make('Image')
                 ->store(function (Request $request, $model) {

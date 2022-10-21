@@ -55,6 +55,8 @@ class Team extends Model implements Sortable
     protected $fillable = [
         'name',
         'title',
+        'email',
+        'twitter_handle',
         'about',
         'image',
         'image_name',
