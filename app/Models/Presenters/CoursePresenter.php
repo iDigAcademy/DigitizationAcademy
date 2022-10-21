@@ -33,7 +33,7 @@ class CoursePresenter extends Presenter
     {
         return isset($this->model->front_image) && Storage::disk('public')->exists($this->model->front_image) ?
             Storage::url($this->model->front_image) :
-            Storage::url('course_image/project-4-front.png');
+            Storage::url('default_image/course_default_front.png');
     }
 
     /**
@@ -45,6 +45,6 @@ class CoursePresenter extends Presenter
     {
         return isset($this->model->back_image) && Storage::disk('public')->exists($this->model->back_image) ?
             Storage::url($this->model->back_image) :
-            Storage::url('course_image/project-4-back.png');
+            Storage::url('default_image/course_default_back.png');
     }
 }

@@ -20,7 +20,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
@@ -80,6 +80,12 @@ class Course extends Resource
                     ];
                 })->maxWidth(100)
                 ->creationRules('image', 'mimes:jpg,jpeg,png', 'dimensions:min_width=468,min_height=353')
+                ->updateRules('image', 'mimes:jpg,jpeg,png', 'dimensions:min_width=468,min_height=353')
+                ->preview(function ($value, $disk) {
+                    return $value
+                        ? Storage::disk($disk)->url($value)
+                        : Storage::disk($disk)->url('default_image/course_default_front.png');
+                })
                 ->prunable(),
             Image::make('Back Image')->store(function (Request $request) {
                     return [
@@ -89,6 +95,12 @@ class Course extends Resource
                     ];
                 })->maxWidth(100)
                 ->creationRules('image', 'mimes:jpg,jpeg,png', 'dimensions:min_width=468,min_height=100')
+                ->updateRules('image', 'mimes:jpg,jpeg,png', 'dimensions:min_width=468,min_height=100')
+                ->preview(function ($value, $disk) {
+                    return $value
+                        ? Storage::disk($disk)->url($value)
+                        : Storage::disk($disk)->url('default_image/course_default_back.png');
+                })
                 ->prunable(),
             Date::make('Start Date')->rules('required'),
             Date::make('End Date')->rules('required'),

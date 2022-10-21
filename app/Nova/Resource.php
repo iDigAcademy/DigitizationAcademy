@@ -75,4 +75,41 @@ abstract class Resource extends NovaResource
     {
         return parent::relatableQuery($request, $query);
     }
+
+    /**
+     * Return the location to redirect the user after creation.
+     *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @param  \Laravel\Nova\Resource  $resource
+     * @return \Laravel\Nova\URL|string
+     */
+    public static function redirectAfterCreate(NovaRequest $request, $resource)
+    {
+        //return '/resources/'.static::uriKey().'/'.$resource->getKey();
+        return '/resources/'.static::uriKey();
+    }
+
+    /**
+     * Return the location to redirect the user after update.
+     *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @param  \Laravel\Nova\Resource  $resource
+     * @return \Laravel\Nova\URL|string
+     */
+    public static function redirectAfterUpdate(NovaRequest $request, $resource)
+    {
+        //return '/resources/'.static::uriKey().'/'.$resource->getKey();
+        return '/resources/'.static::uriKey();
+    }
+
+    /**
+     * Return the location to redirect the user after deletion.
+     *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @return \Laravel\Nova\URL|string|null
+     */
+    public static function redirectAfterDelete(NovaRequest $request)
+    {
+        return null;
+    }
 }
