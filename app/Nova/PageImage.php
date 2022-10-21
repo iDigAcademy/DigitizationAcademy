@@ -99,8 +99,9 @@ class PageImage extends Resource
                 ->updateRules(function (NovaRequest $request) {
                     $model = $request->findModelOrFail();
 
-                    return $model->image ? [] : ['required'];
-                })->prunable(),
+                    return $model->image ? [] : ['required', 'image', 'mimes:jpg,jpeg,png'];
+                })
+                ->prunable(),
             Boolean::make('Active')
         ];
     }

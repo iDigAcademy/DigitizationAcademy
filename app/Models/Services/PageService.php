@@ -34,7 +34,7 @@ class PageService
     {
         $topResult = PageImage::pageImage('home', 2)->first();
         return $topResult === null ?
-            Storage::url('page_image/banner-shape-1.png') :
+            Storage::url('default_image/banner-shape-1.png') :
             Storage::url($topResult->image);
     }
 
@@ -47,7 +47,7 @@ class PageService
     {
         $topResult = PageImage::pageImage('home', 1)->first();
         return $topResult === null ?
-            Storage::url('page_image/banner-shape-2.png') :
+            Storage::url('default_image/banner-shape-2.png') :
             Storage::url($topResult->image);
     }
 
@@ -60,7 +60,7 @@ class PageService
     {
         $topResult = PageImage::pageImage('courses')->first();
         return $topResult === null ?
-            Storage::url('page_image/banner-butterfly.png') :
+            Storage::url('default_image/banner-butterfly.png') :
             Storage::url($topResult->image);
     }
 
@@ -73,7 +73,7 @@ class PageService
     {
         $topResult = PageImage::pageImage('calendar')->first();
         return $topResult === null ?
-            Storage::url('page_image/banner-lichen.png') :
+            Storage::url('default_image/banner-lichen.png') :
             Storage::url($topResult->image);
     }
 
@@ -86,7 +86,7 @@ class PageService
     {
         $topResult = PageImage::pageImage('community')->first();
         return $topResult === null ?
-            Storage::url('page_image/banner-fossil.png') :
+            Storage::url('default_image/banner-fossil.png') :
             Storage::url($topResult->image);
     }
 
@@ -99,7 +99,7 @@ class PageService
     {
         $topResult = PageImage::pageImage('about')->first();
         return $topResult === null ?
-            Storage::url('page_image/banner-lichen.png') :
+            Storage::url('default_image/banner-lichen.png') :
             Storage::url($topResult->image);
     }
 
