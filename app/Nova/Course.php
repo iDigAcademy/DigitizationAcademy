@@ -1,6 +1,4 @@
 <?php
-
-
 /*
  * Copyright (c) 2022. Digitization Academy
  * idigacademy@gmail.com
@@ -22,6 +20,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
@@ -58,13 +57,13 @@ class Course extends Resource
         'active',
         'home_page',
         'start_date',
-        'end_date'
+        'end_date',
     ];
 
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
      * @return array
      */
     public function fields(NovaRequest $request)
@@ -73,20 +72,18 @@ class Course extends Resource
             ID::make()->sortable(),
             Text::make('Title')->rules('required'),
             Textarea::make('Objectives')->rules('required', 'string', 'min:10', 'max:810'),
-            Image::make('Front Image')
-                ->store(function (Request $request) {
+            Image::make('Front Image')->store(function (Request $request) {
                     return [
-                        'front_image' => $request->front_image->store(config('config.course_image_dir'), 'public'),
+                        'front_image'      => $request->front_image->store(config('config.course_image_dir'), 'public'),
                         'front_image_name' => $request->front_image->getClientOriginalName(),
                         'front_image_size' => $request->front_image->getSize(),
                     ];
                 })->maxWidth(100)
                 ->creationRules('image', 'mimes:jpg,jpeg,png', 'dimensions:min_width=468,min_height=353')
                 ->prunable(),
-            Image::make('Back Image')
-                ->store(function (Request $request) {
+            Image::make('Back Image')->store(function (Request $request) {
                     return [
-                        'back_image' => $request->back_image->store(config('config.course_image_dir'), 'public'),
+                        'back_image'      => $request->back_image->store(config('config.course_image_dir'), 'public'),
                         'back_image_name' => $request->back_image->getClientOriginalName(),
                         'back_image_size' => $request->back_image->getSize(),
                     ];
@@ -97,14 +94,14 @@ class Course extends Resource
             Date::make('End Date')->rules('required'),
             Text::make('Schedule Details')->rules('required', 'string', 'max: 150')->hideFromIndex(),
             Boolean::make('Active'),
-            Boolean::make('Home Page'),
+            Boolean::make('Home Page')
         ];
     }
 
     /**
      * Get the cards available for the request.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
      * @return array
      */
     public function cards(NovaRequest $request)
@@ -115,7 +112,7 @@ class Course extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
      * @return array
      */
     public function filters(NovaRequest $request)
@@ -126,7 +123,7 @@ class Course extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
      * @return array
      */
     public function lenses(NovaRequest $request)
@@ -137,7 +134,7 @@ class Course extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
      * @return array
      */
     public function actions(NovaRequest $request)
