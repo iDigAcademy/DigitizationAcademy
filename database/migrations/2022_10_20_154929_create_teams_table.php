@@ -37,7 +37,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('title');
             $table->string('email');
-            $table->string('twitter_handle');
+            $table->string('twitter_handle')->nullable();
             $table->text('about');
             $table->string('image')->nullable();
             $table->string('image_name')->nullable();
