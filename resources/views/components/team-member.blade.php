@@ -4,16 +4,12 @@
     </div>
     <div class="content">
         <h2 class="title text-light mb-1">{{ $team->name }}</h2>
+        <span class="subtitle">{{ $team->title }}</span>
         <ul class="social-share list-unstyled d-flex mb-3">
             <li><a href="mailto:{{ $team->email }}"><i class="fa fa-envelope"></i></a></li>
             @isset($team->twitter_handle)
-            <li><a href="//twitter.com/{{ $team->twitter_handle }}"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="//twitter.com/{{ $team->twitter_handle }}"><i class="fab fa-twitter"></i></a></li>
             @endisset
-        </ul>
-        <span class="subtitle">{{ $team->title }}</span>
-        <ul class="social-share list-unstyled d-flex mb-3">
-            <li><a href=""><i class="fa fa-envelope"></i></a></li>
-            <li><a href=""><i class="fab fa-twitter"></i></a></li>
         </ul>
         <p>{{ $team->about }}</p>
     </div>
