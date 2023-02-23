@@ -34,7 +34,7 @@
                             <li><a href="{{ route('calendar') }}">{{ trans('Calendar') }}</a></li>
                             <li><a href="{{ route('community') }}">{{ trans('Community') }}</a></li>
                             <li><a href="{{ route('about') }}">{{ trans('About') }}</a></li>
-                            <li><a href="{{ route('contact') }}">{{ trans('Contact') }}</a></li>
+
                         </ul>
                         -->
                         <ul class="mainmenu">
@@ -42,7 +42,6 @@
                             <li><a href="#">{{ trans('Calendar') }}</a></li>
                             <li><a href="#">{{ trans('Community') }}</a></li>
                             <li><a href="#">{{ trans('About') }}</a></li>
-                            <li><a href="#">{{ trans('Contact') }}</a></li>
                         </ul>
                     </nav>
                 </div>
