@@ -9,7 +9,7 @@
                     <div class="banner-content" data-sal="slide-up" data-sal-duration="1000"
                          data-sal-delay="100">
                         <h1 class="title mb-2">{{ t('Explore. Discover. Connect.') }}</h1>
-                        <h6 class="text-light text">{{ t('Catalyzing excellence in the creation of digital data about biodiversity specimens.') }}</h6>
+                        <h6 class="text-light text">{{ t('Catalyzing excellence in the creation of digital data about biodiversity.') }}</h6>
 
                         <a href="#homePhilosophy" class="axil-btn btn-fill-white btn-large">{{ t('Read More') }} &nbsp; <i
                                 class="fas fa-angle-down"></i></a>
@@ -168,49 +168,6 @@
                     for delivery of a subset of iDigBio’s training options to ensure that we have all high-value
                     topics covered for you in complementary ways.') }}</p>
             </div>
-
-            <div class="row">
-                <div class="col-lg-4 col-6" data-sal="slide-up" data-sal-duration="800" data-sal-delay="100">
-
-                    <div class="counterup-progress">
-                        <div class="icon">
-                            <img src="{{ vite_asset('resources/media/icon/icon-22.png') }}" alt="icon">
-                        </div>
-                        <div class="count-number h2">
-                            <span class="number count" data-count="35">35</span>
-                            <span class="symbol">+</span>
-                        </div>
-                        <h6 class="title">{{ t('years of experience') }}</h6>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-6" data-sal="slide-up" data-sal-duration="800" data-sal-delay="200">
-                    <div class="counterup-progress">
-                        <div class="icon">
-                            <img src="{{ vite_asset('resources/media/icon/icon-8.png') }}" alt="+">
-                        </div>
-                        <div class="count-number h2">
-                            <span class="number count" data-count="1360">1360</span>
-                            <span class="symbol">+</span>
-                        </div>
-                        <h6 class="title">{{ t('specimens digitized') }}</h6>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-6 pb-4" data-sal="slide-up" data-sal-duration="800"
-                     data-sal-delay="300">
-                    <div class="counterup-progress">
-                        <div class="icon">
-                            <img src="{{ vite_asset('resources/media/icon/icon-9.png') }}" alt="Apple">
-                        </div>
-                        <div class="count-number h2">
-                            <span class="number count" data-count="309">309</span>
-                            <span class="symbol">+</span>
-                        </div>
-                        <h6 class="title">{{ t('worldwide contributors') }}</h6>
-                    </div>
-                </div>
-            </div>
         </div> <!-- container -->
 
         <ul class="list-unstyled shape-group-9 overview">
@@ -221,6 +178,7 @@
             <li class="shape shape-3"><img src="{{ vite_asset('resources/media/others/bubble-13.png') }}"
                                            style="opacity:.05" alt="Comments">
             </li>
+
             <li class="shape shape-4"><img src="{{ vite_asset('resources/media/others/bubble-14.png') }}"
                                            style="opacity:.05" alt="Comments">
             </li>
@@ -237,9 +195,7 @@
         <ul class="list-unstyled shape-group-10">
             <li class="shape shape-1"><img src="{{ vite_asset('resources/media/others/bubble-15.png') }}"
                                            style="opacity:.1" alt=" O "></li>
-            <li class="shape shape-3"><img src="{{ vite_asset('resources/media/others/line-4.png') }}"
-                                           alt="line"
-                                           style="opacity:.6"></li>
+
             <li class="shape shape-3"><img src="{{ vite_asset('resources/media/others/bubble-5.png') }}"
                                            alt="line"
                                            style="opacity:.1"></li>
@@ -388,7 +344,7 @@
             <div class="row">
                 <div class="col-lg-4" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="100">
                     <div class="testimonial-grid">
-                        <p class="text-light">{{ t('Topics were discussed in great detail. The instructors were very
+                        <p class="text-light text-justify fst-italic">{{ t('Topics were discussed in great detail. The instructors were very
                             helpful and enthusiastic in answering queries and sharing resources. The activities were
                             practical in that the questions were centered around our individual research.') }}</p>
                     </div>
@@ -396,20 +352,19 @@
 
                 <div class="col-lg-4" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="200">
                     <div class="testimonial-grid active text-light">
-                        <p class="text-light text-justify">This was a really well-put-together class that took
+                        <p class="text-light text-justify fst-italic">{{ t('This was a really well-put-together class that took
                             us through the various steps and details of a collection digitization project. Great
                             use of technology, easy to follow, well documented, and well-thought exercises. I am a big
                             fan of audience participation, and that was well done. Highly knowledgeable instructors
-                            too. Erica and Lauren are very engaging and dynamic speakers, and Austin is skilled at
-                            conveying technical relationships in an understandable manner.</p>
+                            too. Austin is skilled at conveying technical relationships in an understandable manner.') }}</p>
                     </div>
                 </div>
 
                 <div class="col-lg-4" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="300">
                     <div class="testimonial-grid">
-                        <p class="text-light text-justify text">I have not worked with digitization before, and
-                            this taught me so many things I needed to learn and things I didn't even know I needed to
-                            think about.</p>
+                        <p class="text-light text-justify fst-italic">{{ t('I have not worked with digitization before, and
+                            this taught me so many things I needed to learn and things I didn\'t even know I needed to
+                            think about.') }}</p>
                     </div>
                 </div>
             </div>
