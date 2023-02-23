@@ -4,7 +4,7 @@
             <div class="footer-social-link mt-5">
                 <!-- sponsor logos -->
                 <ul class="list-unstyled">
-                    <li><a href="https://idigbio.edu/" data-sal="slide-up" data-sal-duration="500"
+                    <li><a href="https://digitizationacademy.org" data-sal="slide-up" data-sal-duration="500"
                            data-sal-delay="100"><img src="{{ vite_asset('resources/media/logo.svg') }}"
                                                      alt="Digitization Academy"
                                                      width="175px" style="filter:grayscale(99%);"></a></li>
@@ -21,7 +21,7 @@
                     </li>
                     <li><a href="https://www.linkedin.com/" data-sal="slide-up" data-sal-duration="500"
                            data-sal-delay="400"><img
-                                src="{{ vite_asset('resources/media/logos/logo-fm.svg') }}"
+                                src="{{ vite_asset('resources/media/logos/idiginfo.png') }}"
                                 alt="Florida Museum"
                                 width="175px"></a></li>
                 </ul>
