@@ -6,10 +6,10 @@
         <div class="container">
             <div class="section-heading heading-left" data-sal="slide-right" data-sal-duration="1000"
                  data-sal-delay="300">
-                <h1 class="title h2">{{ t('Courses') }}</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                <h1 class="title h2">{{ t('Level up for Life') }}</h1>
+                <p>{{ t('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.') }}</p>
             </div>
             <div class="banner-thumbnail" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="400">
                 <img class="paralax-image" src="{{ $topImage }}"
@@ -37,8 +37,8 @@
         <div class="container">
             <div class="section-heading heading-left">
                 <span class="subtitle">{{ t('Current Courses') }}</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua.</p>
+                <p>{{ t('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua.') }}</p>
                 <h2 class="title">{{ t('Past / Present') }}</h2>
 
                 <div class="isotope-button isotope-project-btn">

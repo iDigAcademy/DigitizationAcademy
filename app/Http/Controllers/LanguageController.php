@@ -1,8 +1,6 @@
 <?php
-
-
 /*
- * Copyright (c) 2022. Digitization Academy
+ * Copyright (c) 2023. Digitization Academy
  * idigacademy@gmail.com
  *
  * This program is free software: you can redistribute it and/or modify
@@ -19,32 +17,20 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace App\Console\Commands;
+namespace App\Http\Controllers;
 
-use Illuminate\Console\Command;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
-class AppTest extends Command
+class LanguageController extends Controller
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'app:test';
-
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Application testing';
-
-    /**
-     * Execute the console command.
-     */
-    public function handle()
+    public function switchLang($lang)
     {
-        dd(Config::get('languages'));
+        if (array_key_exists($lang, Config::get('languages'))) {
+            Session::put('applocale', $lang);
+        }
+        return Redirect::back();
     }
 }

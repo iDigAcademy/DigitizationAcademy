@@ -3,13 +3,13 @@ msgstr ""
 "Project-Id-Version: FSU Digitization Academy | Digital Biodiversity Specimens\n"
 "Report-Msgid-Bugs-To: contact@translation.io\n"
 "Last-Translator: \n"
-"Language-Team: English\n"
+"Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2023-02-24T22:48:09+00:00\n"
 "PO-Revision-Date: 2023-02-24 23:48+0100\n"
-"Language: en_US\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=n!=1;\n"
 
 #: resources/views/about.blade.php:9
@@ -222,7 +222,7 @@ msgstr ""
 #: resources/views/home-orig.blade.php:11
 #: resources/views/home.blade.php:11
 msgid "Explore. Discover. Connect."
-msgstr ""
+msgstr "Explorar. Descubrir. Conectar."
 
 #: resources/views/home-orig.blade.php:12
 #: resources/views/home.blade.php:12

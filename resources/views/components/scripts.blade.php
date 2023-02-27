@@ -1,5 +1,5 @@
 <script src="{{ asset('storage/js/vendor/jquery-3.6.0.min.js') }}"></script>
-<script src="{{ asset('storage/js/vendor/bootstrap.min.js') }}"></script>
+<script src="{{ asset('storage/js/vendor/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('storage/js/vendor/isotope.pkgd.min.js') }}"></script>
 <script src="{{ asset('storage/js/vendor/imagesloaded.pkgd.min.js') }}"></script>
 <script src="{{ asset('storage/js/vendor/odometer.min.js') }}"></script>

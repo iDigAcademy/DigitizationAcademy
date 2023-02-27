@@ -1,8 +1,6 @@
 <?php
-
-
 /*
- * Copyright (c) 2022. Digitization Academy
+ * Copyright (c) 2023. Digitization Academy
  * idigacademy@gmail.com
  *
  * This program is free software: you can redistribute it and/or modify
@@ -18,33 +16,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
+return [
+    'en' => [
+        'display' => 'English',
+        'flag-icon' => 'us'
+        ],
+    'es' => [
+        'display' => 'Spanish',
+        'flag-icon' => 'es',
+    ],
+];
 
-namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Config;
-
-class AppTest extends Command
-{
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'app:test';
-
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Application testing';
-
-    /**
-     * Execute the console command.
-     */
-    public function handle()
-    {
-        dd(Config::get('languages'));
-    }
-}

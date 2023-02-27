@@ -27,6 +27,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LanguageController;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Route;
 
@@ -62,4 +63,7 @@ Route::get('/register-retry', function(){
 
     return redirect('/');
  })->name('register-retry');
+
+Route::get('lang/{lang}',[LanguageController::class, 'switchLang'])->name('lang.switch');
+Route::get('/languageDemo', 'App\Http\Controllers\HomeController@languageDemo');
 
