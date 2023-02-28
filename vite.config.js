@@ -14,11 +14,12 @@ export default defineConfig({
             ],
             refresh: true,
         }),
+        // @TODO Temporary until scripts can be worked into vite.
         viteStaticCopy({
             targets: [
                 {
                     src: 'resources/js/vendor/*',
-                    dest: '../storage/js/vendor/'
+                    dest: '../js/vendor/'
                 }
             ]
         }),
