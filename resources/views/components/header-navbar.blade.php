@@ -31,7 +31,7 @@
                         <ul class="mainmenu">
                             <li><a href="{{ route('course.index') }}">{{ trans('Courses') }}</a></li>
                             <li><a href="{{ route('calendar.index') }}">{{ trans('Calendar') }}</a></li>
-                            <li><a href="{{ route('community.index') }}">{{ trans('Community') }}</a></li>
+                            <!-- <li><a href="{{ route('community.index') }}">{{ trans('Community') }}</a></li> -->
                             <li><a href="{{ route('about.index') }}">{{ trans('About') }}</a></li>
                             <li><a href="{{ route('contact.index') }}">{{ trans('Contact') }}</a></li>
                             <li class="nav-item dropdown">

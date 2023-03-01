@@ -6,9 +6,8 @@
         <div class="container">
             <div class="section-heading heading-left" data-sal="slide-right" data-sal-duration="1000"
                  data-sal-delay="300">
-                <h1 class="title h2">{{ t('About us') }}</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Dolore eu fugiat nulla pariatur.</p>
+                <h1 class="title h2">{{ t('Here for You') }}</h1>
+                <p>{{ t('We love to share our experience with you and love to learn from your experience. Let’s talk!') }}</p>
             </div>
             <div class="banner-thumbnail" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="400">
                 <img class="paralax-image" src="{{ $topImage }}"
@@ -35,7 +34,7 @@
                     <div class="blog-grid text-left blog-without-thumb mb--40" data-sal="slide-up"
                          data-sal-duration="500" data-sal-delay="100">
                         <blockquote>
-                            <h5 class="title text-left">{{ t('“ The purpose of this new course is to listen, observe, understand, digitize, empathize, synthesize, and glean insights into digital speciminations and make the invisible visible”') }}</h5>
+                            <h5 class="title text-left">{{ t('“We established the Digitization Academy in 2021 as a framework in which to deliver a set of complementary training opportunities to those eager to excel at the creation of digital information about Earth’s biota, especially as documented in biodiversity collections.”') }}</h5>
                         </blockquote>
 
                         <div class="author">
@@ -47,28 +46,6 @@
                             </div>
                         </div>
                     </div>
-                    <span class="subtitle">{{ t('About Digitization Academy') }}</span>
-                    <h2 class="title">{{ t('Our Philosophy') }}</h2>
-
-                    <p class="mb--40" data-sal="slide-up" data-sal-duration="500" data-sal-delay="100">
-                    <p>{{ t('iDigBio established the Digitization Academy in 2021 as a systematic approach to delivering
-                        high-value specimen digitization training to the global biodiversity collections community.
-                        Digitization Academy offerings build on the successes of iDigBio’s 100+ training offerings
-                        in this area since its establishment in 2012. iDigBio is the US National Science
-                        Foundation’s National Resource for Advancing Digitization of Biodiversity Collections.') }}</p>
-
-
-                    <p class="mb--40" data-sal="slide-up" data-sal-duration="500" data-sal-delay="100">
-                        {{ t('Most
-                        Digitization Academy offerings are delivered in one of two ways. Our recurring short courses
-                        involve a cohort of ~25 admitted participants who are each associated with a biodiversity
-                        collection. These short courses are 12 contact hours, with an additional 8 hours of
-                        asynchronous activities, over 4 days. A webinar typically involves an unlimited number of
-                        participants in a 2-hour event focused on an emerging topic. All offerings are online and
-                        free, unless otherwise noted. A major goal of the Digitization Academy is to build long-term
-                        sustainability into it, with the possibility that some courses and/or webinars might have
-                        fees in the future.') }}
-                    </p>
                 </div>
             </div>
         </div>
