@@ -49,6 +49,11 @@ class AboutController extends Controller
     {
         $topImage = $this->pageService->getAboutImage();
         $teams = Team::orderBy('order')->get();
-        return view('about', compact('topImage', 'teams'));
+
+        [$currentTeam, $formerTeam] = $teams->partition(function ($team) {
+            return $team->current === 1;
+        });
+
+        return view('about', compact('topImage', 'currentTeam', 'formerTeam'));
     }
 }

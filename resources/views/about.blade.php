@@ -74,9 +74,24 @@
         <div class="container">
             <div class="section-heading text-left text-light">
                 <span class="subtitle">{{ t('Digitization Academy') }}</span>
-                <h2 class="title text-light">{{ t('Our Team') }}</h2>
+                <h2 class="title text-light">{{ t('Current Team Members') }}</h2>
             </div>
-            @forelse ($teams as $team)
+            @forelse ($currentTeam as $team)
+                @if($loop->odd)
+                    <x-team-member :team="$team"/>
+                @else
+                    <x-team-member :team="$team" class="content-reverse" data-sal="slide-left"/>
+                @endif
+            @empty
+
+            @endforelse
+        </div>
+
+        <div class="container">
+            <div class="section-heading text-left text-light">
+                <h2 class="title text-light">{{ t('Former Team Members') }}</h2>
+            </div>
+            @forelse ($formerTeam as $team)
                 @if($loop->odd)
                     <x-team-member :team="$team"/>
                 @else

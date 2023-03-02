@@ -23,6 +23,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Email;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
@@ -101,7 +102,8 @@ class Team extends Resource
                         ? Storage::disk($disk)->url($value)
                         : Storage::disk($disk)->url('default_image/team_default.jpg');
                 })->prunable(),
-            Sortable::make('Order')->onlyOnIndex()
+            Sortable::make('Order')->onlyOnIndex(),
+            Boolean::make('Current Team', 'current')
         ];
     }
 
