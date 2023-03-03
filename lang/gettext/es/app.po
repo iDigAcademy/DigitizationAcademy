@@ -7,8 +7,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-03-03T13:49:32+00:00\n"
-"PO-Revision-Date: 2023-03-03 14:49+0100\n"
+"POT-Creation-Date: 2023-03-03T14:29:17+00:00\n"
+"PO-Revision-Date: 2023-03-03 15:29+0100\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=n!=1;\n"
 
@@ -134,7 +134,7 @@ msgid "Logout"
 msgstr ""
 
 #: resources/views/components/course.blade.php:33
-#: resources/views/home.blade.php:250
+#: resources/views/home.blade.php:251
 msgid "Objectives"
 msgstr ""
 
@@ -205,61 +205,61 @@ msgstr ""
 
 #: resources/views/home.blade.php:11
 msgid "Explore. Discover. Connect."
-msgstr ""
+msgstr "Explorar. Descubrir. Conectar."
 
 #: resources/views/home.blade.php:12
 msgid "Catalyzing excellence in the creation of digital data about biodiversity."
-msgstr ""
+msgstr "Catalizando la excelencia en la creación de datos digitales sobre la biodiversidad."
 
-#: resources/views/home.blade.php:13
+#: resources/views/home.blade.php:14
 msgid "Read More"
 msgstr ""
 
-#: resources/views/home.blade.php:62
+#: resources/views/home.blade.php:63
 msgid "A strategy built for you"
 msgstr ""
 
-#: resources/views/home.blade.php:63
+#: resources/views/home.blade.php:64
 msgid "Our Approach"
 msgstr ""
 
-#: resources/views/home.blade.php:64
+#: resources/views/home.blade.php:65
 msgid "Our offerings combine these three elements to level you up on a topic. We aim to provision you with more than an academic understanding. Leave the course with new inspiration and connections to a cohort of professionals from around the world who are tackling the same challenges."
 msgstr ""
 
-#: resources/views/home.blade.php:81
+#: resources/views/home.blade.php:82
 msgid "Our systematic overview builds the foundation."
 msgstr ""
 
-#: resources/views/home.blade.php:87
+#: resources/views/home.blade.php:88
 msgid "We deliver content featuring major dimensions of a topic in engaging ways. All content advances a core set of carefully curated learning objectives."
 msgstr ""
 
-#: resources/views/home.blade.php:102
+#: resources/views/home.blade.php:103
 msgid "Your experience provides the nuance and motivation."
 msgstr ""
 
-#: resources/views/home.blade.php:107
+#: resources/views/home.blade.php:108
 msgid "We aspire to create a learning community with each offering where you feel empowered to share your experience for everyone’s enrichment."
 msgstr ""
 
-#: resources/views/home.blade.php:121
+#: resources/views/home.blade.php:122
 msgid "And an expert panel identifies the leading edge of the possible."
 msgstr ""
 
-#: resources/views/home.blade.php:126
+#: resources/views/home.blade.php:127
 msgid "We feature thought leaders or tool providers who share their latest developments on the topic and address questions from participants."
 msgstr ""
 
-#: resources/views/home.blade.php:161
+#: resources/views/home.blade.php:162
 msgid "Built on iDigBio’s professional development experience."
 msgstr ""
 
-#: resources/views/home.blade.php:162
+#: resources/views/home.blade.php:163
 msgid "Deep experience with digitization and training."
 msgstr ""
 
-#: resources/views/home.blade.php:163
+#: resources/views/home.blade.php:164
 msgid ""
 "Since its founding in 2012, iDigBio has offered over 100 training opportunities, and many\n"
 "                    involved the Digitization Academy’s core staff. iDigBio is the US National Science Foundation’s\n"
@@ -269,34 +269,34 @@ msgid ""
 "                    topics covered for you in complementary ways."
 msgstr ""
 
-#: resources/views/home.blade.php:213
+#: resources/views/home.blade.php:214
 msgid "Connecting you with resources for success."
 msgstr ""
 
-#: resources/views/home.blade.php:215
+#: resources/views/home.blade.php:216
 msgid "Courses like this one introduce you<br>to the people behind the projects."
 msgstr ""
 
-#: resources/views/home.blade.php:252
+#: resources/views/home.blade.php:253
 msgid "Learn More"
 msgstr ""
 
-#: resources/views/home.blade.php:340
+#: resources/views/home.blade.php:341
 msgid "What participants are saying."
 msgstr ""
 
-#: resources/views/home.blade.php:341
+#: resources/views/home.blade.php:342
 msgid "Evaluations help us further refine our courses with each iteration."
 msgstr ""
 
-#: resources/views/home.blade.php:348
+#: resources/views/home.blade.php:349
 msgid ""
 "Topics were discussed in great detail. The instructors were very\n"
 "                            helpful and enthusiastic in answering queries and sharing resources. The activities were\n"
 "                            practical in that the questions were centered around our individual research."
 msgstr ""
 
-#: resources/views/home.blade.php:356
+#: resources/views/home.blade.php:357
 msgid ""
 "This was a really well-put-together class that took\n"
 "                            us through the various steps and details of a collection digitization project. Great\n"
@@ -305,7 +305,7 @@ msgid ""
 "                            too. Austin is skilled at conveying technical relationships in an understandable manner."
 msgstr ""
 
-#: resources/views/home.blade.php:366
+#: resources/views/home.blade.php:367
 msgid ""
 "I have not worked with digitization before, and\n"
 "                            this taught me so many things I needed to learn and things I didn't even know I needed to\n"
