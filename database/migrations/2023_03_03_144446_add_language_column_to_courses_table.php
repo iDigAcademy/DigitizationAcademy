@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('courses', function (Blueprint $table) {
-            $table->string('language')->after('objectives')->default('English');
+            $table->string('language')->after('objectives')->default('English')->nullable();
         });
     }
 

@@ -1,4 +1,4 @@
-<aside class="col-md-6 col-sm-12 project {{ date_compare($course->end_date) ? 'current' : 'past' }}">
+<aside class="col-md-6 col-sm-12 project {{ date_compare($course->end_date) ? 'future' : 'past' }}">
 <div class="flip-card salanimate banner-form"
      style="display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-pack: end; -webkit-justify-content: flex-end; -ms-flex-pack: end; display-content: flex-end;"
      data-sal="slide-up" data-sal-duration="900" data-sal-delay="300">
@@ -11,11 +11,14 @@
                 <div class="card-body pb-0">
                     <h4 class="card-title">{{ $course->title }}</h4>
                     <div class="card-text">
-                        Start: {{ date_day_string($course->start_date) }}<br>
-                        End: {{ date_day_string($course->end_date) }}
+                        <span class="fw-bold">{{ t('Start') }}:</span> {{ date_day_string($course->start_date) }}<br>
+                        <span class="fw-bold">{{ t('End') }}:</span> {{ date_day_string($course->end_date) }}
                     </div>
                     <div class="card-text">
-                        {{ $course->schedule_details }}
+                        <span class="fw-bold">{{ t('Schedule') }}:</span> {{ $course->schedule_details }}
+                    </div>
+                    <div class="card-text">
+                        <span class="fw-bold">{{ t('Language') }}:</span> {{ $course->schedule_details }}
                     </div>
                 </div>
             </div><!-- card -->

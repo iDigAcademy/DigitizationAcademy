@@ -25,6 +25,7 @@ use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -70,8 +71,9 @@ class Course extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Title')->rules('required'),
-            Textarea::make('Objectives')->rules('required', 'string', 'min:10', 'max:810'),
+            Text::make('Title')->rules('required', 'string', 'min:10', 'max:70')->help('Max 70 characters'),
+            Textarea::make('Objectives')->rules('required', 'string', 'min:10', 'max:810')->help('Max 810 characters'),
+            Select::make('Language', 'language')->options(['English' => 'English', 'Spanish' => 'Spanish']),
             Image::make('Front Image')->store(function (Request $request) {
                     return [
                         'front_image'      => $request->front_image->store(config('config.course_image_dir'), 'public'),
@@ -86,7 +88,7 @@ class Course extends Resource
                         ? Storage::disk($disk)->url($value)
                         : Storage::disk($disk)->url('default_image/course_default_front.png');
                 })
-                ->prunable(),
+                ->prunable()->hideFromIndex()->help('Min width 468px, Min height 353px'),
             Image::make('Back Image')->store(function (Request $request) {
                     return [
                         'back_image'      => $request->back_image->store(config('config.course_image_dir'), 'public'),
@@ -101,10 +103,10 @@ class Course extends Resource
                         ? Storage::disk($disk)->url($value)
                         : Storage::disk($disk)->url('default_image/course_default_back.png');
                 })
-                ->prunable(),
+                ->prunable()->hideFromIndex()->help('Min width 468px, Min height 100px'),
             Date::make('Start Date')->rules('required'),
             Date::make('End Date')->rules('required'),
-            Text::make('Schedule Details')->rules('required', 'string', 'max: 150')->hideFromIndex(),
+            Text::make('Schedule Details')->rules('required', 'string', 'max: 30')->hideFromIndex()->help('Max 30 characters'),
             Boolean::make('Active'),
             Boolean::make('Home Page')
         ];
