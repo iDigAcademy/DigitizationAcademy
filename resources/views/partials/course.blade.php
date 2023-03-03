@@ -1,4 +1,3 @@
-<aside class="col-md-6 col-sm-12 project {{ date_compare($course->end_date) ? 'future' : 'past' }}">
 <div class="flip-card salanimate banner-form"
      style="display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-pack: end; -webkit-justify-content: flex-end; -ms-flex-pack: end; display-content: flex-end;"
      data-sal="slide-up" data-sal-duration="900" data-sal-delay="300">
@@ -8,7 +7,7 @@
                 <img class="card-img-top"
                      src="{{ $course->present()->front_image }}"
                      alt="Card image cap" style="border-radius: 20px;">
-                <div class="card-body pb-0">
+                <div class="card-body">
                     <h4 class="card-title">{{ $course->title }}</h4>
                     <div class="card-text">
                         <span class="fw-bold">{{ t('Start') }}:</span> {{ date_day_string($course->start_date) }}<br>
@@ -39,4 +38,3 @@
         </div><!-- flip card back -->
     </div><!-- flip card inner -->
 </div><!-- flip card -->
-</aside>
