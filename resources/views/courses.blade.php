@@ -36,7 +36,7 @@
             <div class="section-heading heading-left">
                 <span class="subtitle">{{ t('Two Formats') }}</span>
                 <p>{{ t('We package our content in 2-hour or 12-hour formats, depending on the scope of the subject. The longer courses are spread over four days or four weeks.') }}</p>
-                <h2 class="title">{{ t('The Catalog') }}</h2>
+                <h2 class="title mt--80">{{ t('The Catalog') }}</h2>
 
                 <div class="isotope-button isotope-project-btn">
                     <button data-filter="*" class=""><span class="filter-text">{{ t('All') }}</span></button>

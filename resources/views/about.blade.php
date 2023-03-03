@@ -41,7 +41,7 @@
                             <div class="author-thumb">
                             </div>
                             <div class="info">
-                                <h6 class="author-name">{{ t('Austin Mast, MPH, PHD, MB') }}</h6>
+                                <h6 class="author-name">{{ t('Austin Mast, Digitization Academy Lead') }}</h6>
 
                             </div>
                         </div>
@@ -59,8 +59,7 @@
             <li style="margin-bottom:40px;"></li>
         </ul>
         <ul class="shape-group-1 list-unstyled">
-            <li class="shape shape-4" style="opacity:.85"><img
-                    src="{{ vite_asset('resources/media/others/line-4.png') }}" alt="Line"></li>
+
             <li class="shape shape-5" style="opacity:.8"><img
                     src="{{ vite_asset('resources/media/others/line-5.png') }}" alt="Line"></li>
         </ul>

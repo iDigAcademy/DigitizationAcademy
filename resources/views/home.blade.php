@@ -213,12 +213,13 @@
                 <div class="mt-2">
                     <span class="subtitle-right">{{ t('Connecting you with resources for success.') }}</span>
                     @isset($course)
-                    <h2 class="title">{!! t('Courses like this one introduce you<br>to the people behind the projects.') !!}</h2>
+                    <h2 class="title">{!! t('Courses like this one introduce you') !!}</h2>
 
                     <div class="d-flex justify-content-center course-row">
                         <!-- sample flip card -->
                         @include('partials.course')
                     </div>
+                        <h2 class="title">{{ t(' to the people behind the projects.') }}</h2>
                     @endisset
                 </div>
             </div>
