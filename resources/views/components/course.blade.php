@@ -18,7 +18,7 @@
                         <span class="fw-bold">{{ t('Schedule') }}:</span> {{ $course->schedule_details }}
                     </div>
                     <div class="card-text">
-                        <span class="fw-bold">{{ t('Language') }}:</span> {{ $course->schedule_details }}
+                        <span class="fw-bold">{{ t('Language') }}:</span> {{ $course->language }}
                     </div>
                 </div>
             </div><!-- card -->
