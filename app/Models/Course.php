@@ -54,7 +54,11 @@ class Course extends Model
         'home_page',
         'start_date',
         'end_date',
-        'schedule_details'
+        'schedule_details',
+        'registration_url',
+        'registration_start_date',
+        'registration_end_date',
+        'syllabus_url'
     ];
 
     /**
@@ -67,7 +71,9 @@ class Course extends Model
         'created_at',
         'updated_at',
         'start_date',
-        'end_date'
+        'end_date',
+        'registration_start_date',
+        'registration_end_date',
     ];
 
     /**
@@ -92,14 +98,4 @@ class Course extends Model
         return $query->where('home_page', 1);
     }
 
-    /**
-     * Sope for index page, excluding home project.
-     *
-     * @param $query
-     * @return mixed
-     */
-    public function scopeIndex($query): mixed
-    {
-        return $query->where('home_page', 0);
-    }
 }

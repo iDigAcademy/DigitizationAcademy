@@ -31,8 +31,23 @@
                      style="border-radius: 20px; max-height: 100px;">
                 <div class="card-body text-left">
                     <h5 class="card-title">{{ t('Objectives') }}</h5>
-                    <p class="text-left">{{ $course->objectives }}</p>
-                    <a href="#" class="btn btn-primary">{{ t('Register') }}</a>
+                    <div class="card-text text-left mb--20">
+                        {{ $course->objectives }}
+                    </div>
+                    @if(isset($course->registration_start_date) && isset($course->registration_end_date))
+                    <div class="card-text mb--20">
+                        <span class="fw-bold">{{ t('Registration Start') }}:</span> {{ date_day_string($course->registration_start_date) }}<br>
+                        <span class="fw-bold">{{ t('Registration End') }}:</span> {{ date_day_string($course->registration_end_date) }}
+                    </div>
+                    @endif
+                    <div class="card-text d-flex justify-content-evenly">
+                    @isset($course->registration_url)
+                    <a href="{{ $course->registration_url }}" target="_blank" class="btn btn-primary">{{ t('Register') }}</a>
+                    @endisset
+                    @isset($course->syllabus_url)
+                        <a href="{{ $course->syllabus_url }}" target="_blank" class="btn btn-primary">{{ t('Syllabus') }}</a>
+                    @endisset
+                    </div>
                 </div>
             </div><!-- card -->
         </div><!-- flip card back -->
