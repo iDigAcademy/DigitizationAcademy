@@ -73,7 +73,7 @@ class Course extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Title')->rules('required', 'string', 'min:10', 'max:70')->help('Max 70 characters'),
-            Textarea::make('Objectives')->rules('required', 'string', 'min:10', 'max:810')->help('Max 810 characters'),
+            Textarea::make('Objectives')->rules('required', 'string', 'min:10', 'max:1000')->help('Max 1000 characters'),
             Select::make('Language', 'language')->options(['English' => 'English', 'Spanish' => 'Spanish']),
             Image::make('Front Image')->store(function (Request $request) {
                     return [
