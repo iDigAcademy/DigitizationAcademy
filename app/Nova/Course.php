@@ -108,10 +108,10 @@ class Course extends Resource
             Date::make('Start Date')->rules('required'),
             Date::make('End Date')->rules('required'),
             Text::make('Schedule Details')->rules('required', 'string', 'max: 30')->hideFromIndex()->help('Max 30 characters'),
-            URL::make('Registration URL')->rules('required', 'string', 'min:10', 'max:150')->hideFromIndex()->help('Max 150 characters'),
-            Date::make('Registration Start Date')->hideFromIndex()->rules('required'),
-            Date::make('Registration End Date')->hideFromIndex()->rules('required'),
-            URL::make('Syllabus URL')->hideFromIndex()->rules('required', 'string', 'min:10', 'max:150')->help('Max 150 characters'),
+            URL::make('Registration URL')->rules('min:0', 'max:150')->hideFromIndex()->help('Max 150 characters'),
+            Date::make('Registration Start Date')->hideFromIndex(),
+            Date::make('Registration End Date')->hideFromIndex(),
+            URL::make('Syllabus URL')->hideFromIndex()->rules('min:0', 'max:150')->help('Max 150 characters'),
             Boolean::make('Active'),
             Boolean::make('Home Page')
         ];
