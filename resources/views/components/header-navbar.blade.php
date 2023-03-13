@@ -28,21 +28,32 @@
                         <!--=====================================-->
                         <!--=             header menu           =-->
                         <!--=====================================-->
-                        <!--
+                        @if(App::environment() === 'production')
+                            <ul class="mainmenu">
+                                <li><a href="#">{{ trans('Courses') }}</a></li>
+                                <li><a href="#">{{ trans('Calendar') }}</a></li>
+                                <li><a href="#">{{ trans('Community') }}</a></li>
+                                <li><a href="#">{{ trans('About') }}</a></li>
+                            </ul>
+                        @else
                         <ul class="mainmenu">
-                            <li><a href="{{ route('courses') }}">{{ trans('Courses') }}</a></li>
-                            <li><a href="{{ route('calendar') }}">{{ trans('Calendar') }}</a></li>
-                            <li><a href="{{ route('community') }}">{{ trans('Community') }}</a></li>
-                            <li><a href="{{ route('about') }}">{{ trans('About') }}</a></li>
+                            <li><a href="{{ route('course.index') }}">{{ trans('Courses') }}</a></li>
+                            <li><a href="{{ route('calendar.index') }}">{{ trans('Calendar') }}</a></li>
+                            <!-- <li><a href="{{ route('community.index') }}">{{ trans('Community') }}</a></li> -->
+                            <li><a href="{{ route('about.index') }}">{{ trans('About') }}</a></li>
+                            <li><a href="{{ route('contact.index') }}">{{ trans('Contact') }}</a></li>
+                            <li>
+                                <div id="google_translate_element"></div>
+                                <script type="text/javascript">
+                                    function googleTranslateElementInit() {
+                                        new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL}, 'google_translate_element');
+                                    }
+                                </script>
 
+                                <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                            </li>
                         </ul>
-                        -->
-                        <ul class="mainmenu">
-                            <li><a href="#">{{ trans('Courses') }}</a></li>
-                            <li><a href="#">{{ trans('Calendar') }}</a></li>
-                            <li><a href="#">{{ trans('Community') }}</a></li>
-                            <li><a href="#">{{ trans('About') }}</a></li>
-                        </ul>
+                        @endif
                     </nav>
                 </div>
                 <div class="header-action">
