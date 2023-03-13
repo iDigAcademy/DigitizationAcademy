@@ -5,7 +5,7 @@
         <div class="flip-card-front">
             <div class="card shadow-box">
                 <img class="card-img-top"
-                     src="{{ $course->present()->front_image }}"
+                     src="{{ $course->present()->frontImage }}"
                      alt="Card image cap" style="border-radius: 20px;">
                 <div class="card-body">
                     <h4 class="card-title">{{ $course->title }}</h4>
@@ -26,7 +26,7 @@
         <div class="flip-card-back">
             <div class="card shadow-box">
                 <img class="card-img-top"
-                     src="{{ $course->present()->back_image }}"
+                     src="{{ $course->present()->backImage }}"
                      alt="Card image cap"
                      style="border-radius: 20px; max-height: 100px;">
                 <div class="card-body text-left">

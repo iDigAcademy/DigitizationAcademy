@@ -7,9 +7,9 @@
     "require": {
         "php": "^8.0.2",
         "anhskohbo/no-captcha": "^3.4",
-        "datacreativa/laravel-presentable": "^0.0.2",
         "guzzlehttp/guzzle": "^7.2",
         "itsmejoshua/novaspatiepermissions": "^1.0",
+        "laracasts/presenter": "^0.2.6",
         "laravel/fortify": "^1.13",
         "laravel/framework": "^9.19",
         "laravel/horizon": "^5.10",

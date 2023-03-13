@@ -27,11 +27,11 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 use Spiritix\LadaCache\Database\LadaCacheTrait;
-use TheHiveTeam\Presentable\HasPresentable;
+use Laracasts\Presenter\PresentableTrait;
 
 class Team extends Model implements Sortable
 {
-    use HasFactory, SortableTrait, LadaCacheTrait, HasPresentable;
+    use HasFactory, SortableTrait, LadaCacheTrait, PresentableTrait;
 
     /**
      * @var string

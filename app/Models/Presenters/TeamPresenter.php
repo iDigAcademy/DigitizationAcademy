@@ -20,14 +20,17 @@
 namespace App\Models\Presenters;
 
 use Illuminate\Support\Facades\Storage;
-use TheHiveTeam\Presentable\Presenter;
+use Laracasts\Presenter\Presenter;
 
 class TeamPresenter extends Presenter
 {
-    public function team_image()
+    /**
+     * @return string
+     */
+    public function teamImage(): string
     {
-        return isset($this->model->image) && Storage::disk('public')->exists($this->model->image) ?
-            Storage::url($this->model->image) :
+        return isset($this->image) && Storage::disk('public')->exists($this->image) ?
+            Storage::url($this->image) :
             Storage::url('default_image/team_default.jpg');
     }
 }

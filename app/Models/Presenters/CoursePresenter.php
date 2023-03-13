@@ -20,7 +20,7 @@
 namespace App\Models\Presenters;
 
 use Illuminate\Support\Facades\Storage;
-use TheHiveTeam\Presentable\Presenter;
+use Laracasts\Presenter\Presenter;
 
 class CoursePresenter extends Presenter
 {
@@ -29,10 +29,10 @@ class CoursePresenter extends Presenter
      *
      * @return string
      */
-    public function front_image(): string
+    public function frontImage(): string
     {
-        return isset($this->model->front_image) && Storage::disk('public')->exists($this->model->front_image) ?
-            Storage::url($this->model->front_image) :
+        return isset($this->front_image) && Storage::disk('public')->exists($this->front_image) ?
+            Storage::url($this->front_image) :
             Storage::url('default_image/course_default_front.png');
     }
 
@@ -41,10 +41,10 @@ class CoursePresenter extends Presenter
      *
      * @return string
      */
-    public function back_image(): string
+    public function backImage(): string
     {
-        return isset($this->model->back_image) && Storage::disk('public')->exists($this->model->back_image) ?
-            Storage::url($this->model->back_image) :
+        return isset($this->back_image) && Storage::disk('public')->exists($this->back_image) ?
+            Storage::url($this->back_image) :
             Storage::url('default_image/course_default_back.png');
     }
 }

@@ -2,7 +2,7 @@
     {{ $attributes->merge(['class' => 'process-work'])->merge(['data-sal' => 'slide-right']) }} data-sal-duration="1000"
     data-sal-delay="100">
     <div class="thumbnail paralax-image">
-        <img src="{{ $team->present()->team_image }}" alt="Thumbnail">
+        <img src="{{ $team->present()->teamImage }}" alt="Thumbnail">
     </div>
     <div class="content">
         <h2 class="title text-light mb-1">{{ $team->name }}</h2>
