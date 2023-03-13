@@ -2997,23 +2997,23 @@ Pagination
 
 @media only screen and (max-width: 1400px) {
     .courses .flip-card {
-        height: 650px !important; }}
+        height: 700px !important; }}
 
 @media only screen and (max-width: 1200px) {
     .courses .flip-card {
-        height: 650px !important; }}
+        height: 820px !important; }}
 
 @media only screen and (max-width: 991px) {
     .courses .flip-card {
-        height: 850px !important; }}
+        height: 1020px !important; }}
 
 @media only screen and (max-width: 767px) {
     .courses .flip-card {
-        height: 700px !important; }}
+        height: 720px !important; }}
 
 @media only screen and (max-width: 576px) {
     .courses .flip-card {
-        height: 700px !important; }}
+        height: 820px !important; }}
 
 /* This container is needed to position the front and back side */
 .flip-card-inner {
