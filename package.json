@@ -10,6 +10,10 @@
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
         "vite": "^3.0.0",
-        "vite-plugin-mkcert": "^1.9.0"
+        "vite-plugin-mkcert": "^1.9.0",
+        "vite-plugin-static-copy": "^0.13.1"
+    },
+    "dependencies": {
+        "flag-icon-css": "^4.1.7"
     }
 }

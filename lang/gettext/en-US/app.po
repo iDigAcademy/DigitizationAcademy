@@ -7,10 +7,38 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-09-21T15:12:13+00:00\n"
-"PO-Revision-Date: 2022-09-21 17:12+0200\n"
+"POT-Creation-Date: 2023-03-03T14:29:17+00:00\n"
+"PO-Revision-Date: 2023-03-03 15:29+0100\n"
 "Language: en_US\n"
 "Plural-Forms: nplurals=2; plural=n!=1;\n"
+
+#: resources/views/about.blade.php:9
+msgid "Here for You"
+msgstr ""
+
+#: resources/views/about.blade.php:10
+msgid "We love to share our experience with you and love to learn from your experience. Let’s talk!"
+msgstr ""
+
+#: resources/views/about.blade.php:37
+msgid "“We established the Digitization Academy in 2021 as a framework in which to deliver a set of complementary training opportunities to those eager to excel at the creation of digital information about Earth’s biota, especially as documented in biodiversity collections.”"
+msgstr ""
+
+#: resources/views/about.blade.php:44
+msgid "Austin Mast, MPH, PHD, MB"
+msgstr ""
+
+#: resources/views/about.blade.php:76
+msgid "Digitization Academy"
+msgstr ""
+
+#: resources/views/about.blade.php:77
+msgid "Current Team Members"
+msgstr ""
+
+#: resources/views/about.blade.php:92
+msgid "Former Team Members"
+msgstr ""
 
 #: resources/views/auth/forgot-password.blade.php:6
 #: resources/views/auth/reset-password.blade.php:6
@@ -23,11 +51,16 @@ msgid "Send Password Reset Link"
 msgstr ""
 
 #: resources/views/auth/login.blade.php:6
-#: resources/views/auth/login.blade.php:19
+#: resources/views/auth/login.blade.php:22
+#: resources/views/components/aside-menu.blade.php:17
 msgid "Login"
 msgstr ""
 
-#: resources/views/auth/login.blade.php:21
+#: resources/views/auth/login.blade.php:18
+msgid "Remember Me"
+msgstr ""
+
+#: resources/views/auth/login.blade.php:24
 #: resources/views/auth/passwords/confirm.blade.php:52
 msgid "Forgot Your Password?"
 msgstr ""
@@ -46,7 +79,9 @@ msgid "Password"
 msgstr ""
 
 #: resources/views/auth/register.blade.php:6
-#: resources/views/auth/register.blade.php:14
+#: resources/views/auth/register.blade.php:16
+#: resources/views/components/aside-menu.blade.php:19
+#: resources/views/components/course.blade.php:35
 msgid "Register"
 msgstr ""
 
@@ -68,4 +103,227 @@ msgstr ""
 
 #: resources/views/auth/verify-email.blade.php:20
 msgid "click here to request another"
+msgstr ""
+
+#: resources/views/calendar.blade.php:9
+msgid "Put Collaborative Learning on your Calendar"
+msgstr ""
+
+#: resources/views/calendar.blade.php:10
+msgid "We admit about 25 students to each of our 12-hour courses to ensure that everyone has a chance to contribute. Our 2-hour courses are open to everyone who registers."
+msgstr ""
+
+#: resources/views/calendar.blade.php:39
+msgid "Calendar"
+msgstr ""
+
+#: resources/views/components/aside-menu.blade.php:9
+msgid "Dashboard"
+msgstr ""
+
+#: resources/views/components/aside-menu.blade.php:10
+msgid "Admin"
+msgstr ""
+
+#: resources/views/components/aside-menu.blade.php:11
+msgid "Horizon"
+msgstr ""
+
+#: resources/views/components/aside-menu.blade.php:12
+msgid "Logout"
+msgstr ""
+
+#: resources/views/components/course.blade.php:33
+#: resources/views/home.blade.php:251
+msgid "Objectives"
+msgstr ""
+
+#: resources/views/components/footer.blade.php:41
+msgid "Sponsorships"
+msgstr ""
+
+#: resources/views/components/footer.blade.php:42
+msgid ""
+"iDigBio is funded by grants from the National Science Foundation [DBI-1115210\r\n"
+"                                (2011-2018), DBI-1547229 (2016-2022), & DBI-2027654 (2021-2026)]. Any\r\n"
+"                                opinions,\r\n"
+"                                findings, and conclusions or recommendations expressed in this material are\r\n"
+"                                those of\r\n"
+"                                the author(s) and do not necessarily reflect the views of the National\r\n"
+"                                Science\r\n"
+"                                Foundation."
+msgstr ""
+
+#: resources/views/components/footer.blade.php:67
+msgid "© Copyright 2023 | iDigInfo and Department of Biological Science, Florida State University | "
+msgstr ""
+
+#: resources/views/components/footer.blade.php:69
+msgid "Site by Agency Ks"
+msgstr ""
+
+#: resources/views/contact.blade.php:6
+#: resources/views/notifications/contact.blade.php:2
+msgid "Contact"
+msgstr ""
+
+#: resources/views/contact.blade.php:15
+msgid "Send"
+msgstr ""
+
+#: resources/views/courses.blade.php:9
+msgid "Level up for Life"
+msgstr ""
+
+#: resources/views/courses.blade.php:10
+msgid "We deliver a recurring set of courses on activities that add value to biodiversity observations and specimens with a goal of making biodiversity collections even more relevant to science, society, and Life."
+msgstr ""
+
+#: resources/views/courses.blade.php:37
+msgid "Two Formats"
+msgstr ""
+
+#: resources/views/courses.blade.php:38
+msgid "We package our content in 2-hour or 12-hour formats, depending on the scope of the subject. The longer courses are spread over four days or four weeks."
+msgstr ""
+
+#: resources/views/courses.blade.php:39
+msgid "The Catalog"
+msgstr ""
+
+#: resources/views/courses.blade.php:42
+msgid "All"
+msgstr ""
+
+#: resources/views/courses.blade.php:43
+msgid "Past"
+msgstr ""
+
+#: resources/views/courses.blade.php:44
+msgid "Future"
+msgstr ""
+
+#: resources/views/home.blade.php:11
+msgid "Explore. Discover. Connect."
+msgstr ""
+
+#: resources/views/home.blade.php:12
+msgid "Catalyzing excellence in the creation of digital data about biodiversity."
+msgstr ""
+
+#: resources/views/home.blade.php:14
+msgid "Read More"
+msgstr ""
+
+#: resources/views/home.blade.php:63
+msgid "A strategy built for you"
+msgstr ""
+
+#: resources/views/home.blade.php:64
+msgid "Our Approach"
+msgstr ""
+
+#: resources/views/home.blade.php:65
+msgid "Our offerings combine these three elements to level you up on a topic. We aim to provision you with more than an academic understanding. Leave the course with new inspiration and connections to a cohort of professionals from around the world who are tackling the same challenges."
+msgstr ""
+
+#: resources/views/home.blade.php:82
+msgid "Our systematic overview builds the foundation."
+msgstr ""
+
+#: resources/views/home.blade.php:88
+msgid "We deliver content featuring major dimensions of a topic in engaging ways. All content advances a core set of carefully curated learning objectives."
+msgstr ""
+
+#: resources/views/home.blade.php:103
+msgid "Your experience provides the nuance and motivation."
+msgstr ""
+
+#: resources/views/home.blade.php:108
+msgid "We aspire to create a learning community with each offering where you feel empowered to share your experience for everyone’s enrichment."
+msgstr ""
+
+#: resources/views/home.blade.php:122
+msgid "And an expert panel identifies the leading edge of the possible."
+msgstr ""
+
+#: resources/views/home.blade.php:127
+msgid "We feature thought leaders or tool providers who share their latest developments on the topic and address questions from participants."
+msgstr ""
+
+#: resources/views/home.blade.php:162
+msgid "Built on iDigBio’s professional development experience."
+msgstr ""
+
+#: resources/views/home.blade.php:163
+msgid "Deep experience with digitization and training."
+msgstr ""
+
+#: resources/views/home.blade.php:164
+msgid ""
+"Since its founding in 2012, iDigBio has offered over 100 training opportunities, and many\n"
+"                    involved the Digitization Academy’s core staff. iDigBio is the US National Science Foundation’s\n"
+"                    National Resource for Advancing Digitization of Biodiversity Collections and home to the Digitization\n"
+"                    Academy. The Digitization Academy offerings from iDigBio represent a standardized strategy\n"
+"                    for delivery of a subset of iDigBio’s training options to ensure that we have all high-value\n"
+"                    topics covered for you in complementary ways."
+msgstr ""
+
+#: resources/views/home.blade.php:214
+msgid "Connecting you with resources for success."
+msgstr ""
+
+#: resources/views/home.blade.php:216
+msgid "Courses like this one introduce you<br>to the people behind the projects."
+msgstr ""
+
+#: resources/views/home.blade.php:253
+msgid "Learn More"
+msgstr ""
+
+#: resources/views/home.blade.php:341
+msgid "What participants are saying."
+msgstr ""
+
+#: resources/views/home.blade.php:342
+msgid "Evaluations help us further refine our courses with each iteration."
+msgstr ""
+
+#: resources/views/home.blade.php:349
+msgid ""
+"Topics were discussed in great detail. The instructors were very\n"
+"                            helpful and enthusiastic in answering queries and sharing resources. The activities were\n"
+"                            practical in that the questions were centered around our individual research."
+msgstr ""
+
+#: resources/views/home.blade.php:357
+msgid ""
+"This was a really well-put-together class that took\n"
+"                            us through the various steps and details of a collection digitization project. Great\n"
+"                            use of technology, easy to follow, well documented, and well-thought exercises. I am a big\n"
+"                            fan of audience participation, and that was well done. Highly knowledgeable instructors\n"
+"                            too. Austin is skilled at conveying technical relationships in an understandable manner."
+msgstr ""
+
+#: resources/views/home.blade.php:367
+msgid ""
+"I have not worked with digitization before, and\n"
+"                            this taught me so many things I needed to learn and things I didn't even know I needed to\n"
+"                            think about."
+msgstr ""
+
+#: resources/views/notifications/contact.blade.php:5
+msgid "Name"
+msgstr ""
+
+#: resources/views/notifications/contact.blade.php:8
+msgid "Email"
+msgstr ""
+
+#: resources/views/notifications/contact.blade.php:11
+msgid "Message"
+msgstr ""
+
+#: resources/views/notifications/contact.blade.php:14
+msgid "Thank you"
 msgstr ""

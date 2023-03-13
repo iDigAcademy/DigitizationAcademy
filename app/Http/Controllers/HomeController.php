@@ -54,85 +54,19 @@ class HomeController extends Controller
     {
         $topImage = $this->pageService->getHomeTopImage();
         $bottomImage = $this->pageService->getHomeBottomImage();
+        $course = $this->pageService->getCourse();
 
-        return view('tmpHome', compact('topImage', 'bottomImage'));
-    }
-
-    /**
-     * Show courses page.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function courses(): Renderable
-    {
-        $topImage = $this->pageService->getCourseImage();
-        return view('courses', compact('topImage'));
-    }
-
-    /**
-     * Show calendar page.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function calendar(): Renderable
-    {
-        $topImage = $this->pageService->getCalendarImage();
-        return view('calendar', compact('topImage'));
-    }
-
-    /**
-     * Show community page.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function community(): Renderable
-    {
-        $topImage = $this->pageService->getCommunityImage();
-        return view('community', compact('topImage'));
-    }
-
-    /**
-     * Show about page.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function about(): Renderable
-    {
-        $topImage = $this->pageService->getAboutImage();
-        return view('about', compact('topImage'));
-    }
-
-    public function contact()
-    {
-        return view('contact');
-    }
-
-    /**
-     * Send contact form.
-     *
-     * @param \App\Http\Requests\ContactFormRequest $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function postContact(ContactFormRequest $request): RedirectResponse
-    {
-        try{
-            $users = User::whereHas("roles", function($q){ $q->where("name", "Super Admin"); })->get();
-            Notification::send($users, new Contact($request->all()));
-
-            return redirect()->back()->with('toast_success', trans('Contact message sent successfully.'));
-        }
-        catch (\Throwable $exception)
-        {
-            return redirect()->back()->with('toast_error', trans('An error occurred sending your message. ' . $exception->getMessage()));
-        }
+        return config('app.env') === 'production' ?
+            view('tmpHome', compact('topImage', 'bottomImage', 'course')) :
+            view('home', compact('topImage', 'bottomImage', 'course'));
     }
 
     /**
      * Custom log out.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function logout()
+    public function logout(): RedirectResponse
     {
         \Auth::logout();
         return redirect('/');

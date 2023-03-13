@@ -20,7 +20,7 @@
 return [
     'key' => env('TRANSLATIONIO_KEY'),
     'source_locale' => 'en',
-    'target_locales' => ['en-US'],
+    'target_locales' => ['en-US', 'es'],
 
     /* Directories to scan for Gettext strings */
     'gettext_parse_paths' => ['app', 'resources'],

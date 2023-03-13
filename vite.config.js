@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import mkcert from'vite-plugin-mkcert';
+import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 export default defineConfig({
     build: {
@@ -12,6 +13,15 @@ export default defineConfig({
                 'resources/js/app.js',
             ],
             refresh: true,
+        }),
+        // @TODO Temporary until scripts can be worked into vite.
+        viteStaticCopy({
+            targets: [
+                {
+                    src: 'resources/js/vendor/*',
+                    dest: '../js/vendor/'
+                }
+            ]
         }),
         mkcert()
     ],

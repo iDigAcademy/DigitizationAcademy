@@ -175,6 +175,7 @@
                 // init Isotope
                 var $grid = $('.isotope-list').isotope({
                     itemSelector: '.project',
+                    filter: '.future',
                     percentPosition: true,
                     transitionDuration: '0.7s',
                     layoutMode: 'fitRows',
