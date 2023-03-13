@@ -43,8 +43,8 @@ class CoursePresenter extends Presenter
      */
     public function backImage(): string
     {
-        return isset($this->back_image) && Storage::disk('public')->exists($this->back_image) ?
-            Storage::url($this->back_image) :
+        return isset($this->entity->back_image) && Storage::disk('public')->exists($this->entity->back_image) ?
+            Storage::url($this->entity->back_image) :
             Storage::url('default_image/course_default_back.png');
     }
 }
