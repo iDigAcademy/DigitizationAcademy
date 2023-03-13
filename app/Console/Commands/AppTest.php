@@ -45,6 +45,5 @@ class AppTest extends Command
      */
     public function handle()
     {
-        dd(Config::get('languages'));
     }
 }
