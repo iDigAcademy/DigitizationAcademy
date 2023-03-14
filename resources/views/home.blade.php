@@ -215,7 +215,7 @@
                     @isset($course)
                     <h2 class="title">{!! t('Courses like this one introduce you') !!}</h2>
 
-                    <div class="d-flex justify-content-center course-row">
+                    <div class="d-flex justify-content-center course-row home">
                         <!-- sample flip card -->
                         @include('partials.course')
                     </div>

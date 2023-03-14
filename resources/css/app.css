@@ -2986,7 +2986,7 @@ Pagination
 }
 .flip-card {
     background-color: transparent;
-    width: 500px;
+    width: 600px;
     height: 660px;
     /*height: 610px;*/
     /*height: 100%;*/
@@ -2996,11 +2996,11 @@ Pagination
     border-radius: 25px; }
 
 @media only screen and (max-width: 1400px) {
-    .courses .flip-card {
+    .courses .flip-card, .home .flip-card {
         height: 700px !important; }}
 
 @media only screen and (max-width: 1200px) {
-    .courses .flip-card {
+    .courses .flip-card, .home .flip-card {
         height: 820px !important; }}
 
 @media only screen and (max-width: 991px) {
@@ -3008,13 +3008,20 @@ Pagination
         height: 1020px !important; }}
 
 @media only screen and (max-width: 767px) {
-    .courses .flip-card {
+    .courses .flip-card, .home .flip-card {
         height: 720px !important; }}
 
 @media only screen and (max-width: 576px) {
-    .courses .flip-card {
+    .courses .flip-card, .home .flip-card {
         height: 820px !important; }}
+/**/
+@media only screen and (max-width: 991px) {
+    .home .flip-card {
+        height: 720px !important; }}
 
+@media only screen and (max-width: 576px) {
+    .home .flip-card {
+        height: 820px !important; }}
 /* This container is needed to position the front and back side */
 .flip-card-inner {
     position: relative;
