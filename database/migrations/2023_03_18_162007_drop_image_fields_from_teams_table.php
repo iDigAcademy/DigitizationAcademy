@@ -30,18 +30,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('teams', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('title');
-            $table->string('email');
-            $table->string('twitter_handle')->nullable();
-            $table->text('about');
-            $table->string('image')->nullable();
-            $table->string('image_name')->nullable();
-            $table->string('image_size')->nullable();
-            $table->tinyInteger('order');
-            $table->timestamps();
+        Schema::table('teams', function (Blueprint $table) {
+            $table->dropColumn(['image_name', 'image_size']);
         });
     }
 
@@ -52,6 +42,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('teams');
+        Schema::table('teams', function (Blueprint $table) {
+            $table->string('image_size')->nullable()->after('image');
+            $table->string('image_name')->nullable()->after('image');
+        });
     }
 };

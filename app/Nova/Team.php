@@ -88,8 +88,6 @@ class Team extends Resource
                 ->store(function (Request $request, $model) {
                     return [
                         'image' => $request->image->store(config('config.team_image_dir'), 'public'),
-                        'image_name' => $request->image->getClientOriginalName(),
-                        'image_size' => $request->image->getSize(),
                     ];
                 })->maxWidth(100)
                 ->creationRules('required', 'image', 'mimes:jpg,jpeg,png', 'dimensions:min_width=410,min_height=410')

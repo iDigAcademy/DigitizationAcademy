@@ -78,8 +78,6 @@ class Course extends Resource
             Image::make('Front Image')->store(function (Request $request) {
                     return [
                         'front_image'      => $request->front_image->store(config('config.course_image_dir'), 'public'),
-                        'front_image_name' => $request->front_image->getClientOriginalName(),
-                        'front_image_size' => $request->front_image->getSize(),
                     ];
                 })->maxWidth(100)
                 ->creationRules('image', 'mimes:jpg,jpeg,png', 'dimensions:min_width=468,min_height=353')
@@ -93,8 +91,6 @@ class Course extends Resource
             Image::make('Back Image')->store(function (Request $request) {
                     return [
                         'back_image'      => $request->back_image->store(config('config.course_image_dir'), 'public'),
-                        'back_image_name' => $request->back_image->getClientOriginalName(),
-                        'back_image_size' => $request->back_image->getSize(),
                     ];
                 })->maxWidth(100)
                 ->creationRules('image', 'mimes:jpg,jpeg,png', 'dimensions:min_width=468,min_height=100')

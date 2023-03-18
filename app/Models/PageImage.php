@@ -35,8 +35,6 @@ class PageImage extends Model
     protected $fillable = [
         'page',
         'image',
-        'image_name',
-        'image_size',
         'active'
     ];
 

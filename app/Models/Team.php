@@ -57,8 +57,6 @@ class Team extends Model implements Sortable
         'twitter_handle',
         'about',
         'image',
-        'image_name',
-        'image_size',
         'order'
     ];
 }
