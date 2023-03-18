@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="row justify-content-center">
-                <iframe src="https://calendar.google.com/calendar/embed?height=800&wkst=1&bgcolor=%23ffffff&ctz=America%2FNew_York&showTitle=0&showTabs=1&showPrint=0&showCalendars=0&src=MTgxYmU2MDg5ZTYxYjJmNWQ3ODAxMmYyNjliNDFmNTJlMjYyMjk3ZmQ0NDA0NmU0NWExN2U4MGE1ZDM0MjdkNkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23B39DDB" style="border:solid 1px #777" width="800" height="800" frameborder="0" scrolling="no"></iframe>
+                <iframe src="{{ config('config.idigbio_event_calendar) }}" style="border:solid 1px #777" width="800" height="800" frameborder="0" scrolling="no"></iframe>
             </div>
         </div>
         <ul class="shape-group-6 list-unstyled">

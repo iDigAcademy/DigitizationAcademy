@@ -19,20 +19,13 @@
 
 namespace App\Models;
 
-use App\Models\Presenters\CoursePresenter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spiritix\LadaCache\Database\LadaCacheTrait;
-use Laracasts\Presenter\PresentableTrait;
 
-class Course extends Model
+class IDigBioEvent extends Model
 {
-    use HasFactory, LadaCacheTrait, PresentableTrait;
-
-    /**
-     * @var string
-     */
-    protected string $presenter = CoursePresenter::class;
+    use HasFactory, LadaCacheTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -40,23 +33,8 @@ class Course extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'title',
-        'objectives',
-        'front_image',
-        'front_image_name',
-        'front_image_size',
-        'back_image',
-        'back_image_name',
-        'back_image_size',
-        'active',
-        'home_page',
-        'start_date',
-        'end_date',
-        'schedule_details',
-        'registration_url',
-        'registration_start_date',
-        'registration_end_date',
-        'syllabus_url'
+        'event_id',
+        'event_uid'
     ];
 
     /**
@@ -67,33 +45,6 @@ class Course extends Model
      */
     protected $dates = [
         'created_at',
-        'updated_at',
-        'start_date',
-        'end_date',
-        'registration_start_date',
-        'registration_end_date',
+        'updated_at'
     ];
-
-    /**
-     * Active scope.
-     *
-     * @param $query
-     * @return mixed
-     */
-    public function scopeActive($query): mixed
-    {
-        return $query->where('active', 1);
-    }
-
-    /**
-     * Home page scope for course.
-     *
-     * @param $query
-     * @return mixed
-     */
-    public function scopeHome($query): mixed
-    {
-        return $query->where('home_page', 1);
-    }
-
 }

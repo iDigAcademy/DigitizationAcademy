@@ -20,7 +20,6 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 use Storage;
 
 /**
@@ -40,8 +39,8 @@ class CourseFactory extends Factory
 
         return [
             'title' => $this->faker->words(rand(3, 5), true),
-            'objectives' => fake()->text(810),
-            'front_image' => 'course_image/project-4-front.png',
+            'objectives' => $this->faker->text(810),
+            'front_image' => $this->faker->image('public/storage/course_image/teamtest.png', 410, 410, null, false),
             'front_image_name' => 'project-4-front.png',
             'front_image_size' => Storage::disk('public')->size('course_image/project-4-front.png'),
             'back_image' => 'course_image/project-4-back.png',
@@ -49,7 +48,7 @@ class CourseFactory extends Factory
             'back_image_size' => Storage::disk('public')->size('course_image/project-4-back.png'),
             'start_date' => $start,
             'end_date' => $end,
-            'schedule_details' => fake()->text(150),
+            'schedule_details' => $this->faker->text(150),
             'active' => true,
             'home_page' => false,
         ];

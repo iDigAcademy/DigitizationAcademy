@@ -17,11 +17,25 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-return [
-    'app_path'         => base_path(),
-    'server_user'      => env('SERVER_USER', 'ubuntu'),
-    'page_image_dir'   => 'page_image',
-    'course_image_dir' => 'course_image',
-    'team_image_dir'   => 'team_image',
-    'idigbio_event_calendar' => env('IDIGBIO_EVENT_CALENDAR'),
-];
+namespace Database\Factories;
+
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\IDigBioEvent>
+ */
+class IDigBioEventFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition()
+    {
+        return [
+            'event_id' => $this->faker->uuid(),
+            'event_uid' => $this->faker->uuid(),
+        ];
+    }
+}
