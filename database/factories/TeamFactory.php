@@ -22,9 +22,7 @@ class TeamFactory extends Factory
             'email' => $this->faker->email(),
             'twitter_handle' => 'testmanager',
             'about' => $this->faker->realText(),
-            'image' => $this->faker->image('public/storage/team_image/teamtest.png', 410, 410, null, false),
-            'image_name' => 'teamtest.png',
-            'image_size' => 234633,
+            'image' => $this->faker->image('public/storage/team_image', 410, 410, null, false),
             'order' => 99
         ];
     }

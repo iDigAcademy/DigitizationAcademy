@@ -34,6 +34,7 @@ class PageImage extends Model
      */
     protected $fillable = [
         'page',
+        'position',
         'image',
         'active'
     ];
