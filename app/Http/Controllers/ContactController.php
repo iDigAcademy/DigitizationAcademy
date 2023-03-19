@@ -20,6 +20,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactFormRequest;
+use App\Mail\Contact;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 
@@ -44,7 +45,7 @@ class ContactController extends Controller
     public function store(ContactFormRequest $request): RedirectResponse
     {
         try{
-            $mail = (new \App\Mail\Contact($request->all()))->onQueue('mail');
+            $mail = (new Contact($request->all()))->onQueue('mail');
             \Mail::to(config('mail.from.address'))->queue($mail);
 
             return redirect()->back()->with('toast_success', trans('Contact message sent successfully.'));

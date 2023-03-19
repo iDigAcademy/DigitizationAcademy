@@ -1,4 +1,4 @@
-@component('mail::message')
+<x-mail::message>
 # {{ t('Contact') }}
 
 {{ t('Name') }}: {{ $data['name'] }}
@@ -8,6 +8,5 @@
 {{ t('Message') }}: {{ $data['message'] }}
 
 {{ t('Thank you') }},
-
 {{ config('app.name') }}
-@endcomponent
+</x-mail::message>
