@@ -20,11 +20,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactFormRequest;
-use App\Models\User;
-use App\Notifications\Contact;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Notification;
 
 class ContactController extends Controller
 {
@@ -47,8 +44,8 @@ class ContactController extends Controller
     public function store(ContactFormRequest $request): RedirectResponse
     {
         try{
-            $users = User::whereHas("roles", function($q){ $q->where("name", "Super Admin"); })->get();
-            Notification::send($users, new Contact($request->all()));
+            $mail = (new \App\Mail\Contact($request->all()))->onQueue('mail');
+            \Mail::to(config('mail.from.address'))->queue($mail);
 
             return redirect()->back()->with('toast_success', trans('Contact message sent successfully.'));
         }
