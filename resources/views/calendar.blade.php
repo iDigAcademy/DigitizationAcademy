@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="row justify-content-center">
-                <iframe src="{{ config('config.idigbio_event_calendar) }}" style="border:solid 1px #777" width="800" height="800" frameborder="0" scrolling="no"></iframe>
+                <iframe src="{{ config('config.idigbio_event_calendar') }}" style="border:solid 1px #777" width="800" height="800" frameborder="0" scrolling="no"></iframe>
             </div>
         </div>
         <ul class="shape-group-6 list-unstyled">

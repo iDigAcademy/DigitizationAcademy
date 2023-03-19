@@ -28,6 +28,13 @@ class IDigBioEvent extends Model
     use HasFactory, LadaCacheTrait;
 
     /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'idigbio_events';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>

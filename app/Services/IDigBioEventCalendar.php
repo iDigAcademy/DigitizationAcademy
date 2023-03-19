@@ -56,23 +56,27 @@ class IDigBioEventCalendar
      * Process the file.
      *
      * @param string $file
-     * @return void
+     * @return int
      * @throws \Exception
      */
-    public function process(string $file)
+    public function process(string $file): int
     {
         $this->createICalFromFile($file);
 
         $events = $this->iCal->events();
 
+        $i = 0;
         foreach ($events as $event) {
             $iDigBioEvent = $this->iDigBioEvent->firstOrCreate(['event_uid' => $event->uid]);
             if (is_null($iDigBioEvent->event_id)) {
                 $id = $this->createGoogleCalenderEvent($event);
-                $iDigBioEvent->calendar_id = $id;
+                $iDigBioEvent->event_id = $id;
                 $iDigBioEvent->save();
+                $i++;
             }
         }
+
+        return $i;
     }
 
     /**
@@ -103,11 +107,8 @@ class IDigBioEventCalendar
      */
     public function createGoogleCalenderEvent(\ICal\Event $data): string
     {
-        $startdt = new DateTime($data->dtstart);
-        $enddt = new DateTime($data->dtend);
-
-        $startDate = Carbon::instance($startdt);
-        $endDate = Carbon::instance($enddt);
+        $startDate = Carbon::instance(new DateTime($data->dtstart));
+        $endDate = Carbon::instance(new DateTime($data->dtend));
 
         $event = new Event();
         $event->name = $data->summary;

@@ -23,6 +23,7 @@ namespace App\Console\Commands;
 
 use App\Jobs\iDigBioEventCalendarJob;
 use App\Mail\JobError;
+use App\Models\IDigBioEvent;
 use App\Models\User;
 use App\Services\IDigBioEventCalendar;
 use Carbon\Carbon;
@@ -65,13 +66,30 @@ class AppTest extends Command
     /**
      * Execute the console command.
      * https://github.com/u01jmg3/ics-parser
+     *
+     * event->iCalUID: "calendar.3447.field_start_date.5@www.idigbio.org" = idigbio_events->event_uid
      */
     public function handle()
     {
-
-        iDigBioEventCalendarJob::dispatch();
+        //iDigBioEventCalendarJob::dispatch();
         //$this->getIcsFile();
         //$this->createEvent();
+    }
+
+    public function readCalendarEvents()
+    {
+        $start = Carbon::create('2022', '01', '01');
+        $end = Carbon::create('2024', '01', '01');
+        $events = Event::get($start, $end);
+        foreach ($events as $event) {
+            $iDigBioEvent = IDigBioEvent::where('event_uid', $event->iCalUID)->get()->first();
+            if (is_null($iDigBioEvent)) {
+                echo "found null " . $event->id . PHP_EOL;
+                continue;
+            }
+            $iDigBioEvent->event_id = $event->id;
+            $iDigBioEvent->save();
+        }
     }
 
     public function createEvent()
@@ -120,17 +138,15 @@ class AppTest extends Command
                 'httpUserAgent'               => null,  // Default value
                 'skipRecurrence'              => false, // Default value
             ));
-            //$ical->initFile('ICal.ics');
-            //$ical->initUrl('https://raw.githubusercontent.com/u01jmg3/ics-parser/master/examples/ICal.ics', $username = null, $password = null, $userAgent = null);
 
             foreach ($ical->events() as $event) {
-                dd($event);
                 $dt = new \DateTime($event->dtstart);   // <== instance from another API
                 $carbon = Carbon::instance($dt);
                 dd($carbon->isPast());
                 dd($carbon->toDateTimeString());                      // 2008-01-01 00:00:00
                 dd(Carbon::createFromIsoFormat($event->dtstart));
             }
+
             //dd($ical->events());
 
         } catch (\Exception $e) {

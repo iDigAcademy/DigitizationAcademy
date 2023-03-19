@@ -19,6 +19,7 @@
 
 namespace App\Jobs;
 
+use App\Mail\JobComplete;
 use App\Mail\JobError;
 use App\Services\IDigBioEventCalendar;
 use Illuminate\Bus\Queueable;
@@ -56,7 +57,13 @@ class iDigBioEventCalendarJob implements ShouldQueue
     public function handle(IDigBioEventCalendar $IDigBioEventCalendar)
     {
         try {
-            $IDigBioEventCalendar->process('https://www.idigbio.org/events-calendar/export.ics');
+            $count = $IDigBioEventCalendar->process('https://www.idigbio.org/events-calendar/export.ics');
+            $message = [
+                'Message: Calendar job complete. ' . $count . ' created'
+            ];
+            $mail = (new JobComplete($message))->onQueue('mail');
+            \Mail::to(config('mail.from.address'))->queue($mail);
+
         } catch (\Throwable $e) {
             $message = [
                 'Message: ' .  $e->getMessage(),

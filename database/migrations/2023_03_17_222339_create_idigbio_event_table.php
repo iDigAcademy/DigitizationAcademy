@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('idigbio_event', function (Blueprint $table) {
+        Schema::create('idigbio_events', function (Blueprint $table) {
             $table->id();
-            $table->string('event_id')->unique();
+            $table->string('event_id')->index()->nullable();
             $table->string('event_uid')->unique();
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('idigbio_event');
+        Schema::dropIfExists('idigbio_events');
     }
 };
