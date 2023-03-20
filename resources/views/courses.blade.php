@@ -34,7 +34,7 @@
     <section class="section section-padding-equal pt--200 pt_md--80 pt_sm--60">
         <div class="container">
             <div class="section-heading heading-left">
-                <span class="subtitle">{{ t('Two Formats') }}</span>
+                <span class="subtitle">{{ t('Two course formats offer flexibility.') }}</span>
                 <p>{{ t('We package our content in 2-hour or 12-hour formats, depending on the scope of the subject. The longer courses are spread over four days or four weeks.') }}</p>
                 <h2 class="title mt--80">{{ t('The Catalog') }}</h2>
 

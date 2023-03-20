@@ -4292,7 +4292,7 @@ blog-grid .title {
 .footer-social-link ul {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: 0 -5px; }
 .footer-social-link ul li a {
     color: var(--color-gray-3);

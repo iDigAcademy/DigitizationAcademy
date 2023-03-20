@@ -47,7 +47,7 @@ class CourseController extends Controller
     public function index(): Renderable
     {
         $topImage = $this->pageService->getCourseImage();
-        $courses = Course::active()->get()->sortByDesc('start_date');
+        $courses = Course::active()->get()->sortBy('start_date');
 
         return view('courses', compact('topImage', 'courses'));
     }

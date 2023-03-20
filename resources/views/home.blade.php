@@ -10,9 +10,10 @@
                          data-sal-delay="100">
                         <h1 class="title mb-2">{{ t('Explore. Discover. Connect.') }}</h1>
                         <h6 class="text-light text">{{ t('Catalyzing excellence in the creation of digital data about biodiversity.') }}</h6>
-
+                        <!--
                         <a href="#homePhilosophy" class="axil-btn btn-fill-white btn-large">{{ t('Read More') }} &nbsp; <i
                                 class="fas fa-angle-down"></i></a>
+                        -->
                     </div>
                 </div>
             </div>
@@ -55,12 +56,12 @@
     <!--    accordion approach 3 Tiers       -->
     <!--=====================================-->
     <a name="homePhilosophy"> </a>
-    <section class="section section-padding-equal bg-color-light faq-area">
+    <section class="section section-padding-equal faq-area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 col-xl-4">
                     <div class="section-heading heading-left">
-                        <span class="subtitle">{{ t('A strategy built for you') }}</span>
+                        <span class="subtitle">{{ t('A strategy built for you.') }}</span>
                         <h3 class="title">{{ t('Our Approach') }}</h3>
                         <p>{{ t('Our offerings combine these three elements to level you up on a topic. We aim to provision you with more than an academic understanding. Leave the course with new inspiration and connections to a cohort of professionals from around the world who are tackling the same challenges.') }}</p>
                     </div>
@@ -232,7 +233,7 @@
                            data-sal-delay="100"><img
                                 src="{{ vite_asset('resources/media/logos/cms/logo-arctos.png') }}" alt="Arctos"
                                 width="115px"></a></li>
-
+                    <!--
                     <li><a href="https://idigbio.edu.com/" data-sal="slide-up" data-sal-duration="500"
                            data-sal-delay="200"><img
                                 src="{{ vite_asset('resources/media/logos/cms/logo-axiell.png') }}" alt="Axiell"
@@ -254,7 +255,7 @@
                                 src="{{ vite_asset('resources/media/logos/cms/logo-earthcape.png') }}"
                                 alt="Earth Cape"
                                 width="115px"></a></li>
-
+                    -->
                     <li><a href="https://idigbio.edu.com/" data-sal="slide-up" data-sal-duration="500"
                            data-sal-delay="200"><img
                                 src="{{ vite_asset('resources/media/logos/cms/logo-scc.png') }}" alt="SCC"
