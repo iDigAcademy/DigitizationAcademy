@@ -26,7 +26,7 @@
                 <img src="{{ vite_asset('resources/media/others/bubble-9.png') }}" alt="Bubble">
             </li>
             <li class="shape shape-2" data-sal="slide-left" data-sal-duration="500" data-sal-delay="200">
-                <img src="{{ vite_asset('resources/media/others/bubble-teal-corp.png') }}" alt="Teal Bubble">
+                <img src="{{ vite_asset('resources/media/others/bubble-salmon.png') }}" alt="Teal Bubble">
             </li>
             <li class="shape shape-3" data-sal="slide-up" data-sal-duration="500" data-sal-delay="300">
                 <img src="{{ vite_asset('resources/media/others/line-4.png') }}" alt="Line">
