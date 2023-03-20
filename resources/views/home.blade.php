@@ -229,7 +229,7 @@
             <div class="footer-social-link mt-5 px-md-4">
                 <!-- cms logos -->
                 <ul class="list-unstyled px-5">
-                    <li><a href="https://idigbio.edu/" data-sal="slide-up" data-sal-duration="500"
+                    <li><a href="https://arctosdb.org/" target="_blank" data-sal="slide-up" data-sal-duration="500"
                            data-sal-delay="100"><img
                                 src="{{ vite_asset('resources/media/logos/cms/logo-arctos.png') }}" alt="Arctos"
                                 width="115px"></a></li>
@@ -256,13 +256,13 @@
                                 alt="Earth Cape"
                                 width="115px"></a></li>
                     -->
-                    <li><a href="https://idigbio.edu.com/" data-sal="slide-up" data-sal-duration="500"
+                    <li><a href="https://www.specifysoftware.org/" target="_blank" data-sal="slide-up" data-sal-duration="500"
                            data-sal-delay="200"><img
                                 src="{{ vite_asset('resources/media/logos/cms/logo-scc.png') }}" alt="SCC"
                                 width="115px"></a>
                     </li>
 
-                    <li><a href="https://idigbio.edu/" data-sal="slide-up" data-sal-duration="500"
+                    <li><a href="https://symbiota.org/" target="_blank" data-sal="slide-up" data-sal-duration="500"
                            data-sal-delay="100"><img
                                 src="{{ vite_asset('resources/media/logos/cms/logo-symbiota.png') }}"
                                 alt="Symbiota"
