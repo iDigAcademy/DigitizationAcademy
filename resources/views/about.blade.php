@@ -34,7 +34,7 @@
                     <div class="blog-grid text-left blog-without-thumb mb--40" data-sal="slide-up"
                          data-sal-duration="500" data-sal-delay="100">
                         <blockquote>
-                            <h5 class="title text-left fst-italic">{{ t('“We established the Digitization Academy in 2021 as a framework in which to deliver a set of complementary training opportunities to those eager to excel at the creation of digital information about Earth’s biota, especially as documented in biodiversity collections.”') }}</h5>
+                            <h5 class="title text-left fst-italic">{{ t('We established the Digitization Academy in 2021 as a framework in which to deliver a set of complementary training opportunities to those eager to excel at the creation of digital information about Earth’s biota, especially as documented in biodiversity collections.') }}</h5>
                         </blockquote>
 
                         <div class="author">
