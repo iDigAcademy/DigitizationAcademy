@@ -209,7 +209,7 @@
     <!--=     Call To Action Area Start     =-->
     <!--=====================================-->
     <section class="section section-padding pb--70">
-        <article class="container pb--70">
+        <article class="container">
             <div class="text-dark row pt-1" style="text-align: center">
                 <div class="mt-2">
                     <span class="subtitle-right">{{ t('Connecting you with resources for success.') }}</span>
@@ -226,13 +226,13 @@
             </div>
         </article>
         <aside class="container-fluid">
-            <div class="footer-social-link mt-5 px-md-4">
+            <div class="footer-social-link px-md-4">
                 <!-- cms logos -->
                 <ul class="list-unstyled px-5">
                     <li><a href="https://arctosdb.org/" target="_blank" data-sal="slide-up" data-sal-duration="500"
                            data-sal-delay="100"><img
                                 src="{{ vite_asset('resources/media/logos/cms/logo-arctos.png') }}" alt="Arctos"
-                                width="115px"></a></li>
+                                width="345px"></a></li>
                     <!--
                     <li><a href="https://idigbio.edu.com/" data-sal="slide-up" data-sal-duration="500"
                            data-sal-delay="200"><img
@@ -259,14 +259,14 @@
                     <li><a href="https://www.specifysoftware.org/" target="_blank" data-sal="slide-up" data-sal-duration="500"
                            data-sal-delay="200"><img
                                 src="{{ vite_asset('resources/media/logos/cms/logo-scc.png') }}" alt="SCC"
-                                width="115px"></a>
+                                width="345px"></a>
                     </li>
 
                     <li><a href="https://symbiota.org/" target="_blank" data-sal="slide-up" data-sal-duration="500"
                            data-sal-delay="100"><img
                                 src="{{ vite_asset('resources/media/logos/cms/logo-symbiota.png') }}"
                                 alt="Symbiota"
-                                width="115px"></a>
+                                width="345px"></a>
                     </li>
                 </ul>
             </div>
@@ -321,8 +321,7 @@
                         <p class="text-light text-justify fst-italic">{{ t('This was a really well-put-together class that took
                             us through the various steps and details of a collection digitization project. Great
                             use of technology, easy to follow, well documented, and well-thought exercises. I am a big
-                            fan of audience participation, and that was well done. Highly knowledgeable instructors
-                            too. Austin is skilled at conveying technical relationships in an understandable manner.') }}</p>
+                            fan of audience participation, and that was well done.') }}</p>
                     </div>
                 </div>
 

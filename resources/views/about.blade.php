@@ -6,7 +6,7 @@
         <div class="container">
             <div class="section-heading heading-left" data-sal="slide-right" data-sal-duration="1000"
                  data-sal-delay="300">
-                <h1 class="title h2">{{ t('Here for You') }}</h1>
+                <h1 class="title h2">{{ t('Here for you') }}</h1>
                 <p>{{ t('We love to share our experience with you and love to learn from your experience. Let’s talk!') }}</p>
             </div>
             <div class="banner-thumbnail" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="400">
@@ -34,7 +34,7 @@
                     <div class="blog-grid text-left blog-without-thumb mb--40" data-sal="slide-up"
                          data-sal-duration="500" data-sal-delay="100">
                         <blockquote>
-                            <h5 class="title text-left">{{ t('“We established the Digitization Academy in 2021 as a framework in which to deliver a set of complementary training opportunities to those eager to excel at the creation of digital information about Earth’s biota, especially as documented in biodiversity collections.”') }}</h5>
+                            <h5 class="title text-left fst-italic">{{ t('“We established the Digitization Academy in 2021 as a framework in which to deliver a set of complementary training opportunities to those eager to excel at the creation of digital information about Earth’s biota, especially as documented in biodiversity collections.”') }}</h5>
                         </blockquote>
 
                         <div class="author">

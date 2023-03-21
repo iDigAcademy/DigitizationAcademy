@@ -6,7 +6,7 @@
         <div class="container">
             <div class="section-heading heading-left" data-sal="slide-right" data-sal-duration="1000"
                  data-sal-delay="300">
-                <h1 class="title h2">{{ t('Put Collaborative Learning on your Calendar') }}</h1>
+                <h1 class="title h2">{{ t('Put collaborative learning on your calendar') }}</h1>
                 <p>{{ t('We admit about 25 students to each of our 12-hour courses to ensure that everyone has a chance to contribute. Our 2-hour courses are open to everyone who registers.') }}</p>
             </div>
             <div class="banner-thumbnail" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="400">
