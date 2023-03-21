@@ -4,23 +4,23 @@
             <div class="footer-social-link mt-5">
                 <!-- sponsor logos -->
                 <ul class="list-unstyled">
-                    <li><a href="https://digitizationacademy.org" data-sal="slide-up" data-sal-duration="500"
+                    <li><a href="https://digitizationacademy.org" target="_blank" data-sal="slide-up" data-sal-duration="500"
                            data-sal-delay="100"><img src="{{ vite_asset('resources/media/logo.svg') }}"
                                                      alt="Digitization Academy"
                                                      width="175px" style="filter:grayscale(99%);"></a></li>
-                    <li><a href="https://www.idigbio.org/" data-sal="slide-up" data-sal-duration="500"
+                    <li><a href="https://www.idigbio.org/" target="_blank" data-sal="slide-up" data-sal-duration="500"
                            data-sal-delay="200"><img
                                 src="{{ vite_asset('resources/media/logos/logo-idigbio.svg') }}"
                                 alt="IDigBio"
                                 style="z-index:1; display:block; position: relative;"
                                 width="175px"></a></li>
-                    <li><a href="https://idiginfo.org/" data-sal="slide-up" data-sal-duration="500"
+                    <li><a href="https://idiginfo.org/" target="_blank" data-sal="slide-up" data-sal-duration="500"
                            data-sal-delay="400"><img
                                 src="{{ vite_asset('resources/media/logos/idiginfo.png') }}"
                                 style="z-index:1; display:block; position: relative;"
                                 alt="iDigInfo"
                                 width="175px"></a></li>
-                    <li><a href="https://www.fsu.edu" data-sal="slide-up" data-sal-duration="500"
+                    <li><a href="https://www.fsu.edu" target="_blank" data-sal="slide-up" data-sal-duration="500"
                            data-sal-delay="300"><img
                                 src="{{ vite_asset('resources/media/logos/logo-fsu.svg') }}" alt="FSU"
                                 style="z-index:1; display:block; position: relative;"
