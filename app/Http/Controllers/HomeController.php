@@ -56,9 +56,7 @@ class HomeController extends Controller
         $bottomImage = $this->pageService->getHomeBottomImage();
         $course = $this->pageService->getCourse();
 
-        return config('app.env') === 'production' ?
-            view('tmpHome', compact('topImage', 'bottomImage', 'course')) :
-            view('home', compact('topImage', 'bottomImage', 'course'));
+        return view('home', compact('topImage', 'bottomImage', 'course'));
     }
 
     /**
