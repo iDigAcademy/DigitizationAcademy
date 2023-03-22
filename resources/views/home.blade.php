@@ -231,8 +231,8 @@
                 <ul class="list-unstyled px-5">
                     <li><a href="https://arctosdb.org/" target="_blank" data-sal="slide-up" data-sal-duration="500"
                            data-sal-delay="100"><img
-                                src="{{ vite_asset('resources/media/logos/cms/logo-arctos.png') }}" alt="Arctos"
-                                width="345px"></a></li>
+                                src="{{ vite_asset('resources/media/logos/cms/logo-arctos-gray.png') }}" alt="Arctos"
+                                width="230px"></a></li>
                     <!--
                     <li><a href="https://idigbio.edu.com/" data-sal="slide-up" data-sal-duration="500"
                            data-sal-delay="200"><img
@@ -258,15 +258,15 @@
                     -->
                     <li><a href="https://www.specifysoftware.org/" target="_blank" data-sal="slide-up" data-sal-duration="500"
                            data-sal-delay="200"><img
-                                src="{{ vite_asset('resources/media/logos/cms/logo-scc.png') }}" alt="SCC"
-                                width="345px"></a>
+                                src="{{ vite_asset('resources/media/logos/cms/logo-scc-gray.png') }}" alt="SCC"
+                                width="230px"></a>
                     </li>
 
                     <li><a href="https://symbiota.org/" target="_blank" data-sal="slide-up" data-sal-duration="500"
                            data-sal-delay="100"><img
-                                src="{{ vite_asset('resources/media/logos/cms/logo-symbiota.png') }}"
+                                src="{{ vite_asset('resources/media/logos/cms/logo-symbiota-gray.png') }}"
                                 alt="Symbiota"
-                                width="345px"></a>
+                                width="230px"></a>
                     </li>
                 </ul>
             </div>
