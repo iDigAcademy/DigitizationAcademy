@@ -41,12 +41,11 @@
                     </div>
                     @endif
                     <div class="card-text d-flex justify-content-evenly">
-                    @isset($course->registration_url)
-                    <a href="{{ $course->registration_url }}" target="_blank" class="btn btn-primary">{{ t('Register') }}</a>
-                    @endisset
-                    @isset($course->syllabus_url)
+                        @include('partials.registration-application')
+
+                        @isset($course->syllabus_url)
                         <a href="{{ $course->syllabus_url }}" target="_blank" class="btn btn-primary">{{ t('Syllabus') }}</a>
-                    @endisset
+                        @endisset
                     </div>
                 </div>
             </div><!-- card -->
