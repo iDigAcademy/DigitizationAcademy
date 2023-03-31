@@ -36,8 +36,8 @@
                     </div>
                     @if(isset($course->registration_start_date) && isset($course->registration_end_date))
                     <div class="card-text mb--20">
-                        <span class="fw-bold">{{ t('Registration Start') }}:</span> {{ date_day_string($course->registration_start_date) }}<br>
-                        <span class="fw-bold">{{ t('Registration End') }}:</span> {{ date_day_string($course->registration_end_date) }}
+                        <span class="fw-bold">{{ !$course->url_type ? t('Registration Start') : t('Application Start') }}:</span> {{ date_day_string($course->registration_start_date) }}<br>
+                        <span class="fw-bold">{{ !$course->url_type ? t('Registration End') : t('Application End') }}:</span> {{ date_day_string($course->registration_end_date) }}
                     </div>
                     @endif
                     <div class="card-text d-flex justify-content-evenly">
