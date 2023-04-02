@@ -21,6 +21,7 @@ namespace App\Console\Commands;
 
 use App\Jobs\iDigBioEventCalendarJob;
 use App\Mail\JobError;
+use App\Models\Course;
 use App\Models\IDigBioEvent;
 use App\Models\User;
 use App\Services\IDigBioEventCalendar;
@@ -72,6 +73,10 @@ class AppTest extends Command
         //iDigBioEventCalendarJob::dispatch();
         //$this->getIcsFile();
         //$this->createEvent();
+
+        // now: 2023-03-31 14:28:16.609363 UTC (+00:00)
+        // start: 2023-03-31 00:00:00.0 UTC (+00:00)
+        // end: 2023-03-06 00:00:00.0 UTC (+00:00)
     }
 
     public function readCalendarEvents()

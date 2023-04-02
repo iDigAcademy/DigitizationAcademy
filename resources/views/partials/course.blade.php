@@ -9,16 +9,7 @@
                      alt="Card image cap" style="border-radius: 20px;">
                 <div class="card-body">
                     <h4 class="card-title">{{ $course->title }}</h4>
-                    <div class="card-text">
-                        <span class="fw-bold">{{ t('Start') }}:</span> {{ date_day_string($course->start_date) }}<br>
-                        <span class="fw-bold">{{ t('End') }}:</span> {{ date_day_string($course->end_date) }}
-                    </div>
-                    <div class="card-text">
-                        <span class="fw-bold">{{ t('Schedule') }}:</span> {{ $course->schedule_details }}
-                    </div>
-                    <div class="card-text">
-                        <span class="fw-bold">{{ t('Language') }}:</span> {{ $course->language }}
-                    </div>
+                    @include('partials.course-front-body')
                 </div>
             </div><!-- card -->
         </div> <!-- card front -->
@@ -34,19 +25,7 @@
                     <div class="card-text text-left mb--20">
                         {{ $course->objectives }}
                     </div>
-                    @if(isset($course->registration_start_date) && isset($course->registration_end_date))
-                    <div class="card-text mb--20">
-                        <span class="fw-bold">{{ !$course->url_type ? t('Registration Start') : t('Application Start') }}:</span> {{ date_day_string($course->registration_start_date) }}<br>
-                        <span class="fw-bold">{{ !$course->url_type ? t('Registration End') : t('Application End') }}:</span> {{ date_day_string($course->registration_end_date) }}
-                    </div>
-                    @endif
-                    <div class="card-text d-flex justify-content-evenly">
-                        @include('partials.registration-application')
-
-                        @isset($course->syllabus_url)
-                        <a href="{{ $course->syllabus_url }}" target="_blank" class="btn btn-primary">{{ t('Syllabus') }}</a>
-                        @endisset
-                    </div>
+                    @include('partials.course-back-body')
                 </div>
             </div><!-- card -->
         </div><!-- flip card back -->
