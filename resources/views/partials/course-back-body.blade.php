@@ -8,10 +8,10 @@
     <div class="card-text mb--20">
         @if($nowBetweenDates)
             <span class="fw-bold">
-            {{ !$course->url_type ? t('Registration Start') : t('Application Start') }}:</span>
+            {{ !$course->url_type ? t('Registration Start') : t('Application Start') }}: </span>
             {{ date_day_string($course->registration_start_date) }}
             <br>
-            <span class="fw-bold">{{ !$course->url_type ? t('Registration End') : t('Application End') }}:</span>
+            <span class="fw-bold">{{ !$course->url_type ? t('Registration End') : t('Application End') }}: </span>
             {{ date_day_string($course->registration_end_date) }}
         @elseif ($nowGtEndDate)
             <span class="fw-bold">{{ !$course->url_type ? t('Registration Closed') : t('Application Closed') }}</span>
