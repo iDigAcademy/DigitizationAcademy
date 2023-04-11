@@ -1,7 +1,7 @@
 @if (\Carbon\Carbon::now()->lessThan($course->start_date))
     <div class="card-text">
-        <span class="fw-bold">{{ t('Start') }}:</span>{{ date_day_string($course->start_date) }}<br>
-        <span class="fw-bold">{{ t('End') }}:</span>{{  date_day_string($course->end_date) }}
+        <span class="fw-bold">{{ t('Start') }}:</span> {{ date_day_string($course->start_date) }}<br>
+        <span class="fw-bold">{{ t('End') }}:</span> {{  date_day_string($course->end_date) }}
     </div>
     <div class="card-text">
         <span class="fw-bold">{{ t('Schedule') }}:</span> {{ $course->schedule_details }}
