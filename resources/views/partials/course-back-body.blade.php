@@ -19,18 +19,18 @@
     </div>
 
     <div class="card-text d-flex justify-content-evenly">
-        @if($course->url_type === 0)
+        @if(!$course->url_type)
             @if(isset($course->registration_url) && $nowBetweenDates)
                 <a href="{{ $course->registration_url }}" target="_blank"
                    class="btn btn-primary">{{ t('Register') }}</a>
             @else
-                {{ t('Registration will open about 8 weeks prior to the offering.') }}
+                {{ t('Registration will open about 6 weeks prior to the offering.') }}
             @endif
         @else
             @if(isset($course->registration_url) && $nowBetweenDates)
                 <a href="{{ $course->registration_url }}" target="_blank" class="btn btn-primary">{{ t('Apply') }}</a>
             @else
-                {{ t('Application will open about 8 weeks prior to the offering.') }}
+                {{ t('Application will open about 6 weeks prior to the offering.') }}
             @endif
         @endif
 
@@ -43,8 +43,8 @@
     @if(\Carbon\Carbon::now()->gt($course->end_date))
         {{ !$course->url_type ? t('Registration Closed') : t('Application Closed') }}
     @else
-        {{ $course->url_type ?
-            t('Registration will open about 8 weeks prior to the offering.') :
-            t('Application will open about 8 weeks prior to the offering.') }}
+        {{ !$course->url_type ?
+            t('Registration will open about 6 weeks prior to the offering.') :
+            t('Application will open about 6 weeks prior to the offering.') }}
     @endif
 @endif

@@ -7,13 +7,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-03-03T14:29:17+00:00\n"
-"PO-Revision-Date: 2023-03-03 15:29+0100\n"
+"POT-Creation-Date: 2023-05-09T12:52:55+00:00\n"
+"PO-Revision-Date: 2023-05-09 14:52+0200\n"
 "Language: en_US\n"
 "Plural-Forms: nplurals=2; plural=n!=1;\n"
 
 #: resources/views/about.blade.php:9
-msgid "Here for You"
+msgid "Here for you"
 msgstr ""
 
 #: resources/views/about.blade.php:10
@@ -21,22 +21,22 @@ msgid "We love to share our experience with you and love to learn from your expe
 msgstr ""
 
 #: resources/views/about.blade.php:37
-msgid "“We established the Digitization Academy in 2021 as a framework in which to deliver a set of complementary training opportunities to those eager to excel at the creation of digital information about Earth’s biota, especially as documented in biodiversity collections.”"
+msgid "We established the Digitization Academy in 2021 as a framework in which to deliver a set of complementary training opportunities to those eager to excel at the creation of digital information about Earth’s biota, especially as documented in biodiversity collections."
 msgstr ""
 
 #: resources/views/about.blade.php:44
-msgid "Austin Mast, MPH, PHD, MB"
+msgid "Austin Mast, Digitization Academy Lead"
 msgstr ""
 
-#: resources/views/about.blade.php:76
+#: resources/views/about.blade.php:75
 msgid "Digitization Academy"
 msgstr ""
 
-#: resources/views/about.blade.php:77
+#: resources/views/about.blade.php:76
 msgid "Current Team Members"
 msgstr ""
 
-#: resources/views/about.blade.php:92
+#: resources/views/about.blade.php:91
 msgid "Former Team Members"
 msgstr ""
 
@@ -81,7 +81,7 @@ msgstr ""
 #: resources/views/auth/register.blade.php:6
 #: resources/views/auth/register.blade.php:16
 #: resources/views/components/aside-menu.blade.php:19
-#: resources/views/components/course.blade.php:35
+#: resources/views/partials/course-back-body.blade.php:27
 msgid "Register"
 msgstr ""
 
@@ -106,7 +106,7 @@ msgid "click here to request another"
 msgstr ""
 
 #: resources/views/calendar.blade.php:9
-msgid "Put Collaborative Learning on your Calendar"
+msgid "Put collaborative learning on your calendar"
 msgstr ""
 
 #: resources/views/calendar.blade.php:10
@@ -133,11 +133,6 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: resources/views/components/course.blade.php:33
-#: resources/views/home.blade.php:251
-msgid "Objectives"
-msgstr ""
-
 #: resources/views/components/footer.blade.php:41
 msgid "Sponsorships"
 msgstr ""
@@ -162,12 +157,12 @@ msgstr ""
 msgid "Site by Agency Ks"
 msgstr ""
 
-#: resources/views/contact.blade.php:6
-#: resources/views/notifications/contact.blade.php:2
+#: resources/views/contact.blade.php:7
+#: resources/views/emails/contact.blade.php:2
 msgid "Contact"
 msgstr ""
 
-#: resources/views/contact.blade.php:15
+#: resources/views/contact.blade.php:16
 msgid "Send"
 msgstr ""
 
@@ -179,28 +174,44 @@ msgstr ""
 msgid "We deliver a recurring set of courses on activities that add value to biodiversity observations and specimens with a goal of making biodiversity collections even more relevant to science, society, and Life."
 msgstr ""
 
-#: resources/views/courses.blade.php:37
-msgid "Two Formats"
-msgstr ""
-
 #: resources/views/courses.blade.php:38
-msgid "We package our content in 2-hour or 12-hour formats, depending on the scope of the subject. The longer courses are spread over four days or four weeks."
+msgid "Catalog"
 msgstr ""
 
-#: resources/views/courses.blade.php:39
-msgid "The Catalog"
-msgstr ""
-
-#: resources/views/courses.blade.php:42
+#: resources/views/courses.blade.php:41
 msgid "All"
 msgstr ""
 
-#: resources/views/courses.blade.php:43
+#: resources/views/courses.blade.php:42
 msgid "Past"
 msgstr ""
 
-#: resources/views/courses.blade.php:44
+#: resources/views/courses.blade.php:43
 msgid "Future"
+msgstr ""
+
+#: resources/views/emails/contact.blade.php:5
+msgid "Name"
+msgstr ""
+
+#: resources/views/emails/contact.blade.php:8
+msgid "Email"
+msgstr ""
+
+#: resources/views/emails/contact.blade.php:11
+msgid "Message"
+msgstr ""
+
+#: resources/views/emails/contact.blade.php:14
+msgid "Thank you"
+msgstr ""
+
+#: resources/views/emails/jobs/complete.blade.php:2
+msgid "Job Complete"
+msgstr ""
+
+#: resources/views/emails/jobs/error.blade.php:2
+msgid "Job Error"
 msgstr ""
 
 #: resources/views/home.blade.php:11
@@ -215,115 +226,172 @@ msgstr ""
 msgid "Read More"
 msgstr ""
 
-#: resources/views/home.blade.php:63
-msgid "A strategy built for you"
-msgstr ""
-
 #: resources/views/home.blade.php:64
-msgid "Our Approach"
+msgid "A strategy built for you."
 msgstr ""
 
 #: resources/views/home.blade.php:65
+msgid "Our Approach"
+msgstr ""
+
+#: resources/views/home.blade.php:66
 msgid "Our offerings combine these three elements to level you up on a topic. We aim to provision you with more than an academic understanding. Leave the course with new inspiration and connections to a cohort of professionals from around the world who are tackling the same challenges."
 msgstr ""
 
-#: resources/views/home.blade.php:82
+#: resources/views/home.blade.php:83
 msgid "Our systematic overview builds the foundation."
 msgstr ""
 
-#: resources/views/home.blade.php:88
+#: resources/views/home.blade.php:89
 msgid "We deliver content featuring major dimensions of a topic in engaging ways. All content advances a core set of carefully curated learning objectives."
 msgstr ""
 
-#: resources/views/home.blade.php:103
+#: resources/views/home.blade.php:104
 msgid "Your experience provides the nuance and motivation."
 msgstr ""
 
-#: resources/views/home.blade.php:108
+#: resources/views/home.blade.php:109
 msgid "We aspire to create a learning community with each offering where you feel empowered to share your experience for everyone’s enrichment."
 msgstr ""
 
-#: resources/views/home.blade.php:122
+#: resources/views/home.blade.php:123
 msgid "And an expert panel identifies the leading edge of the possible."
 msgstr ""
 
-#: resources/views/home.blade.php:127
+#: resources/views/home.blade.php:128
 msgid "We feature thought leaders or tool providers who share their latest developments on the topic and address questions from participants."
 msgstr ""
 
-#: resources/views/home.blade.php:162
+#: resources/views/home.blade.php:163
 msgid "Built on iDigBio’s professional development experience."
 msgstr ""
 
-#: resources/views/home.blade.php:163
+#: resources/views/home.blade.php:164
 msgid "Deep experience with digitization and training."
 msgstr ""
 
-#: resources/views/home.blade.php:164
+#: resources/views/home.blade.php:165
 msgid ""
-"Since its founding in 2012, iDigBio has offered over 100 training opportunities, and many\n"
-"                    involved the Digitization Academy’s core staff. iDigBio is the US National Science Foundation’s\n"
-"                    National Resource for Advancing Digitization of Biodiversity Collections and home to the Digitization\n"
-"                    Academy. The Digitization Academy offerings from iDigBio represent a standardized strategy\n"
-"                    for delivery of a subset of iDigBio’s training options to ensure that we have all high-value\n"
+"Since its founding in 2012, iDigBio has offered over 100 training opportunities, and many\r\n"
+"                    involved the Digitization Academy’s core staff. iDigBio is the US National Science Foundation’s\r\n"
+"                    National Resource for Advancing Digitization of Biodiversity Collections and home to the Digitization\r\n"
+"                    Academy. The Digitization Academy offerings from iDigBio represent a standardized strategy\r\n"
+"                    for delivery of a subset of iDigBio’s training options to ensure that we have all high-value\r\n"
 "                    topics covered for you in complementary ways."
 msgstr ""
 
-#: resources/views/home.blade.php:214
+#: resources/views/home.blade.php:215
 msgid "Connecting you with resources for success."
 msgstr ""
 
-#: resources/views/home.blade.php:216
-msgid "Courses like this one introduce you<br>to the people behind the projects."
+#: resources/views/home.blade.php:217
+msgid "Courses like this one introduce you"
 msgstr ""
 
-#: resources/views/home.blade.php:253
-msgid "Learn More"
+#: resources/views/home.blade.php:223
+msgid " to the people behind the projects."
 msgstr ""
 
-#: resources/views/home.blade.php:341
+#: resources/views/home.blade.php:305
 msgid "What participants are saying."
 msgstr ""
 
-#: resources/views/home.blade.php:342
+#: resources/views/home.blade.php:306
 msgid "Evaluations help us further refine our courses with each iteration."
 msgstr ""
 
-#: resources/views/home.blade.php:349
+#: resources/views/home.blade.php:313
 msgid ""
-"Topics were discussed in great detail. The instructors were very\n"
-"                            helpful and enthusiastic in answering queries and sharing resources. The activities were\n"
+"Topics were discussed in great detail. The instructors were very\r\n"
+"                            helpful and enthusiastic in answering queries and sharing resources. The activities were\r\n"
 "                            practical in that the questions were centered around our individual research."
 msgstr ""
 
-#: resources/views/home.blade.php:357
+#: resources/views/home.blade.php:321
 msgid ""
-"This was a really well-put-together class that took\n"
-"                            us through the various steps and details of a collection digitization project. Great\n"
-"                            use of technology, easy to follow, well documented, and well-thought exercises. I am a big\n"
-"                            fan of audience participation, and that was well done. Highly knowledgeable instructors\n"
-"                            too. Austin is skilled at conveying technical relationships in an understandable manner."
+"This was a really well-put-together class that took\r\n"
+"                            us through the various steps and details of a collection digitization project. Great\r\n"
+"                            use of technology, easy to follow, well documented, and well-thought exercises. I am a big\r\n"
+"                            fan of audience participation, and that was well done."
 msgstr ""
 
-#: resources/views/home.blade.php:367
+#: resources/views/home.blade.php:330
 msgid ""
-"I have not worked with digitization before, and\n"
-"                            this taught me so many things I needed to learn and things I didn't even know I needed to\n"
+"I have not worked with digitization before, and\r\n"
+"                            this taught me so many things I needed to learn and things I didn't even know I needed to\r\n"
 "                            think about."
 msgstr ""
 
-#: resources/views/notifications/contact.blade.php:5
-msgid "Name"
+#: resources/views/partials/course-back-body.blade.php:11
+msgid "Registration Start"
 msgstr ""
 
-#: resources/views/notifications/contact.blade.php:8
-msgid "Email"
+#: resources/views/partials/course-back-body.blade.php:11
+msgid "Application Start"
 msgstr ""
 
-#: resources/views/notifications/contact.blade.php:11
-msgid "Message"
+#: resources/views/partials/course-back-body.blade.php:15
+msgid "Registration End"
 msgstr ""
 
-#: resources/views/notifications/contact.blade.php:14
-msgid "Thank you"
+#: resources/views/partials/course-back-body.blade.php:15
+msgid "Application End"
+msgstr ""
+
+#: resources/views/partials/course-back-body.blade.php:19
+#: resources/views/partials/course-back-body.blade.php:48
+msgid "Registration Closed"
+msgstr ""
+
+#: resources/views/partials/course-back-body.blade.php:19
+#: resources/views/partials/course-back-body.blade.php:48
+msgid "Application Closed"
+msgstr ""
+
+#: resources/views/partials/course-back-body.blade.php:29
+#: resources/views/partials/course-back-body.blade.php:52
+msgid "Registration will open about 6 weeks prior to the offering."
+msgstr ""
+
+#: resources/views/partials/course-back-body.blade.php:34
+msgid "Apply"
+msgstr ""
+
+#: resources/views/partials/course-back-body.blade.php:36
+#: resources/views/partials/course-back-body.blade.php:53
+msgid "Application will open about 6 weeks prior to the offering."
+msgstr ""
+
+#: resources/views/partials/course-back-body.blade.php:43
+msgid "Syllabus"
+msgstr ""
+
+#: resources/views/partials/course-front-body.blade.php:3
+msgid "Start"
+msgstr ""
+
+#: resources/views/partials/course-front-body.blade.php:4
+msgid "End"
+msgstr ""
+
+#: resources/views/partials/course-front-body.blade.php:8
+#: resources/views/partials/course-front-body.blade.php:20
+msgid "Schedule"
+msgstr ""
+
+#: resources/views/partials/course-front-body.blade.php:12
+#: resources/views/partials/course-front-body.blade.php:24
+msgid "Language"
+msgstr ""
+
+#: resources/views/partials/course-front-body.blade.php:17
+msgid "In Progress"
+msgstr ""
+
+#: resources/views/partials/course-front-body.blade.php:29
+msgid "Completed"
+msgstr ""
+
+#: resources/views/partials/course.blade.php:24
+msgid "Objectives"
 msgstr ""
