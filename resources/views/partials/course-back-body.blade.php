@@ -30,7 +30,7 @@
             @if(isset($course->registration_url) && $nowBetweenDates)
                 <a href="{{ $course->registration_url }}" target="_blank" class="btn btn-primary">{{ t('Apply') }}</a>
             @else
-                {{ t('Application will open about 6 weeks prior to the offering.') }}
+                {{ t('Application will open about 8 weeks prior to the offering.') }}
             @endif
         @endif
 
@@ -45,6 +45,6 @@
     @else
         {{ !$course->url_type ?
             t('Registration will open about 6 weeks prior to the offering.') :
-            t('Application will open about 6 weeks prior to the offering.') }}
+            t('Application will open about 8 weeks prior to the offering.') }}
     @endif
 @endif
