@@ -7,8 +7,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-05-09T12:52:55+00:00\n"
-"PO-Revision-Date: 2023-05-09 14:52+0200\n"
+"POT-Creation-Date: 2023-05-09T13:21:04+00:00\n"
+"PO-Revision-Date: 2023-05-09 15:21+0200\n"
 "Language: en_US\n"
 "Plural-Forms: nplurals=2; plural=n!=1;\n"
 
@@ -359,7 +359,7 @@ msgstr ""
 
 #: resources/views/partials/course-back-body.blade.php:36
 #: resources/views/partials/course-back-body.blade.php:53
-msgid "Application will open about 6 weeks prior to the offering."
+msgid "Application will open about 8 weeks prior to the offering."
 msgstr ""
 
 #: resources/views/partials/course-back-body.blade.php:43
