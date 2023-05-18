@@ -14,6 +14,15 @@
 
     <x-scripts/>
     @vite(['resources/js/app.js'])
+<!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBKJG01XTP"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-XBKJG01XTP');
+    </script>
 </head>
 <body class="sticky-header">
 <a href="#main-wrapper" id="backto-top" class="back-to-top">
