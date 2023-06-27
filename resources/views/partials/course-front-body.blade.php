@@ -21,6 +21,8 @@
     </div>
 @else
     <div class="card-text">
-        <span class="fw-bold">{{ t('Completed') }}</span>
+        <span class="fw-bold">{{ t('Completed') }}</span><br>
+        <span class="fw-bold">{{ t('Start') }}:</span> {{ date_day_string($course->start_date) }}<br>
+        <span class="fw-bold">{{ t('End') }}:</span> {{  date_day_string($course->end_date) }}
     </div>
 @endif
