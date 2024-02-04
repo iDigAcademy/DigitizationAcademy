@@ -36,30 +36,42 @@ class PageImage extends Model
         'page',
         'position',
         'image',
-        'active'
+        'active',
     ];
+
+    /**
+     * Page image scope.
+     *
+     * @param $query
+     * @param string $page
+     * @return mixed
+     */
+    public function scopePage($query, string $page): mixed
+    {
+        return $query->where('page', $page);
+    }
+
+    /**
+     * Position scope.
+     *
+     * @param $query
+     * @param int $position
+     * @return mixed
+     */
+    public function scopePosition($query, int $position = 0): mixed
+    {
+        return $query->where('position', $position);
+    }
 
     /**
      * Active scope.
      *
      * @param $query
+     * @param int $active
      * @return mixed
      */
-    public function scopeActive($query): mixed
+    public function scopeActive($query, int $active = 1): mixed
     {
-        return $query->where('active', 1);
-    }
-
-    /**
-     * Scope for page images.
-     *
-     * @param $query
-     * @param string $page
-     * @param int $position
-     * @return mixed
-     */
-    public function scopePageImage($query, string $page, int $position = 0): mixed
-    {
-        return $query->where('page', $page)->where('position', $position)->active();
+        return $query->where('active', $active);
     }
 }

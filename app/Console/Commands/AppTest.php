@@ -23,6 +23,7 @@ use App\Jobs\iDigBioEventCalendarJob;
 use App\Mail\JobError;
 use App\Models\Course;
 use App\Models\IDigBioEvent;
+use App\Models\PageImage;
 use App\Models\User;
 use App\Services\IDigBioEventCalendar;
 use Carbon\Carbon;
@@ -70,6 +71,9 @@ class AppTest extends Command
      */
     public function handle()
     {
+        $result = PageImage::where('page', 'home')->get();
+        dd($result);
+
         //iDigBioEventCalendarJob::dispatch();
         //$this->getIcsFile();
         //$this->createEvent();
