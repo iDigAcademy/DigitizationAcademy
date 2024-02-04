@@ -50,7 +50,8 @@ class ContactFormRequest extends FormRequest
                 'email',
                 'max:255'
             ],
-            'message' => ['required', 'string']
+            'message' => ['required', 'string'],
+            'g-recaptcha-response' => 'required|captcha',
         ];
     }
 }

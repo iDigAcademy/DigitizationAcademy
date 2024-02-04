@@ -10,12 +10,17 @@
                                 <x:form::input name="name" type="text" id="name" label="{{ trans('Name') }}"/>
                                 <x:form::input name="email" type="email" id="email" label="{{ trans('Email') }}"/>
                                 <x:form::textarea name="message" id="message" label="{{ trans('Message') }}"/>
+                                @if ($errors->has('g-recaptcha-response'))
+                                    <span class="help-block color-action">
+                                    <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                    </span>
+                                @endif
+                                {!! NoCaptcha::renderJs() !!}
                                 {!! NoCaptcha::display() !!}
                                 <div class="d-block text-center mt-4">
                                     <x:form::button.submit>{{ t('Send') }}</x:form::button.submit>
                                 </div>
                             </x-form::form>
-                            {!! NoCaptcha::renderJs() !!}
                         </div>
                     </div>
                 </div>
