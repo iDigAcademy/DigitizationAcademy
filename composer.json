@@ -14,7 +14,7 @@
         "laravel/fortify": "^1.13",
         "laravel/framework": "^9.19",
         "laravel/horizon": "^5.10",
-        "laravel/nova": "~4.0",
+        "laravel/nova": "4.27.13",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "okipa/laravel-form-components": "^1.0",

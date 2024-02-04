@@ -120,6 +120,7 @@ class AppDeployFiles extends Command
         $this->apps = collect([
             'APP_PATH',
             'APP_ENV',
+            'APP_DOMAIN',
             'SERVER_USER',
         ]);
     }
