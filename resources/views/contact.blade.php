@@ -6,17 +6,11 @@
                     <div class="card">
                         <div class="card-header">{{ t('Contact') }}</div>
                         <div class="card-body">
-                            <x-form::form method="POST" action="{{ route('contact.store') }}">
+                            <x-form::form method="POST" class="recaptcha" action="{{ route('contact.store') }}">
                                 <x:form::input name="name" type="text" id="name" label="{{ trans('Name') }}"/>
                                 <x:form::input name="email" type="email" id="email" label="{{ trans('Email') }}"/>
                                 <x:form::textarea name="message" id="message" label="{{ trans('Message') }}"/>
-                                @if ($errors->has('g-recaptcha-response'))
-                                    <span class="help-block color-action">
-                                    <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
-                                    </span>
-                                @endif
-                                {!! NoCaptcha::renderJs() !!}
-                                {!! NoCaptcha::display() !!}
+                                @include('partials.recaptcha')
                                 <div class="d-block text-center mt-4">
                                     <x:form::button.submit>{{ t('Send') }}</x:form::button.submit>
                                 </div>

@@ -17,41 +17,28 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace App\Models;
+namespace App\Rules;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Spiritix\LadaCache\Database\LadaCacheTrait;
+use Closure;
+use Illuminate\Contracts\Validation\ValidationRule;
+use Illuminate\Support\Facades\Http;
 
-class IDigBioEvent extends Model
+class ReCaptcha implements ValidationRule
 {
-    use HasFactory, LadaCacheTrait;
-
     /**
-     * The table associated with the model.
+     * Run the validation rule.
      *
-     * @var string
+     * @param \Closure(string): \Illuminate\Translation\PotentiallyTranslatedString $fail
      */
-    protected $table = 'idigbio_events';
+    public function validate(string $attribute, mixed $value, Closure $fail): void
+    {
+        $response = Http::asForm()->post(config('services.recaptcha.url'), [
+            'secret'   => config('services.recaptcha.secret_key'),
+            'response' => $value,
+        ]);
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'event_id',
-        'event_uid'
-    ];
-
-    /**
-     * The attributes that should be mutated to dates.
-     * DATETIME to database, Carbon out.
-     *
-     * @var array
-     */
-    protected $dates = [
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime'
-    ];
+        if (! ($response->json()["success"] ?? false)) {
+            $fail('The google recaptcha is required.');
+        }
+    }
 }

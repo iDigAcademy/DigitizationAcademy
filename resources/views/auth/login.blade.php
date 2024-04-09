@@ -10,12 +10,12 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <x-form::form method="POST" action="{{ route('login') }}">
+                        <x-form::form method="POST" action="{{ route('login') }}" class="recaptcha">
                             <x:form::input name="email" type="email" id="email" label="{{ trans('Email') }}"/>
                             <x:form::input name="password" type="password" id="password"
                                            label="{{ trans('Password') }}"/>
                             <x:form::checkbox name="remember" label="{{ t('Remember Me') }}"/>
-                            {!! NoCaptcha::display() !!}
+                            @include('partials.recaptcha')
                             <div class="d-block text-center mt-4">
                                 <x:form::button.submit>{{ t('Login') }}</x:form::button.submit>
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
@@ -23,7 +23,6 @@
                                 </a>
                             </div>
                         </x-form::form>
-                        {!! NoCaptcha::renderJs() !!}
                     </div>
                 </div>
             </div>

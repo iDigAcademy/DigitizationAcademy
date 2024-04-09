@@ -61,13 +61,13 @@ class Course extends Model
      *
      * @var array
      */
-    protected $dates = [
-        'created_at',
-        'updated_at',
-        'start_date',
-        'end_date',
-        'registration_start_date',
-        'registration_end_date',
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+        'start_date' => 'datetime',
+        'end_date' => 'datetime',
+        'registration_start_date' => 'datetime',
+        'registration_end_date' => 'datetime',
     ];
 
     /**
