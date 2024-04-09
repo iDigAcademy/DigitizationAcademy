@@ -19,6 +19,7 @@
 
 return [
     'app_path'         => base_path(),
+    'app_domain'      => env('APP_DOMAIN'),
     'server_user'      => env('SERVER_USER', 'ubuntu'),
     'page_image_dir'   => 'page_image',
     'course_image_dir' => 'course_image',
