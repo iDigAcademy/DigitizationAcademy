@@ -28,8 +28,8 @@ class TeamPresenter extends Presenter
      */
     public function teamImage()
     {
-        return isset($this->entity->image) && Storage::disk('public')->exists($this->entity->image) ?
-            Storage::url($this->entity->image) :
+        return isset($this->model->image) && Storage::disk('public')->exists($this->model->image) ?
+            Storage::url($this->model->image) :
             Storage::url('default_image/team_default.jpg');
     }
 }

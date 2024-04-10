@@ -30,8 +30,8 @@ class CoursePresenter extends Presenter
      */
     public function frontImage(): string
     {
-        return isset($this->entity->front_image) && Storage::disk('public')->exists($this->entity->front_image) ?
-            Storage::url($this->entity->front_image) :
+        return isset($this->model->front_image) && Storage::disk('public')->exists($this->model->front_image) ?
+            Storage::url($this->model->front_image) :
             Storage::url('default_image/course_default_front.png');
     }
 
