@@ -17,19 +17,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace App\Models\Presenters;
+namespace App\Exceptions;
 
-use Illuminate\Support\Facades\Storage;
-
-class TeamPresenter extends Presenter
+class PresenterException extends \Exception
 {
-    /**
-     * @return string
-     */
-    public function teamImage()
-    {
-        return isset($this->entity->image) && Storage::disk('public')->exists($this->entity->image) ?
-            Storage::url($this->entity->image) :
-            Storage::url('default_image/team_default.jpg');
-    }
+    //
 }

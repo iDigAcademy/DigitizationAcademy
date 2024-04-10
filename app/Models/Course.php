@@ -23,11 +23,11 @@ use App\Models\Presenters\CoursePresenter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spiritix\LadaCache\Database\LadaCacheTrait;
-use Laracasts\Presenter\PresentableTrait;
+use App\Models\Traits\Presentable;
 
 class Course extends Model
 {
-    use HasFactory, LadaCacheTrait, PresentableTrait;
+    use HasFactory, LadaCacheTrait, Presentable;
 
     /**
      * @var string

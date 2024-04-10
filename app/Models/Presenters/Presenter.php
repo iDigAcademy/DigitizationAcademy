@@ -19,31 +19,45 @@
 
 namespace App\Models\Presenters;
 
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Model;
 
-class CoursePresenter extends Presenter
+abstract class Presenter
 {
     /**
-     * Return front image url if present or default image.
-     *
-     * @return string
+     * @var \Illuminate\Database\Eloquent\Model
      */
-    public function frontImage(): string
+    protected $model;
+
+    /**
+     * @param \Illuminate\Database\Eloquent\Model $model
+     */
+    public function __construct(Model $model)
     {
-        return isset($this->entity->front_image) && Storage::disk('public')->exists($this->entity->front_image) ?
-            Storage::url($this->entity->front_image) :
-            Storage::url('default_image/course_default_front.png');
+        $this->model = $model;
     }
 
     /**
-     * Return back image url if present or default image.
-     *
-     * @return string
+     * @param $property
+     * @return bool
      */
-    public function backImage(): string
+    public function __isset($property)
     {
-        return isset($this->entity->back_image) && Storage::disk('public')->exists($this->entity->back_image) ?
-            Storage::url($this->entity->back_image) :
-            Storage::url('default_image/course_default_back.png');
+        return method_exists($this, Str::camel($property));
+    }
+
+    /**
+     * @param $property
+     * @return mixed
+     */
+    public function __get($property)
+    {
+        $camel_property = Str::camel($property);
+
+        if (method_exists($this, $camel_property)) {
+            return $this->{$camel_property}();
+        }
+
+        return $this->model->{Str::snake($property)};
     }
 }

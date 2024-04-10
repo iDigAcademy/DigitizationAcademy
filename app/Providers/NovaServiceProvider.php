@@ -23,11 +23,9 @@ namespace App\Providers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
-use Itsmejoshua\Novaspatiepermissions\Novaspatiepermissions;
-use Laravel\Nova\Menu\Menu;
-use Laravel\Nova\Menu\MenuSection;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
+use Vyuldashev\NovaPermission\NovaPermissionTool;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -103,7 +101,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function tools()
     {
         return [
-            Novaspatiepermissions::make(),
+            NovaPermissionTool::make(),
         ];
     }
 

@@ -1,6 +1,4 @@
 <?php
-
-
 /*
  * Copyright (c) 2022. Digitization Academy
  * idigacademy@gmail.com
@@ -89,8 +87,8 @@ class User extends Resource
                 return array_combine($tzList, $tzList);
             })->displayUsingLabels(),
             Date::make('Verified Date', 'email_verified_at'),
-            MorphToMany::make('Roles', 'roles', \Itsmejoshua\Novaspatiepermissions\Role::class),
-            MorphToMany::make('Permissions', 'permissions', \Itsmejoshua\Novaspatiepermissions\Permission::class),
+            MorphToMany::make('Roles', 'roles', \Vyuldashev\NovaPermission\Role::class),
+            MorphToMany::make('Permissions', 'permissions', \Vyuldashev\NovaPermission\Permission::class),
         ];
     }
 

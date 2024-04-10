@@ -17,19 +17,31 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace App\Models\Presenters;
+namespace App\Models\Traits;
 
-use Illuminate\Support\Facades\Storage;
+use App\Exceptions\PresenterException;
 
-class TeamPresenter extends Presenter
+trait Presentable
 {
     /**
-     * @return string
+     * @var \App\Models\Presenters\Presenter
      */
-    public function teamImage()
+    protected $presenterInstance;
+
+    /**
+     * @return mixed
+     * @throws PresenterException
+     */
+    public function present(): mixed
     {
-        return isset($this->entity->image) && Storage::disk('public')->exists($this->entity->image) ?
-            Storage::url($this->entity->image) :
-            Storage::url('default_image/team_default.jpg');
+        if (is_object($this->presenterInstance)) {
+            return $this->presenterInstance;
+        }
+
+        if (property_exists($this, 'presenter') and class_exists($this->presenter)) {
+            return $this->presenterInstance = new $this->presenter($this);
+        }
+
+        throw new PresenterException('Property $presenter was not set correctly in '.get_class($this));
     }
 }
