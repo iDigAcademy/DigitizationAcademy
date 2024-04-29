@@ -16,33 +16,30 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+namespace App\Http\ViewComposers;
+
+use App\Models\Notice;
+use Illuminate\Contracts\View\View;
+
+/**
+ * Class NoticesComposer
+ *
+ * @package App\Http\ViewComposers
+ */
+class NoticesComposer
 {
     /**
-     * Run the migrations.
+     * Bind data to the view.
      *
+     * @param  View  $view
      * @return void
      */
-    public function up()
+    public function compose(View $view)
     {
-        Schema::table('courses', function (Blueprint $table) {
-            $table->string('language')->after('objectives')->default('English')->nullable();
-        });
-    }
+        $notices = Notice::where('enabled', 1)->get();
+        $notices = $notices->isEmpty() ? null : $notices;
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::table('courses', function (Blueprint $table) {
-            $table->dropColumn('language');
-        });
+        $view->with('notices', $notices);
     }
-};
+}

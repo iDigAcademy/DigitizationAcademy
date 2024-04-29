@@ -17,35 +17,27 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace App\View\Components;
+namespace App\Models;
 
-use Illuminate\View\Component;
+use Illuminate\Database\Eloquent\Model;
+use Spiritix\LadaCache\Database\LadaCacheTrait;
 
-class Course extends Component
+/**
+ * Class Notice
+ *
+ * @package App\Models
+ */
+class Notice extends Model
 {
-    /**
-     * @var \App\Models\Course
-     */
-    public \App\Models\Course $course;
+    use LadaCacheTrait;
 
     /**
-     * Create a new component instance.
-     *
-     * @return void
+     * @inheritDoc
      */
-    public function __construct(\App\Models\Course $course)
-    {
+    protected $table = 'notices';
 
-        $this->course = $course;
-    }
-
-    /**
-     * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\Contracts\View\View|\Closure|string
-     */
-    public function render()
-    {
-        return view('components.course');
-    }
+    protected $fillable = [
+        'message',
+        'enabled'
+    ];
 }

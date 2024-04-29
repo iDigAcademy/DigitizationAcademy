@@ -16,6 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -24,25 +25,23 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::table('courses', function (Blueprint $table) {
-            $table->string('language')->after('objectives')->default('English')->nullable();
+        Schema::create('notices', function (Blueprint $table) {
+            $table->id();
+            $table->string('message', 500)->nullable();
+            $table->tinyInteger('enabled')->default(0)->index();
+            $table->timestamp('created_at')->nullable()->useCurrent();
+            $table->timestamp('updated_at')->nullable()->useCurrent();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::table('courses', function (Blueprint $table) {
-            $table->dropColumn('language');
-        });
+        Schema::dropIfExists('notices');
     }
 };

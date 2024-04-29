@@ -5,7 +5,7 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^8.0.2",
+        "php": "^8.2.0",
         "guzzlehttp/guzzle": "^7.2",
         "johngrogg/ics-parser": "^3.2",
         "kiritokatklian/nova-permission": "^4.0",
