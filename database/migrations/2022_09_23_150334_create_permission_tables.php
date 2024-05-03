@@ -1,6 +1,4 @@
 <?php
-
-
 /*
  * Copyright (c) 2022. Digitization Academy
  * idigacademy@gmail.com
