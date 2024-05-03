@@ -32,7 +32,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('calendar:update')->timezone('America/New_York')->dailyAt('03:00');
+
     }
 
     /**
