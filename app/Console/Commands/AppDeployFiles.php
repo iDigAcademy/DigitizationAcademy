@@ -1,7 +1,8 @@
 <?php
+
 /*
- * Copyright (C) 2015  Biospex
- * biospex@gmail.com
+ * Copyright (c) 2022. Digitization Academy
+ * idigacademy@gmail.com
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -11,7 +12,7 @@
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
+ * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
@@ -26,8 +27,6 @@ use Storage;
 
 /**
  * Class AppFileDeployment
- *
- * @package App\Console\Commands
  */
 class AppDeployFiles extends Command
 {
@@ -36,7 +35,7 @@ class AppDeployFiles extends Command
      *
      * @var string
      */
-    protected $signature = 'deploy:files';
+    protected $signature = 'app:deploy-files';
 
     /**
      * The console command description.
@@ -45,19 +44,10 @@ class AppDeployFiles extends Command
      */
     protected $description = 'Handles moving, renaming, and replacing files needed per environment settings';
 
-    /**
-     * @var string
-     */
     private string $resPath;
 
-    /**
-     * @var string
-     */
     private string $supPath;
 
-    /**
-     * @var Collection
-     */
     private Collection $apps;
 
     /**
@@ -82,7 +72,7 @@ class AppDeployFiles extends Command
 
         $supFiles = File::files($this->resPath.'/supervisor');
         $supTargets = collect($supFiles)->map(function ($file) {
-            $target = $this->supPath . '/' . $file->getBaseName();
+            $target = $this->supPath.'/'.$file->getBaseName();
             if (File::exists($target)) {
                 File::delete($target);
             }
@@ -100,7 +90,6 @@ class AppDeployFiles extends Command
     }
 
     /**
-     * @param $search
      * @return false|\Illuminate\Config\Repository|mixed|string
      */
     private function configureReplace($search): mixed
