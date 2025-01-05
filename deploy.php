@@ -33,12 +33,12 @@ set('writable_mode', 'chmod');
 set('keep_releases', 3);
 
 // Hosts
-
+/*
 host('production')
     ->setHostname('3.142.169.134')
     ->setDeployPath('{{base_path}}/test')
     ->set('branch', 'main');
-
+*/
 host('development')
     ->setHostname('3.142.169.134')
     ->setDeployPath('{{base_path}}/dev.digitizationacademy')
@@ -69,7 +69,7 @@ task('deploy', [
 ]);
 
 // Hooks
-after('deploy:update_code', 'upload:env');
-after('deploy:update_code', 'yarn:install');
-after('deploy:update_code', 'npm:build');
+after('deploy:vendors', 'upload:env');
+after('deploy:vendors', 'yarn:install');
+after('deploy:vendors', 'npm:build');
 after('deploy:failed', 'deploy:unlock');
