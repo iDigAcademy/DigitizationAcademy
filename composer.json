@@ -30,10 +30,10 @@
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^8",
-        "pestphp/pest": "^2.24",
-        "pestphp/pest-plugin-faker": "^2.0",
-        "pestphp/pest-plugin-laravel": "^2.2",
-        "phpunit/phpunit": "^10",
+        "pestphp/pest": "^v3.0",
+        "pestphp/pest-plugin-faker": "^3.0",
+        "pestphp/pest-plugin-laravel": "^3.0",
+        "phpunit/phpunit": "^11",
         "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {
