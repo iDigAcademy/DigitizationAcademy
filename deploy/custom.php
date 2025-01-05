@@ -22,12 +22,12 @@ namespace Deployer;
 
 task('artisan:app:update-queries', function () {
     cd('{{release_or_current_path}}');
-    run('php artisan update:queries');
+    run('php artisan app:update-queries');
 })->desc('Deploying files...');
 
 task('artisan:app:deploy-files', function () {
     cd('{{release_or_current_path}}');
-    run('php artisan deploy:files');
+    run('php artisan app:deploy-files');
 })->desc('Running update queries...');
 
 desc('Setting permissions...');
@@ -37,13 +37,13 @@ task('set:permissions', function () {
 })->desc('Setting permissions...');
 
 desc('Install project dependencies');
-task('yarn:install', function () {
+task('yarn:run-install', function () {
     cd('{{release_path}}');
-    run('yarn install --prod --ignore-engines');
+    run('yarn install --ignore-engines');
 });
 
 desc('Build project');
-task('npm:build', function () {
+task('npm:run-build', function () {
     cd('{{release_path}}');
     run('npm run build');
 });
@@ -57,3 +57,6 @@ task('upload:env', function () {
     };
     upload($file, '{{deploy_path}}/shared/.env');
 });
+
+desc('Publish all Sweet Alert 2 assets');
+task('artisan:sweetalert:publish', artisan('sweetalert:publish'));
