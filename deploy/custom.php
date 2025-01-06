@@ -20,13 +20,13 @@
 
 namespace Deployer;
 
-desc('Deploying files...');
+desc('Running update queries...');
 task('artisan:app:update-queries', function () {
     cd('{{release_or_current_path}}');
     run('php artisan app:update-queries');
 });
 
-desc('Running update queries...');
+desc('Deploying files...');
 task('artisan:app:deploy-files', function () {
     cd('{{release_or_current_path}}');
     run('php artisan app:deploy-files');
