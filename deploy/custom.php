@@ -20,21 +20,23 @@
 
 namespace Deployer;
 
+desc('Deploying files...');
 task('artisan:app:update-queries', function () {
     cd('{{release_or_current_path}}');
     run('php artisan app:update-queries');
-})->desc('Deploying files...');
+});
 
+desc('Running update queries...');
 task('artisan:app:deploy-files', function () {
     cd('{{release_or_current_path}}');
     run('php artisan app:deploy-files');
-})->desc('Running update queries...');
+});
 
 desc('Setting permissions...');
 task('set:permissions', function () {
     run('sudo chown -R ubuntu.www-data {{deploy_path}}');
     run('sudo truncate -s 0 {{release_or_current_path}}/storage/logs/laravel.log');
-})->desc('Setting permissions...');
+});
 
 desc('Install project dependencies');
 task('yarn:run-install', function () {
