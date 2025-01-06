@@ -71,6 +71,7 @@ task('deploy', [
     'artisan:app:update-queries',
     'set:permissions',
     'deploy:publish',
+    'supervisor:reload',
 ]);
 
 // Hooks

@@ -62,3 +62,11 @@ task('upload:env', function () {
 
 desc('Publish all Sweet Alert 2 assets');
 task('artisan:sweetalert:publish', artisan('sweetalert:publish'));
+
+desc('Reload Supervisor');
+task('supervisor:reload', function () {
+    cd('{{release_path}}');
+    run('sudo supervisorctl reread');
+    run('sudo supervisorctl update');
+    run('sudo supervisorctl restart supervisor.service');
+});
