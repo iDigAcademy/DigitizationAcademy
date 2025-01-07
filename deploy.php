@@ -72,6 +72,7 @@ task('deploy', [
     'set:permissions',
     'deploy:publish',
     'supervisor:reload',
+    'artisan:queue:restart',
 ]);
 
 // Hooks

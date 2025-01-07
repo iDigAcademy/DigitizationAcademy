@@ -68,5 +68,5 @@ task('supervisor:reload', function () {
     cd('{{release_path}}');
     run('sudo supervisorctl reread');
     run('sudo supervisorctl update');
-    run('sudo supervisorctl restart supervisor.service');
+    run('sudo systemctl restart supervisor');
 });
