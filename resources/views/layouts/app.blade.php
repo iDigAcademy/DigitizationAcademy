@@ -12,7 +12,6 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="{{ vite_asset('resources/media/favicon.png') }}">
 
-    <x-scripts/>
     @vite(['resources/js/app.js'])
 <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBKJG01XTP"></script>
