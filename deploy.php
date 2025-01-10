@@ -47,9 +47,9 @@ host('development')
 desc('Deploys your project');
 task('deploy', [
     'deploy:prepare',
+    'upload:env',
     'deploy:vendors',
     'artisan:storage:link',
-    'upload:env',
     'yarn:run-install',
     'npm:run-build',
     'artisan:nova:publish',
