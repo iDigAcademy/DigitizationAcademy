@@ -47,7 +47,7 @@ task('yarn:run-install', function () {
 desc('Build project');
 task('npm:run-build', function () {
     cd('{{release_path}}');
-    run('npm run build');
+    run('npm run prod');
 });
 
 desc('Upload env file depending on the host');
