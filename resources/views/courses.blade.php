@@ -16,13 +16,13 @@
         </div>
         <ul class="shape-group-8 list-unstyled">
             <li class="shape shape-1" data-sal="slide-right" data-sal-duration="500" data-sal-delay="100">
-                <img src="{{ vite_asset('resources/media/others/bubble-9.png') }}" alt="Bubble">
+                <img src="{{ mix('images/others/bubble-9.png') }}" alt="Bubble">
             </li>
             <li class="shape shape-2" data-sal="slide-left" data-sal-duration="500" data-sal-delay="200">
-                <img src="{{ vite_asset('resources/media/others/bubble-teal-corp.png') }}" alt="Teal Bubble">
+                <img src="{{ mix('images/others/bubble-teal-corp.png') }}" alt="Teal Bubble">
             </li>
             <li class="shape shape-3" data-sal="slide-up" data-sal-duration="500" data-sal-delay="300">
-                <img src="{{ vite_asset('resources/media/others/line-4.png') }}" alt="Line">
+                <img src="{{ mix('images/others/line-4.png') }}" alt="Line">
             </li>
         </ul>
     </div>
@@ -55,17 +55,17 @@
         <ul class="shape-group-6 list-unstyled">
             <li class="shape shape-1 sal-animate" data-sal="slide-right" data-sal-duration="800"
                 data-sal-delay="100">
-                <img src="{{ vite_asset('resources/media/others/bubble-7.png') }}" id="leftBackLeaf"
+                <img src="{{ mix('images/others/bubble-7.png') }}" id="leftBackLeaf"
                      alt="Digitization Academy Symbol"
                      data-sal="slide-right" data-sal-duration="500" data-sal-delay="600"></li>
             <li style="margin-bottom:40px;"></li>
         </ul>
 
         <ul class="list-unstyled shape-group-10">
-            <li class="shape shape-4"><img src="{{ vite_asset('resources/media/others/bubble-3.png') }}"
+            <li class="shape shape-4"><img src="{{ mix('images/others/bubble-3.png') }}"
                                            style="opacity:.1" alt="Line">
             </li>
-            <li class="shape shape-4"><img src="{{ vite_asset('resources/media/others/line-5.png') }}" alt="line"
+            <li class="shape shape-4"><img src="{{ mix('images/others/line-5.png') }}" alt="line"
                                            style="z-index: -1" ;>
             </li>
         </ul>

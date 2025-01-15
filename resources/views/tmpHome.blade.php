@@ -23,26 +23,26 @@
                     src="{{ $bottomImage }}" alt="Shape"></li>
             <li class="shape shape-3 sal-animate" data-sal="zoom-in" data-sal-duration="500"
                 data-sal-delay="600"
-                style="opacity:.22;"><img src="{{ vite_asset('resources/media/others/bubble-16.png') }}"
+                style="opacity:.22;"><img src="{{ mix('images/others/bubble-16.png') }}"
                                           alt="Shape"></li>
             <li class="shape shape-4 sal-animate" data-sal="zoom-in" data-sal-duration="500"
                 data-sal-delay="600"
-                style="opacity:.1"><img src="{{ vite_asset('resources/media/others/bubble-15.png') }}"
+                style="opacity:.1"><img src="{{ mix('images/others/bubble-15.png') }}"
                                         alt="Shape">
             </li>
             <li class="shape shape-5 sal-animate" data-sal="zoom-in" data-sal-duration="500"
                 data-sal-delay="600"
-                style="opacity:.05"><img src="{{ vite_asset('resources/media/others/bubble-14.png') }}"
+                style="opacity:.05"><img src="{{ mix('images/others/bubble-14.png') }}"
                                          alt="Shape">
             </li>
             <li class="shape shape-6 sal-animate" data-sal="zoom-in" data-sal-duration="500"
                 data-sal-delay="600"
-                style="opacity:.05"><img src="{{ vite_asset('resources/media/others/bubble-16.png') }}"
+                style="opacity:.05"><img src="{{ mix('images/others/bubble-16.png') }}"
                                          alt="Shape">
             </li>
             <li class="shape shape-7 sal-animate" data-sal="slide-down" data-sal-duration="500"
                 data-sal-delay="600"
-                style="opacity:.7"><img src="{{ vite_asset('resources/media/others/bubble-26.png') }}"
+                style="opacity:.7"><img src="{{ mix('images/others/bubble-26.png') }}"
                                         alt="Shape">
             </li>
         </ul>

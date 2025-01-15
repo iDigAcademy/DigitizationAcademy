@@ -18,13 +18,13 @@
         </div>
         <ul class="shape-group-8 list-unstyled">
             <li class="shape shape-1" data-sal="slide-right" data-sal-duration="500" data-sal-delay="100">
-                <img src="{{ vite_asset('resources/media/others/bubble-9.png') }}" alt="Bubble">
+                <img src="{{ mix('images/others/bubble-9.png') }}" alt="Bubble">
             </li>
             <li class="shape shape-2" data-sal="slide-left" data-sal-duration="500" data-sal-delay="200">
-                <img src="{{ vite_asset('resources/media/others/bubble-21.png') }}" alt="Bubble">
+                <img src="{{ mix('images/others/bubble-21.png') }}" alt="Bubble">
             </li>
             <li class="shape shape-3" data-sal="slide-up" data-sal-duration="500" data-sal-delay="300">
-                <img src="{{ vite_asset('resources/media/others/line-4.png') }}" alt="Line">
+                <img src="{{ mix('images/others/line-4.png') }}" alt="Line">
             </li>
         </ul>
     </div>
@@ -41,7 +41,7 @@
                     <div class="col-lg-4 col-md-6" data-sal="slide-up" data-sal-duration="800" data-sal-delay="100">
                         <div class="services-grid service-style-2">
                             <div class="thumbnail">
-                                <img src="{{ vite_asset('resources/media/icon/icon-31.png') }}" alt="icon">
+                                <img src="{{ mix('images/icon/icon-31.png') }}" alt="icon">
                             </div>
                             <div class="content">
                                 <h5 class="title"><a href="#">Your Title </a></h5>
@@ -54,7 +54,7 @@
                     <div class="col-lg-4 col-md-6" data-sal="slide-up" data-sal-duration="800" data-sal-delay="200">
                         <div class="services-grid service-style-2">
                             <div class="thumbnail">
-                                <img src="{{ vite_asset('resources/media/icon/icon-32.png') }}" alt="icon">
+                                <img src="{{ mix('images/icon/icon-32.png') }}" alt="icon">
                             </div>
                             <div class="content">
                                 <h5 class="title"><a href="#">Mobile Specimens</a></h5>
@@ -67,7 +67,7 @@
                     <div class="col-lg-4 col-md-6" data-sal="slide-up" data-sal-duration="800" data-sal-delay="300">
                         <div class="services-grid service-style-2">
                             <div class="thumbnail">
-                                <img src="{{ vite_asset('resources/media/icon/icon-33.png') }}" alt="icon">
+                                <img src="{{ mix('images/icon/icon-33.png') }}" alt="icon">
                             </div>
                             <div class="content">
                                 <h5 class="title"><a href="#">Your Title</a></h5>
@@ -82,7 +82,7 @@
             <ul class="shape-group-6 list-unstyled">
                 <li class="shape shape-1 sal-animate" data-sal="slide-right" data-sal-duration="800"
                     data-sal-delay="100">
-                    <img src="{{ vite_asset('resources/media/others/bubble-7.png') }}" id="leftBackLeaf"
+                    <img src="{{ mix('images/others/bubble-7.png') }}" id="leftBackLeaf"
                          alt="Digitization Academy Symbol"
                          data-sal="slide-right" data-sal-duration="500" data-sal-delay="600"></li>
                 <li style="margin-bottom:40px;"></li>
@@ -100,7 +100,7 @@
                     <div class="col-lg-4 col-md-6" data-sal="slide-up" data-sal-duration="800" data-sal-delay="100">
                         <div class="services-grid service-style-2">
                             <div class="thumbnail">
-                                <img src="{{ vite_asset('resources/media/icon/icon-39.png') }}" alt="icon">
+                                <img src="{{ mix('images/icon/icon-39.png') }}" alt="icon">
                             </div>
                             <div class="content">
                                 <h5 class="title"><a href="service-business.html">Digital Specimens</a></h5>
@@ -113,7 +113,7 @@
                     <div class="col-lg-4 col-md-6" data-sal="slide-up" data-sal-duration="800" data-sal-delay="200">
                         <div class="services-grid service-style-2">
                             <div class="thumbnail">
-                                <img src="{{ vite_asset('resources/media/icon/icon-40.png') }}" alt="icon">
+                                <img src="{{ mix('images/icon/icon-40.png') }}" alt="icon">
                             </div>
                             <div class="content">
                                 <h5 class="title"><a href="service-business.html">Courses</a></h5>
@@ -126,7 +126,7 @@
                     <div class="col-lg-4 col-md-6" data-sal="slide-up" data-sal-duration="800" data-sal-delay="300">
                         <div class="services-grid service-style-2">
                             <div class="thumbnail">
-                                <img src="{{ vite_asset('resources/media/icon/icon-41.png') }}" alt="icon">
+                                <img src="{{ mix('images/icon/icon-41.png') }}" alt="icon">
                             </div>
                             <div class="content">
                                 <h5 class="title"><a href="service-business.html">Instructors</a></h5>
@@ -139,7 +139,7 @@
                     <div class="col-lg-4 col-md-6" data-sal="slide-up" data-sal-duration="800" data-sal-delay="100">
                         <div class="services-grid service-style-2">
                             <div class="thumbnail">
-                                <img src="{{ vite_asset('resources/media/icon/icon-42.png') }}" alt="icon">
+                                <img src="{{ mix('images/icon/icon-42.png') }}" alt="icon">
                             </div>
                             <div class="content">
                                 <h5 class="title"><a href="service-business.html">Reporting</a></h5>
@@ -213,11 +213,11 @@
             </div>
         </div>
         <ul class="list-unstyled shape-group-10">
-            <li class="shape shape-1"><img src="{{ vite_asset('resources/media/others/circle-1.png') }}" alt="Circle">
+            <li class="shape shape-1"><img src="{{ mix('images/others/circle-1.png') }}" alt="Circle">
             </li>
-            <li class="shape shape-2"><img src="{{ vite_asset('resources/media/others/line-3.png') }}" alt="Circle">
+            <li class="shape shape-2"><img src="{{ mix('images/others/line-3.png') }}" alt="Circle">
             </li>
-            <li class="shape shape-3"><img src="{{ vite_asset('resources/media/others/bubble-5.png') }}" alt="Circle">
+            <li class="shape shape-3"><img src="{{ mix('images/others/bubble-5.png') }}" alt="Circle">
             </li>
         </ul>
     </section>

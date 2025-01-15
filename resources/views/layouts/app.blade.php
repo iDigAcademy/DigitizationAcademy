@@ -10,10 +10,13 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <link rel="shortcut icon" type="image/x-icon" href="{{ vite_asset('resources/media/favicon.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ mix('images/favicon.png') }}">
 
-    @vite(['resources/js/app.js'])
-<!-- Google tag (gtag.js) -->
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <script src="{{ mix('js/app.js') }}" defer></script>
+    @include('components.scripts')
+
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBKJG01XTP"></script>
     <script>
         window.dataLayer = window.dataLayer || [];

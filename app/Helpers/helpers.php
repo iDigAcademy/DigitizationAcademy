@@ -19,14 +19,6 @@
 
 use Illuminate\Support\Carbon;
 
-if (! function_exists('vite_asset')) {
-
-    function vite_asset($path): string
-    {
-        return \Illuminate\Support\Facades\Vite::asset($path);
-    }
-}
-
 if (! function_exists('date_day_string')) {
     function date_day_string(Carbon $date): string
     {

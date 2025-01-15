@@ -173,6 +173,7 @@ return [
 
     'providers' => [
 
+        Illuminate\Concurrency\ConcurrencyServiceProvider::class,
         /*
          * Laravel Framework Service Providers...
          */

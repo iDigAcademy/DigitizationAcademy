@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="header-navbar">
                 <div class="header-logo">
-                    <a href="/"><img class="light-version-logo" src="{{ vite_asset('resources/media/logo.svg') }}"
+                    <a href="/"><img class="light-version-logo" src="{{ mix('images/logo.svg') }}"
                                      alt="logo"
                                      style="width:170px;"></a>
                 </div>
@@ -17,7 +17,7 @@
                             <div class="mobile-nav-header">
                                 <div class="mobile-nav-logo">
                                     <a href="{{ route('home') }}">
-                                        <img class="light-mode" src="{{ vite_asset('resources/media/logo.svg') }}"
+                                        <img class="light-mode" src="{{ mix('images/logo.svg') }}"
                                              style="width:150px"
                                              alt="Digitization Academy Logo"></a>
                                 </div>

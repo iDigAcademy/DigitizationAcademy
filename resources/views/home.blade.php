@@ -26,26 +26,26 @@
                     src="{{ $bottomImage }}" alt="Shape"></li>
             <li class="shape shape-3 sal-animate" data-sal="zoom-in" data-sal-duration="500"
                 data-sal-delay="600"
-                style="opacity:.22;"><img src="{{ vite_asset('resources/media/others/bubble-16.png') }}"
+                style="opacity:.22;"><img src="{{ mix('images/others/bubble-16.png') }}"
                                           alt="Shape"></li>
             <li class="shape shape-4 sal-animate" data-sal="zoom-in" data-sal-duration="500"
                 data-sal-delay="600"
-                style="opacity:.1"><img src="{{ vite_asset('resources/media/others/bubble-15.png') }}"
+                style="opacity:.1"><img src="{{ mix('images/others/bubble-15.png') }}"
                                         alt="Shape">
             </li>
             <li class="shape shape-5 sal-animate" data-sal="zoom-in" data-sal-duration="500"
                 data-sal-delay="600"
-                style="opacity:.05"><img src="{{ vite_asset('resources/media/others/bubble-14.png') }}"
+                style="opacity:.05"><img src="{{ mix('images/others/bubble-14.png') }}"
                                          alt="Shape">
             </li>
             <li class="shape shape-6 sal-animate" data-sal="zoom-in" data-sal-duration="500"
                 data-sal-delay="600"
-                style="opacity:.05"><img src="{{ vite_asset('resources/media/others/bubble-16.png') }}"
+                style="opacity:.05"><img src="{{ mix('images/others/bubble-16.png') }}"
                                          alt="Shape">
             </li>
             <li class="shape shape-7 sal-animate" data-sal="slide-down" data-sal-duration="500"
                 data-sal-delay="600"
-                style="opacity:.7"><img src="{{ vite_asset('resources/media/others/bubble-26.png') }}"
+                style="opacity:.7"><img src="{{ mix('images/others/bubble-26.png') }}"
                                         alt="Shape">
             </li>
         </ul>
@@ -78,7 +78,7 @@
                                             data-bs-toggle="collapse"
                                             data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">
                                         <span class="acc_number"><img
-                                                src="{{ vite_asset('resources/media/logos/leaf-left.svg') }}"
+                                                src="{{ mix('images/logos/leaf-left.svg') }}"
                                                 width="100px" style="margin-top: -25px;"> </span>
                                         <h6>{{ t('Our systematic overview builds the foundation.') }}</h6>
                                     </button>
@@ -98,7 +98,7 @@
                                             data-bs-toggle="collapse"
                                             data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
                                         <span class="acc_number"><img
-                                                src="{{ vite_asset('resources/media/logos/leaf-yellow-orange-center.png') }}"
+                                                src="{{ mix('images/logos/leaf-yellow-orange-center.png') }}"
                                                 width="100px"
                                                 style="margin-top: -25px;"> </span>
                                         <h6>{{ t('Your experience provides the nuance and motivation.') }}</h6>
@@ -118,7 +118,7 @@
                                             data-bs-toggle="collapse"
                                             data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
                                         <span class="acc_number"><img
-                                                src="{{ vite_asset('resources/media/logos/leaf-right.svg') }}"
+                                                src="{{ mix('images/logos/leaf-right.svg') }}"
                                                 width="100px" style="margin-top: -25px;"> </span>
                                         <h6>{{ t('And an expert panel identifies the leading edge of the possible.') }}</h6>
                                     </button>
@@ -138,16 +138,16 @@
         <ul class="shape-group-6 list-unstyled">
             <li class="shape shape-2 sal-animate" data-sal="slide-down" data-sal-duration="800"
                 data-sal-delay="100">
-                <img src="{{ vite_asset('resources/media/others/line-4.png') }}" alt="line" style="z-index: -1">
+                <img src="{{ mix('images/others/line-4.png') }}" alt="line" style="z-index: -1">
             </li>
             <li class="shape shape-1 sal-animate" data-sal="slide-right" data-sal-duration="800"
                 data-sal-delay="100">
-                <img src="{{ vite_asset('resources/media/others/bubble-7.png') }}" alt="Bubble"
+                <img src="{{ mix('images/others/bubble-7.png') }}" alt="Bubble"
                      style="z-index: 1;width: 1050px; margin-left: -315px;opacity: .75;"></li>
             <li style="margin-bottom:40px;"></li>
         </ul>
         <ul class="shape-group-1 list-unstyled">
-            <li class="shape shape-2"><img src="{{ vite_asset('resources/media/others/bubble-23.png') }}"
+            <li class="shape shape-2"><img src="{{ mix('images/others/bubble-23.png') }}"
                                            alt="Bubble"></li>
         </ul>
     </section>
@@ -173,35 +173,35 @@
 
         <ul class="list-unstyled shape-group-9 overview">
             <li class="shape shape-1"></li>
-            <li class="shape shape-2"><img src="{{ vite_asset('resources/media/others/bubble-16.png') }}"
+            <li class="shape shape-2"><img src="{{ mix('images/others/bubble-16.png') }}"
                                            style="opacity:.05" alt="Comments">
             </li>
-            <li class="shape shape-3"><img src="{{ vite_asset('resources/media/others/bubble-13.png') }}"
+            <li class="shape shape-3"><img src="{{ mix('images/others/bubble-13.png') }}"
                                            style="opacity:.05" alt="Comments">
             </li>
 
-            <li class="shape shape-4"><img src="{{ vite_asset('resources/media/others/bubble-14.png') }}"
+            <li class="shape shape-4"><img src="{{ mix('images/others/bubble-14.png') }}"
                                            style="opacity:.05" alt="Comments">
             </li>
-            <li class="shape shape-5"><img src="{{ vite_asset('resources/media/others/bubble-16.png') }}"
+            <li class="shape shape-5"><img src="{{ mix('images/others/bubble-16.png') }}"
                                            style="opacity:.05" alt="Comments">
             </li>
-            <li class="shape shape-6"><img src="{{ vite_asset('resources/media/others/bubble-15.png') }}"
+            <li class="shape shape-6"><img src="{{ mix('images/others/bubble-15.png') }}"
                                            style="opacity:.05" alt="Comments">
             </li>
-            <li class="shape shape-7"><img src="{{ vite_asset('resources/media/others/bubble-16.png') }}"
+            <li class="shape shape-7"><img src="{{ mix('images/others/bubble-16.png') }}"
                                            style="opacity:.05" alt="Comments">
             </li>
         </ul>
         <ul class="list-unstyled shape-group-10">
-            <li class="shape shape-1"><img src="{{ vite_asset('resources/media/others/bubble-15.png') }}"
+            <li class="shape shape-1"><img src="{{ mix('images/others/bubble-15.png') }}"
                                            style="opacity:.1" alt=" O "></li>
 
-            <li class="shape shape-3"><img src="{{ vite_asset('resources/media/others/bubble-5.png') }}"
+            <li class="shape shape-3"><img src="{{ mix('images/others/bubble-5.png') }}"
                                            alt="line"
                                            style="opacity:.1"></li>
         </ul>
-        <img src="{{ vite_asset('resources/media/logos/idig-bio-leaves.svg') }}" id="idigLeaf" alt="Comments">
+        <img src="{{ mix('images/logos/idig-bio-leaves.svg') }}" id="idigLeaf" alt="Comments">
     </section>
 
 
@@ -231,40 +231,40 @@
                 <ul class="list-unstyled px-5">
                     <li><a href="https://arctosdb.org/" target="_blank" data-sal="slide-up" data-sal-duration="500"
                            data-sal-delay="100"><img
-                                src="{{ vite_asset('resources/media/logos/cms/logo-arctos-gray.png') }}" alt="Arctos"
+                                src="{{ mix('images/logos/cms/logo-arctos-gray.png') }}" alt="Arctos"
                                 width="230px"></a></li>
                     <!--
                     <li><a href="https://idigbio.edu.com/" data-sal="slide-up" data-sal-duration="500"
                            data-sal-delay="200"><img
-                                src="{{ vite_asset('resources/media/logos/cms/logo-axiell.png') }}" alt="Axiell"
+                                src="{{ mix('images/logos/cms/logo-axiell.png') }}" alt="Axiell"
                                 width="115px"></a></li>
 
                     <li><a href="https://www.fsu.com/" data-sal="slide-up" data-sal-duration="500"
                            data-sal-delay="300"><img
-                                src="{{ vite_asset('resources/media/logos/cms/logo-brahms.png') }}" alt="Brahms"
+                                src="{{ mix('images/logos/cms/logo-brahms.png') }}" alt="Brahms"
                                 width="100px"></a></li>
 
                     <li><a href="https://idigbio.edu/" data-sal="slide-up" data-sal-duration="500"
                            data-sal-delay="100"><img
-                                src="{{ vite_asset('resources/media/logos/cms/logo-collection-space.png') }}"
+                                src="{{ mix('images/logos/cms/logo-collection-space.png') }}"
                                 alt="Collection Space"
                                 width="115px"></a></li>
 
                     <li><a href="https://www.linkedin.com/" data-sal="slide-up" data-sal-duration="500"
                            data-sal-delay="400"><img
-                                src="{{ vite_asset('resources/media/logos/cms/logo-earthcape.png') }}"
+                                src="{{ mix('images/logos/cms/logo-earthcape.png') }}"
                                 alt="Earth Cape"
                                 width="115px"></a></li>
                     -->
                     <li><a href="https://www.specifysoftware.org/" target="_blank" data-sal="slide-up" data-sal-duration="500"
                            data-sal-delay="200"><img
-                                src="{{ vite_asset('resources/media/logos/cms/logo-scc-gray.png') }}" alt="SCC"
+                                src="{{ mix('images/logos/cms/logo-scc-gray.png') }}" alt="SCC"
                                 width="230px"></a>
                     </li>
 
                     <li><a href="https://symbiota.org/" target="_blank" data-sal="slide-up" data-sal-duration="500"
                            data-sal-delay="100"><img
-                                src="{{ vite_asset('resources/media/logos/cms/logo-symbiota-gray.png') }}"
+                                src="{{ mix('images/logos/cms/logo-symbiota-gray.png') }}"
                                 alt="Symbiota"
                                 width="230px"></a>
                     </li>
@@ -273,24 +273,24 @@
 
         </aside>
         <ul class="shape-group-20 list-unstyled">
-            <li class="shape shape-2"><img src="{{ vite_asset('resources/media/others/bubble-23.png') }}"
+            <li class="shape shape-2"><img src="{{ mix('images/others/bubble-23.png') }}"
                                            alt="Bubble"></li>
-            <li class="shape shape-4"><img src="{{ vite_asset('resources/media/others/line-5.png') }}"
+            <li class="shape shape-4"><img src="{{ mix('images/others/line-5.png') }}"
                                            alt="Line">
             </li>
-            <li class="shape shape-5"><img src="{{ vite_asset('resources/media/others/line-4.png') }}"
+            <li class="shape shape-5"><img src="{{ mix('images/others/line-4.png') }}"
                                            alt="Line">
             </li>
-            <li class="shape shape-6"><img src="{{ vite_asset('resources/media/others/line-6.png') }}"
+            <li class="shape shape-6"><img src="{{ mix('images/others/line-6.png') }}"
                                            alt="Line">
             </li>
-            <li class="shape shape-1"><img src="{{ vite_asset('resources/media/others/bubble-26.png') }}"
+            <li class="shape shape-1"><img src="{{ mix('images/others/bubble-26.png') }}"
                                            style="filter:grayscale(99%); opacity: .15;" alt="Bubble"></li>
         </ul>
         <ul class="shape-group-6 list-unstyled">
             <li class="shape shape-2 sal-animate" data-sal="slide-down" data-sal-duration="800"
                 data-sal-delay="100">
-                <img src="{{ vite_asset('resources/media/others/line-4.png') }}" alt="line" style="z-index:-1">
+                <img src="{{ mix('images/others/line-4.png') }}" alt="line" style="z-index:-1">
             </li>
         </ul>
     </section>
@@ -335,13 +335,13 @@
             </div>
 
             <ul class="shape-group-17 list-unstyled">
-                <li class="shape shape-1"><img src="{{ vite_asset('resources/media/others/bubble-24.png') }}"
+                <li class="shape shape-1"><img src="{{ mix('images/others/bubble-24.png') }}"
                                                alt="Bubble" style="opacity:.2">
                 </li>
-                <li class="shape shape-2"><img src="{{ vite_asset('resources/media/others/bubble-23.png') }}"
+                <li class="shape shape-2"><img src="{{ mix('images/others/bubble-23.png') }}"
                                                alt="Bubble" style="opacity:.2">
                 </li>
-                <li class="shape shape-4"><img src="{{ vite_asset('resources/media/others/line-5.png') }}"
+                <li class="shape shape-4"><img src="{{ mix('images/others/line-5.png') }}"
                                                alt="Line"></li>
 
             </ul>
