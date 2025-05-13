@@ -13,10 +13,9 @@
 
                     {{ t('Before proceeding, please check your email for a verification link.') }}
                     {{ t('If you did not receive the email') }},
-                    <form class="d-inline" method="POST" action="{{ route('verification.send') }}">
-                        @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ t('click here to request another') }}</button>.
-                    </form>
+                    <x-form class="d-inline" action="{{ route('verification.send') }}">
+                        <x-form-button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ t('click here to request another') }}</x-form-button>.
+                    </x-form>
                 </div>
                 <p class="mt-3 mb-0 text-center"><small>Issues with the verification process or entered the wrong email?
                         <br>Please sign up with <a href="{{ route('register-retry') }}">another</a> email address.</small></p>

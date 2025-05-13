@@ -25,6 +25,7 @@
 
         gtag('config', 'G-XBKJG01XTP');
     </script>
+    @bukStyles
 </head>
 <body class="sticky-header">
 <a href="#main-wrapper" id="backto-top" class="back-to-top">
@@ -60,5 +61,6 @@
 </div>
 @include('sweetalert::alert')
 @stack('scripts')
+@bukScripts
 </body>
 </html>

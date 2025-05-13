@@ -5,15 +5,18 @@
             <div class="card">
                 <div class="card-header">{{ t('Reset Password') }}</div>
                 <div class="card-body">
-                    <x-form::form method="POST" action="{{ route('password.update') }}">
-                        <x:form::input name="token" type="hidden" id="token" value="{{ request()->route('token') }}"/>
-                        <x:form::input name="email" type="email" id="email" label="{{ trans('Email') }}"/>
-                        <x:form::input name="password" type="password" id="password" label="{{ trans('Password') }}"/>
-                        <x:form::input name="password_confirmation" type="password" id="password_confirmation" label="{{ trans('Confirm Password') }}"/>
+                    <x-form method="POST" action="{{ route('password.update') }}">
+                        <x-input name="token" type="hidden" id="token" value="{{ request()->route('token') }}"/>
+                        <x-label for="email" />
+                        <x-email />
+                        <x-label for="password" />
+                        <x-password />
+                        <x-label for="password_confirmation" />
+                        <x-password name="password_confirmation" type="password" id="password_confirmation" />
                         <div class="d-block text-center">
-                            <x:form::button.submit>{{ t('Reset Password') }}</x:form::button.submit>
+                            <x-form-button>{{ t('Reset Password') }}</x-form-button>
                         </div>
-                    </x-form::form>
+                    </x-form>
                 </div>
             </div>
         </div>

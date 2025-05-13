@@ -8,15 +8,11 @@
                 <div class="card-body">
                     {{ t('Please confirm your password before continuing.') }}
 
-                    <form method="POST" action="{{ route('password.confirm') }}">
-                        @csrf
-
+                    <x-form action="{{ route('password.confirm') }}">
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ t('Password') }}</label>
-
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
+                                <x-password class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" />
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -27,9 +23,9 @@
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <x-form-button class="btn btn-primary">
                                     {{ t('Confirm Password') }}
-                                </button>
+                                </x-form-button>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
@@ -38,7 +34,7 @@
                                 @endif
                             </div>
                         </div>
-                    </form>
+                    </x-form>
                 </div>
             </div>
         </div>

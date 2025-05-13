@@ -10,12 +10,14 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                        <x-form::form method="POST" action="{{ route('password.email') }}">
-                            <x:form::input name="email" type="email" id="email" label="{{ trans('Email') }}"/>
+                        <x-form method="POST" action="{{ route('password.email') }}">
+                            <x-label for="email"/>
+                            <x-email />
+                            <x-error for="email"/>
                             <div class="d-block text-center">
-                                <x:form::button.submit>{{ t('Send Password Reset Link') }}</x:form::button.submit>
+                                <x-form-button>{{ t('Send Password Reset Link') }}</x-form-button>
                             </div>
-                        </x-form::form>
+                        </x-form>
                 </div>
             </div>
         </div>

@@ -6,21 +6,23 @@
     "license": "MIT",
     "require": {
         "php": "^8.2.0",
+        "blade-ui-kit/blade-ui-kit": "^0.7.0",
         "google/apiclient": "^2.18",
         "guzzlehttp/guzzle": "^7.2",
+        "inertiajs/inertia-laravel": "1.x-dev as 1.32.3",
         "johngrogg/ics-parser": "^3.2",
         "kiritokatklian/nova-permission": "^4.0",
         "laravel/fortify": "^1.13",
-        "laravel/framework": "^11.0",
+        "laravel/framework": "^12.0",
         "laravel/horizon": "^5.10",
         "laravel/nova": "^4.0",
+        "laravel/pint": "^1.18",
         "laravel/sanctum": "^v4.0.0",
         "laravel/tinker": "^2.7",
-        "okipa/laravel-form-components": "dev-main",
         "pixelcreation/nova-field-sortable": "^3.2",
-        "realrashid/sweet-alert": "^v7.1.0",
+        "realrashid/sweet-alert": "^v7.3.0",
         "spatie/laravel-permission": "^6.0",
-        "spiritix/lada-cache": "^5.2",
+        "spiritix/lada-cache": "dev-l12-compatibility",
         "tio/laravel": "^1.20"
     },
     "require-dev": {
@@ -79,8 +81,11 @@
         {
             "type": "git",
             "url": "https://github.com/rbruhn/laravel-form-components"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/laravel-shift/lada-cache.git"
         }
-
     ],
     "extra": {
         "laravel": {
