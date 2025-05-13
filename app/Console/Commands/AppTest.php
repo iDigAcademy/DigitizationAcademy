@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright (c) 2022. Digitization Academy
  * idigacademy@gmail.com
@@ -49,10 +50,8 @@ class AppTest extends Command
 
     /**
      * Execute the console command.
+     *
      * @return void
      */
-    public function handle()
-    {
-
-    }
+    public function handle() {}
 }

@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2.0",
+        "google/apiclient": "^2.18",
         "guzzlehttp/guzzle": "^7.2",
         "johngrogg/ics-parser": "^3.2",
         "kiritokatklian/nova-permission": "^4.0",

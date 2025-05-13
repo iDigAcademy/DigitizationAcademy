@@ -25,4 +25,6 @@ return [
     'course_image_dir' => 'course_image',
     'team_image_dir'   => 'team_image',
     'idigbio_event_calendar' => env('IDIGBIO_EVENT_CALENDAR'),
+    'google_course_calender_id' => env('GOOGLE_COURSE_CALENDER_ID'),
+    'google_credential_file' => env('GOOGLE_CREDENTIAL_FILE'),
 ];
