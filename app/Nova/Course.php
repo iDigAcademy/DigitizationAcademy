@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright (c) 2022. Digitization Academy
  * idigacademy@gmail.com
@@ -65,7 +66,6 @@ class Course extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
      * @return array
      */
     public function fields(NovaRequest $request)
@@ -76,10 +76,10 @@ class Course extends Resource
             Textarea::make('Objectives')->rules('required', 'string', 'min:10', 'max:1000')->help('Max 1000 characters'),
             Select::make('Language', 'language')->options(['English' => 'English', 'Spanish' => 'Spanish']),
             Image::make('Front Image')->store(function (Request $request) {
-                    return [
-                        'front_image'      => $request->front_image->store(config('config.course_image_dir'), 'public'),
-                    ];
-                })->maxWidth(100)
+                return [
+                    'front_image' => $request->front_image->store(config('config.course_image_dir'), 'public'),
+                ];
+            })->maxWidth(100)
                 ->creationRules('image', 'mimes:jpg,jpeg,png', 'dimensions:min_width=468,min_height=353')
                 ->updateRules('image', 'mimes:jpg,jpeg,png', 'dimensions:min_width=468,min_height=353')
                 ->preview(function ($value, $disk) {
@@ -89,10 +89,10 @@ class Course extends Resource
                 })
                 ->prunable()->hideFromIndex()->help('Min width 468px, Min height 353px'),
             Image::make('Back Image')->store(function (Request $request) {
-                    return [
-                        'back_image'      => $request->back_image->store(config('config.course_image_dir'), 'public'),
-                    ];
-                })->maxWidth(100)
+                return [
+                    'back_image' => $request->back_image->store(config('config.course_image_dir'), 'public'),
+                ];
+            })->maxWidth(100)
                 ->creationRules('image', 'mimes:jpg,jpeg,png', 'dimensions:min_width=468,min_height=100')
                 ->updateRules('image', 'mimes:jpg,jpeg,png', 'dimensions:min_width=468,min_height=100')
                 ->preview(function ($value, $disk) {
@@ -101,23 +101,26 @@ class Course extends Resource
                         : Storage::disk($disk)->url('default_image/course_default_back.png');
                 })
                 ->prunable()->hideFromIndex()->help('Min width 468px, Min height 100px'),
-            Date::make('Start Date')->rules('required'),
-            Date::make('End Date')->rules('required'),
-            Text::make('Schedule Details')->rules('required', 'string', 'max: 30')->hideFromIndex()->help('Max 30 characters'),
+            Date::make('Start Date')->rules('required')->sortable(),
+            Date::make('End Date')->rules('required')->sortable(),
+            Text::make('Schedule Details')->rules('required', 'string', 'max: 30')->help('Max 30 characters'),
             URL::make('Registration/Application URL', 'registration_url')->rules('min:0', 'max:150')->hideFromIndex()->help('Max 150 characters'),
-            Select::make('URL Type',)->options([0 => 'Registration', 1 => 'Application'])->rules('required'),
+            Select::make('URL Type')->options([0 => 'Registration', 1 => 'Application'])->rules('required')->displayUsing(function ($value) {
+                $options = [0 => 'Registration', 1 => 'Application'];
+
+                return $options[$value] ?? $value;
+            }),
             Date::make('Registration Start Date')->hideFromIndex(),
             Date::make('Registration End Date')->hideFromIndex(),
             URL::make('Syllabus URL')->hideFromIndex()->rules('min:0', 'max:150')->help('Max 150 characters'),
-            Boolean::make('Active'),
-            Boolean::make('Home Page')
+            Boolean::make('Active')->sortable(),
+            Boolean::make('Home Page'),
         ];
     }
 
     /**
      * Get the cards available for the request.
      *
-     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
      * @return array
      */
     public function cards(NovaRequest $request)
@@ -128,7 +131,6 @@ class Course extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
      * @return array
      */
     public function filters(NovaRequest $request)
@@ -139,7 +141,6 @@ class Course extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
      * @return array
      */
     public function lenses(NovaRequest $request)
@@ -150,7 +151,6 @@ class Course extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
      * @return array
      */
     public function actions(NovaRequest $request)
