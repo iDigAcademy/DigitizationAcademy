@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright (c) 2022. Digitization Academy
  * idigacademy@gmail.com
@@ -17,25 +18,20 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace App\Http\ViewComposers;
+namespace App\View\Composers;
 
 use App\Models\Notice;
 use Illuminate\Contracts\View\View;
 
 /**
  * Class NoticesComposer
- *
- * @package App\Http\ViewComposers
  */
 class NoticesComposer
 {
     /**
      * Bind data to the view.
-     *
-     * @param  View  $view
-     * @return void
      */
-    public function compose(View $view)
+    public function compose(View $view): void
     {
         $notices = Notice::where('enabled', 1)->get();
         $notices = $notices->isEmpty() ? null : $notices;

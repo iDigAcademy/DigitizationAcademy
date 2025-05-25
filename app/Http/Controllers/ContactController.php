@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright (c) 2022. Digitization Academy
  * idigacademy@gmail.com
@@ -28,8 +29,6 @@ class ContactController extends Controller
 {
     /**
      * Contact index.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(): Renderable
     {
@@ -38,21 +37,16 @@ class ContactController extends Controller
 
     /**
      * Send contact form.
-     *
-     * @param \App\Http\Requests\ContactFormRequest $request
-     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(ContactFormRequest $request): RedirectResponse
     {
-        try{
+        try {
             $mail = (new Contact($request->all()))->onQueue('mail');
             \Mail::to(config('mail.from.address'))->queue($mail);
 
             return redirect()->back()->with('toast_success', trans('Contact message sent successfully.'));
-        }
-        catch (\Throwable $exception)
-        {
-            return redirect()->back()->with('toast_error', trans('An error occurred sending your message. ' . $exception->getMessage()));
+        } catch (\Throwable $exception) {
+            return redirect()->back()->with('toast_error', trans('An error occurred sending your message. '.$exception->getMessage()));
         }
     }
 }

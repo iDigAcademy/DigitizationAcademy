@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright (c) 2022. Digitization Academy
  * idigacademy@gmail.com
@@ -19,7 +20,7 @@
 
 namespace App\Providers;
 
-use App\Http\ViewComposers\NoticesComposer;
+use App\View\Composers\NoticesComposer;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 

@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright (c) 2022. Digitization Academy
  * idigacademy@gmail.com
@@ -20,18 +21,34 @@
 namespace App\Models;
 
 use App\Models\Presenters\CoursePresenter;
+use App\Models\Traits\Presentable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spiritix\LadaCache\Database\LadaCacheTrait;
-use App\Models\Traits\Presentable;
+use Str;
 
 class Course extends Model
 {
     use HasFactory, LadaCacheTrait, Presentable;
 
     /**
-     * @var string
+     * Boot the model.
      */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($course) {
+            $course->slug = Str::slug($course->title);
+        });
+
+        static::updating(function ($course) {
+            if ($course->isDirty('title')) {
+                $course->slug = Str::slug($course->title);
+            }
+        });
+    }
+
     protected string $presenter = CoursePresenter::class;
 
     /**
@@ -41,18 +58,12 @@ class Course extends Model
      */
     protected $fillable = [
         'title',
+        'slug',
         'objectives',
-        'front_image',
-        'back_image',
+        'page_image',
+        'tile_image',
         'active',
-        'home_page',
-        'start_date',
-        'end_date',
-        'schedule_details',
-        'registration_url',
-        'registration_start_date',
-        'registration_end_date',
-        'syllabus_url'
+        'syllabus',
     ];
 
     /**
@@ -64,17 +75,10 @@ class Course extends Model
     protected $casts = [
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
-        'start_date' => 'datetime',
-        'end_date' => 'datetime',
-        'registration_start_date' => 'datetime',
-        'registration_end_date' => 'datetime',
     ];
 
     /**
      * Active scope.
-     *
-     * @param $query
-     * @return mixed
      */
     public function scopeActive($query): mixed
     {
@@ -83,13 +87,9 @@ class Course extends Model
 
     /**
      * Home page scope for course.
-     *
-     * @param $query
-     * @return mixed
      */
     public function scopeHome($query): mixed
     {
         return $query->where('home_page', 1);
     }
-
 }

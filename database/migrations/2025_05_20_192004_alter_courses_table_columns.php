@@ -17,7 +17,7 @@ return new class extends Migration
             $table->renameColumn('front_image', 'page_image');
             $table->renameColumn('back_image', 'tile_image');
             $table->renameColumn('syllabus_url', 'syllabus');
-
+            $table->string('slug')->after('title')->nullable();
         });
     }
 

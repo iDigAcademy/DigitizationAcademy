@@ -1,4 +1,3 @@
-
 /*
  * Copyright (c) 2022. Digitization Academy
  * idigacademy@gmail.com
@@ -19,18 +18,13 @@
 
 import './bootstrap';
 import './vendor/bootstrap.bundle.min';
-import './vendor/green-audio-player.min';
 import './vendor/imagesloaded.pkgd.min';
 import './vendor/isotope.pkgd.min.js';
-import './vendor/jquery.countdown.min';
-import './vendor/jquery.magnific-popup.min';
 import './vendor/jquery.nav';
-import './vendor/jquery.style.switcher';
 import './vendor/jquery-appear';
-import './vendor/js.cookie';
-import './vendor/odometer.min';
-import './vendor/sal';
 import './vendor/slick.min';
 import './vendor/tilt';
 import './main';
+import './google-translate';
+
 

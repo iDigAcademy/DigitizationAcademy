@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright (c) 2022. Digitization Academy
  * idigacademy@gmail.com
@@ -25,14 +26,8 @@ use Illuminate\Contracts\Support\Renderable;
 
 class CourseController extends Controller
 {
-    /**
-     * @var \App\Models\Services\PageService
-     */
     private PageService $pageService;
 
-    /**
-     * @param \App\Models\Services\PageService $pageService
-     */
     public function __construct(PageService $pageService)
     {
 
@@ -41,10 +36,8 @@ class CourseController extends Controller
 
     /**
      * Show courses page.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(): Renderable
+    public function index(string $slug): Renderable
     {
         $topImage = $this->pageService->getCourseImage();
         $courses = Course::active()->get()->sortBy('start_date');

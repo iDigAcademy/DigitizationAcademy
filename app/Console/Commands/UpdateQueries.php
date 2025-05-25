@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Str;
 
 class UpdateQueries extends Command
 {
@@ -35,7 +36,7 @@ class UpdateQueries extends Command
      *
      * @var string
      */
-    protected $signature = 'app:update-queries {--events : Run only the events table migration} {--migrate-courses : Migrate data from courses to events} {--alter-courses : Run the alter courses table columns migration}';
+    protected $signature = 'app:update-queries {--events : Run only the events table migration} {--migrate-courses : Migrate data from courses to events} {--alter-courses : Run the alter courses table columns migration} {--update-slugs : Update slug column for existing courses}';
 
     /**
      * The console command description.
@@ -55,8 +56,10 @@ class UpdateQueries extends Command
             $this->migrateCourseDataToEvents();
         } elseif ($this->option('alter-courses')) {
             $this->runAlterCoursesTableColumnsMigration();
+        } elseif ($this->option('update-slugs')) {
+            $this->updateCourseSlugs();
         } else {
-            $this->info('No specific operation selected. Use --events to run the events table migration, --migrate-courses to migrate data from courses to events, or --alter-courses to run the alter courses table columns migration.');
+            $this->info('No specific operation selected. Use --events to run the events table migration, --migrate-courses to migrate data from courses to events, --alter-courses to run the alter courses table columns migration, or --update-slugs to update slug column for existing courses.');
         }
     }
 
@@ -225,5 +228,52 @@ class UpdateQueries extends Command
         $this->info('Loaded '.count($mapping).' course type mappings from CSV.');
 
         return $mapping;
+    }
+
+    /**
+     * Update slug column for existing courses.
+     *
+     * This method retrieves all existing courses and updates their slug column
+     * based on their title using Str::slug().
+     *
+     * @return int
+     */
+    public function updateCourseSlugs()
+    {
+        $this->info('Starting update of course slugs...');
+
+        // Begin transaction
+        DB::beginTransaction();
+
+        try {
+            // Get all courses
+            $courses = Course::all();
+            $updatedCount = 0;
+
+            $this->info('Found '.$courses->count().' courses to update.');
+
+            foreach ($courses as $course) {
+                // Generate slug from title
+                $slug = Str::slug($course->title);
+
+                // Update the course with the new slug
+                $course->slug = $slug;
+                $course->save();
+
+                $updatedCount++;
+
+                $this->info("Updated course: {$course->title} (ID: {$course->id}) with slug: {$slug}");
+            }
+
+            DB::commit();
+            $this->info("Slug update completed successfully. Updated {$updatedCount} courses.");
+
+            return 0;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            $this->error('Slug update failed: '.$e->getMessage());
+
+            return 1;
+        }
     }
 }

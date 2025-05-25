@@ -1,6 +1,5 @@
 <?php
 
-
 /*
  * Copyright (c) 2022. Digitization Academy
  * idigacademy@gmail.com
@@ -19,15 +18,15 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\CommunityController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Route;
 
@@ -43,10 +42,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('courses', [CourseController::class, 'index'])->name('course.index');
+Route::get('catalog', [CatalogController::class, 'index'])->name('catalog.index');
+Route::get('course/{slug}', [CourseController::class, 'index'])->name('course.index');
 Route::get('calendar', [CalendarController::class, 'index'])->name('calendar.index');
 Route::get('community', [CommunityController::class, 'index'])->name('community.index');
-Route::get('about', [AboutController::class, 'index'])->name('about.index');
+Route::get('team', [TeamController::class, 'index'])->name('team.index');
 Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
 
@@ -54,7 +54,7 @@ Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard'
 
 Route::post('timezone', [AjaxController::class, 'timezone'])->name('timezone');
 
-Route::get('/register-retry', function(){
+Route::get('/register-retry', function () {
     // Chrome F12 Headers - my_first_application_session=eyJpdiI6ImNnRH...
     $all_cookies = Cookie::get();
     foreach ($all_cookies as $name => $value) {
@@ -62,8 +62,4 @@ Route::get('/register-retry', function(){
     }
 
     return redirect('/');
- })->name('register-retry');
-
-Route::get('lang/{lang}',[LanguageController::class, 'switchLang'])->name('lang.switch');
-Route::get('/languageDemo', 'App\Http\Controllers\HomeController@languageDemo');
-
+})->name('register-retry');

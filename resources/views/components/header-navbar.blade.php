@@ -1,56 +1,53 @@
-<header class="header axil-header header-style-2">
-    <div id="axil-sticky-placeholder"></div>
-    <div class="axil-mainmenu">
+<header class="header digi-header header-style-1">
+    <div id="digi-sticky-placeholder"></div>
+    <div class="digi-mainmenu">
         <div class="container-fluid">
             <div class="header-navbar">
                 <div class="header-logo">
-                    <a href="/"><img class="light-version-logo" src="{{ mix('images/logo.svg') }}"
-                                     alt="logo"
-                                     style="width:170px;"></a>
+                    <a href="{{ route('home') }}">
+                        <img class="light-version-logo" src="{{ mix('images/logo/logo.svg') }}" alt="logo" style="width:170px;">
+                    </a>
                 </div>
+
                 <div class="header-main-nav">
-                    <!--=====================================-->
-                    <!--=             header                =-->
-                    <!--=====================================-->
                     <nav class="mainmenu-nav" id="mobilemenu-popup">
                         <div class="d-block d-lg-none">
                             <div class="mobile-nav-header">
                                 <div class="mobile-nav-logo">
-                                    <a href="{{ route('home') }}">
-                                        <img class="light-mode" src="{{ mix('images/logo.svg') }}"
-                                             style="width:150px"
-                                             alt="Digitization Academy Logo"></a>
+                                    <a href="{{ route('home') }}" aria-label="Logo links to home page" role="button"><img
+                                                class="light-mode" src="{{ mix('images/logo/logo.svg') }}" style="width:150px"
+                                                alt="Digitization Academy home"></a>
                                 </div>
-                                <button class="mobile-menu-close" data-bs-dismiss="offcanvas"><i
-                                        class="fas fa-times"></i></button>
+
+                                <button class="mobile-menu-close" data-bs-dismiss="offcanvas"
+                                        aria-label="Mobil menu button" name="button"><i class="fas fa-times"></i>
+                                </button>
                             </div>
                         </div>
-                        <!--=====================================-->
-                        <!--=             header menu           =-->
-                        <!--=====================================-->
-                        <ul class="mainmenu">
-                            <li><a href="{{ route('course.index') }}">{{ trans('Courses') }}</a></li>
-                            <li><a href="{{ route('calendar.index') }}">{{ trans('Calendar') }}</a></li>
-                            <!-- <li><a href="{{ route('community.index') }}">{{ trans('Community') }}</a></li> -->
-                            <li><a href="{{ route('about.index') }}">{{ trans('About') }}</a></li>
-                            <li><a href="{{ route('contact.index') }}">{{ trans('Contact') }}</a></li>
-                            <li>
-                                <div id="google_translate_element"></div>
-                                <script type="text/javascript">
-                                    function googleTranslateElementInit() {
-                                        new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL}, 'google_translate_element');
-                                    }
-                                </script>
 
-                                <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                        <!--= header menu =-->
+                        <ul class="mainmenu">
+                            <li class="menu-item-has-children"><a href="#">Explore Courses</a>
+                                <x-course-menu />
                             </li>
+                            <li><a href="{{ route('calendar.index') }}">Calendar</a></li>
+                            <li><a href="{{ route('team.index') }}">Team</a></li>
+                            <li><a href="{{ route('contact.index') }}">Contact</a></li>
+                            <!-- Replace the existing language menu item with this -->
+                            <li class="menu-item-has-children google-menu">
+                                <a href="#">Language <i class="fas fa-globe"></i></a>
+                                <x-language />
+                            </li>
+                            <!-- Hidden Google Translate Element -->
+                            <div id="google_translate_element" style="display: none;"></div>
                         </ul>
                     </nav>
                 </div>
+
                 <div class="header-action">
                     <ul class="list-unstyled">
                         @can('access-nova')
-                        <!-- button associated with large screen aside -->
+                            <!-- button associated with large screen aside -->
                             <li class="sidemenu-btn d-lg-block d-none">
                                 <button class="btn-wrap" data-bs-toggle="offcanvas"
                                         data-bs-target="#offcanvasMenuRight">

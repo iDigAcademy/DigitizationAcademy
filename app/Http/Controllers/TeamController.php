@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright (c) 2022. Digitization Academy
  * idigacademy@gmail.com
@@ -22,18 +23,11 @@ namespace App\Http\Controllers;
 use App\Models\Services\PageService;
 use App\Models\Team;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
 
-class AboutController extends Controller
+class TeamController extends Controller
 {
-    /**
-     * @var \App\Models\Services\PageService
-     */
     private PageService $pageService;
 
-    /**
-     * @param \App\Models\Services\PageService $pageService
-     */
     public function __construct(PageService $pageService)
     {
 
@@ -42,8 +36,6 @@ class AboutController extends Controller
 
     /**
      * Show about page.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(): Renderable
     {

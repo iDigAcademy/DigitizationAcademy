@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright (c) 2022. Digitization Academy
  * idigacademy@gmail.com
@@ -20,7 +21,6 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Storage;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Course>
@@ -35,7 +35,7 @@ class CourseFactory extends Factory
     public function definition()
     {
         $start = fake()->dateTimeBetween('next Monday', 'next Monday +7 days')->format('Y-m-d');
-        $end = fake()->dateTimeBetween($start, $start . ' +7 days')->format('Y-m-d');
+        $end = fake()->dateTimeBetween($start, $start.' +7 days')->format('Y-m-d');
 
         return [
             'title' => $this->faker->words(rand(3, 5), true),

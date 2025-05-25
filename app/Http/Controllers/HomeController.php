@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright (c) 2022. Digitization Academy
  * idigacademy@gmail.com
@@ -19,26 +20,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ContactFormRequest;
 use App\Models\Services\PageService;
-use App\Models\User;
-use App\Notifications\Contact;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Notification;
-use Alert;
 
 class HomeController extends Controller
 {
-    /**
-     * @var \App\Models\Services\PageService
-     */
     private PageService $pageService;
 
     /**
      * Create a new controller instance.
-     *
-     * @param \App\Models\Services\PageService $pageService
      */
     public function __construct(PageService $pageService)
     {
@@ -47,26 +37,9 @@ class HomeController extends Controller
 
     /**
      * Show home page.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(): Renderable
     {
-        $topImage = $this->pageService->getHomeTopImage();
-        $bottomImage = $this->pageService->getHomeBottomImage();
-        $course = $this->pageService->getCourse();
-
-        return view('home', compact('topImage', 'bottomImage', 'course'));
-    }
-
-    /**
-     * Custom log out.
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function logout(): RedirectResponse
-    {
-        \Auth::logout();
-        return redirect('/');
+        return view('home');
     }
 }

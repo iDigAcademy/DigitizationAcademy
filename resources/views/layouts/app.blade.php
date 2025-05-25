@@ -10,11 +10,10 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <link rel="shortcut icon" type="image/x-icon" href="{{ mix('images/favicon.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ mix('images/logo/favicon.png') }}">
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <script src="{{ mix('js/app.js') }}" defer></script>
-    @include('components.scripts')
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBKJG01XTP"></script>
@@ -28,16 +27,10 @@
     @bukStyles
 </head>
 <body class="sticky-header">
-<a href="#main-wrapper" id="backto-top" class="back-to-top">
-    <i class="far fa-angle-double-up"></i>
-</a>
+<!-- BACK TO TOP -->
+<a href="#main-wrapper" id="backto-top" class="back-to-top" type="button" aria-label="back to top">
+    <i class="far fa-angle-double-up"></i></a>
 @include('partials.notices')
-<!--=====================================-->
-<!--=             preload               =-->
-<!--=====================================-->
-<div id="preloader"></div>
-
-<div id="main-wrapper" class="main-wrapper">
     <!--=====================================-->
     <!--=             header               	=-->
     <!--=====================================-->
@@ -56,11 +49,9 @@
     <!--=       Right slider mega menu      =-->
     <!--=====================================-->
     @auth
-    <x-aside-menu />
+        <x-aside-menu />
     @endauth
-</div>
 @include('sweetalert::alert')
-@stack('scripts')
 @bukScripts
 </body>
 </html>

@@ -37,6 +37,6 @@ mix.webpackConfig({
 
 mix.js("resources/js/app.js", "public/js/app.js")
     .css('resources/css/app.css', 'public/css/app.css', [])
-    .copyDirectory('resources/js/vendor', 'public/js/vendor')
-    .copyDirectory('resources/media', 'public/images')
+    /*copyDirectory('resources/js/vendor', 'public/js/vendor')*/
+    .copyDirectory('resources/images', 'public/images')
     .version();
