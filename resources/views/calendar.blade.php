@@ -34,7 +34,7 @@
     <section class="section mt-5">
         <div class="container">
             <div class="row justify-content-center">
-                <iframe class="mt-5" src="https://calendar.google.com/calendar/embed?src={{ config('config.google_course_calender_id') }}&ctz=America%2FNew_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+                <iframe class="mt-5" src="https://calendar.google.com/calendar/embed?src={{ config('config.google_course_calender_id') }}&ctz=America%2FNew_York" style="border: 0" width="800" height="600"></iframe>
             </div>
         </div>
     </section>
