@@ -1,6 +1,5 @@
 <?php
 
-
 /*
  * Copyright (c) 2022. Digitization Academy
  * idigacademy@gmail.com
@@ -25,11 +24,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Email;
+use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Laravel\Nova\Fields\ID;
 use PixelCreation\NovaFieldSortable\Concerns\SortsIndexEntries;
 use PixelCreation\NovaFieldSortable\Sortable;
 
@@ -68,7 +67,6 @@ class Team extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function fields(NovaRequest $request)
@@ -80,7 +78,7 @@ class Team extends Resource
             Email::make('Email')->hideFromIndex(),
             Text::make('Twitter Handle')->withMeta([
                 'extraAttributes' => [
-                   'placeholder' => 'User name only, no @ symbol',
+                    'placeholder' => 'User name only, no @ symbol',
                 ],
             ])->hideFromIndex(),
             Textarea::make('About')->required(),
@@ -101,14 +99,13 @@ class Team extends Resource
                         : Storage::disk($disk)->url('default_image/team_default.jpg');
                 })->prunable(),
             Sortable::make('Order')->onlyOnIndex(),
-            Boolean::make('Current Team', 'current')
+            Boolean::make('Current Team', 'current'),
         ];
     }
 
     /**
      * Get the cards available for the request.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function cards(NovaRequest $request)
@@ -119,7 +116,6 @@ class Team extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function filters(NovaRequest $request)
@@ -130,7 +126,6 @@ class Team extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function lenses(NovaRequest $request)
@@ -141,7 +136,6 @@ class Team extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function actions(NovaRequest $request)

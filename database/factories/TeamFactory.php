@@ -20,10 +20,9 @@ class TeamFactory extends Factory
             'name' => $this->faker->name(),
             'title' => $this->faker->jobTitle(),
             'email' => $this->faker->email(),
-            'twitter_handle' => 'testmanager',
             'about' => $this->faker->realText(),
             'image' => $this->faker->image('public/storage/team_image', 410, 410, null, false),
-            'order' => 99
+            'order' => 99,
         ];
     }
 }

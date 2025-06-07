@@ -20,6 +20,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -39,10 +40,9 @@ class Event extends Model
         'start_date',
         'end_date',
         'schedule',
-        'course_type',
-        'register_start_date',
-        'register_end_date',
-        'register_link',
+        'form_start_date',
+        'form_end_date',
+        'form_link',
     ];
 
     /**
@@ -53,8 +53,8 @@ class Event extends Model
     protected $casts = [
         'start_date' => 'date',
         'end_date' => 'date',
-        'register_start_date' => 'date',
-        'register_end_date' => 'date',
+        'form_start_date' => 'date',
+        'form_end_date' => 'date',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
@@ -65,5 +65,25 @@ class Event extends Model
     public function course(): BelongsTo
     {
         return $this->belongsTo(Course::class);
+    }
+
+    /**
+     * Get the start date formatted as "Month Day, Year".
+     */
+    protected function formattedStartDate(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value, $attributes) => $this->start_date->format('F j, Y'),
+        );
+    }
+
+    /**
+     * Get the start date formatted as "Month Day, Year".
+     */
+    protected function formattedEndDate(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value, $attributes) => $this->end_date->format('F j, Y'),
+        );
     }
 }

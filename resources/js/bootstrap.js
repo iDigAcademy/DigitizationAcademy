@@ -21,7 +21,7 @@ import _ from 'lodash';
 window._ = _;
 
 // Make sure jQuery is available globally
-import $ from './vendor/jquery-3.7.1.min';
+import $ from 'jquery';
 window.$ = window.jQuery = $;
 
 /**

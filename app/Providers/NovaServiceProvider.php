@@ -1,6 +1,5 @@
 <?php
 
-
 /*
  * Copyright (c) 2022. Digitization Academy
  * idigacademy@gmail.com
@@ -62,9 +61,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function routes()
     {
         Nova::routes()
-                ->withAuthenticationRoutes()
-                ->withPasswordResetRoutes()
-                ->register();
+            ->withAuthenticationRoutes()
+            ->withPasswordResetRoutes()
+            ->register();
     }
 
     /**
@@ -112,6 +111,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     public function register()
     {
-        //Nova::initialPath('');
+        // Nova::initialPath('');
     }
 }

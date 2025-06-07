@@ -20,21 +20,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Services\PageService;
 use Illuminate\Contracts\Support\Renderable;
 
 class HomeController extends Controller
 {
-    private PageService $pageService;
-
-    /**
-     * Create a new controller instance.
-     */
-    public function __construct(PageService $pageService)
-    {
-        $this->pageService = $pageService;
-    }
-
     /**
      * Show home page.
      */

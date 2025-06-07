@@ -1,12 +1,12 @@
 <x-mail::message>
-# {{ t('Contact') }}
+#Contact
 
-{{ t('Name') }}: {{ $data['name'] }}
+Name: {{ $data['name'] }}
 
-{{ t('Email') }}: {{ $data['email'] }}
+Email: {{ $data['email'] }}
 
-{{ t('Message') }}: {{ $data['message'] }}
+Message: {{ $data['message'] }}
 
-{{ t('Thank you') }},
+Thank you,
 {{ config('app.name') }}
 </x-mail::message>

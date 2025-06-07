@@ -25,8 +25,6 @@ use App\Models\Event;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
 use Str;
 
 class UpdateQueries extends Command
@@ -36,7 +34,7 @@ class UpdateQueries extends Command
      *
      * @var string
      */
-    protected $signature = 'app:update-queries {--events : Run only the events table migration} {--migrate-courses : Migrate data from courses to events} {--alter-courses : Run the alter courses table columns migration} {--update-slugs : Update slug column for existing courses}';
+    protected $signature = 'app:update-queries {--events : Run only the events table migration} {--migrate-courses : Migrate data from courses to events} {--alter-courses : Run the alter courses table columns migration} {--update-slugs : Update slug column for existing courses} {--update-course-values : Update course values from CSV file} {--update-register-dates : Update form_start_date and form_end_date in Events table where they are null} {--create-assets : Run the create_assets_table and create_course_asset_table migrations} {--teams : Run teams table migration to drop columns}';
 
     /**
      * The console command description.
@@ -47,6 +45,8 @@ class UpdateQueries extends Command
 
     /**
      * Execute the console command.
+     *
+     * @throws \Throwable
      */
     public function handle()
     {
@@ -56,10 +56,16 @@ class UpdateQueries extends Command
             $this->migrateCourseDataToEvents();
         } elseif ($this->option('alter-courses')) {
             $this->runAlterCoursesTableColumnsMigration();
-        } elseif ($this->option('update-slugs')) {
-            $this->updateCourseSlugs();
+        } elseif ($this->option('update-course-values')) {
+            $this->updateCourseValues();
+        } elseif ($this->option('update-register-dates')) {
+            $this->updateRegisterDates();
+        } elseif ($this->option('create-assets')) {
+            $this->runAssetsTablesMigrations();
+        } elseif ($this->option('teams')) {
+            $this->runTeamsTableMigration();
         } else {
-            $this->info('No specific operation selected. Use --events to run the events table migration, --migrate-courses to migrate data from courses to events, --alter-courses to run the alter courses table columns migration, or --update-slugs to update slug column for existing courses.');
+            $this->info('No specific operation selected. Use --events to run the events table migration, --migrate-courses to migrate data from courses to events, --alter-courses to run the alter courses table columns migration, --update-slugs to update slug column for existing courses, --update-course-values to update course values from CSV file, --update-register-dates to update register dates in events table, --create-syllabus-dir to create course_syllabus directory in storage/app/public if it does not exist, or --create-assets to run the assets tables migrations.');
         }
     }
 
@@ -77,36 +83,10 @@ class UpdateQueries extends Command
             '--force' => true,
         ]);
 
-        if ($exitCode === 0) {
-            $this->info('Events table migration completed successfully.');
-        } else {
+        $exitCode === 0 ?
+            $this->info('Events table migration completed successfully.') :
             $this->error('Events table migration failed.');
-        }
 
-        return $exitCode;
-    }
-
-    /**
-     * Run the alter courses table columns migration.
-     */
-    public function runAlterCoursesTableColumnsMigration()
-    {
-        $this->info('Running alter courses table columns migration...');
-
-        $migrationPath = 'database/migrations/2025_05_20_192004_alter_courses_table_columns.php';
-
-        $exitCode = Artisan::call('migrate', [
-            '--path' => $migrationPath,
-            '--force' => true,
-        ]);
-
-        if ($exitCode === 0) {
-            $this->info('Alter courses table columns migration completed successfully.');
-        } else {
-            $this->error('Alter courses table columns migration failed.');
-        }
-
-        return $exitCode;
     }
 
     /**
@@ -114,24 +94,16 @@ class UpdateQueries extends Command
      *
      * 1. Group courses by title
      * 2. For each group, use the first course as the reference
-     * 3. Load course_type mapping from CSV file
-     * 4. Migrate data from Courses to Events
-     * 5. Delete duplicate courses
+     * 3. Migrate data from Courses to Events
+     * 4. Delete duplicate courses
      */
     public function migrateCourseDataToEvents()
     {
         $this->info('Starting migration of course data to events...');
 
-        // Load course_type mapping from CSV file
-        $courseTypeMapping = $this->loadCourseTypeMapping();
-        if (empty($courseTypeMapping)) {
-            $this->error('Failed to load course type mapping from CSV file.');
-
-            return 1;
-        }
-
         // Group courses by title
-        $courseGroups = Course::all()->groupBy('title');
+        $courseGroups = Course::orderBy('created_at')
+            ->get()->groupBy('title');
         $this->info('Found '.$courseGroups->count().' unique course titles.');
 
         // Begin transaction
@@ -148,16 +120,6 @@ class UpdateQueries extends Command
 
                 $this->info("Processing course: {$title} (ID: {$courseId})");
 
-                // Determine course_type based on schedule_details
-                $courseType = '2 Hour'; // Default value
-                $scheduleDetails = $referenceCourse->schedule_details;
-
-                if (isset($courseTypeMapping[$scheduleDetails])) {
-                    $courseType = $courseTypeMapping[$scheduleDetails];
-                } else {
-                    $this->warn("No course type mapping found for schedule: {$scheduleDetails}. Using default: {$courseType}");
-                }
-
                 // Process each course in the group
                 foreach ($courses as $course) {
                     // Create a new event entry
@@ -166,10 +128,9 @@ class UpdateQueries extends Command
                         'start_date' => $course->start_date,
                         'end_date' => $course->end_date,
                         'schedule' => $course->schedule_details,
-                        'course_type' => $courseType,
-                        'register_start_date' => $course->registration_start_date,
-                        'register_end_date' => $course->registration_end_date,
-                        'register_link' => $course->registration_url,
+                        'form_start_date' => $course->registration_start_date,
+                        'form_end_date' => $course->registration_end_date,
+                        'form_link' => $course->registration_url,
                     ]);
 
                     $migratedCount++;
@@ -195,39 +156,197 @@ class UpdateQueries extends Command
     }
 
     /**
-     * Load course type mapping from CSV file.
-     *
-     * @return array
+     * Run the alter courses table columns migration.
      */
-    private function loadCourseTypeMapping()
+    public function runAlterCoursesTableColumnsMigration()
     {
-        $mapping = [];
-        $csvPath = Storage::path('course_type.csv');
+        $this->info('Running alter courses table columns migration...');
 
-        if (! File::exists($csvPath)) {
-            $this->error("CSV file not found: {$csvPath}");
+        $migrationPath = 'database/migrations/2025_05_18_184453_drop_columns_from_courses_table.php';
 
-            return $mapping;
+        $exitCode = Artisan::call('migrate', [
+            '--path' => $migrationPath,
+            '--force' => true,
+        ]);
+
+        if ($exitCode === 0) {
+            $this->info('Drop columns from courses table completed successfully.');
+        } else {
+            $this->error('Drop columns from courses table columns migration failed.');
         }
 
-        $handle = fopen($csvPath, 'r');
+        $migrationPath = 'database/migrations/2025_05_20_192004_alter_courses_table_columns.php';
 
-        // Skip header row
-        fgetcsv($handle);
+        $exitCode = Artisan::call('migrate', [
+            '--path' => $migrationPath,
+            '--force' => true,
+        ]);
 
-        while (($data = fgetcsv($handle)) !== false) {
-            if (count($data) >= 2) {
-                $scheduleDetails = $data[0];
-                $courseType = $data[1];
-                $mapping[$scheduleDetails] = $courseType;
+        if ($exitCode === 0) {
+            $this->info('Alter courses table columns migration completed successfully.');
+        } else {
+            $this->error('Alter courses table columns migration failed.');
+        }
+
+        $courses = Course::all();
+        $courses->each(function ($course) {
+            $course->syllabus = $course->syllabus_url;
+            $course->save();
+        });
+
+        $migrationPath = 'database/migrations/2025_05_21_184836_drop_syllabus_url_column_in_courses_table.php';
+
+        $exitCode = Artisan::call('migrate', [
+            '--path' => $migrationPath,
+            '--force' => true,
+        ]);
+
+        if ($exitCode === 0) {
+            $this->info('Drop syllabus_url from courses table columns migration completed successfully.');
+        } else {
+            $this->error('Drop syllabus_url from courses table columns migration failed.');
+        }
+
+        return $exitCode;
+    }
+
+    /**
+     * Update course values from CSV file.
+     *
+     * This method reads a courses.csv file from the storage directory and updates
+     * the following Course columns: slug, type, objectives, instructor, active,
+     * sort_order, syllabus, and video. It uses the title to match the Course in
+     * the database table.
+     *
+     * @return int
+     */
+    public function updateCourseValues()
+    {
+        $this->info('Starting update of course values from CSV...');
+
+        // Define the path to the CSV file
+        $csvPath = storage_path('courses.csv');
+
+        // Check if the CSV file exists
+        if (! file_exists($csvPath)) {
+            $this->error("CSV file not found at: {$csvPath}");
+
+            return 1;
+        }
+
+        // Begin transaction
+        DB::beginTransaction();
+
+        try {
+            // Open the CSV file
+            $handle = fopen($csvPath, 'r');
+            if ($handle === false) {
+                throw new \Exception("Unable to open CSV file: {$csvPath}");
             }
+
+            // Read the header row to get column names
+            $headers = fgetcsv($handle);
+            if ($headers === false) {
+                throw new \Exception('CSV file is empty or malformed');
+            }
+
+            // Convert headers to lowercase for case-insensitive matching
+            $headers = array_map('strtolower', $headers);
+
+            // Find the index of required columns
+            $titleIndex = array_search('title', $headers);
+            $slugIndex = array_search('slug', $headers);
+            $typeIndex = array_search('type', $headers);
+            $objectivesIndex = array_search('objectives', $headers);
+            $instructorIndex = array_search('instructor', $headers);
+            $activeIndex = array_search('active', $headers);
+            $sortOrderIndex = array_search('sort_order', $headers);
+            $syllabusIndex = array_search('syllabus', $headers);
+            $videoIndex = array_search('video', $headers);
+
+            // Check if title column exists (required for matching)
+            if ($titleIndex === false) {
+                throw new \Exception("CSV file must contain a 'title' column");
+            }
+
+            $updatedCount = 0;
+            $rowCount = 0;
+
+            // Process each row in the CSV
+            while (($row = fgetcsv($handle)) !== false) {
+                $rowCount++;
+
+                // Get the title from the current row
+                $title = $row[$titleIndex];
+
+                // Find the course by title
+                $course = Course::where('title', $title)->first();
+
+                if (! $course) {
+                    $this->warn("Course with title '{$title}' not found. Skipping row {$rowCount}.");
+
+                    continue;
+                }
+
+                $this->info("Updating course: {$title} (ID: {$course->id})");
+
+                // Update course fields if they exist in the CSV
+                if ($slugIndex !== false && isset($row[$slugIndex]) && ! empty($row[$slugIndex])) {
+                    $course->slug = $row[$slugIndex];
+                }
+
+                if ($typeIndex !== false && isset($row[$typeIndex])) {
+                    $course->type = $row[$typeIndex];
+                }
+
+                if ($objectivesIndex !== false && isset($row[$objectivesIndex])) {
+                    $course->objectives = $row[$objectivesIndex];
+                }
+
+                if ($instructorIndex !== false && isset($row[$instructorIndex])) {
+                    $course->instructor = $row[$instructorIndex];
+                }
+
+                if ($activeIndex !== false && isset($row[$activeIndex])) {
+                    // Convert various representations of boolean values
+                    $activeValue = strtolower($row[$activeIndex]);
+                    $course->active = in_array($activeValue, ['1', 'true', 'yes', 'y']) ? 1 : 0;
+                }
+
+                if ($sortOrderIndex !== false && isset($row[$sortOrderIndex])) {
+                    $course->sort_order = (int) $row[$sortOrderIndex];
+                }
+
+                if ($syllabusIndex !== false && isset($row[$syllabusIndex])) {
+                    $course->syllabus = $row[$syllabusIndex];
+                }
+
+                if ($videoIndex !== false && isset($row[$videoIndex])) {
+                    $course->video = $row[$videoIndex];
+                }
+
+                // Save the updated course
+                $course->save();
+                $updatedCount++;
+            }
+
+            // Close the CSV file
+            fclose($handle);
+
+            // Commit the transaction
+            DB::commit();
+
+            $this->info("Course values update completed successfully. Updated {$updatedCount} courses out of {$rowCount} rows.");
+
+            return 0;
+
+        } catch (\Exception $e) {
+            // Rollback the transaction in case of error
+            DB::rollBack();
+            $this->error('Course values update failed: '.$e->getMessage());
+
+            return 1;
         }
-
-        fclose($handle);
-
-        $this->info('Loaded '.count($mapping).' course type mappings from CSV.');
-
-        return $mapping;
     }
 
     /**
@@ -275,5 +394,132 @@ class UpdateQueries extends Command
 
             return 1;
         }
+    }
+
+    /**
+     * Update form_start_date and form_end_date in Events table where they are null.
+     *
+     * For type = '2 Hour': form_start_date = 8 weeks before start_date
+     * For type = '12 Hour': form_start_date = 6 weeks before start_date
+     * For all courses: form_end_date = 2 weeks before start_date
+     *
+     * @return int
+     */
+    public function updateRegisterDates()
+    {
+        $this->info('Starting update of register dates in events...');
+
+        // Begin transaction
+        DB::beginTransaction();
+
+        try {
+            // Get events where form_start_date or form_end_date is null
+            $events = Event::whereNull('form_start_date')
+                ->orWhereNull('form_end_date')
+                ->get();
+
+            $updatedCount = 0;
+
+            $this->info('Found '.$events->count().' events to update.');
+
+            foreach ($events as $event) {
+                $updated = false;
+
+                // Update form_start_date based on type
+                if ($event->form_start_date === null && $event->start_date !== null) {
+                    $event->form_start_date = $event->start_date->copy()->subWeeks(6);
+                    $updated = true;
+                    $this->info("Updated form_start_date for event ID: {$event->id} to 6 weeks before start_date: {$event->form_start_date->format('Y-m-d')}");
+                }
+
+                // Update form_end_date (2 weeks before start_date for all courses)
+                if ($event->form_end_date === null && $event->start_date !== null) {
+                    $event->form_end_date = $event->start_date->copy()->subWeeks(2);
+                    $updated = true;
+                    $this->info("Updated form_end_date for event ID: {$event->id} to 2 weeks before start_date: {$event->form_end_date->format('Y-m-d')}");
+                }
+
+                // Save the event if any updates were made
+                if ($updated) {
+                    $event->save();
+                    $updatedCount++;
+                }
+            }
+
+            DB::commit();
+            $this->info("Register dates update completed successfully. Updated {$updatedCount} events.");
+
+            return 0;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            $this->error('Register dates update failed: '.$e->getMessage());
+
+            return 1;
+        }
+    }
+
+    /**
+     * Run the create_resources_table and create_course_resource_table migrations.
+     *
+     * @return int
+     */
+    public function runAssetsTablesMigrations()
+    {
+        $this->info('Running resources tables migrations...');
+
+        // Define the migration paths
+        $resourcesTableMigration = 'database/migrations/2025_05_28_191330_create_assets_table.php';
+        $courseResourceTableMigration = 'database/migrations/2025_05_28_191953_create_asset_course_table.php';
+
+        // Run the create_resources_table migration
+        $this->info('Running create_assets_table migration...');
+        $exitCode1 = Artisan::call('migrate', [
+            '--path' => $resourcesTableMigration,
+            '--force' => true,
+        ]);
+
+        if ($exitCode1 === 0) {
+            $this->info('Assets table migration completed successfully.');
+        } else {
+            $this->error('Assets table migration failed.');
+
+            return 1;
+        }
+
+        // Run the create_course_resource_table migration
+        $this->info('Running create_course_asset_table migration...');
+        $exitCode2 = Artisan::call('migrate', [
+            '--path' => $courseResourceTableMigration,
+            '--force' => true,
+        ]);
+
+        if ($exitCode2 === 0) {
+            $this->info('Course asset table migration completed successfully.');
+        } else {
+            $this->error('Course asset table migration failed.');
+
+            return 1;
+        }
+
+        $this->info('All assets tables migrations completed successfully.');
+
+        return 0;
+    }
+
+    public function runTeamsTableMigration()
+    {
+        $this->info('Running teams table migration...');
+
+        $migrationPath = 'database/migrations/2025_06_07_194520_remove_twitter_handle_from_teams_table.php';
+
+        $exitCode = Artisan::call('migrate', [
+            '--path' => $migrationPath,
+            '--force' => true,
+        ]);
+
+        $exitCode === 0 ?
+            $this->info('Teams table migration completed successfully.') :
+            $this->error('Teams table migration failed.');
+
     }
 }

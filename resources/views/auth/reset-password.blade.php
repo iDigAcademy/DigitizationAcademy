@@ -1,25 +1,33 @@
 <x-app-layout>
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">{{ t('Reset Password') }}</div>
-                <div class="card-body">
-                    <x-form method="POST" action="{{ route('password.update') }}">
-                        <x-input name="token" type="hidden" id="token" value="{{ request()->route('token') }}"/>
-                        <x-label for="email" />
-                        <x-email />
-                        <x-label for="password" />
-                        <x-password />
-                        <x-label for="password_confirmation" />
-                        <x-password name="password_confirmation" type="password" id="password_confirmation" />
-                        <div class="d-block text-center">
-                            <x-form-button>{{ t('Reset Password') }}</x-form-button>
-                        </div>
-                    </x-form>
+    <section class="section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3 col-sm-12">
+                    <div class="contact-form-box shadow-box mb--30 px-sm-4">
+                        <form method="post" action="{{ route('password.update') }}" class="recaptcha">
+                            @csrf
+                            <div class="form-group mb-3">
+                                <label>Email</label>
+                                <input type="text" class="form-control" name="email">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label>Password</label>
+                                <input type="password" class="form-control" name="password">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label>Confirm Password</label>
+                                <input type="password" class="form-control" name="password_confirmation">
+                            </div>
+                            @include('partials.recaptcha')
+                            <div class="form-group">
+                                <button type="submit" class="digi-btn btn-fill-primary btn-fluid btn-primary"
+                                        name="submit-btn">Reset Password
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
 </x-app-layout>

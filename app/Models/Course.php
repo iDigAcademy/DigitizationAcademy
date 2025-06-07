@@ -24,12 +24,33 @@ use App\Models\Presenters\CoursePresenter;
 use App\Models\Traits\Presentable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Spatie\EloquentSortable\Sortable;
+use Spatie\EloquentSortable\SortableTrait;
 use Spiritix\LadaCache\Database\LadaCacheTrait;
 use Str;
 
-class Course extends Model
+/**
+ * Course Model
+ *
+ * Represents a course within the Digital Biodiversity Specimens system.
+ * This model handles the storage and retrieval of course information including
+ * title, objectives, syllabus and related media.
+ *
+ * @property int $id
+ * @property string $title The title of the course
+ * @property string $slug URL-friendly version of the title
+ * @property string $objectives Course learning objectives
+ * @property string $page_image Main image for the course page
+ * @property string $tile_image Thumbnail image for course listings
+ * @property bool $active Whether the course is currently active
+ * @property string $syllabus Course syllabus content
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ */
+class Course extends Model implements Sortable
 {
-    use HasFactory, LadaCacheTrait, Presentable;
+    use HasFactory, LadaCacheTrait, Presentable, SortableTrait;
 
     /**
      * Boot the model.
@@ -38,10 +59,12 @@ class Course extends Model
     {
         parent::boot();
 
+        // Generate slug from title when creating a new course
         static::creating(function ($course) {
             $course->slug = Str::slug($course->title);
         });
 
+        // Update slug when title changes
         static::updating(function ($course) {
             if ($course->isDirty('title')) {
                 $course->slug = Str::slug($course->title);
@@ -49,7 +72,20 @@ class Course extends Model
         });
     }
 
+    /**
+     * The presenter class used for transforming model data for views.
+     */
     protected string $presenter = CoursePresenter::class;
+
+    /**
+     * Used for sorting on Nova index.
+     *
+     * @var array
+     */
+    public $sortable = [
+        'order_column_name' => 'sort_order',
+        'sort_when_creating' => true,
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -59,11 +95,17 @@ class Course extends Model
     protected $fillable = [
         'title',
         'slug',
+        'type',
+        'description',
         'objectives',
+        'language',
+        'instructor',
         'page_image',
         'tile_image',
-        'active',
         'syllabus',
+        'video',
+        'active',
+        'sort_order',
     ];
 
     /**
@@ -80,16 +122,50 @@ class Course extends Model
     /**
      * Active scope.
      */
-    public function scopeActive($query): mixed
+    /**
+     * Scope query to only include active courses.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeActive(\Illuminate\Database\Eloquent\Builder $query): mixed
     {
         return $query->where('active', 1);
     }
 
     /**
+     * Scope the query to courses with the specified slug.
+     */
+    public function scopeSlug(\Illuminate\Database\Eloquent\Builder $query, string $slug): mixed
+    {
+        return $query->where('slug', $slug);
+    }
+
+    /**
      * Home page scope for course.
      */
-    public function scopeHome($query): mixed
+    /**
+     * Scope query to only include courses that should appear on the home page.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeHome(\Illuminate\Database\Eloquent\Builder $query): mixed
     {
         return $query->where('home_page', 1);
+    }
+
+    /**
+     * The assets that belong to the course.
+     */
+    public function assets(): BelongsToMany
+    {
+        return $this->belongsToMany(Asset::class);
+    }
+
+    /**
+     * Get the events associated with the course.
+     */
+    public function events(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Event::class);
     }
 }

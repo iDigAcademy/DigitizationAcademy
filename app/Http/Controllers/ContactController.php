@@ -25,6 +25,12 @@ use App\Mail\Contact;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 
+/**
+ * Controller for handling contact form functionality.
+ *
+ * This controller manages the contact form display and submission process,
+ * including sending emails through the queue system.
+ */
 class ContactController extends Controller
 {
     /**
@@ -36,7 +42,16 @@ class ContactController extends Controller
     }
 
     /**
-     * Send contact form.
+     * Process and store the contact form submission.
+     *
+     * This method handles the contact form submission by:
+     * - Validating the request using ContactFormRequest
+     * - Creating a new Contact mail instance
+     * - Queuing the mail for sending
+     * - Redirecting with the appropriate success/error message
+     *
+     * @param  ContactFormRequest  $request  The validated form request
+     * @return RedirectResponse Redirect response with a success or error message
      */
     public function store(ContactFormRequest $request): RedirectResponse
     {
@@ -44,9 +59,9 @@ class ContactController extends Controller
             $mail = (new Contact($request->all()))->onQueue('mail');
             \Mail::to(config('mail.from.address'))->queue($mail);
 
-            return redirect()->back()->with('toast_success', trans('Contact message sent successfully.'));
+            return redirect()->back()->with('toast_success', 'Contact message sent successfully.');
         } catch (\Throwable $exception) {
-            return redirect()->back()->with('toast_error', trans('An error occurred sending your message. '.$exception->getMessage()));
+            return redirect()->back()->with('toast_error', 'An error occurred sending your message.');
         }
     }
 }

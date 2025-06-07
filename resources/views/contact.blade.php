@@ -1,49 +1,74 @@
 <x-app-layout>
-    <div class="breadcrum-area breadcrumb-banner">
+    <section class="banner page">
+        <div class="container-fluid">
+            <div class="banner-content">
+                <h1 class="page-title mt-5">We would love to hear from you</h1>
+                <p class="page-lead">
+                    Ask a question, share your thoughts, or suggest a topic you'd like to explore further.
+                </p>
+            </div>
+            <!-- graphic shapes -->
+            <ul class="list-unstyled shape-group-pages">
+                <li class="shape shape-1">
+                    <img class="paralax-image" src="{{ asset('images/banner/salmon-pic.png') }}" alt="Salmon Specimen Image">
+                </li>
+                <li class="shape shape-7">
+                    <img src="{{ asset('images/others/bubble-salmon.png') }}"
+                         alt="Graphic of purple bubble"
+                         style="opacity: 0.9;">
+                </li>
+            </ul>
+
+        </div><!-- container -->
+    </section>
+
+    <!-- shape groups -->
+    <ul class="shape-group-6 list-unstyled">
+        <li class="shape shape-1">
+            <img src="{{ asset('images/logo/watermarkApr2025.svg') }}" alt="Bubble">
+        </li>
+    </ul>
+    <!-- Contact  Area Start     =-->
+    <section class="section section-padding">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header">{{ t('Contact') }}</div>
-                        <div class="card-body">
-                            <x-form class="recaptcha" action="{{ route('contact.store') }}">
-                                <div class="form-group" type="form">
-                                    <x-label for="name" />
-                                    <x-input name="name" />
-                                    <x-error field="name" />
-                                </div>
-                                <div class="form-group" type="form">
-                                    <x-label for="email" />
-                                    <x-email />
-                                    <x-error field="email" />
-                                </div>
-                                <div class="form-group" type="form">
-                                    <x-label for="Message" />
-                                    <x-textarea name="message" rows="4" cols="30" />
-                                    <x-error field="message" />
-                                </div>
-                                @include('partials.recaptcha')
-                                <div class="form-group">
-                                    <x-form-button type="submit" class="digi-btn btn-fill-primary btn-fluid btn-primary"
-                                            name="submit">Submit
-                                    </x-form-button>
-                                </div>
-                            </x-form>
-                        </div>
+            <div class="row">
+                <div class="col-md-8 offset-md-2 col-sm-12">
+                    <div class="contact-form-box shadow-box mb--30 px-sm-4">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                        <form method="post" action="{{ route('contact.store') }}" class="recaptcha">
+                            @csrf
+                            <div class="form-group mb-3">
+                                <label>Name</label>
+                                <input type="text" class="form-control" name="name" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label>Email</label>
+                                <input type="email" class="form-control" name="email" required>
+                            </div>
+                            <div class="form-group mb--40">
+                                <label>Message</label>
+                                <textarea class="form-control textarea" name="message"
+                                          cols="30" rows="4" required></textarea>
+                            </div>
+                            @include('partials.recaptcha')
+                            <div class="form-group">
+                                <button type="submit" class="digi-btn btn-fill-primary btn-fluid btn-primary"
+                                        name="submit-btn">Submit
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-        <ul class="shape-group-8 list-unstyled">
-            <li class="shape shape-1" data-sal="slide-right" data-sal-duration="500" data-sal-delay="100">
-                <img src="{{ mix('images/others/bubble-9.png') }}" alt="Bubble">
-            </li>
-            <li class="shape shape-2" data-sal="slide-left" data-sal-duration="500" data-sal-delay="200">
-                <img src="{{ mix('images/others/bubble-salmon.png') }}" alt="Teal Bubble">
-            </li>
-            <li class="shape shape-3" data-sal="slide-up" data-sal-duration="500" data-sal-delay="300">
-                <img src="{{ mix('images/others/line-4.png') }}" alt="Line">
-            </li>
-        </ul>
-    </div>
+    </section>
 </x-app-layout>

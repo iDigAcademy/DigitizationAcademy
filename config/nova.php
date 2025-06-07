@@ -165,18 +165,18 @@ return [
     */
 
     'brand' => [
-         'logo' => resource_path('/media/logo.svg'),
+        'logo' => resource_path('/media/logo.svg'),
 
-         'colors' => [
-             "400" => "24, 182, 155, 0.5",
-             "500" => "24, 182, 155",
-             "600" => "24, 182, 155, 0.75",
-         ]
+        'colors' => [
+            '400' => '24, 182, 155, 0.5',
+            '500' => '24, 182, 155',
+            '600' => '24, 182, 155, 0.75',
+        ],
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | Nova Action Resource Class
+    | Nova Action Asset Class
     |--------------------------------------------------------------------------
     |
     | This configuration option allows you to specify a custom resource class
@@ -212,6 +212,6 @@ return [
         'logout' => '/logout',
         'login' => '/login',
         'forgot_password' => '/forgot-password',
-        'reset_password' => '/reset-password'
-    ]
+        'reset_password' => '/reset-password',
+    ],
 ];

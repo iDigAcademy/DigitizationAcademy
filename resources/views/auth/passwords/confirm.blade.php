@@ -1,43 +1,43 @@
 <x-app-layout>
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ t('Confirm Password') }}</div>
+    <section class="section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3 col-sm-12">
+                    <div class="contact-form-box shadow-box mb--30 px-sm-4">
+                        Please confirm your password before continuing.
 
-                <div class="card-body">
-                    {{ t('Please confirm your password before continuing.') }}
-
-                    <x-form action="{{ route('password.confirm') }}">
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ t('Password') }}</label>
-                            <div class="col-md-6">
-                                <x-password class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" />
-                                @error('password')
+                        <form action="{{ route('password.confirm') }}" class="recaptcha">
+                            @csrf
+                            <div class="row mb-3">
+                                <div class="form-group mb-3">
+                                    <label>Password</label>
+                                    <input type="password"
+                                           class="form-control @error('password') is-invalid @enderror"
+                                           name="password"
+                                           autocomplete="current-password"
+                                           required/>
+                                    @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
+                                    @enderror
+                                </div>
+                                @include('partials.recaptcha')
+                                <div class="form-group">
+                                    <button type="submit" class="digi-btn btn-fill-primary btn-fluid btn-primary"
+                                            name="submit-btn">Confirm Password
+                                    </button>
+                                    @if (Route::has('password.request'))
+                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                            Forgot Your Password?
+                                        </a>
+                                    @endif
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <x-form-button class="btn btn-primary">
-                                    {{ t('Confirm Password') }}
-                                </x-form-button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ t('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </x-form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
 </x-app-layout>

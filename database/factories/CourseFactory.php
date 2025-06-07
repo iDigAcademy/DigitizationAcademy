@@ -21,6 +21,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Course>
@@ -34,19 +35,22 @@ class CourseFactory extends Factory
      */
     public function definition()
     {
-        $start = fake()->dateTimeBetween('next Monday', 'next Monday +7 days')->format('Y-m-d');
-        $end = fake()->dateTimeBetween($start, $start.' +7 days')->format('Y-m-d');
+        $title = $this->faker->words(rand(3, 5), true);
 
         return [
-            'title' => $this->faker->words(rand(3, 5), true),
+            'title' => $title,
+            'slug' => Str::slug($title),
+            'type' => $this->faker->randomElement(['2 Hour', '12 Hour']),
+            'description' => $this->faker->text(500),
             'objectives' => $this->faker->text(810),
-            'front_image' => $this->faker->image('public/storage/course_image', 468, 353, null, false),
-            'back_image' => $this->faker->image('public/storage/course_image', 468, 100, null, false),
-            'start_date' => $start,
-            'end_date' => $end,
-            'schedule_details' => $this->faker->text(150),
+            'language' => $this->faker->randomElement(['English', 'Spanish', 'French']),
+            'instructor' => $this->faker->name(),
+            'page_image' => $this->faker->image('public/storage/course_image', 468, 353, null, false),
+            'tile_image' => $this->faker->image('public/storage/course_image', 468, 100, null, false),
+            'syllabus' => $this->faker->url(),
+            'video' => $this->faker->url(),
             'active' => true,
-            'home_page' => false,
+            'sort_order' => $this->faker->numberBetween(0, 100),
         ];
     }
 }

@@ -1,29 +1,37 @@
 <x-app-layout>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">{{ t('Register') }}</div>
-                    <div class="card-body">
-                        <x-form method="POST" action="{{ route('register') }}" class="recaptcha">
-                            <x-label for="name" />
-                            <x-input name="name" />
-                            <x-error for="name" />
-                            <x-label for="email" />
-                            <x-email />
-                            <x-error for="email" />
-                            <x-password name="password" />
-                            <x-error for="password" />
-                            <x-label for="password_confirmation" />
-                            <x-password name="password_confirmation" id="password_confirmation" />
-                            @include('partials.recaptcha')
-                            <div class="d-block text-center mt-4">
-                                <x-form-button>{{ t('Register') }}</x-form-button>
+    <section class="section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3 col-sm-12">
+                    <div class="contact-form-box shadow-box mb--30 px-sm-4">
+                        <form method="post" action="{{ route('register') }}" class="recaptcha">
+                            @csrf
+                            <div class="form-group mb-3">
+                                <label>Name</label>
+                                <input type="text" class="form-control" name="name">
                             </div>
-                        </x-form>
+                            <div class="form-group mb-3">
+                                <label>Email</label>
+                                <input type="text" class="form-control" name="email">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label>Password</label>
+                                <input type="password" class="form-control" name="password">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label>Confirm Password</label>
+                                <input type="password" class="form-control" name="password_confirmation">
+                            </div>
+                            @include('partials.recaptcha')
+                            <div class="form-group">
+                                <button type="submit" class="digi-btn btn-fill-primary btn-fluid btn-primary"
+                                        name="submit-btn">Register
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </x-app-layout>

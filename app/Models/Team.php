@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright (c) 2022. Digitization Academy
  * idigacademy@gmail.com
@@ -20,24 +21,22 @@
 namespace App\Models;
 
 use App\Models\Presenters\TeamPresenter;
+use App\Models\Traits\Presentable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 use Spiritix\LadaCache\Database\LadaCacheTrait;
-use App\Models\Traits\Presentable;
 
 class Team extends Model implements Sortable
 {
-    use HasFactory, SortableTrait, LadaCacheTrait, Presentable;
+    use HasFactory, LadaCacheTrait, Presentable, SortableTrait;
 
-    /**
-     * @var string
-     */
     protected string $presenter = TeamPresenter::class;
 
     /**
      * Used for sorting on Nova index.
+     *
      * @var array
      */
     public $sortable = [
@@ -57,6 +56,6 @@ class Team extends Model implements Sortable
         'twitter_handle',
         'about',
         'image',
-        'order'
+        'order',
     ];
 }

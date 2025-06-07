@@ -19,3 +19,16 @@
 svg.h-6 {
     height: 3em;
 }
+
+/* Limit the height of images in the Course resource to 200px */
+[dusk="tile_image"] img {
+    max-height: 100px !important;
+    width: auto !important;
+    object-fit: contain !important;
+}
+[dusk="page_image"] img {
+    max-height: 100px !important;
+    width: auto !important;
+    object-fit: contain !important;
+}
+

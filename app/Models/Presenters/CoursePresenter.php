@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright (c) 2022. Digitization Academy
  * idigacademy@gmail.com
@@ -24,26 +25,32 @@ use Illuminate\Support\Facades\Storage;
 class CoursePresenter extends Presenter
 {
     /**
-     * Return front image url if present or default image.
+     * Return the tile_image url if present or default image.
      *
-     * @return string
+     * @return string The URL of the tile image from storage
      */
-    public function frontImage(): string
+    public function tileImage(): string
     {
-        return isset($this->model->front_image) && Storage::disk('public')->exists($this->model->front_image) ?
-            Storage::url($this->model->front_image) :
-            Storage::url('default_image/course_default_front.png');
+        return Storage::url($this->model->tile_image);
     }
 
     /**
-     * Return back image url if present or default image.
+     * Return the page_image url if present or default image.
      *
-     * @return string
+     * @return string The URL of the page image from storage
      */
-    public function backImage(): string
+    public function pageImage(): string
     {
-        return isset($this->model->back_image) && Storage::disk('public')->exists($this->model->back_image) ?
-            Storage::url($this->model->back_image) :
-            Storage::url('default_image/course_default_back.png');
+        return Storage::url($this->model->page_image);
+    }
+
+    /**
+     * Return the syllabus file url from storage.
+     *
+     * @return string The URL of the syllabus PDF from storage
+     */
+    public function syllabus(): string
+    {
+        return Storage::url($this->model->syllabus);
     }
 }

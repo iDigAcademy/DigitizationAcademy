@@ -38,18 +38,17 @@ class EventFactory extends Factory
         $start_date = fake()->dateTimeBetween('next Monday', 'next Monday +30 days')->format('Y-m-d');
         $end_date = fake()->dateTimeBetween($start_date, $start_date.' +14 days')->format('Y-m-d');
 
-        $register_start_date = fake()->dateTimeBetween('-30 days', 'now')->format('Y-m-d');
-        $register_end_date = fake()->dateTimeBetween('now', $start_date)->format('Y-m-d');
+        $form_start_date = fake()->dateTimeBetween('-30 days', 'now')->format('Y-m-d');
+        $form_end_date = fake()->dateTimeBetween('now', $start_date)->format('Y-m-d');
 
         return [
             'course_id' => Course::factory(),
             'start_date' => $start_date,
             'end_date' => $end_date,
             'schedule' => $this->faker->randomElement(['Mon-Wed-Fri 10:00-12:00', 'Tue-Thu 14:00-16:00', 'Weekends 9:00-13:00']),
-            'course_type' => $this->faker->randomElement(['2 Hour', '12 Hour']),
-            'register_start_date' => $register_start_date,
-            'register_end_date' => $register_end_date,
-            'register_link' => $this->faker->url(),
+            'form_start_date' => $form_start_date,
+            'form_end_date' => $form_end_date,
+            'form_link' => $this->faker->url(),
         ];
     }
 }

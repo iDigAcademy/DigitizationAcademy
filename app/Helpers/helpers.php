@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright (c) 2022. Digitization Academy
  * idigacademy@gmail.com
@@ -23,21 +24,5 @@ if (! function_exists('date_day_string')) {
     function date_day_string(Carbon $date): string
     {
         return $date->toFormattedDayDateString();
-    }
-}
-
-if (! function_exists('date_timezone_string')) {
-    function date_timezone_string(Carbon $date): string
-    {
-        $timezone = isset(Auth::user()->timezone) ? Auth::user()->timezone : Session::get('timezone');
-
-        return $date->tz($timezone)->toFormattedDayDateString();
-    }
-}
-
-if (! function_exists('date_compare')) {
-    function date_compare(Carbon $date): bool
-    {
-        return $date->gte(Carbon::now()->format('Y-m-d'));
     }
 }

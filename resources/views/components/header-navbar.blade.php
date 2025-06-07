@@ -30,12 +30,12 @@
                             <li class="menu-item-has-children"><a href="#">Explore Courses</a>
                                 <x-course-menu />
                             </li>
-                            <li><a href="{{ route('calendar.index') }}">Calendar</a></li>
-                            <li><a href="{{ route('team.index') }}">Team</a></li>
-                            <li><a href="{{ route('contact.index') }}">Contact</a></li>
+                            <li><a href="{{ route('calendar.index') }}" id="calendar">Calendar</a></li>
+                            <li><a href="{{ route('team.index') }}" id="team">Team</a></li>
+                            <li><a href="{{ route('contact.index') }}" id="contact">Contact</a></li>
                             <!-- Replace the existing language menu item with this -->
                             <li class="menu-item-has-children google-menu">
-                                <a href="#">Language <i class="fas fa-globe"></i></a>
+                                <a href="#">Language<i class="fas fa-globe ms-2"></i></a>
                                 <x-language />
                             </li>
                             <!-- Hidden Google Translate Element -->

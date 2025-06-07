@@ -1,26 +1,30 @@
 <x-app-layout>
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">{{ t('Reset Password') }}</div>
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                        <x-form method="POST" action="{{ route('password.email') }}">
-                            <x-label for="email"/>
-                            <x-email />
-                            <x-error for="email"/>
-                            <div class="d-block text-center">
-                                <x-form-button>{{ t('Send Password Reset Link') }}</x-form-button>
+    <section class="section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3 col-sm-12">
+                    <div class="contact-form-box shadow-box mb--30 px-sm-4">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
                             </div>
-                        </x-form>
+                        @endif
+                        <form method="post" action="{{ route('password.email') }}" class="recaptcha">
+                            @csrf
+                            <div class="form-group mb-3">
+                                <label>Email</label>
+                                <input type="text" class="form-control" name="email">
+                            </div>
+                            @include('partials.recaptcha')
+                            <div class="form-group">
+                                <button type="submit" class="digi-btn btn-fill-primary btn-fluid btn-primary"
+                                        name="submit-btn">Send Password Reset Link
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
 </x-app-layout>>

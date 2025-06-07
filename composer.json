@@ -6,7 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2.0",
-        "blade-ui-kit/blade-ui-kit": "^0.7.0",
+        "alexwenzel/nova-dependency-container": "^1.13",
         "google/apiclient": "^2.18",
         "guzzlehttp/guzzle": "^7.2",
         "inertiajs/inertia-laravel": "1.x-dev as 1.32.3",

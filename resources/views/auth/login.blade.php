@@ -1,35 +1,39 @@
 <x-app-layout>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">{{ t('Login') }}</div>
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="mb-4 font-medium text-sm text-green-600">
-                                {{ session('status') }}
+    <!-- shape groups -->
+    <ul class="shape-group-6 list-unstyled">
+        <li class="shape shape-1">
+            <img src="{{ asset('images/logo/watermarkApr2025.svg') }}" alt="Bubble">
+        </li>
+    </ul>
+    <!-- Contact  Area Start     =-->
+    <section class="section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3 col-sm-12">
+                    <div class="contact-form-box shadow-box mb--30 px-sm-4">
+                        <form method="post" action="{{ route('login') }}" class="recaptcha">
+                        @csrf
+                            <div class="form-group mb-3">
+                                <label>Email</label>
+                                <input type="text" class="form-control" name="email">
                             </div>
-                        @endif
-                        <x-form action="{{ route('login') }}" class="recaptcha">
-                            <x-label for="email" />
-                            <x-input name="email" type="email" id="email" label="{{ trans('Email') }}"/>
-                            <x-error field="email" />
-                            <x-label for="password" />
-                            <x-password label="{{ trans('Password') }}"/>
-                            <x-error field="password" />
-                            <x-label for="remember" />
-                            <x-checkbox name="remember" />
+                            <div class="form-group mb-3">
+                                <label>Password</label>
+                                <input type="password" class="form-control" name="password">
+                            </div>
                             @include('partials.recaptcha')
-                            <div class="d-block text-center mt-4">
-                                <x-form-button>{{ t('Login') }}</x-form-button>
+                            <div class="form-group">
+                                <button type="submit" class="digi-btn btn-fill-primary btn-fluid btn-primary"
+                                        name="submit-btn">Login
+                                </button>
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ t('Forgot Your Password?') }}
+                                    Forgot Your Password?
                                 </a>
                             </div>
-                        </x-form>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </x-app-layout>

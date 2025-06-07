@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright (c) 2022. Digitization Academy
  * idigacademy@gmail.com
@@ -19,34 +20,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Services\PageService;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
 
+/**
+ * Controller for handling calendar-related functionality.
+ *
+ * This controller is responsible for rendering the calendar view
+ * which displays course schedules and events.
+ */
 class CalendarController extends Controller
 {
     /**
-     * @var \App\Models\Services\PageService
-     */
-    private PageService $pageService;
-
-    /**
-     * @param \App\Models\Services\PageService $pageService
-     */
-    public function __construct(PageService $pageService)
-    {
-
-        $this->pageService = $pageService;
-    }
-
-    /**
-     * Show calendar page.
+     * Handle the incoming request and render the calendar view.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Contracts\Support\Renderable The rendered calendar view
      */
-    public function index(): Renderable
+    public function __invoke(): Renderable
     {
-        $topImage = $this->pageService->getCalendarImage();
-        return view('calendar', compact('topImage'));
+        return view('calendar');
     }
 }

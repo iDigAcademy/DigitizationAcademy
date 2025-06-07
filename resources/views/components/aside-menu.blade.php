@@ -14,9 +14,9 @@
                         @csrf
                     </form>
                     @guest
-                        <li><a href="{{ route('login') }}">{{ t('Login') }}</a></li>
+                        <li><a href="{{ route('login') }}">Login</a></li>
                         @if(\Laravel\Fortify\Features::enabled('register'))
-                            <li><a href="{{ route('register') }}">{{ t('Register') }}</a></li>
+                            <li><a href="{{ route('register') }}">Register</a></li>
                         @endif
                     @endguest
                 </ul>

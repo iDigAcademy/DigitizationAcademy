@@ -1,5 +1,5 @@
 <x-mail::message>
-#{{ t('Job Error') }}
+#Job Error
 
 {!! $message !!}
 

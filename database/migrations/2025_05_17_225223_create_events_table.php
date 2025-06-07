@@ -17,10 +17,9 @@ return new class extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->string('schedule');
-            $table->enum('course_type', ['2 Hour', '12 Hour'])->default('2 Hour');
-            $table->date('register_start_date')->nullable();
-            $table->date('register_end_date')->nullable();
-            $table->string('register_link')->nullable();
+            $table->date('form_start_date')->nullable();
+            $table->date('form_end_date')->nullable();
+            $table->string('form_link')->nullable();
             $table->timestamps();
         });
     }

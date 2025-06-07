@@ -24,7 +24,7 @@
         <!-- graphic shapes -->
         <ul class="list-unstyled shape-group-18">
             <li class="shape shape-1">
-                <img src="{{ asset('images/banner/banner-shape-1.orig.png') }}" alt="Image of a scanned butterfly specimen.">
+                <img src="{{ asset('images/banner/banner-shape-1.png') }}" alt="Image of a scanned butterfly specimen.">
             </li>
             <li class="shape shape-2">
                 <img src="{{ asset('images/banner/banner-shape-2.png') }}" alt="Graphical design element of a curved line">

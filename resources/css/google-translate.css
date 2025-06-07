@@ -1,0 +1,75 @@
+/* Language submenu styling */
+/* Add this to your CSS file */
+body {
+    top: 0 !important;
+}
+
+.language-submenu {
+    max-height: 300px;
+    overflow-y: auto;
+    width: 200px;
+}
+
+/* For better scrolling experience */
+.language-submenu::-webkit-scrollbar {
+    width: 8px;
+}
+
+.language-submenu::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.language-submenu::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.language-submenu::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+/* Hide Google banner */
+.goog-te-banner-frame {
+    display: none !important;
+}
+
+/* Fix for Google's additions */
+.skiptranslate {
+    display: none !important;
+}
+
+/* Ensure language options always display properly */
+.notranslate {
+    /* Force left-to-right direction for language menu items */
+    direction: ltr !important;
+}
+
+.language-option {
+    /* Preserve original font for language names */
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+.language-search-container {
+    padding: 8px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+#language-search-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+/* If your language list has a scrollable container, make sure the search stays at the top */
+.language-options {
+    max-height: 300px;
+    overflow-y: auto;
+}

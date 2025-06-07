@@ -360,6 +360,22 @@ li {
     background-color: var(--color-link);
     color: var(--color-white);
 }
+
+/* Used to auto adjust button width on content size */
+.nav-pills .nav-item .nav-link {
+    display: flex;
+    white-space: nowrap;
+    min-width: fit-content;
+    flex-grow: 1;
+    justify-content: center;
+}
+.nav-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Space between buttons */
+}
+/* End adjustment */
+
 /*-------------------------
     Back To Top
 --------------------------*/
@@ -1105,7 +1121,8 @@ li {
         margin-bottom: 50px; } }
 .team-page .thumbnail {
     background-color: var(--color-white);
-    border-radius: 30px;
+    border-radius: 30px !important;
+    border: 1px solid #dee2e6 !important;
     text-align: center; }
 @media only screen and (max-width: 991px) {
     .team-page .thumbnail {
@@ -1145,6 +1162,20 @@ li {
 @media only screen and (max-width: 1199px) {
     .team-page .content p {
         width: 100%; } }
+
+.team-page.content-reverse {
+    flex-direction: row-reverse; }
+.team-page.content-reverse .content {
+    margin: 0 60px 0 0;
+    padding-left: 100px; }
+@media only screen and (max-width: 1199px) {
+    .team-page.content-reverse .content {
+        padding-left: 0; } }
+@media only screen and (max-width: 767px) {
+    .team-page.content-reverse .content {
+        margin: 0; } }
+.team-page.content-reverse .content p {
+    width: 100%; }
 
 .team-page .subtitle {
     display: block;

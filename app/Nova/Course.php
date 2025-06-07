@@ -20,20 +20,31 @@
 
 namespace App\Nova;
 
+use Alexwenzel\DependencyContainer\DependencyContainer;
+use Alexwenzel\DependencyContainer\HasDependencies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\File;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
-use Laravel\Nova\Fields\URL;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use PixelCreation\NovaFieldSortable\Concerns\SortsIndexEntries;
+use PixelCreation\NovaFieldSortable\Sortable;
 
 class Course extends Resource
 {
+    use HasDependencies, SortsIndexEntries;
+
+    /**
+     * @var string
+     */
+    public static $defaultSortField = 'sort_order';
+
     /**
      * The model the resource corresponds to.
      *
@@ -57,10 +68,8 @@ class Course extends Resource
         'id',
         'title',
         'objectives',
+        'language',
         'active',
-        'home_page',
-        'start_date',
-        'end_date',
     ];
 
     /**
@@ -72,49 +81,64 @@ class Course extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Title')->rules('required', 'string', 'min:10', 'max:70')->help('Max 70 characters'),
-            Textarea::make('Objectives')->rules('required', 'string', 'min:10', 'max:1000')->help('Max 1000 characters'),
-            Select::make('Language', 'language')->options(['English' => 'English', 'Spanish' => 'Spanish']),
-            Image::make('Front Image')->store(function (Request $request) {
+            Text::make('Title')->rules('required', 'string', 'min:10', 'max:70')
+                ->required()
+                ->sortable()
+                ->help('Max 70 characters'),
+            Select::make('Type')->options(['2 Hour' => '2 Hour', '12 Hour' => '12 Hour'])
+                ->rules('required')
+                ->required()
+                ->sortable(),
+            Textarea::make('Description')->rules('required', 'string', 'min:10', 'max:1000')
+                ->required()
+                ->help('Max 1000 characters'),
+            DependencyContainer::make([
+                Textarea::make('Objectives')
+                    ->rules('string', 'min:10', 'max:1200', 'required_if:type,12 Hour')
+                    ->help('Max 1200 characters'),
+            ])->dependsOn('type', '12 Hour'),
+            Select::make('Language', 'language')
+                ->options(['English' => 'English', 'Spanish' => 'Spanish'])
+                ->required()
+                ->sortable(),
+            Text::make('Led By', 'instructor')->rules('required', 'string', 'min:10', 'max:100'),
+            Image::make('Tile Image')->store(function (Request $request) {
                 return [
-                    'front_image' => $request->front_image->store(config('config.course_image_dir'), 'public'),
+                    'tile_image' => $request->tile_image->store(config('config.course_image_dir'), 'public'),
                 ];
-            })->maxWidth(100)
-                ->creationRules('image', 'mimes:jpg,jpeg,png', 'dimensions:min_width=468,min_height=353')
-                ->updateRules('image', 'mimes:jpg,jpeg,png', 'dimensions:min_width=468,min_height=353')
+            })->required()
+                ->creationRules('image', 'mimes:jpg,jpeg,png', 'dimensions:width=101,height=550')
+                ->updateRules('image', 'mimes:jpg,jpeg,png', 'dimensions:width=101,height=550')
                 ->preview(function ($value, $disk) {
-                    return $value
-                        ? Storage::disk($disk)->url($value)
-                        : Storage::disk($disk)->url('default_image/course_default_front.png');
+                    return Storage::disk($disk)->url($value);
                 })
-                ->prunable()->hideFromIndex()->help('Min width 468px, Min height 353px'),
-            Image::make('Back Image')->store(function (Request $request) {
+                ->prunable()
+                ->hideFromIndex()
+                ->help('Width 101px, Height 550px'),
+            Image::make('Page Image')->store(function (Request $request) {
                 return [
-                    'back_image' => $request->back_image->store(config('config.course_image_dir'), 'public'),
+                    'page_image' => $request->page_image->store(config('config.course_image_dir'), 'public'),
                 ];
-            })->maxWidth(100)
-                ->creationRules('image', 'mimes:jpg,jpeg,png', 'dimensions:min_width=468,min_height=100')
-                ->updateRules('image', 'mimes:jpg,jpeg,png', 'dimensions:min_width=468,min_height=100')
+            })->required()
+                ->creationRules('image', 'mimes:jpg,jpeg,png', 'dimensions:width=336,height=555')
+                ->updateRules('image', 'mimes:jpg,jpeg,png', 'dimensions:width=336,height=555')
                 ->preview(function ($value, $disk) {
-                    return $value
-                        ? Storage::disk($disk)->url($value)
-                        : Storage::disk($disk)->url('default_image/course_default_back.png');
+                    return Storage::disk($disk)->url($value);
                 })
-                ->prunable()->hideFromIndex()->help('Min width 468px, Min height 100px'),
-            Date::make('Start Date')->rules('required')->sortable(),
-            Date::make('End Date')->rules('required')->sortable(),
-            Text::make('Schedule Details')->rules('required', 'string', 'max: 30')->help('Max 30 characters'),
-            URL::make('Registration/Application URL', 'registration_url')->rules('min:0', 'max:150')->hideFromIndex()->help('Max 150 characters'),
-            Select::make('URL Type')->options([0 => 'Registration', 1 => 'Application'])->rules('required')->displayUsing(function ($value) {
-                $options = [0 => 'Registration', 1 => 'Application'];
-
-                return $options[$value] ?? $value;
-            }),
-            Date::make('Registration Start Date')->hideFromIndex(),
-            Date::make('Registration End Date')->hideFromIndex(),
-            URL::make('Syllabus URL')->hideFromIndex()->rules('min:0', 'max:150')->help('Max 150 characters'),
+                ->prunable()->hideFromIndex()->help('Width 336px, Height 555px'),
+            DependencyContainer::make([
+                File::make('Syllabus')->store(function (Request $request) {
+                    return [
+                        'syllabus' => $request->syllabus->store(config('config.course_syllabus_dir'), 'public'),
+                    ];
+                })->hideFromIndex()->rules('mimes:pdf', 'required_if:type,12 Hour')->help('Upload a PDF file.'),
+            ])->dependsOn('type', '12 Hour'),
+            DependencyContainer::make([
+                Text::make('Video')->rules('required_if:type,2 Hour')->help('Enter video link for course.'),
+            ])->dependsOn('type', '2 Hour'),
             Boolean::make('Active')->sortable(),
-            Boolean::make('Home Page'),
+            Sortable::make('Order', 'sort_order')->onlyOnIndex(),
+            BelongsToMany::make('Assets', 'assets', \App\Nova\Asset::class),
         ];
     }
 

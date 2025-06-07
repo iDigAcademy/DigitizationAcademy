@@ -20,32 +20,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Services\PageService;
 use App\Models\Team;
 use Illuminate\Contracts\Support\Renderable;
 
+/**
+ * Controller for managing team-related functionality.
+ * Handles the display of current and former team members.
+ *
+ * @author Digitization Academy <idigacademy@gmail.com>
+ */
 class TeamController extends Controller
 {
-    private PageService $pageService;
-
-    public function __construct(PageService $pageService)
-    {
-
-        $this->pageService = $pageService;
-    }
-
     /**
-     * Show about page.
+     * Display the about page with team information.
+     * Retrieves and splits team members into current and former teams.
+     *
+     * @return Renderable View containing team information and top image
      */
-    public function index(): Renderable
+    public function __invoke(): Renderable
     {
-        $topImage = $this->pageService->getAboutImage();
         $teams = Team::orderBy('order')->get();
 
         [$currentTeam, $formerTeam] = $teams->partition(function ($team) {
             return $team->current === 1;
         });
 
-        return view('about', compact('topImage', 'currentTeam', 'formerTeam'));
+        return view('team', compact('currentTeam', 'formerTeam'));
     }
 }

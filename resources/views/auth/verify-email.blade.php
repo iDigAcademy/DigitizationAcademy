@@ -1,27 +1,33 @@
 <x-app-layout>
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">{{ t('Verify Your Email Address') }}</div>
-                <div class="card-body">
-                    @if (session('status') == 'verification-link-sent')
-                        <div class="alert alert-success" role="alert">
-                            {{ t('A fresh verification link has been sent to your email address.') }}
-                        </div>
-                    @endif
+    <section class="section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3 col-sm-12">
+                    <div class="contact-form-box shadow-box mb--30 px-sm-4">
+                        @if (session('status') == 'verification-link-sent')
+                            <div class="alert alert-success" role="alert">
+                                A fresh verification link has been sent to your email address.
+                            </div>
+                        @endif
+                        Before proceeding, please check your email for a verification link.
+                        If you did not receive the email,
 
-                    {{ t('Before proceeding, please check your email for a verification link.') }}
-                    {{ t('If you did not receive the email') }},
-                    <x-form class="d-inline" action="{{ route('verification.send') }}">
-                        <x-form-button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ t('click here to request another') }}</x-form-button>.
-                    </x-form>
+                        <form method="post" action="{{ route('verification.send') }}" class="recaptcha">
+                            @csrf
+                            @include('partials.recaptcha')
+                            <div class="form-group">
+                                <button type="submit" class="digi-btn btn-fill-primary btn-fluid btn-primary"
+                                        name="submit-btn">Click here to request another
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <p class="mt-3 mb-0 text-center"><small>
+                            Issues with the verification process or entered the wrong email?
+                            <br>Please sign up with <a href="{{ route('register-retry') }}">another</a> email
+                            address.</small></p>
                 </div>
-                <p class="mt-3 mb-0 text-center"><small>Issues with the verification process or entered the wrong email?
-                        <br>Please sign up with <a href="{{ route('register-retry') }}">another</a> email address.</small></p>
-            </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
 </x-app-layout>>

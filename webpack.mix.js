@@ -29,12 +29,6 @@ let mix = require("laravel-mix");
  |
  */
 
-mix.webpackConfig({
-    externals: {
-        "jquery": "jQuery"
-    }
-});
-
 mix.js("resources/js/app.js", "public/js/app.js")
     .css('resources/css/app.css', 'public/css/app.css', [])
     /*copyDirectory('resources/js/vendor', 'public/js/vendor')*/
