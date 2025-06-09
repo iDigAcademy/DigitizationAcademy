@@ -36,7 +36,6 @@ class CourseController extends Controller
                 $query->whereDate('start_date', '>=', Carbon::now()->format('Y-m-d'))->orderBy('start_date', 'asc');
             },
         ])->firstOrFail();
-
         $buttonDate = isset($course->events)
             && $course->events->isNotEmpty()
             && Carbon::now()->between($course->events->first()->form_start_date,

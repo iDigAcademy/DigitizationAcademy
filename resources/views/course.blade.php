@@ -23,7 +23,12 @@
                             Course fees underwritten by the National Science Foundation.
                         </span>
                     </span> | Offered in {{ $course->language }}
-                    {{ $buttonDate ? '| <span class="text-rose">'.$course->type === '2 Hour' ? 'Register</span>' : 'Apply</span>' : '' }}
+                    @if($buttonDate)
+                        | <a href="{{ $course->form_link }}"
+                             class="digi-btn btn-fill-primary course d-inline-flex align-items-center justify-content-center">
+                            {{ $course->type == '2 Hour' ? 'Register' : 'Apply' }}
+                        </a>
+                    @endif
                 </p>
             </div>
 
@@ -111,8 +116,8 @@
                          role="tabpanel"
                          aria-labelledby="expert-panel-tab">
                         <div class="section-heading course">
-                            <span class="subtitle text-rose">
-                                Introducing you to the people behind the projects.</span>
+            <span class="subtitle text-rose">
+                Introducing you to the people behind the projects.</span>
                             <p>This course provides the opportunity to engage with a panel of experts representing
                                 different collection management systems.</p>
                             <div class="expert-logos">
@@ -125,9 +130,9 @@
                                                      width="175px" style="filter:grayscale(99%);"></a></li>
                                         <li><a href="#" target="_blank">
                                                 <img src="{{ asset('images/logo/Asset21.png') }}"
-                                                        alt="Axiel"
-                                                        style="z-index:1; display:block; position: relative;"
-                                                        width="175px"></a></li>
+                                                     alt="Axiel"
+                                                     style="z-index:1; display:block; position: relative;"
+                                                     width="175px"></a></li>
                                         <li><a href="#" target="_blank">
                                                 <img src="{{ asset('images/logo/Asset22.png') }}"
                                                      style="z-index:1; display:block; position: relative;"
@@ -160,7 +165,8 @@
                                         <p class="text-start mt-5">
                                             Explore topics covered in this course through the Digitization
                                             Knowledgebase, a curated navigation tool for digitization resources from
-                                            across the world. The Digitization Knowledgebase provides links to relevant content, organized by topic for easy exploration.
+                                            across the world. The Digitization Knowledgebase provides links to relevant
+                                            content, organized by topic for easy exploration.
                                         </p>
                                     </div>
                                     <div class="col-md-6 d-flex">
@@ -176,10 +182,10 @@
                     @endif
                     @if($course->type === '2 Hour' && !empty($course->video))
                         <div class="tab-pane fade" id="video" role="tabpanel" aria-labelledby="video-tab">
-                        <span class="subtitle text-rose mb-5">
-                            Recordings of this and all our 2-hour courses are available on
-                            <a href="{{ $course->video }}" target="_blank">Vimeo</a>
-                        </span>
+        <span class="subtitle text-rose mb-5">
+            Recordings of this and all our 2-hour courses are available on
+            <a href="{{ $course->video }}" target="_blank">Vimeo</a>
+        </span>
                         </div>
                     @endif
                 </div>

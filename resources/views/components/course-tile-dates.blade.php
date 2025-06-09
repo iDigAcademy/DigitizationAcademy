@@ -11,24 +11,24 @@
 @elseif($nowLtRegisterEndDate)
     <p class="my-auto">
         <span class="text-rose">
-        {{ !$event->type == '2 Hour' ? 'Registration opens' : 'Application opens' }}:
+        {{ $event->course->type == '2 Hour' ? 'Registration opens' : 'Application opens' }}:
         </span> {{ date_day_string($event->form_start_date) }}
     </p>
 @elseif($nowBetweenDates)
     <p class="my-auto">
         <span class="text-rose">
-            {{ !$event->type == '2 Hour' ? 'Registration closes' : 'Application closes' }}:
+            {{ $event->course->type == '2 Hour' ? 'Registration closes' : 'Application closes' }}:
         </span> {{ date_day_string($event->form_end_date) }}
     </p>
-    <a href="{{ $event->form_link }}" target="_blank" class="digi-btn btn-fill-primary course text-center my-auto">
-        {{ !$event->type == '2 Hour' ? 'Register' : 'Apply' }}
+    <a href="{{ $event->course->form_link }}" target="_blank" class="digi-btn btn-fill-primary course text-center my-auto">
+        {{ $event->course->type == '2 Hour' ? 'Register' : 'Apply' }}
     </a>
 @elseif ($nowGtEndDate)
     <p class="my-auto">
         @if($inProgressDate)
             In Progress
         @else
-        {{ !$event->type == '2 Hour' ? 'Registration closed' : 'Application closed' }}
+        {{ $event->course->type == '2 Hour' ? 'Registration closed' : 'Application closed' }}
         @endif
     </p>
 @endif
