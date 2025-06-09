@@ -33,13 +33,14 @@ class CourseController extends Controller
     {
         $course = Course::slug($slug)->active()->with('assets')->with([
             'events' => function ($query) {
-                $query->whereDate('start_date', '>=', Carbon::now()->format('Y-d-m'))
-                    ->orderBy('start_date', 'asc');
+                $query->whereDate('start_date', '>=', Carbon::now()->format('Y-m-d'))->orderBy('start_date', 'asc');
             },
         ])->firstOrFail();
 
-        $buttonDate = isset($course->events) && $course->events->isNotEmpty() && Carbon::now()->between($course->events->first()->form_start_date,
-            $course->events->first()->form_end_date);
+        $buttonDate = isset($course->events)
+            && $course->events->isNotEmpty()
+            && Carbon::now()->between($course->events->first()->form_start_date,
+                $course->events->first()->form_end_date);
 
         return view('course', compact('course', 'buttonDate'));
     }

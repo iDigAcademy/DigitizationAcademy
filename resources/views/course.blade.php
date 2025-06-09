@@ -23,7 +23,7 @@
                             Course fees underwritten by the National Science Foundation.
                         </span>
                     </span> | Offered in {{ $course->language }}
-                    {{ $buttonDate ? '| <span class="text-rose">'.$course->type === '2 Hour' ? 'Register' : 'Apply'.'</span>' : '' }}
+                    {{ $buttonDate ? '| <span class="text-rose">'.$course->type === '2 Hour' ? 'Register</span>' : 'Apply</span>' : '' }}
                 </p>
             </div>
 
