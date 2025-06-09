@@ -75,9 +75,7 @@ task('deploy', [
     'artisan:event:cache',
     'artisan:optimize',
     'set:permissions',
-    // 'supervisor:reload',
-    'supervisor:restart-domain',
-    'artisan:queue:restart',
+    'supervisor:reread-update',
     'deploy:clear_paths',
     'deploy:publish',
 ]);

@@ -65,7 +65,7 @@ class UpdateQueries extends Command
         } elseif ($this->option('teams')) {
             $this->runTeamsTableMigration();
         } else {
-            $this->info('No specific operation selected. Use --events to run the events table migration, --migrate-courses to migrate data from courses to events, --alter-courses to run the alter courses table columns migration, --update-slugs to update slug column for existing courses, --update-course-values to update course values from CSV file, --update-register-dates to update register dates in events table, --create-syllabus-dir to create course_syllabus directory in storage/app/public if it does not exist, or --create-assets to run the assets tables migrations.');
+            $this->info('No specific operation selected. Use --events to run the events table migration, --migrate-courses to migrate data from courses to events, --alter-courses to run the alter courses table columns migration, --update-slugs to update slug column for existing courses, --update-course-values to update course values from CSV file, --update-register-dates to update register dates in events table, or --create-assets to run the assets tables migrations.');
         }
     }
 
