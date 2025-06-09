@@ -31,16 +31,21 @@ set('php_fpm_version', '8.3');
 set('ssh_multiplexing', true);
 set('writable_mode', 'chmod');
 set('keep_releases', 3);
+set('clear_paths', [
+    'node_modules',
+]);
 
 // Hosts
 host('production')
     ->setHostname('3.142.169.134')
     ->setDeployPath('{{base_path}}/digitizationacademy')
+    ->set('domain_name', 'digitizationacademy.org')
     ->set('branch', 'main');
 
 host('development')
     ->setHostname('3.142.169.134')
     ->setDeployPath('{{base_path}}/dev.digitizationacademy')
+    ->set('domain_name', 'dev.digitizationacademy.org')
     ->set('branch', 'development');
 
 // Tasks
@@ -70,8 +75,10 @@ task('deploy', [
     'artisan:event:cache',
     'artisan:optimize',
     'set:permissions',
-    //'supervisor:reload',
+    // 'supervisor:reload',
+    'supervisor:restart-domain',
     'artisan:queue:restart',
+    'deploy:clear_paths',
     'deploy:publish',
 ]);
 

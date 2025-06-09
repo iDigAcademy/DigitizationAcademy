@@ -70,3 +70,63 @@ task('supervisor:reload', function () {
     run('sudo supervisorctl update');
     run('sudo systemctl restart supervisor');
 });
+
+desc('Restart Supervisor process containing domain name');
+task('supervisor:restart-domain', function () {
+    // Extract domain name from deploy path
+    $deployPath = get('deploy_path');
+    $domainName = get('domain_name');
+
+    writeln("Using domain name: $domainName");
+
+    writeln("Looking for supervisor process containing domain: $domainName");
+
+    // Run the supervisor-manager.sh script and select the option containing the domain name
+    writeln('=== Starting supervisor restart process ===');
+    $result = runLocally("if [ -f /home/ubuntu/supervisor-manager.sh ]; then
+            SCRIPT_PATH=/home/ubuntu/supervisor-manager.sh
+            echo \"Using script from /home/ubuntu/supervisor-manager.sh\"
+        elif [ -f {{release_or_current_path}}/app/supervisor-manager.sh ]; then
+            SCRIPT_PATH={{release_or_current_path}}/app/supervisor-manager.sh
+            sudo chmod +x \$SCRIPT_PATH
+            echo \"Using script from {{release_or_current_path}}/app/supervisor-manager.sh\"
+        else
+            echo 'Error: supervisor-manager.sh not found'
+            exit 1
+        fi
+
+        echo \"Script path: \$SCRIPT_PATH\"
+
+        # Get matching process numbers
+        echo \"Running: sudo supervisorctl status | grep -n \\\"$domainName\\\" | cut -d\\\":\\\" -f1\"
+        MATCHES=\$(sudo supervisorctl status | grep -n \"$domainName\" | cut -d\":\" -f1)
+        echo \"Matching processes: \$MATCHES\"
+
+        if [ -z \"\$MATCHES\" ]; then
+            echo 'No supervisor processes found containing the domain name'
+            exit 0
+        fi
+
+        # Take the first match if multiple are found
+        PROCESS_NUM=\$(echo \"\$MATCHES\" | head -n 1)
+        echo \"Selecting process number \$PROCESS_NUM\"
+
+        # Display supervisor status before restart
+        echo \"=== Supervisor status before restart ===\"
+        sudo supervisorctl status | grep \"$domainName\"
+
+        # Send the process number to the script
+        echo \"Running: echo -e \\\"\$PROCESS_NUM\\\\n\\\" | sudo \$SCRIPT_PATH\"
+        echo -e \"\$PROCESS_NUM\\n\" | sudo \$SCRIPT_PATH
+
+        # Display supervisor status after restart
+        echo \"=== Supervisor status after restart ===\"
+        sudo supervisorctl status | grep \"$domainName\"
+
+        echo \"=== Supervisor restart process completed ===\"
+    ");
+
+    writeln('=== Supervisor restart result ===');
+    writeln($result);
+    writeln('=== End of supervisor restart result ===');
+});
