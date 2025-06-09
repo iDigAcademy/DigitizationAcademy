@@ -24,7 +24,7 @@
                         </span>
                     </span> | Offered in {{ $course->language }}
                     @if($buttonDate)
-                        | <a href="{{ $course->form_link }}"
+                        | <a href="{{ $course->events->first()->form_link }}"
                              class="digi-btn btn-fill-primary course d-inline-flex align-items-center justify-content-center">
                             {{ $course->type == '2 Hour' ? 'Register' : 'Apply' }}
                         </a>

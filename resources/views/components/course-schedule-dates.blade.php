@@ -10,7 +10,7 @@
     </li>
 @elseif($nowBetweenDates)
     <li>
-        <a href="{{ route('course.index', ['slug' => $course->slug]) }}" class="digi-btn btn-fill-primary course text-center">
+        <a href="{{ $event->form_link }}" class="digi-btn btn-fill-primary course text-center">
             {{ $course->type == '2 Hour' ? 'Register' : 'Apply' }}
         </a>
     </li>

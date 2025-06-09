@@ -20,7 +20,7 @@
             {{ $event->course->type == '2 Hour' ? 'Registration closes' : 'Application closes' }}:
         </span> {{ date_day_string($event->form_end_date) }}
     </p>
-    <a href="{{ $event->course->form_link }}" target="_blank" class="digi-btn btn-fill-primary course text-center my-auto">
+    <a href="{{ $event->form_link }}" target="_blank" class="digi-btn btn-fill-primary course text-center my-auto">
         {{ $event->course->type == '2 Hour' ? 'Register' : 'Apply' }}
     </a>
 @elseif ($nowGtEndDate)
