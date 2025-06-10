@@ -21,21 +21,19 @@
                         <p class="small">{{ $event->course->description }}</p>
                     </div>
                     <div class="row card-foot">
-                        <div class="col-md-5 course-dates">
+                        <div class="col-md-5 course-dates p-0">
                             <ul class="list-unstyled m-0">
-                                <li><span>Start Date:</span>{{ $event->formatted_start_date }} </li>
-                                <li><span>End Date:</span> {{ $event->formatted_end_date }}</li>
+                                <li><span>Start Date:&nbsp;</span>{{ $event->formatted_start_date }} </li>
+                                <li><span>End Date:&nbsp;</span>{{ $event->formatted_end_date }}</li>
                             </ul>
                         </div>
                         <div class="col-md-7 course-dates">
                             <ul class="list-unstyled m-0">
-                                <li><span>Schedule:</span> {{ $event->schedule }}</li>
-                                <li><span>Language:</span> {{ $event->course->language }}</li>
+                                <li><span>Schedule:&nbsp;</span>{{ $event->schedule }}</li>
+                                <li><span>Language:&nbsp;</span>{{ $event->course->language }}</li>
                             </ul>
                         </div>
-                        <div class="d-flex mt-4 justify-content-between align-items-center">
                             <x-course-tile-dates :event="$event" />
-                        </div>
                     </div>
                 </div>
             </div>
