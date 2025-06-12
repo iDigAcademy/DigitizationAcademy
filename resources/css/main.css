@@ -550,7 +550,6 @@ li {
 .mainmenu > .menu-item-has-children .digi-submenu li a {
     position: relative;
     font-size: 14px;
-    text-transform: capitalize;
     color: var(--color-body);
     font-weight: 500;
     padding: 7px 15px;
