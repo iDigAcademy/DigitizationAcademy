@@ -2,7 +2,7 @@
     <section class="banner page">
         <div class="container-fluid">
             <div class="banner-content">
-                <h1 class="page-title mt-5">Meet the digitization academy team</h1>
+                <h1 class="page-title mt-5">Meet the Digitization Academy team</h1>
                 <p class="page-lead">
                     We love to share our experience with you and love to learn from your experience.
                     Let’s talk!</p>
