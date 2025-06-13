@@ -16,7 +16,7 @@
                         <a href="{{ route('course.index', ['slug' => $event->course->slug]) }}">
                             <h4 class="text-light">
                                 <span class="info-tooltip">
-                                {{ $event->course->title }}<i class="far fa-info-circle"></i>
+                                {{ $event->course->title }}
                                 <span class="tooltip-text card-title">
                                     Click for course page.
                                 </span>

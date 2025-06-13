@@ -1369,6 +1369,7 @@ ul.course-objectives li{
 }
 .tooltip-text.card-title {
     font-size: 18px;
+    width: 150px;
 }
 @media only screen and (max-width: 767px) {
     .tooltip-text {
