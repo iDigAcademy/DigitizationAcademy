@@ -5,7 +5,10 @@
                  style="background-image: url('{{ $event->course->present()->tile_image }}');
                  background-size: cover;
                     background-position: center;
-                    min-height: 100px;">
+                    min-height: 100px;
+                    border-top-left-radius: 8px;
+                    border-bottom-left-radius: 8px;
+                    overflow: hidden;">
             </div>
             <div class="col-md-10 pl-sm-0 pl-4">
                 <div class="card-body">
