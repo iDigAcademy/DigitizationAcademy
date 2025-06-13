@@ -76,7 +76,7 @@
                                             data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">
                                         <span class="acc_number"><img
                                                     src="{{ asset('images/logo/leaf-left.svg') }}"
-                                                    width="100px" style="margin-top: -25px;" alt="IDig Bio leaves from their logo. This is a graphical design element."> </span>
+                                                    width="100px" style="margin-top: -25px;" alt="IDig Bio Leaves"> </span>
                                         <h6>Our systematic overview builds the foundation.</h6>
                                     </button>
                                 </h6>
@@ -97,7 +97,7 @@
                                         <span class="acc_number"><img
                                                     src="{{ asset('images/logo/leaf-yellow-orange-center.png') }}"
                                                     width="100px"
-                                                    style="margin-top: -25px;" alt="IDig Bio leaves from their logo. This is a graphical design element."> </span>
+                                                    style="margin-top: -25px;" alt="IDig Bio Leaf"> </span>
                                         <h6>'Your experience provides the nuance and motivation.</h6>
                                     </button>
                                 </h6>
@@ -116,7 +116,7 @@
                                             data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
                                         <span class="acc_number"><img
                                                     src="{{ asset('images/logo/leaf-right.svg') }}"
-                                                    width="100px" style="margin-top: -25px;" alt="IDig Bio leaves from their logo. This is a graphical design element."> </span>
+                                                    width="100px" style="margin-top: -25px;" alt="IDig Bio Leaf"> </span>
                                         <h6>And an expert panel identifies the leading edge of the possible.</h6>
                                     </button>
                                 </h6>
@@ -149,8 +149,8 @@
                         high-value topics covered for you in complementary ways.</p>
                 </div>
                 <div class="col-4 col-sm-4 col-lg-5 col-xl-5">
-                    <img src="{{ asset('images/others/idig-bio-leaves-new.svg') }}" id="idigLeaf"
-                         alt="IDig Bio leaves from their logo. This is a graphical design element.">
+                    <img src="{{ asset('images/others/idig-bio-leaves.svg') }}" id="idigLeaf"
+                         alt="IDig Bio Leaf">
                 </div>
             </div>
         </div>
