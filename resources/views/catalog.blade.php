@@ -38,14 +38,14 @@
                 <ul style="z-index: 2" class="nav nav-pills mb-5 justify-content-center courses-pills" id="coursesPills"
                     role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link course-tab digi-btn btn-fill-primary course-pills active"
+                        <button class="nav-link course-tab digi-btn btn-fill-primary course-pills"
                                 id="all-tab" data-bs-toggle="pill"
                                 data-url="{{ route('catalog.show', ['type' => 'all']) }}" type="button" role="tab"
                                 aria-controls="all" aria-selected="true">All
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link course-tab digi-btn btn-fill-primary course-pills"
+                        <button class="nav-link course-tab digi-btn btn-fill-primary course-pills active"
                                 id="upcoming-tab" data-bs-toggle="pill"
                                 data-url="{{ route('catalog.show', ['type' => 'upcoming']) }}" type="button" role="tab"
                                 aria-controls="upcoming" aria-selected="false">Upcoming
@@ -62,7 +62,7 @@
 
                 <!-- Tab content container -->
                 <div class="tab-content" id="courseTabContent">
-                    <div class="tab-pane fade show active" id="courseContent" role="tabpanel" aria-labelledby="all-tab">
+                    <div class="tab-pane fade show active" id="courseContent" role="tabpanel" aria-labelledby="upcoming-tab">
                         <!-- Content will be loaded here -->
                         <div class="content-loader">
                             <div class="spinner-border text-primary" role="status">

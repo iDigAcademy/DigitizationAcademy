@@ -502,7 +502,7 @@
         courseCatalog: function () {
             // Load initial "all
             // " content when page loads
-            let initialUrl = $('#all-tab').data('url');
+            let initialUrl = $('#upcoming-tab').data('url');
             loadTabContent(initialUrl);
 
             // Handle pill click events

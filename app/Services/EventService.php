@@ -43,15 +43,11 @@ class EventService
         })->with('course');
 
         // Filter based on type
-        if ($type === 'upcoming') {
-            $query->where('start_date', '>', now());
-            $query->orderBy('start_date', 'asc'); // Ascending order makes more sense for upcoming events
-        } elseif ($type === 'past') {
-            $query->where('start_date', '<', now());
-            $query->orderBy('start_date', 'desc'); // Most recent past events first
-        } else { // 'all' or any other type defaults to all records
-            $query->orderBy('start_date', 'desc');
-        }
+        match ($type) {
+            'past' => $query->where('start_date', '<', now())->orderBy('start_date', 'desc'),
+            'all' => $query->orderBy('start_date', 'desc'),
+            default => $query->where('start_date', '>', now())->orderBy('start_date', 'asc'),
+        };
 
         return $query->get();
     }
