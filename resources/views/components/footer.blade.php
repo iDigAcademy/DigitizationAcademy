@@ -51,17 +51,8 @@
 
         <div class="footer-bottom">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <x-copyright />
-                </div>
-
-                <div class="col-md-6">
-                    <div class="footer-bottom-link">
-                        <ul class="list-unstyled">
-                            <li><a href="#">IdigBio</a></li>
-                            <li><a href="#">FSU Dept. of Biology</a></li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
