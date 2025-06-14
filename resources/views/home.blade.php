@@ -98,7 +98,7 @@
                                                     src="{{ asset('images/logo/leaf-yellow-orange-center.png') }}"
                                                     width="100px"
                                                     style="margin-top: -25px;" alt="IDig Bio Leaf"> </span>
-                                        <h6>'Your experience provides the nuance and motivation.</h6>
+                                        <h6>Your experience provides the nuance and motivation.</h6>
                                     </button>
                                 </h6>
                                 <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#accordion">
