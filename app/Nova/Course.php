@@ -95,7 +95,7 @@ class Course extends Resource
             DependencyContainer::make([
                 Textarea::make('Objectives')
                     ->rules('string', 'min:10', 'max:1200', 'required_if:type,12 Hour')
-                    ->help('Max 1200 characters'),
+                    ->help('Max 1200 characters. Each line break is a new objective.'),
             ])->dependsOn('type', '12 Hour'),
             Select::make('Language', 'language')
                 ->options(['English' => 'English', 'Spanish' => 'Spanish'])
