@@ -20,27 +20,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Course;
+use App\Services\CourseService;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Support\Carbon;
 
+/**
+ * Controller responsible for handling course-related HTTP requests.
+ * Manages the display of course information to users.
+ */
 class CourseController extends Controller
 {
     /**
-     * Show courses page.
+     * Create a new CourseController instance.
+     *
+     * @param  CourseService  $courseService  Service class handling course business logic
      */
-    public function index(string $slug): Renderable
-    {
-        $course = Course::slug($slug)->active()->with('assets')->with([
-            'events' => function ($query) {
-                $query->whereDate('start_date', '>=', Carbon::now()->format('Y-m-d'))->orderBy('start_date', 'asc');
-            },
-        ])->firstOrFail();
-        $buttonDate = isset($course->events)
-            && $course->events->isNotEmpty()
-            && Carbon::now()->between($course->events->first()->form_start_date,
-                $course->events->first()->form_end_date);
+    public function __construct(private readonly CourseService $courseService) {}
 
-        return view('course', compact('course', 'buttonDate'));
+    /**
+     * Show courses page.
+     *
+     * @param  string  $slug  The unique identifier for the course
+     * @return Renderable Returns a view with the course details
+     */
+    public function __invoke(string $slug): Renderable
+    {
+        $course = $this->courseService->getCourseForDisplay($slug);
+
+        return view('course', compact('course'));
+
     }
 }

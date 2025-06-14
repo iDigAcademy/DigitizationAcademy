@@ -14,6 +14,7 @@
             {{ $course->type == '2 Hour' ? 'Register' : 'Apply' }}
         </a>
     </li>
+    <li>Application close {{ $event->form_end_date->format('F j, Y')}}</li>
 @elseif ($nowGtEndDate)
     <li>{{ $course->type == '2 Hour' ? 'Registration closed' : 'Application closed' }}</li>
 @endif

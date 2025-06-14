@@ -42,7 +42,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('catalog', [CatalogController::class, 'index'])->name('catalog.index');
 Route::get('catalog/{type}', [CatalogController::class, 'show'])->name('catalog.show');
-Route::get('course/{slug}', [CourseController::class, 'index'])->name('course.index');
+Route::get('course/{slug}', CourseController::class)->name('course.index');
 Route::get('calendar', CalendarController::class)->name('calendar.index');
 Route::get('team', TeamController::class)->name('team.index');
 Route::get('contact', [ContactController::class, 'index'])->name('contact.index');

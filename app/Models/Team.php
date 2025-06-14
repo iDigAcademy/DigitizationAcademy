@@ -20,7 +20,6 @@
 
 namespace App\Models;
 
-use App\Models\Presenters\TeamPresenter;
 use App\Models\Traits\Presentable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -31,8 +30,6 @@ use Spiritix\LadaCache\Database\LadaCacheTrait;
 class Team extends Model implements Sortable
 {
     use HasFactory, LadaCacheTrait, Presentable, SortableTrait;
-
-    protected string $presenter = TeamPresenter::class;
 
     /**
      * Used for sorting on Nova index.

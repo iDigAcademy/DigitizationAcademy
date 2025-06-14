@@ -1,6 +1,6 @@
 <div {{ $attributes->merge(['class' => 'team-page']) }} >
     <div>
-        <img class="thumbnail" src="{{ $team->present()->teamImage }}" alt="Thumbnail">
+        <img class="thumbnail" src="{{ $team->present()->teamImage() }}" alt="Thumbnail">
     </div>
     <div class="content">
         <h3 class="mb-2">

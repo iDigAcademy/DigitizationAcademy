@@ -14,8 +14,7 @@
                 <h1 class="course-title mb-4">{{ $course->title }}</h1>
                 <p class="course-lead">{{ $course->description }}</p>
                 <p>Led by {{ $course->instructor }}</p>
-                <p class="mt-5">Next
-                    offering: {{ $buttonDate ? $course->events->first()->formattedStartDate : 'Coming soon' }} </p>
+                <p class="mt-5">Next offering: {{ $nextOffering }}</p>
                 <p class="course-info mt-5">{{ $course->type }} course | Online | Free
                     <span class="info-tooltip">
                         <i class="far fa-info-circle"></i>
@@ -26,8 +25,9 @@
                     @if($buttonDate)
                         | <a href="{{ $course->events->first()->form_link }}"
                              class="digi-btn btn-fill-primary course d-inline-flex align-items-center justify-content-center">
-                            {{ $course->type == '2 Hour' ? 'Register' : 'Apply' }}
+                            {{ $course->present()->registrationButtonText() }}
                         </a>
+                        | Application close {{ $course->events->first()->form_end_date->format('F j, Y') }}
                     @endif
                 </p>
             </div>
@@ -35,7 +35,7 @@
             <!-- graphic shapes -->
             <ul class="list-unstyled shape-group-18">
                 <li class="shape shape-1" style="z-index: -1;">
-                    <img src="{{ $course->present()->page_image }}" style="z-index: -1" alt="Header image for course">
+                    <img src="{{ $course->present()->pageImage() }}" style="z-index: -1" alt="Header image for course">
                 </li>
             </ul>
 
@@ -52,14 +52,17 @@
                         <x-course-button value="syllabus"/>
                     @endif
 
-                    <x-course-button class="{{ $course->type === '2 Hour' ? 'active' : '' }}" value="schedule"/>
-                    <x-course-button value="expert-panel"/>
+                    @if($showOfferingsPane)
+                        <x-course-button class="{{ $course->type === '2 Hour' ? 'active' : '' }}" value="offerings"/>
+                    @endif
 
-                    @if($course->assets && $course->assets->isNotEmpty())
+                    <x-course-button class="{{ $course->type === '2 Hour' && !$showOfferingsPane ? 'active' : '' }}" value="expert-panel"/>
+
+                    @if($course->present()->hasAssets())
                         <x-course-button value="resources"/>
                     @endif
 
-                    @if($course->type === '2 Hour' && !empty($course->video))
+                    @if($course->present()->hasVideo())
                         <x-course-button value="video"/>
                     @endif
                 </ul>
@@ -71,38 +74,20 @@
                             <div class="section-heading course d-flex flex-column align-items-center">
                                 <x-course-objective-header :language="$course->language"/>
                                 <ul class="course-objectives list-unstyled text-start">
-                                    @foreach(array_filter(explode(PHP_EOL, $course->objectives)) as $line)
+                                    @foreach($course->present()->objectivesList() as $line)
                                         <li>{{ $line }}</li>
                                     @endforeach
                                 </ul>
                             </div>
                         </div>
-                    @endisset
-
-                    <div class="tab-pane fade {{ $course->type === '2 Hour' ? 'show active': '' }}"
-                         id="schedule"
-                         role="tabpanel"
-                         aria-labelledby="schedule-tab">
-                        <div class="section-heading course">
-                            @if($course->events && $course->events->isNotEmpty())
-                                @foreach($course->events as $event)
-                                    <x-course-schedule :course="$course" :event="$event"/>
-                                @endforeach
-                            @else
-                                No schedule available.
-                            @endif
-                        </div>
-                    </div>
-
-                    @if($course->type === '12 Hour')
                         <div class="tab-pane fade" id="syllabus" role="tabpanel" aria-labelledby="syllabus-tab">
                             <div class="section-heading course" style="margin-bottom: 10px;">
                                 <p class="subtitle text-rose text-center">Sample Syllabus</p>
-                                <object data="{{ $course->present()->syllabus }}"
+                                <object data="{{ $course->present()->syllabus() }}"
                                         type="application/pdf"
                                         width="100%" height="600px">
                                     <p>Your browser does not support embedded PDFs.
-                                        <a href="{{ $course->present()->syllabus }}">
+                                        <a href="{{ $course->present()->syllabus() }}">
                                             Click here to download the PDF
                                         </a>
                                     </p>
@@ -111,13 +96,29 @@
                         </div>
                     @endif
 
-                    <div class="tab-pane fade"
+                    @if($showOfferingsPane)
+                        <div class="tab-pane fade {{ $offeringsActive ? 'show active' : '' }}"
+                             id="offerings"
+                             role="tabpanel"
+                             aria-labelledby="offerings-tab">
+                            <div class="section-heading course">
+                                @if($hasEvents)
+                                    @foreach($course->events as $event)
+                                        <x-course-offerings :course="$course" :event="$event"/>
+                                    @endforeach
+                                @endif
+                            </div>
+                        </div>
+                    @endif
+
+                    <div class="tab-pane fade {{ $course->type === '2 Hour' && !$showOfferingsPane ? 'show active' : '' }}"
                          id="expert-panel"
                          role="tabpanel"
                          aria-labelledby="expert-panel-tab">
                         <div class="section-heading course">
-            <span class="subtitle text-rose">
-                Introducing you to the people behind the projects.</span>
+                            <span class="subtitle text-rose">
+                                Introducing you to the people behind the projects.
+                            </span>
                             <p>This course provides the opportunity to engage with a panel of experts representing
                                 different collection management systems.</p>
                             <div class="expert-logos">
@@ -154,13 +155,13 @@
                         </div>
                     </div>
 
-                    @if($course->assets && $course->assets->isNotEmpty())
+                    @if($course->present()->hasAssets())
                         <div class="tab-pane fade" id="resources" role="tabpanel" aria-labelledby="resources-tab">
                             <div class="col-10 m-auto">
                                 <div class="row course-resources">
                                     <div class="col-md-6 ps-5">
                                         <img src="{{ asset('images/logo/dk-logo.svg') }}"
-                                             alt="Digitizaion Knowledgebase Logo"
+                                             alt="Digitization Knowledgebase Logo"
                                              class="img-fluid d-block"/>
                                         <p class="text-start mt-5">
                                             Explore topics covered in this course through the Digitization
@@ -180,12 +181,13 @@
                             </div>
                         </div>
                     @endif
-                    @if($course->type === '2 Hour' && !empty($course->video))
+
+                    @if($course->present()->hasVideo())
                         <div class="tab-pane fade" id="video" role="tabpanel" aria-labelledby="video-tab">
-        <span class="subtitle text-rose mb-5">
-            Recordings of this and all our 2-hour courses are available on
-            <a href="{{ $course->video }}" target="_blank">Vimeo</a>
-        </span>
+                            <span class="subtitle text-rose mb-5">
+                                Recordings of this and all our 2-hour courses are available on
+                                <a href="{{ $course->video }}" target="_blank">Vimeo</a>
+                            </span>
                         </div>
                     @endif
                 </div>

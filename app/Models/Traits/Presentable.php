@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright (c) 2022. Digitization Academy
  * idigacademy@gmail.com
@@ -19,29 +20,27 @@
 
 namespace App\Models\Traits;
 
-use App\Exceptions\PresenterException;
-
+/**
+ * Trait for adding presenter functionality to models.
+ *
+ * This trait provides a convenient way to associate models with their corresponding
+ * presenter classes. It automatically resolves and instantiates the appropriate
+ * presenter based on the model's class name.
+ */
 trait Presentable
 {
     /**
-     * @var \App\Models\Presenters\Presenter
-     */
-    protected $presenterInstance;
-
-    /**
-     * @return mixed
-     * @throws PresenterException
+     * Creates and returns a presenter instance for the model.
+     *
+     * This method dynamically constructs the presenter class name by appending 'Presenter'
+     * to the model's base class name and instantiates it with the current model instance.
+     *
+     * @return mixed The corresponding presenter instance for the model
      */
     public function present(): mixed
     {
-        if (is_object($this->presenterInstance)) {
-            return $this->presenterInstance;
-        }
+        $presenterClass = 'App\\Presenters\\'.class_basename($this).'Presenter';
 
-        if (property_exists($this, 'presenter') and class_exists($this->presenter)) {
-            return $this->presenterInstance = new $this->presenter($this);
-        }
-
-        throw new PresenterException('Property $presenter was not set correctly in '.get_class($this));
+        return new $presenterClass($this);
     }
 }

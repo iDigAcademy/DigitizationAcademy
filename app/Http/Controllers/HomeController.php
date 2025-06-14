@@ -22,10 +22,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 
+/**
+ * Controller for handling home page functionality.
+ *
+ * This controller is responsible for rendering the main home page
+ * of the application.
+ */
 class HomeController extends Controller
 {
     /**
-     * Show home page.
+     * Display the application's home page.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable The rendered home view
      */
     public function index(): Renderable
     {

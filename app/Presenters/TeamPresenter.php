@@ -18,39 +18,35 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace App\Models\Presenters;
+namespace App\Presenters;
 
+use App\Models\Team;
 use Illuminate\Support\Facades\Storage;
 
-class CoursePresenter extends Presenter
+/**
+ * Presenter class for Team model that handles presentation logic
+ * related to team data formatting and display.
+ */
+readonly class TeamPresenter
 {
     /**
-     * Return the tile_image url if present or default image.
+     * Create a new TeamPresenter instance.
      *
-     * @return string The URL of the tile image from storage
+     * @param  Team  $team  The team model instance to be presented
      */
-    public function tileImage(): string
-    {
-        return Storage::url($this->model->tile_image);
-    }
+    public function __construct(
+        private Team $team
+    ) {}
 
     /**
-     * Return the page_image url if present or default image.
+     * Get the team's image URL.
+     * Returns the team's custom image URL if it exists,
+     * otherwise returns the default team image URL.
      *
-     * @return string The URL of the page image from storage
+     * @return string The URL to the team's image
      */
-    public function pageImage(): string
+    public function teamImage(): string
     {
-        return Storage::url($this->model->page_image);
-    }
-
-    /**
-     * Return the syllabus file url from storage.
-     *
-     * @return string The URL of the syllabus PDF from storage
-     */
-    public function syllabus(): string
-    {
-        return Storage::url($this->model->syllabus);
+        return isset($this->team->image) && Storage::disk('public')->exists($this->team->image) ? Storage::url($this->team->image) : Storage::url('default_image/team_default.jpg');
     }
 }

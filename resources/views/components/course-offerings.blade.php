@@ -6,7 +6,7 @@
                 <li>{{ $event->schedule }}</li>
             </ul>
             <ul class="list-unstyled text-end mb-0">
-                <x-course-schedule-dates :course="$course" :event="$event" />
+                <x-course-offering-dates :course="$course" :event="$event" />
             </ul>
         </div>
     </div>

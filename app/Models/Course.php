@@ -20,7 +20,6 @@
 
 namespace App\Models;
 
-use App\Models\Presenters\CoursePresenter;
 use App\Models\Traits\Presentable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -71,11 +70,6 @@ class Course extends Model implements Sortable
             }
         });
     }
-
-    /**
-     * The presenter class used for transforming model data for views.
-     */
-    protected string $presenter = CoursePresenter::class;
 
     /**
      * Used for sorting on Nova index.

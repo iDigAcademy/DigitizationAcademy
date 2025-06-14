@@ -19,13 +19,30 @@
 
 namespace App\Http\Controllers;
 
+/**
+ * Controller for handling dashboard-related functionality.
+ *
+ * This controller manages the main dashboard view and requires
+ * email verification before access is granted.
+ */
 class DashboardController extends Controller
 {
+    /**
+     * Create a new DashboardController instance.
+     *
+     * Applies the 'verified' middleware to ensure users have verified
+     * their email address before accessing dashboard features.
+     */
     public function __construct()
     {
         $this->middleware('verified');
     }
 
+    /**
+     * Display the dashboard page.
+     *
+     * @return \Illuminate\Contracts\View\View The rendered dashboard view
+     */
     public function index()
     {
         return view('dashboard');
