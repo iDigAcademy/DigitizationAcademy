@@ -126,13 +126,23 @@ class Course extends Resource
                     return Storage::disk($disk)->url($value);
                 })
                 ->prunable()->hideFromIndex()->help('Width 336px, Height 555px'),
+
             DependencyContainer::make([
                 File::make('Syllabus')->store(function (Request $request) {
-                    return [
-                        'syllabus' => $request->syllabus->store(config('config.course_syllabus_dir'), 'public'),
-                    ];
-                })->hideFromIndex()->rules('mimes:pdf', 'required_if:type,12 Hour')->help('Upload a PDF file.'),
+                    if ($request->hasFile('syllabus')) {
+                        return [
+                            'syllabus' => $request->syllabus->store(config('config.course_syllabus_dir'), 'public'),
+                        ];
+                    }
+                    return [];
+                })
+                    ->deletable()
+                    ->hideFromIndex()
+                    ->creationRules('mimes:pdf', 'required_if:type,12 Hour')
+                    ->updateRules('mimes:pdf')
+                    ->help('Upload a PDF file.'),
             ])->dependsOn('type', '12 Hour'),
+
             DependencyContainer::make([
                 Text::make('Video')->rules('required_if:type,2 Hour')->help('Enter video link for course.'),
             ])->dependsOn('type', '2 Hour'),
