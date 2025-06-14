@@ -15,7 +15,12 @@
                     <div class="card-top">
                         <a href="{{ route('course.index', ['slug' => $event->course->slug]) }}">
                             <h4 class="text-light">
+                                <span class="info-tooltip">
                                 {{ $event->course->title }}
+                                <span class="tooltip-text card-title">
+                                    Click for course page.
+                                </span>
+                                </span>
                             </h4>
                         </a>
                     </div>
@@ -36,7 +41,7 @@
                                 <li><span>Language:&nbsp;</span>{{ $event->course->language }}</li>
                             </ul>
                         </div>
-                            <x-course-tile-dates :event="$event" />
+                        <x-course-tile-dates :event="$event"/>
                     </div>
                 </div>
             </div>
