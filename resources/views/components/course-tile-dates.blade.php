@@ -8,7 +8,7 @@
 <div class="d-flex justify-content-between align-items-center mt-4 ps-0 w-100">
 <!-- 2 hour === Register, 12 hour === Apply -->
 @if($courseCompleteDate)
-    <p class="my-auto">Course Complete</p>
+    <p class="my-auto">Course complete.</p>
 @elseif($nowLtRegisterEndDate)
     <p class="my-auto">
         <span class="text-rose">
