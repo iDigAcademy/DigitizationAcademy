@@ -2,7 +2,7 @@
     <div class="card bg-dark h-100 mx-3">
         <div class="row no-gutters">
             <div class="col-md-2 col-12"
-                 style="background-image: url('{{ $event->course->present()->tile_image }}');
+                 style="background-image: url('{{ $event->course->present()->tileImage() }}');
                  background-size: cover;
                     background-position: center;
                     min-height: 100px;
