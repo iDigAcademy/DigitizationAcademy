@@ -9,7 +9,7 @@
     <section class="banner index">
         <div class="container-fluid">
             <div class="row align-items-center">
-                <div class="col-8">
+                <div class="col-lg-6">
                     <div class="banner-content">
                         <h1 class="title mb-2">Explore. Discover. Connect.</h1>
                         <p class="text-light lead">
@@ -40,7 +40,7 @@
         <div class="col-10 m-auto mt-5">
             <div class="row">
                 <div class="col-lg-5 col-xl-4">
-                    <div class="section-heading heading-left">
+                    <div class="section-heading">
                         <span class="subtitle">A strategy built for you.</span>
                         <h3 class="title">Our Approach</h3>
                         <p>Our offerings combine these three elements to level you up on a topic. We aim to provision
@@ -65,11 +65,10 @@
                     </div>
                 </div>
 
-                <div class="col-lg-7 col-xl-8" style="padding-left: 5rem;">
+                <div class="col-lg-7 col-xl-8">
                     <div class="faq-accordion">
                         <div class="accordion" id="accordion">
-                            <div class="accordion-item" data-sal="zoom-in" data-sal-duration="1000"
-                                 data-sal-delay="100">
+                            <div class="accordion-item">
                                 <h6 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button"
                                             data-bs-toggle="collapse"
@@ -88,8 +87,7 @@
                                 </div>
                             </div>
 
-                            <div class="accordion-item" data-sal="slide-left" data-sal-duration="1000"
-                                 data-sal-delay="100">
+                            <div class="accordion-item">
                                 <h6 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button"
                                             data-bs-toggle="collapse"
@@ -108,8 +106,7 @@
                                 </div>
                             </div>
 
-                            <div class="accordion-item" data-sal="slide-right" data-sal-duration="900"
-                                 data-sal-delay="900">
+                            <div class="accordion-item">
                                 <h6 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button"
                                             data-bs-toggle="collapse"
@@ -136,10 +133,10 @@
 
     <!--=        Experience Counts Banner   =-->
     <section class="section section-padding-equal mt-2">
-        <div class="col-10 m-auto mt-5">
+        <div class="col-10 m-auto mt-5 mb--50">
             <div class="row align-items-center">
-                <div class="col-5 col-sm-5 col-lg-7 col-xl-7 section-heading heading-left">
-                    <span class="subtitle">Built on iDigBio’s professional development experience.</span>
+                <div class="section-heading heading-left mid-section">
+                    <span class="subtitle mt-5">Built on iDigBio’s professional development experience.</span>
                     <h3 class="title">Deep experience with digitization and training.</h3>
                     <p class="text-black">Since its founding in 2012, iDigBio has offered over 100 training opportunities, and
                         many involved the Digitization Academy’s core staff. iDigBio is the US National Science Foundation’s
@@ -147,10 +144,7 @@
                         Digitization Academy. The Digitization Academy offerings from iDigBio represent a standardized
                         strategy for delivery of a subset of iDigBio’s training options to ensure that we have all
                         high-value topics covered for you in complementary ways.</p>
-                </div>
-                <div class="col-4 col-sm-4 col-lg-5 col-xl-5">
-                    <img src="{{ asset('images/others/idig-bio-leaves.svg') }}" id="idigLeaf"
-                         alt="IDig Bio Leaf">
+                    <img src="{{ asset('images/others/idig-bio-leaves.svg') }}" id="idigLeaf" alt="IDig Bio Leaf">
                 </div>
             </div>
         </div>

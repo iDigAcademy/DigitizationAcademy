@@ -941,7 +941,8 @@ li {
 
 .banner .banner-content .title {
     color: var(--color-white);
-    margin-bottom: 40px; }
+    margin-bottom: 40px;
+    font-weight: 600;}
 
 /*-------------------------
     Index
@@ -969,11 +970,9 @@ li {
     .index-title {
         font-size: 40px; } }
 
-.heading-left {
-    text-align: left;
-}
 .section-heading {
     margin-bottom: 60px;
+    position: relative;
 }
 .section-heading .subtitle {
     color: var(--color-rose);
@@ -982,6 +981,24 @@ li {
     font-weight: 500;
     margin-bottom: 15px;
 }
+
+.heading-left {
+    text-align: left;
+}
+.heading-left .title,
+.heading-left .subtitle,
+.heading-left p {
+    width: 50%; }
+@media only screen and (max-width: 1199px) {
+    .heading-left .title,
+    .heading-left .subtitle,
+    .heading-left p {
+        width: 70%; } }
+@media only screen and (max-width: 991px) {
+    .heading-left .title,
+    .heading-left .subtitle,
+    .heading-left p {
+        width: 100%; } }
 
 /* Index Faq */
 .faq-area .section-heading .title {
@@ -1032,6 +1049,26 @@ li {
     padding-left: 10px;
     height: auto;
     font-weight: 800; }
+
+@media only screen and (max-width: 991px) {
+    .faq-accordion .accordion-button:after {
+        font-size: 0.9em;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .faq-accordion .accordion-button:after {
+        font-size: 0.8em;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .faq-accordion .accordion-button:after {
+        font-size: 0.7em;
+    }
+}
+
+
 .faq-accordion .accordion-button.collapsed {
     color: var(--color-dark);
     border-radius: 24px !important;
@@ -1042,6 +1079,28 @@ li {
     content: "\f067";
     color: #c2c8ce;
     font-size: 4em; }
+
+/* Make the icon smaller on tablets and smaller screens */
+@media only screen and (max-width: 991px) {
+    .faq-accordion .accordion-button.collapsed:after {
+        font-size: 3em;
+    }
+}
+
+/* Make the icon even smaller on mobile screens */
+@media only screen and (max-width: 767px) {
+    .faq-accordion .accordion-button.collapsed:after {
+        font-size: 2.5em;
+    }
+}
+
+/* Make the icon smallest on very small screens */
+@media only screen and (max-width: 575px) {
+    .faq-accordion .accordion-button.collapsed:after {
+        font-size: 2em;
+    }
+}
+
 .faq-accordion .accordion-body {
     padding: 0 40px 40px; }
 .faq-accordion .accordion-body p {
@@ -1050,12 +1109,11 @@ li {
 
 #idigLeaf {
     opacity: 1;
-    width: 500px;
-    /*
-    right: 0px;
-    top: 70px;
     position: absolute;
-     */
+    right: 10px;
+    top: -50px;
+    width: 600px;
+    z-index: -1;
 }
 
 /*-------------------------
@@ -1602,27 +1660,15 @@ ul.course-objectives li{
     z-index: 3; }
 
 /* Base styles (mobile first - X-Small devices) */
-.shape-group-18 .shape.shape-1 img {
-    width: 100%;
-    display: none;
-    max-width: 300px; }
-@media (min-width: 576px) {
+@media only screen and (min-width: 1200px) and (max-width: 1599px) {
     .shape-group-18 .shape.shape-1 img {
-        max-width: 300px;
-        display: block; } }
-@media (min-width: 768px) {
+        width: 70%; } }
+@media only screen and (max-width: 1199px) {
     .shape-group-18 .shape.shape-1 img {
-        max-width: 420px; } }
-@media (min-width: 992px) {
+        width: 50%; } }
+@media only screen and (max-width: 991px) {
     .shape-group-18 .shape.shape-1 img {
-        max-width: 450px; } }
-@media (min-width: 1200px) {
-    .shape-group-18 .shape.shape-1 img {
-        max-width: 480px; } }
-@media (min-width: 1400px) {
-    .shape-group-18 .shape.shape-1 img {
-        max-width: 550px; } }
-
+        width: 40%; } }
 
 .shape-group-18 .shape.shape-2 {
     bottom: 0;
@@ -1788,15 +1834,14 @@ ul.course-objectives li{
     .section-padding-equal {
         padding: 30px 0; } }
 
-.mb--40 {
-    margin-bottom: 40px !important; }
+.mb--50 {
+    margin-bottom: 50px !important; }
 .mt--40 {
     margin-bottom: 40px !important; }
 
 .mb--30 {
     margin-bottom: 30px !important; }
 @media only screen and (max-width: 991px) {
-
     .pb_md--20 {
         padding-bottom: 20px; } }
 
