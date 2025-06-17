@@ -58,7 +58,7 @@
                         <a href="{{ route('catalog.index') }}"
                            type="button"
                            role="button"
-                           class="btn digi-btn btn-lg btn-fill-primary mb-1 mt-3"
+                           class="btn digi-btn btn-lg btn-fill-primary secondary mb-1 mt-3"
                            aria-label="Explore Courses button">
                             Course Catalog</a>
                         <br class="clearfix"/>

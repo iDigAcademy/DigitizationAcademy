@@ -315,11 +315,11 @@ li {
     border: 1px solid var(--color-rose);
     top: -2px;
     overflow: hidden; }
-.digi-btn.btn-fill-primary.course-pills {
+.digi-btn.btn-fill-primary.secondary {
     background-color: var(--color-blue-shade-2);
     color: var(--color-white);
     border: 1px solid var(--color-blue-shade-2); }
-.digi-btn.btn-fill-primary.resources-pills {
+.digi-btn.btn-fill-primary.tertiary {
     background-color: #3850AE;
     color: var(--color-white);
     border: 1px solid #3850AE;

@@ -61,7 +61,7 @@
                             </div>
                             @include('partials.recaptcha')
                             <div class="form-group">
-                                <button type="submit" class="digi-btn btn-fill-primary btn-fluid btn-primary"
+                                <button type="submit" class="digi-btn btn-fill-primary secondary btn-fluid btn-primary"
                                         name="submit-btn">Submit
                                 </button>
                             </div>
