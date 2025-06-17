@@ -114,6 +114,7 @@ readonly class CoursePresenter
      */
     public function objectivesOrDescription()
     {
-        return ! empty($this->course->objectives) ? $this->course->objectives : $this->course->description;
+        return ! empty($this->course->objectives) ?
+            $this->course->objectives : $this->course->description;
     }
 }
