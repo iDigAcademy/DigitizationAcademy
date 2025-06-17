@@ -50,7 +50,6 @@ class Team extends Model implements Sortable
         'name',
         'title',
         'email',
-        'twitter_handle',
         'about',
         'image',
         'order',
