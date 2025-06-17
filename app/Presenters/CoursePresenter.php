@@ -106,4 +106,14 @@ readonly class CoursePresenter
     {
         return $this->course->type === '2 Hour' ? 'Register' : 'Apply';
     }
+
+    /**
+     * Get the course objectives if available, otherwise return the course description
+     *
+     * @return string The course objectives or description text
+     */
+    public function objectivesOrDescription()
+    {
+        return ! empty($this->course->objectives) ? $this->course->objectives : $this->course->description;
+    }
 }

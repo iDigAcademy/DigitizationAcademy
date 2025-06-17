@@ -26,7 +26,7 @@
                     </div>
                     <div class="card-mid">
                         <p class="subtitle text-rose mt-3 mb-3">Description</p>
-                        <p class="small">{{ $event->course->description }}</p>
+                        <p class="small">{{ $event->course->present()->objectivesOrDescription() }}</p>
                     </div>
                     <div class="row card-foot">
                         <div class="col-md-5 course-dates p-0">
