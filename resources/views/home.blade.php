@@ -149,4 +149,45 @@
             </div>
         </div>
     </section>
+
+    <!-- Opportunities -->
+    <section class="section section-padding-equal">
+        <div class="col-10 m-auto mt-5 mb--50">
+            <div class="section-heading mt-5">
+                <span class="subtitle">Opportunities to connect.</span>
+                <h2>Receive updates and announcements.</h2>
+                <p class="text-black" style="width: 80%;">Subscribe to the <a href="#" class="text-rose">Natural History Collections Listserv</a> to receive notifications when we open applications or add courses to the schedule. It's a great way to stay connected with the Digitization Academy and the broader natural history collections community</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-padding-equal">
+        <article class="col-10 m-auto mt-5 mb--50">
+            <div class="section-heading mt-5">
+                <span class="subtitle">What participants are saying.</span>
+                <h2>Evaluations help us further refine our courses with each iteration.</h2>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="testimonial-grid">
+                        <p class="text-justify fst-italic">Topics were discussed in great detail. The instructors were very helpful and enthusiastic in answering queries and sharing resources. The activities were practical in that the questions were centered around our individual research.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="testimonial-grid">
+                        <p class="text-justify fst-italic">This was a really well-put-together class that took us through the various steps and details of a collection digitization project. Great use of technology, easy to follow, well documented, and well-thought exercises. I am a big fan of audience participation, and that was well done.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="testimonial-grid">
+                        <p class="text-justify fst-italic">I have not worked with digitization before, and
+                            this taught me so many things I needed to learn and things I didn't even know I needed to
+                            think about.</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+
 </x-app-layout>

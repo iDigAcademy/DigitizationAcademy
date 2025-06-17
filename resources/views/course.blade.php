@@ -198,5 +198,4 @@
             </div>
         </div>
     </section>
-    <x-course-sections/>
 </x-app-layout>
