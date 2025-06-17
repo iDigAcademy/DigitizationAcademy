@@ -4,8 +4,7 @@
             <div class="banner-content">
                 <h1 class="page-title mt-2">Put collaborative learning<br> on your calendar</h1>
                 <p class="page-lead">
-                    We admit about 25 students to each of our 12-hour courses to ensure that
-                    everyone has a chance to contribute. Our 2-hour courses are open to everyone who registers.</p>
+                    Find out what's coming up and when to apply or register each course.</p>
             </div>
             <!-- graphic shapes -->
             <ul class="list-unstyled shape-group-pages">
