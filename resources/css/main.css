@@ -1417,21 +1417,16 @@ ul.course-objectives li{
     bottom: 125%;
     left: 50%;
     transform: translateX(-50%);
-    width: 410px;
+
+    width: max-content;
+    max-width: 300px; /* Prevents tooltips from becoming too wide */
+    min-width: 120px; /* Ensures minimum readable width */
     opacity: 0;
     transition: opacity 0.3s;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.4;
-}
-.tooltip-text.card-title {
-    font-size: 18px;
-    width: 150px;
-}
-@media only screen and (max-width: 767px) {
-    .tooltip-text {
-        width: 250px;
-    }
+    white-space: nowrap; /* For single-line tooltips */
 }
 
 .tooltip-text::after {

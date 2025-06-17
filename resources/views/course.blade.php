@@ -23,11 +23,15 @@
                         </span>
                     </span> | Offered in {{ $course->language }}
                     @if($buttonDate)
-                        | <a href="{{ $course->events->first()->form_link }}"
+                        | <span class="info-tooltip">
+                            <a href="{{ $course->events->first()->form_link }}"
                              class="digi-btn btn-fill-primary course d-inline-flex align-items-center justify-content-center">
                             {{ $course->present()->registrationButtonText() }}
-                        </a>
-                        | Application close {{ $course->events->first()->form_end_date->format('F j, Y') }}
+                            </a>
+                            <span class="tooltip-text button-tooltip">
+                                Application close {{ $course->events->first()->form_end_date->format('F j, Y') }}
+                            </span>
+                        </span>
                     @endif
                 </p>
             </div>
