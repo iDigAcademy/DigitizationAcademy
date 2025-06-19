@@ -17,7 +17,7 @@
                             </div>
                             @include('partials.recaptcha')
                             <div class="form-group">
-                                <button type="submit" class="digi-btn btn-fill-primary btn-fluid btn-primary"
+                                <button type="submit" class="digi-btn btn-fill-primary btn-fluid btn-primary secondary"
                                         name="submit-btn">Send Password Reset Link
                                 </button>
                             </div>
