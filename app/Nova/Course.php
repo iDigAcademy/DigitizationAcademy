@@ -125,7 +125,7 @@ class Course extends Resource
                 ->preview(function ($value, $disk) {
                     return Storage::disk($disk)->url($value);
                 })
-                ->prunable()->hideFromIndex()->help('Width 336px, Height 555px'),
+                ->prunable()->hideFromIndex()->help('Width 555px, Height 555px'),
 
             DependencyContainer::make([
                 File::make('Syllabus')->store(function (Request $request) {
