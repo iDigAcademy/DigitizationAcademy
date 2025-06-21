@@ -29,7 +29,7 @@
                             {{ $course->present()->registrationButtonText() }}
                             </a>
                             <span class="tooltip-text button-tooltip">
-                                Application close {{ $course->events->first()->form_end_date->format('F j, Y') }}
+                                Application closes {{ $course->events->first()->form_end_date->format('F j, Y') }}
                             </span>
                         </span>
                     @endif
