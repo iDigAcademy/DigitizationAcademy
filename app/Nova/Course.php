@@ -120,8 +120,8 @@ class Course extends Resource
                     'page_image' => $request->page_image->store(config('config.course_image_dir'), 'public'),
                 ];
             })->required()
-                ->creationRules('image', 'mimes:jpg,jpeg,png', 'dimensions:width=336,height=555')
-                ->updateRules('image', 'mimes:jpg,jpeg,png', 'dimensions:width=336,height=555')
+                ->creationRules('image', 'mimes:jpg,jpeg,png', 'dimensions:width=555,height=555')
+                ->updateRules('image', 'mimes:jpg,jpeg,png', 'dimensions:width=555,height=555')
                 ->preview(function ($value, $disk) {
                     return Storage::disk($disk)->url($value);
                 })
