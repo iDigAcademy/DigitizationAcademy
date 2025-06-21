@@ -75,13 +75,8 @@
                     @if($course->type === '12 Hour')
                         <div class="tab-pane fade show active" id="objectives" role="tabpanel"
                              aria-labelledby="objectives-tab">
-                            <div class="section-heading course d-flex flex-column align-items-center">
-                                <x-course-objective-header :language="$course->language"/>
-                                <ul class="course-objectives list-unstyled text-start">
-                                    @foreach($course->present()->objectivesList() as $line)
-                                        <li>{{ $line }}</li>
-                                    @endforeach
-                                </ul>
+                            <div class="section-heading course col-10 m-auto text-start">
+                                {{ $course->objectives }}
                             </div>
                         </div>
                         <div class="tab-pane fade" id="syllabus" role="tabpanel" aria-labelledby="syllabus-tab">

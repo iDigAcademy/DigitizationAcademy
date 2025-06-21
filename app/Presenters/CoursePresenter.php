@@ -68,16 +68,6 @@ readonly class CoursePresenter
     }
 
     /**
-     * Get the course objectives as an array
-     *
-     * @return array The course objectives split by newlines with empty values filtered out
-     */
-    public function objectivesList(): array
-    {
-        return array_filter(explode(PHP_EOL, $this->course->objectives));
-    }
-
-    /**
      * Check if the course has a video
      *
      * @return bool True if course is 2 Hour type and has video content
