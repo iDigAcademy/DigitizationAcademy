@@ -27,7 +27,7 @@
 @elseif ($nowGtEndDate)
     <p class="my-auto">
         @if($inProgressDate)
-            In Progress
+            In Progress.
         @else
         {{ $event->course->type == '2 Hour' ? 'Registration closed' : 'Application closed' }}.
         @endif
