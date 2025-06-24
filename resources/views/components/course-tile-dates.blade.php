@@ -29,7 +29,7 @@
         @if($inProgressDate)
             In Progress
         @else
-        {{ $event->course->type == '2 Hour' ? 'Registration closed' : 'Application closed' }}
+        {{ $event->course->type == '2 Hour' ? 'Registration closed' : 'Application closed' }}.
         @endif
     </p>
 @endif
