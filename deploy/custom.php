@@ -18,12 +18,6 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-/**
- * Custom Deployer tasks for the Digitization Academy application
- * This file contains custom deployment tasks specific to the application's needs
- * including database updates, file deployments, permission settings, and supervisor management.
- */
-
 namespace Deployer;
 
 /**
