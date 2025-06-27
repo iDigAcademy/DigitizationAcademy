@@ -65,11 +65,7 @@ class Course extends Resource
      * @var array
      */
     public static $search = [
-        'id',
-        'title',
-        'objectives',
-        'language',
-        'active',
+        'id', 'title', 'objectives', 'language', 'active',
     ];
 
     /**
@@ -80,52 +76,36 @@ class Course extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            ID::make()->sortable(),
-            Text::make('Title')->rules('required', 'string', 'min:10', 'max:70')
-                ->required()
-                ->sortable()
-                ->help('Max 70 characters'),
-            Select::make('Type')->options(['2 Hour' => '2 Hour', '12 Hour' => '12 Hour'])
-                ->rules('required')
-                ->required()
-                ->sortable(),
-            Textarea::make('Description')->rules('required', 'string', 'min:10', 'max:1000')
-                ->required()
-                ->help('Max 1000 characters'),
-            DependencyContainer::make([
-                Textarea::make('Objectives')
-                    ->rules('string', 'min:10', 'max:1200', 'required_if:type,12 Hour')
-                    ->help('Max 1200 characters.'),
-            ])->dependsOn('type', '12 Hour'),
-            Select::make('Language', 'language')
-                ->options(['English' => 'English', 'Spanish' => 'Spanish'])
-                ->required()
-                ->sortable(),
+            ID::make()->sortable(), Text::make('Title')->rules('required', 'string', 'min:10',
+                'max:70')->required()->sortable()->help('Max 70 characters'), Select::make('Type')->options([
+                    '2 Hour' => '2 Hour', '12 Hour' => '12 Hour',
+                ])->rules('required')->required()->sortable(),
+            Textarea::make('Description')->rules('required', 'string', 'min:10',
+                'max:1000')->required()->help('Max 1000 characters'), DependencyContainer::make([
+                    Textarea::make('Objectives')->rules('string', 'min:10', 'max:1200',
+                        'required_if:type,12 Hour')->help('Max 1200 characters.'),
+                ])->dependsOn('type', '12 Hour'), Select::make('Language', 'language')->options([
+                    'English' => 'English', 'Spanish' => 'Spanish',
+                ])->required()->sortable(),
             Text::make('Led By', 'instructor')->rules('required', 'string', 'min:10', 'max:100'),
             Image::make('Tile Image')->store(function (Request $request) {
                 return [
                     'tile_image' => $request->tile_image->store(config('config.course_image_dir'), 'public'),
                 ];
-            })->required()
-                ->creationRules('image', 'mimes:jpg,jpeg,png', 'dimensions:width=101,height=550')
-                ->updateRules('image', 'mimes:jpg,jpeg,png', 'dimensions:width=101,height=550')
-                ->preview(function ($value, $disk) {
-                    return Storage::disk($disk)->url($value);
-                })
-                ->prunable()
-                ->hideFromIndex()
-                ->help('Width 101px, Height 550px'),
+            })->required()->creationRules('image', 'mimes:jpg,jpeg,png',
+                'dimensions:width=101,height=550')->updateRules('image', 'mimes:jpg,jpeg,png',
+                    'dimensions:width=101,height=550')->preview(function ($value, $disk) {
+                        return Storage::disk($disk)->url($value);
+                    })->prunable()->hideFromIndex()->help('Width 101px, Height 550px'),
             Image::make('Page Image')->store(function (Request $request) {
                 return [
                     'page_image' => $request->page_image->store(config('config.course_image_dir'), 'public'),
                 ];
-            })->required()
-                ->creationRules('image', 'mimes:jpg,jpeg,png', 'dimensions:width=555,height=555')
-                ->updateRules('image', 'mimes:jpg,jpeg,png', 'dimensions:width=555,height=555')
-                ->preview(function ($value, $disk) {
-                    return Storage::disk($disk)->url($value);
-                })
-                ->prunable()->hideFromIndex()->help('Width 555px, Height 555px'),
+            })->required()->creationRules('image', 'mimes:jpg,jpeg,png',
+                'dimensions:width=555,height=555')->updateRules('image', 'mimes:jpg,jpeg,png',
+                    'dimensions:width=555,height=555')->preview(function ($value, $disk) {
+                        return Storage::disk($disk)->url($value);
+                    })->prunable()->hideFromIndex()->help('Width 555px, Height 555px'),
 
             DependencyContainer::make([
                 File::make('Syllabus')->store(function (Request $request) {
@@ -135,19 +115,16 @@ class Course extends Resource
                         ];
                     }
                     return [];
-                })
-                    ->deletable()
-                    ->hideFromIndex()
+                })->deletable()->hideFromIndex()
                     ->creationRules('mimes:pdf', 'required_if:type,12 Hour')
-                    ->updateRules('mimes:pdf')
-                    ->help('Upload a PDF file.'),
+                    ->updateRules('mimes:pdf')->help('Upload a PDF file.'),
             ])->dependsOn('type', '12 Hour'),
 
             DependencyContainer::make([
-                Text::make('Video')->rules('required_if:type,2 Hour')->help('Enter video link for course.'),
+                Text::make('Video')->help('Enter video link for course.'),
             ])->dependsOn('type', '2 Hour'),
-            Boolean::make('Active')->sortable(),
-            Sortable::make('Order', 'sort_order')->onlyOnIndex(),
+
+            Boolean::make('Active')->sortable(), Sortable::make('Order', 'sort_order')->onlyOnIndex(),
             BelongsToMany::make('Assets', 'assets', \App\Nova\Asset::class),
         ];
     }
