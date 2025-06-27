@@ -2,9 +2,9 @@
     <section class="banner page">
         <div class="container-fluid">
             <div class="banner-content">
-                <h1 class="page-title mt-2">Put collaborative learning<br> on your calendar</h1>
+                <h1 class="page-title mt-2">Put collaborative learning on your calendar</h1>
                 <p class="page-lead">
-                    Find out what's coming up and when to apply or register each course.</p>
+                    Find out what's coming up and when to apply or register for each course.</p>
             </div>
             <!-- graphic shapes -->
             <ul class="list-unstyled shape-group-pages">
