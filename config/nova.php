@@ -6,7 +6,6 @@ use Laravel\Nova\Http\Middleware\Authorize;
 use Laravel\Nova\Http\Middleware\BootTools;
 use Laravel\Nova\Http\Middleware\DispatchServingNovaEvent;
 use Laravel\Nova\Http\Middleware\HandleInertiaRequests;
-use Vyuldashev\NovaPermission\ForgetCachedPermissions;
 
 return [
 
@@ -60,7 +59,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', '/nova'),
+    'path' => '/nova',
 
     /*
     |--------------------------------------------------------------------------
@@ -73,7 +72,7 @@ return [
     |
     */
 
-    'guard' => env('NOVA_GUARD', 'web'),
+    'guard' => env('NOVA_GUARD', null),
 
     /*
     |--------------------------------------------------------------------------
@@ -104,7 +103,6 @@ return [
         HandleInertiaRequests::class,
         DispatchServingNovaEvent::class,
         BootTools::class,
-        ForgetCachedPermissions::class,
     ],
 
     'api_middleware' => [
@@ -164,19 +162,19 @@ return [
     |
     */
 
-    'brand' => [
-        'logo' => resource_path('/media/logo.svg'),
+    // 'brand' => [
+    //     'logo' => resource_path('/img/example-logo.svg'),
 
-        'colors' => [
-            '400' => '24, 182, 155, 0.5',
-            '500' => '24, 182, 155',
-            '600' => '24, 182, 155, 0.75',
-        ],
-    ],
+    //     'colors' => [
+    //         "400" => "24, 182, 155, 0.5",
+    //         "500" => "24, 182, 155",
+    //         "600" => "24, 182, 155, 0.75",
+    //     ]
+    // ],
 
     /*
     |--------------------------------------------------------------------------
-    | Nova Action Asset Class
+    | Nova Action Resource Class
     |--------------------------------------------------------------------------
     |
     | This configuration option allows you to specify a custom resource class
@@ -205,13 +203,4 @@ return [
         'stopped' => '/',
     ],
 
-    /*
-     * Using custom routes so Nova login/logout do not show
-     */
-    'routes' => [
-        'logout' => '/logout',
-        'login' => '/login',
-        'forgot_password' => '/forgot-password',
-        'reset_password' => '/reset-password',
-    ],
 ];

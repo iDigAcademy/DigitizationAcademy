@@ -33,12 +33,11 @@ use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use PixelCreation\NovaFieldSortable\Concerns\SortsIndexEntries;
-use PixelCreation\NovaFieldSortable\Sortable;
+use Outl1ne\NovaSortable\Traits\HasSortableRows;
 
 class Course extends Resource
 {
-    use HasDependencies, SortsIndexEntries;
+    use HasDependencies, HasSortableRows;
 
     /**
      * @var string
@@ -124,7 +123,7 @@ class Course extends Resource
                 Text::make('Video')->help('Enter video link for course.'),
             ])->dependsOn('type', '2 Hour'),
 
-            Boolean::make('Active')->sortable(), Sortable::make('Order', 'sort_order')->onlyOnIndex(),
+            Boolean::make('Active')->sortable(),
             BelongsToMany::make('Assets', 'assets', \App\Nova\Asset::class),
         ];
     }

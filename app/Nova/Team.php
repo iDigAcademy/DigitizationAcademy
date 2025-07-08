@@ -29,12 +29,11 @@ use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use PixelCreation\NovaFieldSortable\Concerns\SortsIndexEntries;
-use PixelCreation\NovaFieldSortable\Sortable;
+use Outl1ne\NovaSortable\Traits\HasSortableRows;
 
 class Team extends Resource
 {
-    use SortsIndexEntries;
+    use HasSortableRows;
 
     /**
      * @var string
@@ -93,7 +92,6 @@ class Team extends Resource
                         ? Storage::disk($disk)->url($value)
                         : Storage::disk($disk)->url('default_image/team_default.jpg');
                 })->prunable(),
-            Sortable::make('Order')->onlyOnIndex(),
             Boolean::make('Current Team', 'current'),
         ];
     }

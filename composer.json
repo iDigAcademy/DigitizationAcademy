@@ -19,7 +19,7 @@
         "laravel/pint": "^1.18",
         "laravel/sanctum": "^v4.0.0",
         "laravel/tinker": "^2.7",
-        "pixelcreation/nova-field-sortable": "^3.2",
+        "outl1ne/nova-sortable": "^3.4",
         "realrashid/sweet-alert": "^v7.3.0",
         "spatie/laravel-permission": "^6.0",
         "spiritix/lada-cache": "dev-l12-compatibility",
@@ -76,10 +76,6 @@
         {
             "type": "composer",
             "url": "https://nova.laravel.com"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/rbruhn/laravel-form-components"
         },
         {
             "type": "vcs",
