@@ -80,12 +80,13 @@ class Course extends Resource
                     '2 Hour' => '2 Hour', '12 Hour' => '12 Hour',
                 ])->rules('required')->required()->sortable(),
             Textarea::make('Description')->rules('required', 'string', 'min:10',
-                'max:1000')->required()->help('Max 1000 characters'), DependencyContainer::make([
-                    Textarea::make('Objectives')->rules('string', 'min:10', 'max:1200',
-                        'required_if:type,12 Hour')->help('Max 1200 characters.'),
-                ])->dependsOn('type', '12 Hour'), Select::make('Language', 'language')->options([
-                    'English' => 'English', 'Spanish' => 'Spanish',
-                ])->required()->sortable(),
+                'max:1000')->required()->help('Max 1000 characters'),
+            DependencyContainer::make([
+                Textarea::make('Objectives')->rules('string', 'min:10', 'max:1200',
+                    'required_if:type,12 Hour')->help('Max 1200 characters.'),
+            ])->dependsOn('type', '12 Hour'), Select::make('Language', 'language')->options([
+                'English' => 'English', 'Spanish' => 'Spanish',
+            ])->required()->sortable(),
             Text::make('Led By', 'instructor')->rules('required', 'string', 'min:10', 'max:100'),
             Image::make('Tile Image')->store(function (Request $request) {
                 return [
@@ -113,6 +114,7 @@ class Course extends Resource
                             'syllabus' => $request->syllabus->store(config('config.course_syllabus_dir'), 'public'),
                         ];
                     }
+
                     return [];
                 })->deletable()->hideFromIndex()
                     ->creationRules('mimes:pdf', 'required_if:type,12 Hour')
@@ -122,6 +124,19 @@ class Course extends Resource
             DependencyContainer::make([
                 Text::make('Video')->help('Enter video link for course.'),
             ])->dependsOn('type', '2 Hour'),
+
+            Text::make('Expert Panel Headline')->required()->hideFromIndex()->help('Enter the headline of the expert panel.'),
+            Text::make('Expert Panel Copy')->required()->hideFromIndex()->help('Enter the copy of the expert panel.'),
+            Image::make('Expert Panel Image')->required()->store(function (Request $request) {
+                return [
+                    'expert_panel_image' => $request->expert_panel_image->store(config('config.course_image_dir'),
+                        'public'),
+                ];
+            })->creationRules('image', 'mimes:jpg,jpeg,png', 'dimensions:max_width=1320,max_height=220')
+                ->updateRules('image', 'mimes:jpg,jpeg,png', 'dimensions:max_width=1320,max_height=220')
+                ->hideFromIndex()
+                ->help('Max Width 1320px, Max Height 220px'),
+            Text::make('Expert Panelist Copy')->required()->hideFromIndex()->help('Enter the copy of the expert panelist.'),
 
             Boolean::make('Active')->sortable(),
             BelongsToMany::make('Assets', 'assets', \App\Nova\Asset::class),

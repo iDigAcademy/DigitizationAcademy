@@ -98,6 +98,10 @@ class Course extends Model implements Sortable
         'tile_image',
         'syllabus',
         'video',
+        'expert_panel_headline',
+        'expert_panel_copy',
+        'expert_panel_image',
+        'expert_panelist_copy',
         'active',
         'sort_order',
     ];

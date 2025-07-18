@@ -107,4 +107,14 @@ readonly class CoursePresenter
         return ! empty($this->course->objectives) ?
             $this->course->objectives : $this->course->description;
     }
+
+    /**
+     * Get the URL for the course expert panel image
+     *
+     * @return string The storage URL for the expert panel image
+     */
+    public function expertPanelImage(): string
+    {
+        return Storage::url($this->course->expert_panel_image);
+    }
 }

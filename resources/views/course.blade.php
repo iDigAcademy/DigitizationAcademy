@@ -114,43 +114,15 @@
                          id="expert-panel"
                          role="tabpanel"
                          aria-labelledby="expert-panel-tab">
-                        <div class="section-heading course">
+                        <div class="section-heading course text-start">
                             <span class="subtitle text-rose">
-                                Introducing you to the people behind the projects.
+                                {{ $course->expert_panel_headline }}
                             </span>
-                            <p>This course provides the opportunity to engage with a panel of experts representing
-                                different collection management systems.</p>
+                            <p>{{ $course->expert_panel_copy }}</p>
                             <div class="expert-logos">
-                                <div class="footer-social-link pt-3 mt-4">
-                                    <!-- sponsor logos -->
-                                    <ul class="list-unstyled">
-                                        <li><a href="#" target="_blank">
-                                                <img src="{{ asset('images/logo/Asset20.png') }}"
-                                                     alt="Arctos"
-                                                     width="175px" style="filter:grayscale(99%);"></a></li>
-                                        <li><a href="#" target="_blank">
-                                                <img src="{{ asset('images/logo/Asset21.png') }}"
-                                                     alt="Axiel"
-                                                     style="z-index:1; display:block; position: relative;"
-                                                     width="175px"></a></li>
-                                        <li><a href="#" target="_blank">
-                                                <img src="{{ asset('images/logo/Asset22.png') }}"
-                                                     style="z-index:1; display:block; position: relative;"
-                                                     alt="Specify"
-                                                     width="175px"></a></li>
-                                        <li><a href="#" target="_blank">
-                                                <img src="{{ asset('images/logo/Asset23.png') }}" alt="Symbiota"
-                                                     style="z-index:1; display:block; position: relative;"
-                                                     width="175px"></a>
-                                        </li>
-                                        <li><a href="#" target="_blank">
-                                                <img src="{{ asset('images/logo/Asset24.png') }}" alt="TaxonWorks"
-                                                     style="z-index:1; display:block; position: relative;"
-                                                     width="175px"></a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <img src="{{ $course->present()->expertPanelImage() }}" style="z-index: -1" alt="Header image for course">
                             </div>
+                            <span>{{ $course->expert_panelist_copy }}</span>
                         </div>
                     </div>
 

@@ -1853,7 +1853,8 @@ ul.course-objectives li{
         padding-bottom: 50px; } }
 
 .expert-logos {
-    padding-bottom: 50px; }
+    padding-bottom: 50px;}
+.expert-logos img { width: 100%;}
 @media only screen and (max-width: 991px) {
     .expert-logos {
         padding-bottom: 30px; } }
