@@ -44,7 +44,8 @@ class EventService
 
         // Filter based on type
         match ($type) {
-            'past' => $query->whereBetween('start_date', [now()->subYear(), now()])->orderBy('start_date', 'desc'),
+            'past' => $query->where('start_date', '<', now())->orderBy('start_date', 'desc'),
+            'all' => $query->orderBy('start_date', 'desc'),
             default => $query->where('start_date', '>', now())->orderBy('start_date', 'asc'),
         };
 

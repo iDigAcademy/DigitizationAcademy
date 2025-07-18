@@ -20,7 +20,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Course;
 use App\Services\EventService;
 use Illuminate\View\View;
 
@@ -48,12 +47,8 @@ class CatalogController extends Controller
      */
     public function show(EventService $service, string $type): View
     {
-        if ($type === 'all') {
-            $courses = Course::active()->get()->sortBy('sort_order');
-            return view('partials.catalog-courses', compact('courses'));
-        } else {
-            $events = $service->showCatalogCourses($type);
-            return view('partials.catalog-events', compact('events'));
-        }
+        $events = $service->showCatalogCourses($type);
+
+        return view('partials.catalog-events', compact('events'));
     }
 }
