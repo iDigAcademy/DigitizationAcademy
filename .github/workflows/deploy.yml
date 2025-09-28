@@ -163,15 +163,18 @@ jobs:
           mkdir -p deployment-package
           rsync -av --exclude=node_modules --exclude=.git --exclude=.github --exclude=tests --exclude=storage/logs --exclude=vendor . deployment-package/
           cp -r public/css public/js public/fonts public/images public/svg public/mix-manifest.json deployment-package/public/ || true
-          # Ensure environment files are available for deployer upload:env task
-          cp .env.aws.development . || true
-          cp .env.aws.production . || true
       - name: Upload deployment artifact
         uses: actions/upload-artifact@v4
         with:
           name: digitizationacademy-${{ github.sha }}
           path: deployment-package/
           retention-days: 30
+      - name: Prepare environment files for deployment
+        run: |
+          # Copy environment files to current directory for deployer access
+          cp .env.aws.development . || echo "Warning: .env.aws.development not found"
+          cp .env.aws.production . || echo "Warning: .env.aws.production not found"
+          ls -la .env.aws.* || echo "No .env.aws.* files found"
       - name: Deploy with Deployer
         uses: deployphp/action@v1
         with:
@@ -221,15 +224,18 @@ jobs:
           mkdir -p deployment-package
           rsync -av --exclude=node_modules --exclude=.git --exclude=.github --exclude=tests --exclude=storage/logs --exclude=vendor . deployment-package/
           cp -r public/css public/js public/fonts public/images public/svg public/mix-manifest.json deployment-package/public/ || true
-          # Ensure environment files are available for deployer upload:env task
-          cp .env.aws.development . || true
-          cp .env.aws.production . || true
       - name: Upload deployment artifact
         uses: actions/upload-artifact@v4
         with:
           name: digitizationacademy-${{ github.sha }}
           path: deployment-package/
           retention-days: 30
+      - name: Prepare environment files for deployment
+        run: |
+          # Copy environment files to current directory for deployer access
+          cp .env.aws.development . || echo "Warning: .env.aws.development not found"
+          cp .env.aws.production . || echo "Warning: .env.aws.production not found"
+          ls -la .env.aws.* || echo "No .env.aws.* files found"
       - name: Deploy with Deployer
         uses: deployphp/action@v1
         with:
