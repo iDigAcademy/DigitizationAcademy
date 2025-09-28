@@ -68,20 +68,6 @@ task('set:permissions', function () {
 });
 
 /**
- * Upload environment file based on deployment target
- * Selects the appropriate .env file based on the host alias (production/development)
- */
-desc('Upload env file depending on the host');
-task('upload:env', function () {
-    $alias = currentHost()->get('alias');
-    $file = match ($alias) {
-        'production' => '.env.aws.production',
-        'development' => '.env.aws.development'
-    };
-    upload($file, '{{deploy_path}}/shared/.env');
-});
-
-/**
  * Publish Sweet Alert 2 assets
  * Executes the sweetalert:publish artisan command
  */
