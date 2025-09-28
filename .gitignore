@@ -22,6 +22,7 @@ _ide_helper.php
 /A-Notes
 .phpstorm.meta.php
 
+
 # Project exclude paths
 /storage/
 /public/vendor
