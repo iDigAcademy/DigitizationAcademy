@@ -26,7 +26,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Spiritix\LadaCache\Database\LadaCacheTrait;
+use Str;
 use Str;
 
 /**
@@ -49,7 +49,7 @@ use Str;
  */
 class Course extends Model implements Sortable
 {
-    use HasFactory, LadaCacheTrait, Presentable, SortableTrait;
+    use HasFactory, Presentable, SortableTrait;
 
     /**
      * Boot the model.

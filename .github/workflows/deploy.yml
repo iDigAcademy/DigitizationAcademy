@@ -1,0 +1,235 @@
+# CI/CD Deployment Workflow for Digitization Academy
+# 
+# WORKFLOW:
+# - Push to 'development' branch → Deploys to DEVELOPMENT automatically
+# - Push to 'main' branch → Creates GitHub release with semantic version → Deploys to PRODUCTION
+# 
+# VERSION CONTROL:
+# Use commit message tags to control version bumps:
+# - [major] or [breaking] → Major version bump (1.0.0 → 2.0.0)
+# - [minor] or [feature] → Minor version bump (1.0.0 → 1.1.0)  
+# - Default (no tag) → Patch version bump (1.0.0 → 1.0.1)
+#
+# SKIP DEPLOYMENT:
+# Add [skip deploy] or [no deploy] to your commit message to push without deploying
+#
+
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - main        # Creates release and deploys to production
+      - development # Development environment
+  release:
+    types: [published] # Production deployment trigger
+jobs:
+  # Create release when pushing to main
+  create-release:
+    runs-on: ubuntu-latest
+    if: "github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, '[skip deploy]') && !contains(github.event.head_commit.message, '[no deploy]')"
+    outputs:
+      release-tag: ${{ steps.create_release.outputs.tag_name }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetch all history for proper versioning
+      
+      - name: Determine version bump
+        id: version_bump
+        run: |
+          # Get the latest tag, default to 0.0.0 if no tags exist
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "0.0.0")
+          echo "Latest tag: $LATEST_TAG"
+          
+          # Check commit messages in the current push for version bump indicators
+          # Use git log with --grep to search only the pushed commits
+          COMMITS=$(git log ${LATEST_TAG}..HEAD --oneline)
+          echo "Commits since last tag:"
+          echo "$COMMITS"
+          
+          # Get the specific commit message for this push
+          CURRENT_COMMIT_MSG="${{ github.event.head_commit.message }}"
+          echo "Current commit message: $(printf '%s' "$CURRENT_COMMIT_MSG")"
+          
+          # Determine version bump based on the current commit message only
+          if echo "$CURRENT_COMMIT_MSG" | grep -i "\[major\]\|\[breaking\]"; then
+            BUMP_TYPE="major"
+          elif echo "$CURRENT_COMMIT_MSG" | grep -i "\[minor\]\|\[feature\]"; then
+            BUMP_TYPE="minor"  
+          else
+            BUMP_TYPE="patch"
+          fi
+          
+          echo "Bump type: $BUMP_TYPE"
+          echo "bump_type=$BUMP_TYPE" >> $GITHUB_OUTPUT
+          echo "current_version=$LATEST_TAG" >> $GITHUB_OUTPUT
+
+      - name: Calculate new version
+        id: new_version
+        run: |
+          CURRENT="${{ steps.version_bump.outputs.current_version }}"
+          BUMP_TYPE="${{ steps.version_bump.outputs.bump_type }}"
+          
+          # Parse current version
+          if [[ $CURRENT =~ ^([0-9]+)\.([0-9]+)\.([0-9]+) ]]; then
+            MAJOR=${BASH_REMATCH[1]}
+            MINOR=${BASH_REMATCH[2]}
+            PATCH=${BASH_REMATCH[3]}
+          else
+            MAJOR=0
+            MINOR=0
+            PATCH=0
+          fi
+          
+          # Increment based on bump type
+          case $BUMP_TYPE in
+            "major")
+              MAJOR=$((MAJOR + 1))
+              MINOR=0
+              PATCH=0
+              ;;
+            "minor")
+              MINOR=$((MINOR + 1))
+              PATCH=0
+              ;;
+            "patch")
+              PATCH=$((PATCH + 1))
+              ;;
+          esac
+          
+          NEW_VERSION="$MAJOR.$MINOR.$PATCH"
+          echo "New version: $NEW_VERSION"
+          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        id: create_release
+        run: |
+          gh release create "${{ steps.new_version.outputs.new_version }}" \
+            --title "Release ${{ steps.new_version.outputs.new_version }}" \
+            --notes "$(cat <<EOF
+          ## What's Changed
+
+          Auto-generated release from main branch.
+
+          **Commits included:**
+          \`\`\`
+          $COMMIT_MESSAGE
+          \`\`\`
+
+          **Full Changelog**: https://github.com/${{ github.repository }}/compare/${{ steps.version_bump.outputs.current_version }}...${{ steps.new_version.outputs.new_version }}
+          EOF
+          )"
+          echo "tag_name=${{ steps.new_version.outputs.new_version }}" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
+
+  # Production deployment (runs after release creation)
+  build-and-deploy-production:
+    needs: create-release
+    runs-on: ubuntu-latest
+    environment: production
+    if: "github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, '[skip deploy]') && !contains(github.event.head_commit.message, '[no deploy]')"
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, xml, bcmath, ctype, json, tokenizer, pdo, pdo_mysql
+      - name: Setup Composer authentication for Laravel Nova
+        run: composer config http-basic.nova.laravel.com ${{ secrets.NOVA_USERNAME }} ${{ secrets.NOVA_PASSWORD }}
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest --no-dev --optimize-autoloader
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'yarn'
+      - name: Install Yarn dependencies
+        run: yarn install --frozen-lockfile --ignore-engines
+      - name: Build assets for Production
+        run: npm run production
+      - name: Create deployment package
+        run: |
+          mkdir -p deployment-package
+          rsync -av --exclude=node_modules --exclude=.git --exclude=.github --exclude=tests --exclude=storage/logs --exclude=vendor . deployment-package/
+          cp -r public/css public/js public/fonts public/images public/svg public/mix-manifest.json deployment-package/public/ || true
+      - name: Upload deployment artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: digitizationacademy-${{ github.sha }}
+          path: deployment-package/
+          retention-days: 30
+      - name: Deploy with Deployer
+        uses: deployphp/action@v1
+        with:
+          private-key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
+          dep: deploy production
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_REPO: ${{ github.repository }}
+          OPCACHE_WEBHOOK_TOKEN: ${{ secrets.OPCACHE_WEBHOOK_TOKEN }}
+
+  build-and-deploy-development:
+    runs-on: ubuntu-latest
+    environment: development
+    # Skip deployment if commit message contains [skip deploy] or [no deploy]
+    if: "github.ref == 'refs/heads/development' && !contains(github.event.head_commit.message, '[skip deploy]') && !contains(github.event.head_commit.message, '[no deploy]')"
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, xml, bcmath, ctype, json, tokenizer, pdo, pdo_mysql
+      - name: Setup Composer authentication for Laravel Nova
+        run: composer config http-basic.nova.laravel.com ${{ secrets.NOVA_USERNAME }} ${{ secrets.NOVA_PASSWORD }}
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest --no-dev --optimize-autoloader
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'yarn'
+      - name: Install Yarn dependencies
+        run: yarn install --frozen-lockfile --ignore-engines
+      - name: Build assets for Development
+        run: npm run production
+      - name: Create deployment package
+        run: |
+          mkdir -p deployment-package
+          rsync -av --exclude=node_modules --exclude=.git --exclude=.github --exclude=tests --exclude=storage/logs --exclude=vendor . deployment-package/
+          cp -r public/css public/js public/fonts public/images public/svg public/mix-manifest.json deployment-package/public/ || true
+      - name: Upload deployment artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: digitizationacademy-${{ github.sha }}
+          path: deployment-package/
+          retention-days: 30
+      - name: Deploy with Deployer
+        uses: deployphp/action@v1
+        with:
+          private-key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
+          dep: deploy development
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_REPO: ${{ github.repository }}

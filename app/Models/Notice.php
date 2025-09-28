@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright (c) 2022. Digitization Academy
  * idigacademy@gmail.com
@@ -20,24 +21,19 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Spiritix\LadaCache\Database\LadaCacheTrait;
 
 /**
  * Class Notice
- *
- * @package App\Models
  */
 class Notice extends Model
 {
-    use LadaCacheTrait;
-
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected $table = 'notices';
 
     protected $fillable = [
         'message',
-        'enabled'
+        'enabled',
     ];
 }

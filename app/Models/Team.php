@@ -25,11 +25,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Spiritix\LadaCache\Database\LadaCacheTrait;
 
 class Team extends Model implements Sortable
 {
-    use HasFactory, LadaCacheTrait, Presentable, SortableTrait;
+    use HasFactory, Presentable, SortableTrait;
 
     /**
      * Used for sorting on Nova index.

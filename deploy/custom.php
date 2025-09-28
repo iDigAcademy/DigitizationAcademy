@@ -1,6 +1,15 @@
 <?php
 
 /*
+ * DIGITIZATION ACADEMY CUSTOM DEPLOYMENT TASKS - Based on Biospex Implementation
+ *
+ * This file contains custom deployment tasks for the Digitization Academy project.
+ *
+ * KEY FEATURES:
+ * - CI/CD artifact deployment (no server-side building)
+ * - Environment-specific configuration uploads
+ * - Custom Laravel Artisan commands integration
+ *
  * Copyright (c) 2022. Digitization Academy
  * idigacademy@gmail.com
  *
@@ -19,6 +28,14 @@
  */
 
 namespace Deployer;
+
+/*
+ * =============================================================================
+ * CUSTOM LARAVEL ARTISAN TASKS
+ * =============================================================================
+ */
+
+use Exception;
 
 /**
  * Execute database update queries for the application
@@ -51,26 +68,6 @@ task('set:permissions', function () {
 });
 
 /**
- * Install Yarn dependencies
- * Runs yarn install in the release path, ignoring engine requirements
- */
-desc('Install project dependencies');
-task('yarn:run-install', function () {
-    cd('{{release_path}}');
-    run('yarn install --ignore-engines');
-});
-
-/**
- * Build production assets using NPM
- * Executes npm run prod in the release path
- */
-desc('Build project');
-task('npm:run-build', function () {
-    cd('{{release_path}}');
-    run('npm run prod');
-});
-
-/**
  * Upload environment file based on deployment target
  * Selects the appropriate .env file based on the host alias (production/development)
  */
@@ -78,8 +75,8 @@ desc('Upload env file depending on the host');
 task('upload:env', function () {
     $alias = currentHost()->get('alias');
     $file = match ($alias) {
-        'production' => '.env.aws.prod',
-        'development' => '.env.aws.dev'
+        'production' => '.env.aws.production',
+        'development' => '.env.aws.development'
     };
     upload($file, '{{deploy_path}}/shared/.env');
 });
@@ -100,4 +97,134 @@ task('supervisor:reread-update', function () {
     cd('{{release_path}}');
     run('sudo supervisorctl reread');
     run('sudo supervisorctl update');
+});
+
+/*
+ * =============================================================================
+ * CI/CD ARTIFACT DEPLOYMENT - CORE FEATURE
+ * =============================================================================
+ */
+
+desc('Download and extract pre-built assets from GitHub Actions');
+task('deploy:ci-artifacts', function () {
+    // Environment variables automatically provided by GitHub Actions workflow
+    $githubToken = $_ENV['GITHUB_TOKEN'] ?? getenv('GITHUB_TOKEN') ?? '';
+    $githubSha = $_ENV['GITHUB_SHA'] ?? getenv('GITHUB_SHA') ?? '';
+    $githubRepo = $_ENV['GITHUB_REPO'] ?? getenv('GITHUB_REPO') ?? 'iDigAcademy/DigitizationAcademy';
+
+    // Debug: Show available environment variables for troubleshooting
+    writeln('Debug: Checking environment variables...');
+    writeln('GITHUB_TOKEN present: '.(! empty($githubToken) ? 'YES' : 'NO'));
+    writeln('GITHUB_SHA present: '.(! empty($githubSha) ? 'YES' : 'NO'));
+    writeln('GITHUB_REPO: '.$githubRepo);
+
+    // Validate required environment variables
+    if (empty($githubToken) || empty($githubSha)) {
+        $envVars = array_keys($_ENV);
+        $relevantEnvVars = array_filter($envVars, function ($key) {
+            return strpos(strtoupper($key), 'GITHUB') !== false;
+        });
+
+        $errorMsg = "GITHUB_TOKEN and GITHUB_SHA environment variables are required.\n";
+        $errorMsg .= 'Available GitHub-related env vars: '.implode(', ', $relevantEnvVars)."\n";
+        $errorMsg .= 'All env vars count: '.count($envVars);
+
+        throw new \Exception($errorMsg);
+    }
+
+    // Artifact naming convention: digitizationacademy-{git-sha}
+    $artifactName = "digitizationacademy-{$githubSha}";
+    writeln("Downloading CI artifact: {$artifactName}");
+
+    // Step 1: Get artifact download URL from GitHub API
+    $apiUrl = "https://api.github.com/repos/{$githubRepo}/actions/artifacts";
+    $response = runLocally("curl -H 'Authorization: Bearer {$githubToken}' -H 'Accept: application/vnd.github.v3+json' '{$apiUrl}?name={$artifactName}&per_page=1'");
+    $artifacts = json_decode($response, true);
+
+    // Validate artifact exists
+    if (empty($artifacts['artifacts'])) {
+        throw new \Exception("No CI artifact found with name: {$artifactName}");
+    }
+
+    $downloadUrl = $artifacts['artifacts'][0]['archive_download_url'];
+    cd('{{release_or_current_path}}');
+
+    // Step 2: Download, extract, and deploy CI-built assets
+    run("curl -L -H 'Authorization: Bearer {$githubToken}' -H 'Accept: application/vnd.github.v3+json' '{$downloadUrl}' -o artifact.zip");
+    run('unzip -o -q artifact.zip');       // Extract artifact quietly, overwrite existing files
+
+    // Debug: Check what was actually extracted
+    writeln('Debug: Contents after extraction:');
+    run('ls -la');
+
+    // Check if deployment-package directory exists, if not, assume files are in current directory
+    $deploymentPackageExists = run('[ -d "deployment-package" ] && echo "true" || echo "false"');
+    if (trim($deploymentPackageExists) === 'true') {
+        run('rsync -av deployment-package/ ./'); // Sync pre-built assets from deployment-package
+        run('rm -rf deployment-package'); // Clean up deployment-package directory
+    } else {
+        writeln('Debug: No deployment-package directory found, artifacts appear to be extracted directly');
+    }
+
+    run('rm -f artifact.zip'); // Cleanup artifact file
+
+    writeln('✅ CI artifacts deployed successfully - No server-side building required!');
+});
+
+/*
+ * =============================================================================
+ * OPCACHE MANAGEMENT
+ * =============================================================================
+ */
+
+desc('Reset OpCache after deployment');
+task('opcache:reset', function () {
+    // Method 1: Direct PHP CLI OpCache reset (try first)
+    try {
+        run('php {{release_or_current_path}}/artisan tinker --execute="if (function_exists(\'opcache_reset\')) { opcache_reset(); echo \'OpCache reset via CLI\'; } else { echo \'OpCache not available via CLI\'; }"');
+        writeln('✅ OpCache reset successful via CLI');
+    } catch (Exception $e) {
+        writeln('⚠️  CLI OpCache reset failed, trying webhook method...');
+
+        // Method 2: Webhook-based OpCache reset (fallback)
+        try {
+            $webhookToken = $_ENV['OPCACHE_WEBHOOK_TOKEN'] ?? getenv('OPCACHE_WEBHOOK_TOKEN') ?? '';
+            if (empty($webhookToken)) {
+                throw new Exception('OPCACHE_WEBHOOK_TOKEN not set');
+            }
+
+            $hostname = currentHost()->get('hostname');
+            $currentPath = run('readlink {{deploy_path}}/current');
+            $appUrl = strpos($currentPath, 'dev.digitizationacademy') !== false
+                ? 'https://dev.digitizationacademy.org'
+                : 'https://digitizationacademy.org';
+
+            $webhookUrl = "{$appUrl}/admin/opcache/reset/{$webhookToken}";
+            $response = run("curl -X POST -H 'Content-Type: application/json' '{$webhookUrl}'");
+
+            writeln('✅ OpCache reset successful via webhook');
+            writeln('Response: '.$response);
+        } catch (Exception $webhookException) {
+            writeln('❌ Both CLI and webhook OpCache reset methods failed');
+            writeln('CLI Error: '.$e->getMessage());
+            writeln('Webhook Error: '.$webhookException->getMessage());
+
+            // Don't fail the deployment, just warn
+            writeln('⚠️  Deployment will continue without OpCache reset');
+        }
+    }
+});
+
+desc('Reset OpCache after deployment (Production Only)');
+task('opcache:reset-production', function () {
+    // Only execute on production host
+    $currentHost = currentHost()->get('alias');
+    if ($currentHost !== 'production') {
+        writeln('⏭️  Skipping OpCache reset (not production environment)');
+
+        return;
+    }
+
+    writeln('🔄 Resetting OpCache for production deployment...');
+    invoke('opcache:reset');
 });

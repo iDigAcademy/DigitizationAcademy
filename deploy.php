@@ -1,6 +1,18 @@
 <?php
 
 /*
+ * DIGITIZATION ACADEMY CI/CD DEPLOYMENT CONFIGURATION - Based on Biospex Implementation
+ *
+ * USAGE:
+ * - Automatic deployment via GitHub Actions (recommended)
+ * - Manual deployment: dep deploy production|development
+ *
+ * HOW IT WORKS:
+ * 1. GitHub Actions builds assets and creates artifacts
+ * 2. Deployer downloads artifacts (no server-side building)
+ * 3. Environment-specific configuration
+ * 4. Automatic cleanup (node_modules removed)
+ *
  * Copyright (c) 2022. Digitization Academy
  * idigacademy@gmail.com
  *
@@ -23,61 +35,95 @@ namespace Deployer;
 require 'recipe/laravel.php';
 require 'deploy/custom.php';
 
-// Config
+// Deployment Configuration
 set('repository', 'https://github.com/iDigAcademy/DigitizationAcademy.git');
 set('base_path', '/data/web');
 set('remote_user', 'ubuntu');
 set('php_fpm_version', '8.3');
 set('ssh_multiplexing', true);
 set('writable_mode', 'chmod');
-set('keep_releases', 3);
-set('clear_paths', [
-    'node_modules',
+set('keep_releases', 5);  // Keep only 3 recent releases
+
+// Shared Files (persisted across deployments)
+set('shared_files', [
+    '.env',                        // Environment configuration
+    'public/mix-manifest.json',    // Laravel Mix manifest for asset versioning
 ]);
 
-// Hosts
+// Shared Directories (persisted across deployments)
+set('shared_dirs', [
+    'storage',          // Laravel storage (logs, cache, uploads)
+    'public/css',       // Compiled CSS files
+    'public/js',        // Compiled JavaScript files
+    'public/fonts',     // Web fonts
+    'public/images',    // Static images
+    'public/svg',       // SVG assets
+    'public/vendor',    // Vendor assets (Nova, etc.)
+]);
+
+// Files/Directories to Remove After Deployment
+set('clear_paths', [
+    'node_modules',     // Remove after CI artifacts are deployed
+]);
+
+// Server Configurations
+// Production: main branch → /data/web/digitizationacademy
 host('production')
-    ->setHostname('3.142.169.134')
-    ->setDeployPath('{{base_path}}/digitizationacademy')
+    ->set('hostname', '3.142.169.134')
+    ->set('deploy_path', '{{base_path}}/digitizationacademy')
     ->set('domain_name', 'digitizationacademy.org')
     ->set('branch', 'main');
 
+// Development: development branch → /data/web/dev.digitizationacademy
 host('development')
-    ->setHostname('3.142.169.134')
-    ->setDeployPath('{{base_path}}/dev.digitizationacademy')
+    ->set('hostname', '3.142.169.134')
+    ->set('deploy_path', '{{base_path}}/dev.digitizationacademy')
     ->set('domain_name', 'dev.digitizationacademy.org')
     ->set('branch', 'development');
 
-// Tasks
-desc('Deploys your project');
+/*
+ * DEPLOYMENT TASK SEQUENCE - CI/CD Implementation
+ *
+ * This sequence eliminates server-side building by using CI artifacts.
+ * Each task is executed in order with proper error handling.
+ */
+desc('Deploys your project using CI/CD artifacts');
 task('deploy', [
-    'deploy:prepare',
-    'upload:env',
-    'deploy:vendors',
-    'artisan:storage:link',
-    'yarn:run-install',
-    'npm:run-build',
-    'artisan:nova:publish',
-    'artisan:horizon:publish',
-    'artisan:sweetalert:publish',
-    'artisan:app:deploy-files',
-    //'artisan:migrate',
-    //'artisan:app:update-queries',
-    'artisan:cache:clear',
-    'artisan:config:clear',
-    'artisan:event:clear',
-    'artisan:optimize:clear',
-    'artisan:route:clear',
-    'artisan:view:clear',
-    'artisan:config:cache',
-    'artisan:route:cache',
-    'artisan:view:cache',
-    'artisan:event:cache',
-    'artisan:optimize',
-    'set:permissions',
-    //'supervisor:reread-update',
-    'deploy:clear_paths',
-    'deploy:publish',
+    // Phase 1: Preparation
+    'deploy:prepare',           // Create release directory and setup structure
+    'upload:env',              // Upload environment-specific configuration
+
+    // Phase 2: Dependencies & Assets
+    'deploy:vendors',          // Install PHP Composer dependencies (--no-dev --optimize-autoloader)
+    'deploy:ci-artifacts',     // Download & extract pre-built assets from GitHub Actions
+
+    // Phase 3: Laravel Setup
+    'artisan:storage:link',    // Create symbolic link for storage directory
+    'artisan:nova:publish',    // Publish Laravel Nova assets
+    'artisan:horizon:publish', // Publish Laravel Horizon assets
+    'artisan:sweetalert:publish', // Publish Sweet Alert assets
+    'artisan:app:deploy-files', // Custom app deployment files
+
+    // Phase 4: Database & Updates
+    'artisan:migrate',         // Run database migrations
+    'artisan:app:update-queries', // Run custom database updates
+
+    // Phase 5: Cache Optimization
+    'artisan:optimize:clear',  // Clear all Laravel caches
+    'artisan:cache:clear',     // Clear application cache
+    'artisan:config:cache',    // Cache configuration files
+    'artisan:route:cache',     // Cache route definitions
+    'artisan:view:cache',      // Cache Blade templates
+    'artisan:event:cache',     // Cache event listeners
+    'artisan:optimize',        // Run Laravel optimization
+
+    // Phase 6: OpCache Management (Production Only)
+    'opcache:reset-production', // Reset OpCache after deployment (production only)
+
+    // Phase 7: Finalization
+    'set:permissions',         // Set proper file permissions
+    'deploy:clear_paths',      // Remove unnecessary files/directories
+    'deploy:publish',          // Switch to new release (atomic deployment)
 ]);
 
 // Hooks
