@@ -27,7 +27,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 use Str;
-use Str;
 
 /**
  * Course Model
