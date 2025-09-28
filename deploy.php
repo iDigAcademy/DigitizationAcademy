@@ -71,15 +71,15 @@ set('clear_paths', [
 host('production')
     ->set('hostname', '3.142.169.134')
     ->set('deploy_path', '{{base_path}}/digitizationacademy')
-    ->set('domain_name', 'digitizationacademy.org')
-    ->set('branch', 'main');
+    ->set('branch', 'main')
+    ->set('domain_name', 'digitizationacademy');
 
 // Development: development branch → /data/web/dev.digitizationacademy
 host('development')
     ->set('hostname', '3.142.169.134')
     ->set('deploy_path', '{{base_path}}/dev.digitizationacademy')
-    ->set('domain_name', 'dev.digitizationacademy.org')
-    ->set('branch', 'development');
+    ->set('branch', 'development')
+    ->set('domain_name', 'dev-digitizationacademy');
 
 /*
  * DEPLOYMENT TASK SEQUENCE - CI/CD Implementation
@@ -119,6 +119,10 @@ task('deploy', [
 
     // Phase 6: OpCache Management (Production Only)
     'opcache:reset-production', // Reset OpCache after deployment (production only)
+
+    // Phase 7: Domain-Specific Supervisor Management
+    'supervisor:reload',               // Update configs only
+    'supervisor:restart-domain-safe',  // Restart domain-specific Horizon processes
 
     // Phase 7: Finalization
     'set:permissions',         // Set proper file permissions

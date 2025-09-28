@@ -111,6 +111,7 @@ class AppDeployFiles extends Command
             'APP_ENV',
             'APP_DOMAIN',
             'SERVER_USER',
+            'SUPERVISOR_GROUP',
         ]);
     }
 }

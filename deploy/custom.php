@@ -92,11 +92,34 @@ task('artisan:sweetalert:publish', artisan('sweetalert:publish'));
  * Reload Supervisor configuration
  * Executes reread and update commands for Supervisor
  */
-desc('Supervisor reread and update');
-task('supervisor:reread-update', function () {
-    cd('{{release_path}}');
+/*
+ * =============================================================================
+ * DOMAIN-SPECIFIC SUPERVISOR PROCESS MANAGEMENT
+ * =============================================================================
+ */
+
+desc('Reload Supervisor configuration (config-only update)');
+task('supervisor:reload', function () {
     run('sudo supervisorctl reread');
     run('sudo supervisorctl update');
+});
+
+desc('Safely restart domain-specific supervisor processes (Horizon-only, no queue checks needed)');
+task('supervisor:restart-domain-safe', function () {
+    $domain = get('domain_name');
+
+    if (! $domain) {
+        throw new Exception('Domain name not configured for this host');
+    }
+
+    // For digitizationacademy, we only have Horizon processes and no beanstalkd queues
+    // Since Horizon handles its own graceful shutdowns, we can restart directly
+    writeln("🔄 Restarting {$domain} domain Horizon processes...");
+
+    // Restart only processes belonging to this domain (production:* or development:*)
+    run("sudo supervisorctl restart {$domain}:*");
+
+    writeln('✅ Domain-specific supervisor processes restarted successfully');
 });
 
 /*
