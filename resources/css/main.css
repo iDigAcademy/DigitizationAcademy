@@ -1443,7 +1443,7 @@ ul.course-objectives li{
     transform: translateX(-50%);
 
     width: max-content;
-    max-width: 300px; /* Prevents tooltips from becoming too wide */
+    /*max-width: 400px; /* Prevents tooltips from becoming too wide */
     min-width: 120px; /* Ensures minimum readable width */
     opacity: 0;
     transition: opacity 0.3s;
