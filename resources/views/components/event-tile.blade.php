@@ -1,7 +1,7 @@
 <div class="col-12 col-sm-6">
     <div class="card bg-dark h-100 mx-3">
         <div class="row no-gutters">
-            <div class="col-md-2 col-12"
+            <div class="col-md-2 col-12 event-tile-image"
                  style="background-image: url('{{ $event->course->present()->tileImage() }}');
                  background-size: cover;
                     background-position: center;
@@ -28,18 +28,20 @@
                         <p class="subtitle text-rose mt-3 mb-3">Objectives</p>
                         <p class="small">{{ $event->course->present()->objectivesOrDescription() }}</p>
                     </div>
-                    <div class="row card-foot">
-                        <div class="col-md-5 course-dates p-0">
-                            <ul class="list-unstyled m-0">
-                                <li><span>Start Date:&nbsp;</span>{{ $event->formatted_start_date }} </li>
-                                <li><span>End Date:&nbsp;</span>{{ $event->formatted_end_date }}</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-7 course-dates">
-                            <ul class="list-unstyled m-0">
-                                <li><span>Schedule:&nbsp;</span>{{ $event->schedule }}</li>
-                                <li><span>Language:&nbsp;</span>{{ $event->course->language }}</li>
-                            </ul>
+                    <div class="card-foot">
+                        <div class="row">
+                            <div class="col-md-5 course-dates">
+                                <ul class="list-unstyled m-0">
+                                    <li><span>Start Date:&nbsp;</span>{{ $event->formatted_start_date }} </li>
+                                    <li><span>End Date:&nbsp;</span>{{ $event->formatted_end_date }}</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-7 course-dates">
+                                <ul class="list-unstyled m-0">
+                                    <li><span>Schedule:&nbsp;</span>{{ $event->schedule }}</li>
+                                    <li><span>Language:&nbsp;</span>{{ $event->course->language }}</li>
+                                </ul>
+                            </div>
                         </div>
                         <x-event-tile-dates :event="$event"/>
                     </div>

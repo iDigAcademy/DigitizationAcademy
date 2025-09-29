@@ -1320,9 +1320,9 @@ li {
 }
 
 /* Show the element when screen width is above 767px */
-@media only screen and (min-width: 768px) {
-    .card_td_bg_image {
-        display: block; /* or whatever display property is appropriate */
+@media (max-width: 767.98px) {
+    .event-tile-image {
+        display: none !important;
     }
 }
 
