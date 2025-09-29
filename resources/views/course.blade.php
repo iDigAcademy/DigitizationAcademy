@@ -15,7 +15,7 @@
                 <p class="course-lead">{{ $course->description }}</p>
                 <p>Led by {{ $course->instructor }}</p>
                 <p class="mt-5">{{ $nextOffering }}</p>
-                <p class="course-info mt-5">{{ $course->type }} course | Online | Free
+                <p class="course-info mt-5">{{ $course->courseType->type }} course | Online | Free
                     <span class="info-tooltip">
                         <i class="far fa-info-circle"></i>
                         <span class="tooltip-text">
@@ -51,16 +51,17 @@
         <div class="container">
             <div class="row text-center">
                 <ul class="nav nav-pills mb-5 justify-content-center" id="course-nav" role="tablist">
-                    @if($course->type === '12 Hour')
+                    <!-- Assumes that the course type is 12-hour -->
+                    @if($course->course_type_id === 2)
                         <x-course-button class="active" value="objectives"/>
                         <x-course-button value="syllabus"/>
                     @endif
 
                     @if($showOfferingsPane)
-                        <x-course-button class="{{ $course->type === '2 Hour' ? 'active' : '' }}" value="offerings"/>
+                        <x-course-button class="{{ $course->course_type_id === 1 ? 'active' : '' }}" value="offerings"/>
                     @endif
 
-                    <x-course-button class="{{ $course->type === '2 Hour' && !$showOfferingsPane ? 'active' : '' }}" value="expert-panel"/>
+                    <x-course-button class="{{ $course->course_type_id === 1 && !$showOfferingsPane ? 'active' : '' }}" value="expert-panel"/>
 
                     @if($course->present()->hasAssets())
                         <x-course-button value="resources"/>
@@ -72,7 +73,7 @@
                 </ul>
 
                 <div class="tab-content" id="pills-tabContent">
-                    @if($course->type === '12 Hour')
+                    @if($course->course_type_id === 2)
                         <div class="tab-pane fade show active" id="objectives" role="tabpanel"
                              aria-labelledby="objectives-tab">
                             <div class="section-heading course col-10 m-auto text-start">
@@ -110,7 +111,7 @@
                         </div>
                     @endif
 
-                    <div class="tab-pane fade {{ $course->type === '2 Hour' && !$showOfferingsPane ? 'show active' : '' }}"
+                    <div class="tab-pane fade {{ $course->course_type_id === 1 && !$showOfferingsPane ? 'show active' : '' }}"
                          id="expert-panel"
                          role="tabpanel"
                          aria-labelledby="expert-panel-tab">

@@ -5,17 +5,17 @@
 @endphp
         <!-- 2 hour === Register, 12 hour === Apply -->
 @if($nowLtRegisterEndDate)
-    <li>{{ $course->type == '2 Hour' ? 'Registration opens' : 'Application opens' }}:
+    <li>{{ $course->course_type_id == 1 ? 'Registration opens' : 'Application opens' }}:
         {{ date_day_string($event->form_start_date) }}
     </li>
 @elseif($nowBetweenDates)
     <li>
         <a href="{{ $event->form_link }}" class="digi-btn btn-fill-primary course text-center">
-            {{ $course->type == '2 Hour' ? 'Register' : 'Apply' }}
+            {{ $course->course_type_id == 1 ? 'Register' : 'Apply' }}
         </a>
     </li>
     <li>Application closes: {{ $event->form_end_date->format('F j, Y')}}</li>
 @elseif ($nowGtEndDate)
-    <li>{{ $course->type == '2 Hour' ? 'Registration closed' : 'Application closed' }}.</li>
+    <li>{{ $course->course_type_id == 1 ? 'Registration closed' : 'Application closed' }}.</li>
 @endif
 

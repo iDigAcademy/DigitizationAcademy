@@ -23,6 +23,7 @@ namespace App\Models;
 use App\Models\Traits\Presentable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
@@ -49,6 +50,13 @@ use Str;
 class Course extends Model implements Sortable
 {
     use HasFactory, Presentable, SortableTrait;
+
+    /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = ['courseType'];
 
     /**
      * Boot the model.
@@ -89,6 +97,7 @@ class Course extends Model implements Sortable
         'title',
         'slug',
         'type',
+        'course_type_id',
         'description',
         'objectives',
         'language',
@@ -148,6 +157,14 @@ class Course extends Model implements Sortable
     public function scopeHome(\Illuminate\Database\Eloquent\Builder $query): mixed
     {
         return $query->where('home_page', 1);
+    }
+
+    /**
+     * The course type that belongs to the course.
+     */
+    public function courseType(): BelongsTo
+    {
+        return $this->belongsTo(CourseType::class);
     }
 
     /**

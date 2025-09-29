@@ -24,6 +24,7 @@ use Alexwenzel\DependencyContainer\DependencyContainer;
 use Alexwenzel\DependencyContainer\HasDependencies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\File;
@@ -76,15 +77,19 @@ class Course extends Resource
     {
         return [
             ID::make()->sortable(), Text::make('Title')->rules('required', 'string', 'min:10',
-                'max:70')->required()->sortable()->help('Max 70 characters'), Select::make('Type')->options([
-                    '2 Hour' => '2 Hour', '12 Hour' => '12 Hour',
-                ])->rules('required')->required()->sortable(),
+                'max:70')->required()->sortable()->help('Max 70 characters'), BelongsTo::make('Course Type', 'courseType', CourseType::class)
+                ->rules('required')
+                ->required()
+                ->sortable()
+                ->help('Select the course type'),
             Textarea::make('Description')->rules('required', 'string', 'min:10',
                 'max:1000')->required()->help('Max 1000 characters'),
             DependencyContainer::make([
                 Textarea::make('Objectives')->rules('string', 'min:10', 'max:1200',
-                    'required_if:type,12 Hour')->help('Max 1200 characters.'),
-            ])->dependsOn('type', '12 Hour'), Select::make('Language', 'language')->options([
+                    'required_if:courseType.type,12-hour')->help('Max 1200 characters.'),
+            ])->dependsOn('courseType', function ($value) {
+                return $value && $value->type === '12-hour';
+            }), Select::make('Language', 'language')->options([
                 'English' => 'English', 'Spanish' => 'Spanish',
             ])->required()->sortable(),
             Text::make('Led By', 'instructor')->rules('required', 'string', 'min:10', 'max:100'),
@@ -117,13 +122,17 @@ class Course extends Resource
 
                     return [];
                 })->deletable()->hideFromIndex()
-                    ->creationRules('mimes:pdf', 'required_if:type,12 Hour')
+                    ->creationRules('mimes:pdf', 'required_if:courseType.type,12-hour')
                     ->updateRules('mimes:pdf')->help('Upload a PDF file.'),
-            ])->dependsOn('type', '12 Hour'),
+            ])->dependsOn('courseType', function ($value) {
+                return $value && $value->type === '12-hour';
+            }),
 
             DependencyContainer::make([
                 Text::make('Video')->help('Enter video link for course.'),
-            ])->dependsOn('type', '2 Hour'),
+            ])->dependsOn('courseType', function ($value) {
+                return $value && $value->type === '2-hour';
+            }),
 
             Text::make('Expert Panel Headline')->required()->hideFromIndex()->help('Enter the headline of the expert panel.'),
             Text::make('Expert Panel Copy')->required()->hideFromIndex()->help('Enter the copy of the expert panel.'),

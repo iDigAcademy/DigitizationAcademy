@@ -64,9 +64,10 @@ class CourseService
         $hasEvents = $course->events?->isNotEmpty() ?? false;
         $nextOffering = 'Next offering: ';
 
-        return match ([$course->type, $hasEvents]) {
-            ['2 Hour', true] => $nextOffering.$course->events->first()->start_date->format('F j, Y'),
-            ['2 Hour', false] => 'Course concluded.',
+        // Assumes course type 1 is a 2-hour course
+        return match ([$course->course_type_id, $hasEvents]) {
+            [1, true] => $nextOffering.$course->events->first()->start_date->format('F j, Y'),
+            [1, false] => 'Course concluded.',
             default => $nextOffering.($hasEvents
                 ? $this->formatMultiCourseOffering($course->events)
                 : (string) Carbon::now()->addYear()->year)
@@ -75,20 +76,22 @@ class CourseService
 
     /**
      * Check if offerings pane should be shown
+     * Assumes course type 1 is a 2-hour course
      */
     public function shouldShowOfferingsPane(Course $course): bool
     {
         $hasEvents = $course->events && $course->events->isNotEmpty();
 
-        return $course->type === '12 Hour' || ($course->type === '2 Hour' && $hasEvents);
+        return $course->course_type_id === 2 || ($course->course_type_id === 1 && $hasEvents);
     }
 
     /**
      * Check if offerings tab should be active
+     * Assumes course type 1 is a 2-hour course
      */
     public function isOfferingsTabActive(Course $course): bool
     {
-        return $course->type === '2 Hour' && $this->shouldShowOfferingsPane($course);
+        return $course->course_type_id === 1 && $this->shouldShowOfferingsPane($course);
     }
 
     /**
