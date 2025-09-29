@@ -14,7 +14,7 @@
                 <h1 class="course-title mb-4">{{ $course->title }}</h1>
                 <p class="course-lead">{{ $course->description }}</p>
                 <p>Led by {{ $course->instructor }}</p>
-                <p class="mt-5">Next offering: {{ $nextOffering }}</p>
+                <p class="mt-5">{{ $nextOffering }}</p>
                 <p class="course-info mt-5">{{ $course->type }} course | Online | Free
                     <span class="info-tooltip">
                         <i class="far fa-info-circle"></i>

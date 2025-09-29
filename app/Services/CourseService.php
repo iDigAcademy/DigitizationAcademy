@@ -62,13 +62,14 @@ class CourseService
     public function generateNextOffering(Course $course): string
     {
         $hasEvents = $course->events?->isNotEmpty() ?? false;
+        $nextOffering = 'Next offering: ';
 
         return match ([$course->type, $hasEvents]) {
-            ['2 Hour', true] => $course->events->first()->start_date->format('F j, Y'),
+            ['2 Hour', true] => $nextOffering.$course->events->first()->start_date->format('F j, Y'),
             ['2 Hour', false] => 'Course concluded.',
-            default => $hasEvents
+            default => $nextOffering.($hasEvents
                 ? $this->formatMultiCourseOffering($course->events)
-                : (string) Carbon::now()->addYear()->year,
+                : (string) Carbon::now()->addYear()->year)
         };
     }
 
