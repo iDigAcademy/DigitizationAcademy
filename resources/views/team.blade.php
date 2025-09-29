@@ -52,7 +52,7 @@
             <div class="row px-md-5">
                 <p class="lead text-center">
                     We have had an ongoing team of experts and enthusiasts that make
-                    Digitization Academy work for you.<br>
+                    the Digitization Academy work for you.<br>
                     <button type="button" class="btn digi-btn btn-lg btn-fill-primary mt-4" data-bs-toggle="collapse"
                             data-bs-target="#pastMembers">View past members
                     </button>
