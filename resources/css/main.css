@@ -1393,6 +1393,30 @@ ul.course-objectives li{
     padding: 10px 0;
 }
 
+/* Course offerings responsive layout - Fixed selector */
+@media only screen and (max-width: 991px) {
+    .schedule-table.d-flex {
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .schedule-table.d-flex ul {
+        text-align: center !important;
+        margin-bottom: 1rem !important;
+        width: 100% !important;
+    }
+
+    .schedule-table.d-flex ul:last-child {
+        margin-bottom: 0 !important;
+    }
+}
+
+.course-info {
+    font-size: 19px !important;
+    font-weight: normal;
+}
+
 .course-info {
     font-size: 19px !important;
     font-weight: normal;

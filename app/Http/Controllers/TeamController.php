@@ -41,9 +41,8 @@ class TeamController extends Controller
     {
         $teams = Team::orderBy('order')->get();
 
-        [$currentTeam, $formerTeam] = $teams->partition(function ($team) {
-            return $team->current === 1;
-        });
+        /** @var \Illuminate\Database\Eloquent\Collection $teams */
+        [$currentTeam, $formerTeam] = $teams->partition(fn (Team $team) => $team->current === 1);
 
         return view('team', compact('currentTeam', 'formerTeam'));
     }
