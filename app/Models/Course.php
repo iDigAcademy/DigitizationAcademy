@@ -21,6 +21,7 @@
 namespace App\Models;
 
 use App\Models\Traits\Presentable;
+use Google\Auth\CacheTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -49,7 +50,7 @@ use Str;
  */
 class Course extends Model implements Sortable
 {
-    use HasFactory, Presentable, SortableTrait;
+    use CacheTrait, HasFactory, Presentable, SortableTrait;
 
     /**
      * The relationships that should always be loaded.

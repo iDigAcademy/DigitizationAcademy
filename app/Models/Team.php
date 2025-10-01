@@ -21,6 +21,7 @@
 namespace App\Models;
 
 use App\Models\Traits\Presentable;
+use IDigAcademy\AutoCache\Traits\Cacheable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\EloquentSortable\Sortable;
@@ -28,7 +29,7 @@ use Spatie\EloquentSortable\SortableTrait;
 
 class Team extends Model implements Sortable
 {
-    use HasFactory, Presentable, SortableTrait;
+    use Cacheable, HasFactory, Presentable, SortableTrait;
 
     /**
      * Used for sorting on Nova index.
