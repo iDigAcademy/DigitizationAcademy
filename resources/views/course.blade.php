@@ -131,17 +131,23 @@
                         <div class="tab-pane fade" id="resources" role="tabpanel" aria-labelledby="resources-tab">
                             <div class="col-10 m-auto">
                                 <div class="row course-resources">
-                                    <div class="col-md-6 ps-5">
+                                    <div class="col-md-6 ps-5 m-auto"><!-- TODO remove m-auto when DK live -->
                                         <img src="{{ asset('images/logo/dk-logo.svg') }}"
                                              alt="Digitization Knowledgebase Logo"
                                              class="img-fluid d-block"/>
                                         <p class="text-start mt-5">
+                                            <!-- TODO put back when DK live
                                             Explore topics covered in this course through the Digitization
                                             Knowledgebase, a curated navigation tool for digitization resources from
                                             across the world. The Digitization Knowledgebase provides links to relevant
                                             content, organized by topic for easy exploration.
+                                            -->
+                                            Arriving soon! A new curated platform for digitization resources from across
+                                            the world. The Digitization Knowledgebase will provide links to relevant
+                                            content, organized by topic for easy exploration.
                                         </p>
                                     </div>
+                                    <!-- TODO put back when DK live
                                     <div class="col-md-6 d-flex">
                                         <ul class="nav nav-pills flex-column w-100">
                                             @foreach($course->assets as $asset)
@@ -149,6 +155,7 @@
                                             @endforeach
                                         </ul>
                                     </div>
+                                    -->
                                 </div>
                             </div>
                         </div>
