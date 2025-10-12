@@ -1672,16 +1672,16 @@
         },
         {
             "name": "idigacademy/auto-cache",
-            "version": "v1.0.0",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/iDigAcademy/AutoCache.git",
-                "reference": "e57c489bccd8e6fe379709eedbcb3bc110daf51e"
+                "reference": "91d65759e6f0f6fe4771ee606164ef461ae0aa91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/iDigAcademy/AutoCache/zipball/e57c489bccd8e6fe379709eedbcb3bc110daf51e",
-                "reference": "e57c489bccd8e6fe379709eedbcb3bc110daf51e",
+                "url": "https://api.github.com/repos/iDigAcademy/AutoCache/zipball/91d65759e6f0f6fe4771ee606164ef461ae0aa91",
+                "reference": "91d65759e6f0f6fe4771ee606164ef461ae0aa91",
                 "shasum": ""
             },
             "require": {
@@ -1727,10 +1727,10 @@
             ],
             "description": "Automatic model caching for Laravel with MySQL and MongoDB support",
             "support": {
-                "source": "https://github.com/iDigAcademy/AutoCache/tree/v1.0.0",
+                "source": "https://github.com/iDigAcademy/AutoCache/tree/v1.1.0",
                 "issues": "https://github.com/iDigAcademy/AutoCache/issues"
             },
-            "time": "2025-10-07T16:42:14+00:00"
+            "time": "2025-10-11T19:04:11+00:00"
         },
         {
             "name": "inertiajs/inertia-laravel",

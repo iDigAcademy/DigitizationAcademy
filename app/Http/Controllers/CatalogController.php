@@ -43,10 +43,17 @@ class CatalogController extends Controller
      * Display courses filtered by type.
      *
      * @param  EventService  $service  Service for retrieving course events
-     * @param  string  $type  The type of courses to display
+     * @param  string  $type  The type of courses to display ('past', 'all', 'upcoming')
+     *
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function show(EventService $service, string $type): View
     {
+        // Validate that the type is one of the allowed values
+        if (! in_array($type, ['past', 'all', 'upcoming'])) {
+            abort(404);
+        }
+
         $events = $service->showCatalogCourses($type);
 
         return view('partials.catalog-events', compact('events'));

@@ -35,6 +35,7 @@ class EventService
      *
      * @param  string  $type  The type of events to retrieve ('upcoming', 'past', or 'all')
      * @return \Illuminate\Database\Eloquent\Collection Collection of Event models
+     * @throws \InvalidArgumentException If an invalid type is provided
      */
     public function showCatalogCourses(string $type): Collection
     {
@@ -46,7 +47,8 @@ class EventService
         match ($type) {
             'past' => $query->where('start_date', '<', now())->orderBy('start_date', 'desc'),
             'all' => $query->orderBy('start_date', 'desc'),
-            default => $query->where('start_date', '>', now())->orderBy('start_date', 'asc'),
+            'upcoming' => $query->where('start_date', '>', now())->orderBy('start_date', 'asc'),
+            default => throw new \InvalidArgumentException("Invalid catalog type: {$type}. Valid types are: past, all, upcoming"),
         };
 
         return $query->get();

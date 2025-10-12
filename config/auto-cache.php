@@ -92,5 +92,48 @@ return [
             'user.role_changed',
             'user.permission_changed',
         ],
+
+        // Admin context detection settings
+        'skip_admin_context' => true,
+
+        // Route patterns that should skip caching (supports Laravel route patterns)
+        'admin_route_patterns' => [
+            'nova/*',
+            'nova-api/*',
+            'admin/*',           // This catches everything under /admin/
+            'admin/nova/*',      // More specific for Nova UI
+            'admin/nova-api/*',  // More specific for Nova API
+            'filament/*',
+            'admin/filament/*',
+        ],
+
+        // URL paths that should skip caching (substring matches)
+        'admin_url_paths' => [
+            '/nova/',
+            '/admin/nova/',      // Only skip Nova under admin
+            '/filament/',
+            '/admin/filament/',  // Only skip Filament under admin
+        ],
+
+        // Service provider classes that indicate admin packages are installed
+        'admin_package_classes' => [
+            '\Laravel\Nova\NovaServiceProvider',
+            '\Filament\FilamentServiceProvider',
+            '\Backpack\CRUD\BackpackServiceProvider',
+            '\Encore\Admin\AdminServiceProvider',
+        ],
+
+        // Dynamic admin package detection (attempts to get routes from known packages)
+        'dynamic_detection' => [
+            'enabled' => true,
+            'packages' => [
+                'filament' => [
+                    'facade_class' => '\Filament\Facades\Filament',
+                    'method' => 'getPanels',
+                    'path_method' => 'getPath',
+                ],
+                // Users can add more dynamic detection configs here
+            ],
+        ],
     ],
 ];
