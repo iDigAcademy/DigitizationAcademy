@@ -80,9 +80,7 @@ class CourseService
      */
     public function shouldShowOfferingsPane(Course $course): bool
     {
-        $hasEvents = $course->events && $course->events->isNotEmpty();
-
-        return $course->course_type_id === 2 || ($course->course_type_id === 1 && $hasEvents);
+        return $course->events && $course->events->isNotEmpty();
     }
 
     /**
