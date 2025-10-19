@@ -12,7 +12,6 @@
     "alexwenzel/nova-dependency-container": "^1.13",
     "google/apiclient": "^2.18",
     "idigacademy/auto-cache": "^1.0.0",
-    "johngrogg/ics-parser": "^3.2",
     "kiritokatklian/nova-permission": "^4.0",
     "laravel/fortify": "^1.13",
     "laravel/framework": "^12.0",

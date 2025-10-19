@@ -51,7 +51,6 @@ STYLESHEET INDEXING
     Variables
     F8F9FA
 -------------------------*/
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 :root {
     --color-primary: #000000;
     --color-white: #ffffff;
@@ -59,18 +58,11 @@ STYLESHEET INDEXING
     --color-light: #ECF2F6;
     --color-dark: #161929;
     --color-text-dark: #161929;
-    --color-accent1: #F8F9FA;
-    --color-accent2: #FAB8C4;
     --color-blue-shade: #6865FF;
     --color-blue-shade-2: #000248;
     --color-link: #373737;
-    --color-mabel: #DBF8FF;
     --color-fog: #DBDEFF;
-    --color-pink-shade: #FFD3DB;
-    --color-peach: #FFEDDC;
     --color-rose: #C75C6F;
-    --color-chart1: #896BA7;
-    --color-chart2: #BADEFF;
     --color-body: #525260;
     --color-gray-1: #757589;
     --color-gray-2: #999FAE;
@@ -78,16 +70,7 @@ STYLESHEET INDEXING
     --color-gray-4: #99A1AA;
     --color-ship-gray: #42424A;
     --color-ghost: #C7C7D5;
-    --color-mercury: #E5E5E5;
     --gradient-primary: linear-gradient(to right, #cbcdda, #d8d9e3, #e6e6ec, #f2f2f6, #f2f2f6);
-    --gradient-blue: linear-gradient(145.92deg, #5956E9 20.18%, #9991FF 76.9%);
-    --gradient-accent: linear-gradient(180deg, #FAB8C4 0%, #FFEDF0 100%);
-    --gradient-white: linear-gradient(266.3deg, rgba(236, 242, 246, 0) 7.84%, #ECF2F6 29.1%, rgba(236, 242, 246, 0) 64.32%);
-    --gradient-dark: linear-gradient(180deg, #27272E 0%, #303035 100%);
-    --gradient-lightblue: linear-gradient(to right, #4f5899, #5463a3, #596ead, #5f79b6, #6584c0);
-    --border-light: 1px solid rgba(255,255,255, .35);
-    --border-lighter: 1px solid #ECF2F6;
-    --border-dark: 1px solid var(--color-ship-gray);
     --border-gray: 1px solid var(--color-gray-4);
     --font-primary: 'Open Sans', sans-serif;
     --font-secondary: 'Raleway', sans-serif;
@@ -1562,112 +1545,10 @@ ul.course-objectives li{
     z-index: -2; }
 .shape-group-6 .shape.shape-1 img {
     width: 525px;}
-.shape-group-6 .shape.shape-2 {
-    top: 41rem;
-    left: -4rem;
-    z-index: -1;}
-.shape-group-6 .shape.shape-2 img {
-    width: 90%;}
-.shape-group-6 .shape.shape-3 {
-    bottom: 140px;
-    right: 0; }
-.shape-group-6 .shape.shape-4 {
-    bottom: -1px;
-    left: 11%; }
-@media only screen and (min-width: 1200px) and (max-width: 1599px) {
-    .shape-group-6 .shape.shape-4 {
-        left: 0; }
-    .shape-group-6 .shape.shape-4 img {
-        width: 90%; } }
-@media only screen and (max-width: 1199px) {
-    .shape-group-6 .shape.shape-4 {
-        left: 0; }
-    .shape-group-6 .shape.shape-4 img {
-        width: 70%; } }
 
-.shape-group-9 .shape {
-    position: absolute;
-    z-index: -1; }
-.shape-group-9 .shape.shape-1 {
-    top: 0;
-    left: 32%; }
-.shape-group-9 .shape.shape-2 {
-    top: 180px;
-    left: 18%;
-    opacity: 0.5;
-    animation: movingleftright1 infinite 20000ms; }
-.shape-group-9 .shape.shape-3 {
-    top: 31%;
-    left: 20%;
-    animation: movingleftright2 infinite 25000ms; }
-.shape-group-9 .shape.shape-4 {
-    top: 44%;
-    left: 28%;
-    animation: movingleftright1 infinite 25000ms; }
-.shape-group-9 .shape.shape-5 {
-    top: 50%;
-    left: 17%;
-    animation: movingleftright2 infinite 30000ms; }
-.shape-group-9 .shape.shape-6 {
-    top: 26%;
-    right: 21%;
-    animation: movingleftright3 infinite 30000ms; }
-@media only screen and (max-width: 767px) {
-    .shape-group-9 .shape.shape-6 {
-        display: none; } }
-.shape-group-9 .shape.shape-7 {
-    top: 30%;
-    right: 15%;
-    animation: movingleftright1 infinite 30000ms; }
 
-.shape-group-10 .shape {
-    position: absolute;
-    z-index: -1; }
-.shape-group-10 .shape.shape-1 {
-    top: 100px;
-    left: -171px;
-    margin-left: -124px; }
-.shape-group-10 .shape.shape-2 {
-    bottom: 200px;
-    left: 0; }
-.shape-group-10 .shape.shape-3 {
-    top: 680px;
-    left: 110px; }
 
-.shape-group-12 .shape {
-    position: absolute;
-    z-index: -1; }
-.shape-group-12 .shape.shape-1 {
-    top: 115px;
-    left: 38%; }
-.shape-group-12 .shape.shape-2 {
-    left: 60px;
-    bottom: 130px; }
-.shape-group-12 .shape.shape-3 {
-    right: 60px;
-    bottom: 50px; }
 
-.shape-group-17 .shape {
-    position: absolute;
-    z-index: -1; }
-.shape-group-17 .shape.shape-1 {
-    top: 0;
-    left: 0; }
-.shape-group-17 .shape.shape-2 {
-    top: 360px;
-    right: 0; }
-.shape-group-17 .shape.shape-3 {
-    top: 430px;
-    left: 0; }
-.shape-group-17 .shape.shape-4 {
-    top: 35%;
-    right: 0; }
-.shape-group-17 .shape.shape-5 {
-    top: 56%;
-    left: 0; }
-.shape-group-17 .shape.shape-6 {
-    top: 75%;
-    right: 0; }
 
 .shape-group-18 .shape {
     position: absolute;
@@ -1678,7 +1559,13 @@ ul.course-objectives li{
     text-align: right;
     z-index: 3; }
 
-/* Base styles (mobile first - X-Small devices) */
+@media only screen and (max-width: 1599px) {
+    .shape-group-18 {
+        display: none !important;
+    }
+}
+
+/* Base styles (mobile first - X-Small devices)
 @media only screen and (min-width: 1200px) and (max-width: 1599px) {
     .shape-group-18 .shape.shape-1 img {
         width: 70%; } }
@@ -1688,7 +1575,7 @@ ul.course-objectives li{
 @media only screen and (max-width: 991px) {
     .shape-group-18 .shape.shape-1 img {
         width: 40%; } }
-
+*/
 .shape-group-18 .shape.shape-2 {
     bottom: 0;
     left: 0; }
@@ -1698,27 +1585,6 @@ ul.course-objectives li{
 @media only screen and (max-width: 1199px) {
     .shape-group-18 .shape.shape-2 img {
         width: 80%; } }
-.shape-group-18 .shape.shape-3 {
-    top: 34%;
-    left: 50%;
-    animation: movingleftright1 infinite 20000ms; }
-.shape-group-18 .shape.shape-3 img {
-    opacity: 0.5; }
-.shape-group-18 .shape.shape-4 {
-    bottom: 240px;
-    left: 45%;
-    animation: movingleftright2 infinite 30000ms; }
-.shape-group-18 .shape.shape-4 img {
-    width: 75px;
-    opacity: 0.5; }
-.shape-group-18 .shape.shape-5 {
-    bottom: 120px;
-    left: 53%;
-    animation: movingleftright1 infinite 25000ms; }
-.shape-group-18 .shape.shape-6 {
-    bottom: 100px;
-    left: 40%;
-    animation: movingleftright1 infinite 35000ms; }
 .shape-group-18 .shape.shape-7 {
     top: 0;
     right: 100px;
@@ -1782,46 +1648,6 @@ ul.course-objectives li{
 @media only screen and (min-width: 1400px) {
     .shape-group-pages .shape.shape-7 img {
         max-width: 550px; } }
-
-@keyframes movingleftright1 {
-    0% {
-        -webkit-transform: translateX(0) translateY(0);
-        transform: translateX(0) translateY(0); }
-    40% {
-        -webkit-transform: translateX(50px) translateY(-200px);
-        transform: translateX(50px) translateY(-200px); }
-    75% {
-        -webkit-transform: translateX(800px);
-        transform: translateX(800px); }
-    100% {
-        -webkit-transform: translateY(0) translateX(0);
-        transform: translateY(0) translateX(0); } }
-@keyframes movingleftright2 {
-    0% {
-        -webkit-transform: translateX(0) translateY(0);
-        transform: translateX(0) translateY(0); }
-    40% {
-        -webkit-transform: translateX(-50px) translateY(200px);
-        transform: translateX(-50px) translateY(200px); }
-    75% {
-        -webkit-transform: translateX(-500px);
-        transform: translateX(-500px); }
-    100% {
-        -webkit-transform: translateY(0) translateX(0);
-        transform: translateY(0) translateX(0); } }
-@keyframes movingleftright3 {
-    0% {
-        -webkit-transform: translateX(0) translateY(0);
-        transform: translateX(0) translateY(0); }
-    40% {
-        -webkit-transform: translateX(100px) translateY(-200px);
-        transform: translateX(100px) translateY(-200px); }
-    75% {
-        -webkit-transform: translateX(-500px);
-        transform: translateX(-500px); }
-    100% {
-        -webkit-transform: translateY(0) translateX(0);
-        transform: translateY(0) translateX(0); } }
 
 /*=======================================================================
 6. Spacing
