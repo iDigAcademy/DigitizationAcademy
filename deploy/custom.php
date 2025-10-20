@@ -257,3 +257,20 @@ task('clear:package-cache', function () {
 
     writeln('✅ Package discovery cache cleared');
 });
+
+/**
+ * Install Composer dependencies bypassing problematic autoload scripts
+ */
+desc('Install Composer dependencies bypassing scripts...');
+task('deploy:vendors-safe', function () {
+    cd('{{release_or_current_path}}');
+
+    // Install without any scripts
+    run('composer install --prefer-dist --no-progress --no-dev --optimize-autoloader --no-scripts');
+
+    // Manually run only the essential parts
+    run('php artisan clear-compiled');
+    run('php artisan package:discover --ansi');
+
+    writeln('✅ Safe composer install completed');
+});
