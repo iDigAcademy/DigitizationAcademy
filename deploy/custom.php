@@ -259,56 +259,43 @@ task('clear:package-cache', function () {
 });
 
 /**
- * Install Composer dependencies bypassing problematic autoload scripts
+ * Override the default deploy:vendors task from Laravel recipe
  */
-desc('Install Composer dependencies bypassing scripts...');
-task('deploy:vendors-safe', function () {
+desc('Install Composer dependencies (overriding default)');
+task('deploy:vendors', function () {
     cd('{{release_or_current_path}}');
 
-    // Install without any scripts
+    writeln('🔄 Installing Composer dependencies without scripts...');
+
+    // Install without any scripts to avoid the post-autoload-dump issue
     run('composer install --prefer-dist --no-progress --no-dev --optimize-autoloader --no-scripts');
 
-    // Clear any compiled files but don't discover packages yet
-    run('php artisan clear-compiled || echo "Clear compiled failed, continuing..."');
-
-    writeln('✅ Safe composer install completed (package discovery will be done separately)');
+    writeln('✅ Composer dependencies installed without scripts');
 });
 
 /**
- * Debug which package is causing the cache path issue
+ * Manually discover packages after composer install
  */
-desc('Debug package discovery to find the problematic package...');
-task('debug:package-discovery', function () {
+desc('Manually discover packages...');
+task('manual:package-discovery', function () {
     cd('{{release_or_current_path}}');
 
-    writeln('🔍 Debugging package discovery issue...');
+    writeln('🔍 Starting manual package discovery...');
 
-    // First, ensure storage directories exist
+    // Ensure storage directories exist first
     run('mkdir -p storage/framework/views storage/framework/cache/data bootstrap/cache');
     run('chmod -R 755 storage bootstrap/cache');
 
-    // Check Laravel's view configuration
-    writeln('📁 Checking view cache path configuration:');
+    // Try package discovery with error handling
     try {
-        $cachePath = run('php artisan tinker --execute="echo config(\'view.compiled\') ?? \'NOT SET\';"');
-        writeln("View cache path: {$cachePath}");
+        run('php artisan package:discover --ansi');
+        writeln('✅ Package discovery completed successfully');
     } catch (\Exception $e) {
-        writeln("❌ Could not check view cache path: " . $e->getMessage());
-    }
+        writeln('❌ Package discovery failed: ' . $e->getMessage());
 
-    // Try package discovery with maximum verbosity
-    writeln('🔍 Running package discovery with verbose output:');
-    try {
-        run('php artisan package:discover --ansi -vvv');
-        writeln('✅ Package discovery succeeded');
-    } catch (\Exception $e) {
-        writeln('❌ Package discovery failed with verbose output');
-        writeln('Error: ' . $e->getMessage());
-
-        // If that fails, let's check what packages are being loaded
-        writeln('📦 Checking installed packages:');
-        $packages = run('composer show --name-only --no-dev | grep -E "(filament|blade)"');
-        writeln("Filament/Blade packages found:\n{$packages}");
+        // Try to get more information about the error
+        writeln('🔍 Checking Laravel configuration...');
+        run('php artisan tinker --execute="echo \'App Name: \' . config(\'app.name\'); echo \'\\nView Path: \' . config(\'view.compiled\');"');
 
         throw $e;
     }
