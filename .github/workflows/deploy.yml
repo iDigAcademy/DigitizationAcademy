@@ -137,8 +137,6 @@ jobs:
         with:
           php-version: '8.3'
           extensions: mbstring, xml, bcmath, ctype, json, tokenizer, pdo, pdo_mysql
-      - name: Setup Composer authentication for Laravel Nova
-        run: composer config http-basic.nova.laravel.com ${{ secrets.NOVA_USERNAME }} ${{ secrets.NOVA_PASSWORD }}
       - name: Cache Composer packages
         id: composer-cache
         uses: actions/cache@v3
@@ -192,8 +190,6 @@ jobs:
         with:
           php-version: '8.3'
           extensions: mbstring, xml, bcmath, ctype, json, tokenizer, pdo, pdo_mysql
-      - name: Setup Composer authentication for Laravel Nova
-        run: composer config http-basic.nova.laravel.com ${{ secrets.NOVA_USERNAME }} ${{ secrets.NOVA_PASSWORD }}
       - name: Cache Composer packages
         id: composer-cache
         uses: actions/cache@v3
