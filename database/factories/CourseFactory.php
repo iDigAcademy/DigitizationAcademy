@@ -50,7 +50,7 @@ class CourseFactory extends Factory
             'syllabus' => $this->faker->url(),
             'video' => $this->faker->url(),
             'active' => true,
-            'sort_order' => $this->faker->numberBetween(0, 100),
+            'order' => $this->faker->numberBetween(0, 100),
         ];
     }
 }

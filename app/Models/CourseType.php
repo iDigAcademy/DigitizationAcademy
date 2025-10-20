@@ -61,6 +61,14 @@ class CourseType extends Model
     ];
 
     /**
+     * Get the relations that should be cached.
+     */
+    protected function getCacheRelations(): array
+    {
+        return ['courses'];
+    }
+
+    /**
      * Get all courses that belong to this course type.
      */
     public function courses(): HasMany

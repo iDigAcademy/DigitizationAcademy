@@ -60,6 +60,14 @@ class Event extends Model
     ];
 
     /**
+     * Get the relations that should be cached.
+     */
+    protected function getCacheRelations(): array
+    {
+        return ['course'];
+    }
+
+    /**
      * Get the course that owns the event.
      */
     public function course(): BelongsTo

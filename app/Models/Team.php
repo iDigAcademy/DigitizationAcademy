@@ -24,22 +24,10 @@ use App\Models\Traits\Presentable;
 use IDigAcademy\AutoCache\Traits\Cacheable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\EloquentSortable\Sortable;
-use Spatie\EloquentSortable\SortableTrait;
 
-class Team extends Model implements Sortable
+class Team extends Model
 {
-    use Cacheable, HasFactory, Presentable, SortableTrait;
-
-    /**
-     * Used for sorting on Nova index.
-     *
-     * @var array
-     */
-    public $sortable = [
-        'order_column_name' => 'order',
-        'sort_when_creating' => true,
-    ];
+    use Cacheable, HasFactory, Presentable;
 
     /**
      * The attributes that are mass assignable.
@@ -54,4 +42,48 @@ class Team extends Model implements Sortable
         'image',
         'order',
     ];
+
+    /**
+     * Boot the model.
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Set order for new records
+        static::creating(function ($team) {
+            if (is_null($team->order)) {
+                $team->order = static::max('order') + 1;
+            }
+        });
+
+        // Listen for database queries that might be reordering operations
+        static::bootedIfNotBooted(function () {
+            \Illuminate\Support\Facades\DB::listen(function ($query) {
+                // Check if this is an UPDATE query on the teams table involving the order column
+                if (stripos($query->sql, 'update') === 0 &&
+                    stripos($query->sql, 'teams') !== false &&
+                    stripos($query->sql, 'order') !== false) {
+
+                    // Clear the team cache after the query completes
+                    $store = \Illuminate\Support\Facades\Cache::store(config('auto-cache.store'));
+                    $store->tags(['team'])->flush();
+                }
+            });
+        });
+    }
+
+    /**
+     * Ensure the database listener is only registered once
+     */
+    protected static function bootedIfNotBooted(callable $callback)
+    {
+        static $booted = [];
+
+        $class = static::class;
+        if (! isset($booted[$class])) {
+            $callback();
+            $booted[$class] = true;
+        }
+    }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright (c) 2022. Digitization Academy
  * idigacademy@gmail.com
@@ -39,10 +40,7 @@ class FortifyServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
-    {
-
-    }
+    public function register() {}
 
     /**
      * Bootstrap any application services.
@@ -80,7 +78,7 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::authenticateUsing(function (Request $request) {
             $validate = $request->validate(['g-recaptcha-response' => ['required', new ReCaptcha]]);
 
-            if(!$validate) {
+            if (! $validate) {
                 return $validate;
             } else {
                 $user = User::where('email', $request->email)->first();

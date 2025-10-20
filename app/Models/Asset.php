@@ -21,6 +21,14 @@ class Asset extends Model
         'url',
     ];
 
+    /**
+     * Get the relations that should be cached.
+     */
+    protected function getCacheRelations(): array
+    {
+        return ['courses'];
+    }
+
     protected static function boot()
     {
         parent::boot();

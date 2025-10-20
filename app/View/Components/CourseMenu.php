@@ -22,7 +22,7 @@ class CourseMenu extends Component
      */
     public function render(): View|Closure|string
     {
-        $courses = Course::active()->get()->sortBy('sort_order');
+        $courses = Course::active()->get()->sortBy('order');
 
         return view('components.course-menu', compact('courses'));
     }

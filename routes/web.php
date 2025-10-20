@@ -49,7 +49,6 @@ Route::get('calendar', CalendarController::class)->name('calendar.index');
 Route::get('team', TeamController::class)->name('team.index');
 Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
-Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/register-retry', function () {
     // Chrome F12 Headers - my_first_application_session=eyJpdiI6ImNnRH...
     $all_cookies = Cookie::get();

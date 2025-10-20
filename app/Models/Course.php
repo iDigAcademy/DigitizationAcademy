@@ -21,13 +21,11 @@
 namespace App\Models;
 
 use App\Models\Traits\Presentable;
-use Google\Auth\CacheTrait;
+use IDigAcademy\AutoCache\Traits\Cacheable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Spatie\EloquentSortable\Sortable;
-use Spatie\EloquentSortable\SortableTrait;
 use Str;
 
 /**
@@ -48,9 +46,9 @@ use Str;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  */
-class Course extends Model implements Sortable
+class Course extends Model
 {
-    use CacheTrait, HasFactory, Presentable, SortableTrait;
+    use Cacheable, HasFactory, Presentable;
 
     /**
      * The relationships that should always be loaded.
@@ -58,6 +56,14 @@ class Course extends Model implements Sortable
      * @var array
      */
     protected $with = ['courseType'];
+
+    /**
+     * Get the relations that should be cached.
+     */
+    protected function getCacheRelations(): array
+    {
+        return ['courseType', 'assets', 'events'];
+    }
 
     /**
      * Boot the model.
@@ -77,17 +83,43 @@ class Course extends Model implements Sortable
                 $course->slug = Str::slug($course->title);
             }
         });
+
+        // Set order for new records
+        static::creating(function ($team) {
+            if (is_null($team->order)) {
+                $team->order = static::max('order') + 1;
+            }
+        });
+
+        // Listen for database queries that might be reordering operations
+        static::bootedIfNotBooted(function () {
+            \Illuminate\Support\Facades\DB::listen(function ($query) {
+                // Check if this is an UPDATE query on the courses table involving the order column
+                if (stripos($query->sql, 'update') === 0 &&
+                    stripos($query->sql, 'courses') !== false &&
+                    stripos($query->sql, 'order') !== false) {
+
+                    // Clear the course cache after the query completes
+                    $store = \Illuminate\Support\Facades\Cache::store(config('auto-cache.store'));
+                    $store->tags(['course'])->flush();
+                }
+            });
+        });
     }
 
     /**
-     * Used for sorting on Nova index.
-     *
-     * @var array
+     * Ensure the database listener is only registered once
      */
-    public $sortable = [
-        'order_column_name' => 'sort_order',
-        'sort_when_creating' => true,
-    ];
+    protected static function bootedIfNotBooted(callable $callback)
+    {
+        static $booted = [];
+
+        $class = static::class;
+        if (! isset($booted[$class])) {
+            $callback();
+            $booted[$class] = true;
+        }
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -112,7 +144,7 @@ class Course extends Model implements Sortable
         'expert_panel_image',
         'expert_panelist_copy',
         'active',
-        'sort_order',
+        'order',
     ];
 
     /**
