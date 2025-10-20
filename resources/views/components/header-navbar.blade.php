@@ -46,7 +46,7 @@
 
                 <div class="header-action">
                     <ul class="list-unstyled">
-                        @can('access-nova')
+                        @role('Super Admin')
                             <!-- button associated with large screen aside -->
                             <li class="sidemenu-btn d-lg-block d-none">
                                 <button class="btn-wrap" data-bs-toggle="offcanvas"
@@ -56,7 +56,7 @@
                                     <span></span>
                                 </button>
                             </li>
-                        @endcan
+                        @endrole
                         <li class="mobile-menu-btn sidemenu-btn d-lg-none d-block">
                             <button class="btn-wrap" data-bs-toggle="offcanvas" data-bs-target="#mobilemenu-popup">
                                 <span></span>
