@@ -91,7 +91,7 @@ desc('Deploys your project using CI/CD artifacts');
 task('deploy', [
     // Phase 1: Preparation
     'deploy:prepare',           // Create release directory and setup structure
-    // REMOVED: 'upload:env',   // Environment files now handled by shared/.env symlink
+    'clear:package-cache',      // Clear package cache BEFORE composer operations
 
     // Phase 2: Dependencies & Assets
     'deploy:vendors',          // Install PHP Composer dependencies (--no-dev --optimize-autoloader)

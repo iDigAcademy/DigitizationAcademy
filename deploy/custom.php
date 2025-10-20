@@ -237,3 +237,23 @@ task('opcache:reset-production', function () {
     writeln('🔄 Resetting OpCache for production deployment...');
     invoke('opcache:reset');
 });
+
+/**
+ * Clear package discovery cache before running composer operations
+ * This prevents conflicts when packages are removed (like Nova)
+ */
+desc('Clear package discovery cache...');
+task('clear:package-cache', function () {
+    cd('{{release_or_current_path}}');
+
+    // Remove cached package manifests that might reference removed packages
+    run('rm -f bootstrap/cache/packages.php');
+    run('rm -f bootstrap/cache/services.php');
+    run('rm -f bootstrap/cache/config.php');
+
+    // Clear any cached views that might reference removed packages
+    run('rm -rf storage/framework/views/*');
+    run('rm -rf storage/framework/cache/data/*');
+
+    writeln('✅ Package discovery cache cleared');
+});
