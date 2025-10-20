@@ -99,7 +99,6 @@ task('deploy', [
 
     // Phase 3: Laravel Setup
     'artisan:storage:link',    // Create symbolic link for storage directory
-    'artisan:nova:publish',    // Publish Laravel Nova assets
     'artisan:horizon:publish', // Publish Laravel Horizon assets
     'artisan:sweetalert:publish', // Publish Sweet Alert assets
     'artisan:app:deploy-files', // Custom app deployment files

@@ -6,18 +6,14 @@
     "license": "MIT",
     "require": {
         "php": "^8.2.0",
-        "alexwenzel/nova-dependency-container": "^1.13",
         "filament/filament": "^4.0",
         "google/apiclient": "^2.18",
         "idigacademy/auto-cache": "^1.0.0",
-        "kiritokatklian/nova-permission": "^4.0",
         "laravel/fortify": "^1.13",
         "laravel/framework": "^12.0",
         "laravel/horizon": "5.35.*",
-        "laravel/nova": "^4.0",
         "laravel/sanctum": "^v4.0.0",
         "laravel/tinker": "^2.7",
-        "outl1ne/nova-sortable": "^3.4",
         "realrashid/sweet-alert": "^v7.3.0",
         "spatie/laravel-permission": "^6.0"
     },
@@ -59,8 +55,7 @@
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
             "@php artisan ide-helper:generate",
-            "@php artisan ide-helper:meta",
-            "@php artisan nova:publish"
+            "@php artisan ide-helper:meta"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
@@ -70,10 +65,6 @@
         ]
     },
     "repositories": [
-        {
-            "type": "composer",
-            "url": "https://nova.laravel.com"
-        },
         {
             "type": "vcs",
             "url": "https://github.com/iDigAcademy/AutoCache.git"
