@@ -1,13 +1,13 @@
 # CI/CD Deployment Workflow for Digitization Academy
-# 
+#
 # WORKFLOW:
 # - Push to 'development' branch → Deploys to DEVELOPMENT automatically
 # - Push to 'main' branch → Creates GitHub release with semantic version → Deploys to PRODUCTION
-# 
+#
 # VERSION CONTROL:
 # Use commit message tags to control version bumps:
 # - [major] or [breaking] → Major version bump (1.0.0 → 2.0.0)
-# - [minor] or [feature] → Minor version bump (1.0.0 → 1.1.0)  
+# - [minor] or [feature] → Minor version bump (1.0.0 → 1.1.0)
 # - Default (no tag) → Patch version bump (1.0.0 → 1.0.1)
 #
 # SKIP DEPLOYMENT:
@@ -33,7 +33,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Fetch all history for proper versioning
-      
+
       - name: Determine version bump
         id: version_bump
         run: |
@@ -137,24 +137,22 @@ jobs:
         with:
           php-version: '8.3'
           extensions: mbstring, xml, bcmath, ctype, json, tokenizer, pdo, pdo_mysql
-      - name: Clear Composer cache if needed
-        run: |
-          # Force regeneration of composer cache key by removing lock file temporarily
-          cp composer.lock composer.lock.backup
-          echo "# Cache clear" >> composer.lock
       - name: Cache Composer packages
         id: composer-cache
         uses: actions/cache@v3
         with:
           path: vendor
-          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          key: ${{ runner.os }}-php-v3-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
-            ${{ runner.os }}-php-
-      - name: Restore composer lock
+            ${{ runner.os }}-php-v3-
+      - name: Create storage directories
         run: |
-          mv composer.lock.backup composer.lock
-      - name: Install Composer dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest --no-dev --optimize-autoloader
+          mkdir -p storage/framework/cache/data
+          mkdir -p storage/framework/sessions
+          mkdir -p storage/framework/views
+          mkdir -p bootstrap/cache
+      - name: Install Composer dependencies (without scripts)
+        run: composer install --prefer-dist --no-progress --no-dev --optimize-autoloader --no-scripts
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -203,11 +201,17 @@ jobs:
         uses: actions/cache@v3
         with:
           path: vendor
-          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          key: ${{ runner.os }}-php-v3-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
-            ${{ runner.os }}-php-
-      - name: Install Composer dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest --no-dev --optimize-autoloader
+            ${{ runner.os }}-php-v3-
+      - name: Create storage directories
+        run: |
+          mkdir -p storage/framework/cache/data
+          mkdir -p storage/framework/sessions
+          mkdir -p storage/framework/views
+          mkdir -p bootstrap/cache
+      - name: Install Composer dependencies (without scripts)
+        run: composer install --prefer-dist --no-progress --no-dev --optimize-autoloader --no-scripts
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
