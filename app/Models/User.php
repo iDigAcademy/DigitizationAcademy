@@ -21,6 +21,8 @@
 namespace App\Models;
 
 use App\Notifications\VerifyEmailQueued;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use IDigAcademy\AutoCache\Traits\Cacheable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -29,7 +31,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements FilamentUser, MustVerifyEmail
 {
     use Cacheable, HasApiTokens, HasFactory, HasRoles, Notifiable;
 
@@ -66,11 +68,18 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * Override verification email to use queue.
-     *
-     * @return void
      */
-    public function sendEmailVerificationNotification()
+    public function sendEmailVerificationNotification(): void
     {
         $this->notify(new VerifyEmailQueued);
+    }
+
+    /**
+     * Determine if the user can access the given Filament panel.
+     */
+    public function canAccessPanel(Panel $panel): bool
+    {
+        // Only allow users with 'Super Admin' role to access the admin panel
+        return $this->hasRole('Super Admin');
     }
 }

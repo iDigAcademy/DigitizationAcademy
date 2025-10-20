@@ -94,9 +94,8 @@ task('deploy', [
     'clear:package-cache',      // Clear package cache BEFORE composer operations
 
     // Phase 2: Dependencies & Assets
-    'deploy:vendors',   // Install PHP Composer dependencies (--no-dev --optimize-autoloader)
-    'manual:package-discovery',
-    'deploy:ci-artifacts',     // Download & extract pre-built assets from GitHub Actions
+    'deploy:vendors',           // Use default Laravel recipe (now works with ext-intl)
+    'deploy:ci-artifacts',      // Download & extract pre-built assets from GitHub Actions
 
     // Phase 3: Laravel Setup
     'artisan:storage:link',    // Create symbolic link for storage directory
