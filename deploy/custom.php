@@ -268,9 +268,48 @@ task('deploy:vendors-safe', function () {
     // Install without any scripts
     run('composer install --prefer-dist --no-progress --no-dev --optimize-autoloader --no-scripts');
 
-    // Manually run only the essential parts
-    run('php artisan clear-compiled');
-    run('php artisan package:discover --ansi');
+    // Clear any compiled files but don't discover packages yet
+    run('php artisan clear-compiled || echo "Clear compiled failed, continuing..."');
 
-    writeln('✅ Safe composer install completed');
+    writeln('✅ Safe composer install completed (package discovery will be done separately)');
+});
+
+/**
+ * Debug which package is causing the cache path issue
+ */
+desc('Debug package discovery to find the problematic package...');
+task('debug:package-discovery', function () {
+    cd('{{release_or_current_path}}');
+
+    writeln('🔍 Debugging package discovery issue...');
+
+    // First, ensure storage directories exist
+    run('mkdir -p storage/framework/views storage/framework/cache/data bootstrap/cache');
+    run('chmod -R 755 storage bootstrap/cache');
+
+    // Check Laravel's view configuration
+    writeln('📁 Checking view cache path configuration:');
+    try {
+        $cachePath = run('php artisan tinker --execute="echo config(\'view.compiled\') ?? \'NOT SET\';"');
+        writeln("View cache path: {$cachePath}");
+    } catch (\Exception $e) {
+        writeln("❌ Could not check view cache path: " . $e->getMessage());
+    }
+
+    // Try package discovery with maximum verbosity
+    writeln('🔍 Running package discovery with verbose output:');
+    try {
+        run('php artisan package:discover --ansi -vvv');
+        writeln('✅ Package discovery succeeded');
+    } catch (\Exception $e) {
+        writeln('❌ Package discovery failed with verbose output');
+        writeln('Error: ' . $e->getMessage());
+
+        // If that fails, let's check what packages are being loaded
+        writeln('📦 Checking installed packages:');
+        $packages = run('composer show --name-only --no-dev | grep -E "(filament|blade)"');
+        writeln("Filament/Blade packages found:\n{$packages}");
+
+        throw $e;
+    }
 });

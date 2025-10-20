@@ -94,7 +94,8 @@ task('deploy', [
     'clear:package-cache',      // Clear package cache BEFORE composer operations
 
     // Phase 2: Dependencies & Assets
-    'deploy:vendors-safe',          // Install PHP Composer dependencies (--no-dev --optimize-autoloader)
+    'deploy:vendors-safe',   // Install PHP Composer dependencies (--no-dev --optimize-autoloader)
+    'debug:package-discovery',
     'deploy:ci-artifacts',     // Download & extract pre-built assets from GitHub Actions
 
     // Phase 3: Laravel Setup
