@@ -101,6 +101,7 @@ task('deploy', [
     'artisan:storage:link',    // Create symbolic link for storage directory
     'artisan:horizon:publish', // Publish Laravel Horizon assets
     'artisan:sweetalert:publish', // Publish Sweet Alert assets
+    'artisan:filament:assets',
     'artisan:app:deploy-files', // Custom app deployment files
 
     // Phase 4: Database & Updates

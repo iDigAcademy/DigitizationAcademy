@@ -257,3 +257,13 @@ task('clear:package-cache', function () {
 
     writeln('✅ Package discovery cache cleared');
 });
+
+/**
+ * Publish Filament assets
+ */
+desc('Publish Filament assets');
+task('artisan:filament:assets', function () {
+    cd('{{release_or_current_path}}');
+    run('php artisan filament:assets');
+    writeln('✅ Filament assets published');
+});
