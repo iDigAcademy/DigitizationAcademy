@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-use IDigAcademy\AutoCache\Traits\Cacheable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Spiritix\LadaCache\Database\LadaCacheTrait;
 
 class Asset extends Model
 {
-    use Cacheable, HasFactory;
+    use LadaCacheTrait, HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -20,14 +20,6 @@ class Asset extends Model
         'name',
         'url',
     ];
-
-    /**
-     * Get the relations that should be cached.
-     */
-    protected function getCacheRelations(): array
-    {
-        return ['courses'];
-    }
 
     protected static function boot()
     {

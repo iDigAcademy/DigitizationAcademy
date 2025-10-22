@@ -21,13 +21,13 @@
 namespace App\Models;
 
 use App\Models\Traits\Presentable;
-use IDigAcademy\AutoCache\Traits\Cacheable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spiritix\LadaCache\Database\LadaCacheTrait;
 
 class Team extends Model
 {
-    use Cacheable, HasFactory, Presentable;
+    use HasFactory, LadaCacheTrait, Presentable;
 
     /**
      * The attributes that are mass assignable.
@@ -46,7 +46,7 @@ class Team extends Model
     /**
      * Boot the model.
      */
-    protected static function boot()
+    protected static function boot(): void
     {
         parent::boot();
 
@@ -60,14 +60,14 @@ class Team extends Model
         // Listen for database queries that might be reordering operations
         static::bootedIfNotBooted(function () {
             \Illuminate\Support\Facades\DB::listen(function ($query) {
+                \Log::info($query->sql);
                 // Check if this is an UPDATE query on the teams table involving the order column
                 if (stripos($query->sql, 'update') === 0 &&
                     stripos($query->sql, 'teams') !== false &&
                     stripos($query->sql, 'order') !== false) {
 
-                    // Clear the team cache after the query completes
-                    $store = \Illuminate\Support\Facades\Cache::store(config('auto-cache.store'));
-                    $store->tags(['team'])->flush();
+                    // Clear all cache (equivalent to artisan cache:clear)
+                    \Illuminate\Support\Facades\Cache::flush();
                 }
             });
         });
@@ -76,7 +76,7 @@ class Team extends Model
     /**
      * Ensure the database listener is only registered once
      */
-    protected static function bootedIfNotBooted(callable $callback)
+    protected static function bootedIfNotBooted(callable $callback): void
     {
         static $booted = [];
 

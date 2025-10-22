@@ -21,11 +21,11 @@
 namespace App\Models;
 
 use App\Models\Traits\Presentable;
-use IDigAcademy\AutoCache\Traits\Cacheable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Spiritix\LadaCache\Database\LadaCacheTrait;
 use Str;
 
 /**
@@ -48,7 +48,7 @@ use Str;
  */
 class Course extends Model
 {
-    use Cacheable, HasFactory, Presentable;
+    use HasFactory, LadaCacheTrait, Presentable;
 
     /**
      * The relationships that should always be loaded.
@@ -56,14 +56,6 @@ class Course extends Model
      * @var array
      */
     protected $with = ['courseType'];
-
-    /**
-     * Get the relations that should be cached.
-     */
-    protected function getCacheRelations(): array
-    {
-        return ['courseType', 'assets', 'events'];
-    }
 
     /**
      * Boot the model.
@@ -99,9 +91,8 @@ class Course extends Model
                     stripos($query->sql, 'courses') !== false &&
                     stripos($query->sql, 'order') !== false) {
 
-                    // Clear the course cache after the query completes
-                    $store = \Illuminate\Support\Facades\Cache::store(config('auto-cache.store'));
-                    $store->tags(['course'])->flush();
+                    // Clear all cache (equivalent to artisan cache:clear)
+                    \Illuminate\Support\Facades\Cache::flush();
                 }
             });
         });
@@ -110,7 +101,7 @@ class Course extends Model
     /**
      * Ensure the database listener is only registered once
      */
-    protected static function bootedIfNotBooted(callable $callback)
+    protected static function bootedIfNotBooted(callable $callback): void
     {
         static $booted = [];
 

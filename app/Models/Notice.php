@@ -20,15 +20,15 @@
 
 namespace App\Models;
 
-use IDigAcademy\AutoCache\Traits\Cacheable;
 use Illuminate\Database\Eloquent\Model;
+use Spiritix\LadaCache\Database\LadaCacheTrait;
 
 /**
  * Class Notice
  */
 class Notice extends Model
 {
-    use Cacheable;
+    use LadaCacheTrait;
 
     /**
      * {@inheritDoc}

@@ -20,10 +20,10 @@
 
 namespace App\Models;
 
-use IDigAcademy\AutoCache\Traits\Cacheable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spiritix\LadaCache\Database\LadaCacheTrait;
 
 /**
  * CourseType Model
@@ -38,7 +38,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class CourseType extends Model
 {
-    use Cacheable, HasFactory;
+    use HasFactory, LadaCacheTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -59,14 +59,6 @@ class CourseType extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
-
-    /**
-     * Get the relations that should be cached.
-     */
-    protected function getCacheRelations(): array
-    {
-        return ['courses'];
-    }
 
     /**
      * Get all courses that belong to this course type.

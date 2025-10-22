@@ -23,17 +23,17 @@ namespace App\Models;
 use App\Notifications\VerifyEmailQueued;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
-use IDigAcademy\AutoCache\Traits\Cacheable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Spiritix\LadaCache\Database\LadaCacheTrait;
 
 class User extends Authenticatable implements FilamentUser, MustVerifyEmail
 {
-    use Cacheable, HasApiTokens, HasFactory, HasRoles, Notifiable;
+    use HasApiTokens, HasFactory, HasRoles, LadaCacheTrait, Notifiable;
 
     /**
      * The attributes that are mass assignable.

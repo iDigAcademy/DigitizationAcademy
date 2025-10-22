@@ -20,15 +20,15 @@
 
 namespace App\Models;
 
-use IDigAcademy\AutoCache\Traits\Cacheable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spiritix\LadaCache\Database\LadaCacheTrait;
 
 class Event extends Model
 {
-    use Cacheable, HasFactory;
+    use HasFactory, LadaCacheTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -58,14 +58,6 @@ class Event extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
-
-    /**
-     * Get the relations that should be cached.
-     */
-    protected function getCacheRelations(): array
-    {
-        return ['course'];
-    }
 
     /**
      * Get the course that owns the event.
