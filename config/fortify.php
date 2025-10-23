@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright (c) 2022. Digitization Academy
  * idigacademy@gmail.com
@@ -149,7 +150,7 @@ return [
     */
 
     'features' => [
-        Features::registration(),
+        // Features::registration(),
         Features::resetPasswords(),
         Features::emailVerification(),
         Features::updateProfileInformation(),
