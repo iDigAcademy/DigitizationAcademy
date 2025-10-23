@@ -20,6 +20,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\FixesHydration;
 use App\Notifications\VerifyEmailQueued;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
@@ -33,7 +34,7 @@ use Spiritix\LadaCache\Database\LadaCacheTrait;
 
 class User extends Authenticatable implements FilamentUser, MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, HasRoles, LadaCacheTrait, Notifiable;
+    use FixesHydration, HasApiTokens, HasFactory, HasRoles, LadaCacheTrait, Notifiable;
 
     /**
      * The attributes that are mass assignable.

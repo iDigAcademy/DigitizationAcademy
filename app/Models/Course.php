@@ -20,6 +20,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\FixesHydration;
 use App\Models\Traits\Presentable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -48,7 +49,7 @@ use Str;
  */
 class Course extends Model
 {
-    use HasFactory, LadaCacheTrait, Presentable;
+    use FixesHydration, HasFactory, LadaCacheTrait, Presentable;
 
     /**
      * The relationships that should always be loaded.

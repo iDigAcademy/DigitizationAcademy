@@ -20,6 +20,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\FixesHydration;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -38,7 +39,7 @@ use Spiritix\LadaCache\Database\LadaCacheTrait;
  */
 class CourseType extends Model
 {
-    use HasFactory, LadaCacheTrait;
+    use FixesHydration, HasFactory, LadaCacheTrait;
 
     /**
      * The attributes that are mass assignable.

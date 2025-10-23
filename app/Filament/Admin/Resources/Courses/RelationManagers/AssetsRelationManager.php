@@ -19,14 +19,15 @@
 
 namespace App\Filament\Admin\Resources\Courses\RelationManagers;
 
-
+use App\Models\Asset;
 use Filament\Actions\AttachAction;
 use Filament\Actions\BulkActionGroup;
-use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\DetachAction;
+use Filament\Actions\DetachBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
@@ -39,11 +40,14 @@ class AssetsRelationManager extends RelationManager
 
     public function form(Schema $schema): Schema
     {
-        // For belongsToMany, creation typically means attaching an existing Asset.
         return $schema
-            ->schema([
-                TextInput::make('name')->disabled()->dehydrated(false),
-                TextInput::make('url')->disabled()->dehydrated(false),
+            ->components([
+                TextInput::make('name')
+                    ->required()
+                    ->maxLength(255),
+                TextInput::make('url')
+                    ->url()
+                    ->maxLength(255),
             ]);
     }
 
@@ -52,12 +56,42 @@ class AssetsRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('name')
             ->columns([
-                TextColumn::make('name')->searchable()->sortable(),
-                TextColumn::make('url')->label('URL')->url(fn ($record) => $record->url, true)->openUrlInNewTab(),
+                TextColumn::make('name')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('url')
+                    ->label('URL')
+                    ->url(fn (Asset $record): ?string => $record->url, true)
+                    ->openUrlInNewTab(),
             ])
             ->headerActions([
-                AttachAction::make(),
-                CreateAction::make(),
+                AttachAction::make()
+                    ->recordSelect(
+                        fn (Select $select) => $select
+                            ->preload()
+                            ->searchable()
+                            ->getSearchResultsUsing(function (string $search): array {
+                                return Asset::query()
+                                    ->where('name', 'LIKE', "%{$search}%")
+                                    ->limit(50)
+                                    ->pluck('name', 'id')
+                                    ->all();
+                            })
+                            ->getOptionLabelFromRecordUsing(fn (Asset $record): string => $record->name)
+                            ->createOptionForm([
+                                TextInput::make('name')
+                                    ->required()
+                                    ->maxLength(255),
+                                TextInput::make('url')
+                                    ->required()
+                                    ->url()
+                                    ->maxLength(255),
+                            ])
+                            ->createOptionUsing(function (array $data) {
+                                $asset = Asset::create($data);
+                                return $asset->getKey();
+                            })
+                    ),
             ])
             ->recordActions([
                 DetachAction::make(),
@@ -67,6 +101,7 @@ class AssetsRelationManager extends RelationManager
             ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
+                    DetachBulkAction::make(),
                 ]),
             ]);
     }
