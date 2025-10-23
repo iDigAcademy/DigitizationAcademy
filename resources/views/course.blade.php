@@ -51,11 +51,10 @@
         <div class="container">
             <div class="row text-center">
                 <ul class="nav nav-pills mb-5 justify-content-center" id="course-nav" role="tablist">
-                    <!-- Assumes that the course type is 12-hour -->
-                    @if($course->course_type_id === 2)
+                    @if($course->course_type_id === config('config.course_type.12_hour'))
                         <x-course-button class="active" value="objectives"/>
                         <x-course-button value="syllabus"/>
-                    @endif
+                   ) @endif
 
                     @if($showOfferingsPane)
                         <x-course-button class="{{ $course->course_type_id === 1 ? 'active' : '' }}" value="offerings"/>

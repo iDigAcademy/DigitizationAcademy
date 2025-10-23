@@ -52,7 +52,7 @@ class CourseForm
 
                         $courseType = \App\Models\CourseType::find($courseTypeId);
 
-                        return $courseType && $courseType->type === '12-hour';
+                        return $courseType && $courseType->id === config('config.course_type.12_hour');
                     })
                     ->required(function ($get): bool {
                         $courseTypeId = $get('course_type_id');
@@ -62,7 +62,7 @@ class CourseForm
 
                         $courseType = \App\Models\CourseType::find($courseTypeId);
 
-                        return $courseType && $courseType->type === '12-hour';
+                        return $courseType && $courseType->id === config('config.course_type.12_hour');
                     }),
 
                 Select::make('language')
@@ -122,7 +122,7 @@ class CourseForm
 
                         $courseType = \App\Models\CourseType::find($courseTypeId);
 
-                        return $courseType && $courseType->type === '12-hour';
+                        return $courseType && $courseType->id === config('config.course_type.12_hour');
                     })
                     ->required(function ($get): bool {
                         $courseTypeId = $get('course_type_id');
@@ -132,7 +132,7 @@ class CourseForm
 
                         $courseType = \App\Models\CourseType::find($courseTypeId);
 
-                        return $courseType && $courseType->type === '12-hour';
+                        return $courseType && $courseType->id === config('config.course_type.12_hour');
                     }),
 
                 TextInput::make('video')
@@ -147,7 +147,7 @@ class CourseForm
 
                         $courseType = \App\Models\CourseType::find($courseTypeId);
 
-                        return $courseType && $courseType->type === '2-hour';
+                        return $courseType && $courseType->id === config('config.course_type.2_hour');
                     }),
 
                 TextInput::make('expert_panel_headline')

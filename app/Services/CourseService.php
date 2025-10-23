@@ -66,8 +66,8 @@ class CourseService
 
         // Assumes course type 1 is a 2-hour course
         return match ([$course->course_type_id, $hasEvents]) {
-            [1, true] => $nextOffering.$course->events->first()->start_date->format('F j, Y'),
-            [1, false] => 'Course concluded.',
+            [config('config.course_type.2_hour'), true] => $nextOffering.$course->events->first()->start_date->format('F j, Y'),
+            [config('config.course_type.2_hour'), false] => 'Course concluded.',
             default => $nextOffering.($hasEvents
                 ? $this->formatMultiCourseOffering($course->events)
                 : (string) Carbon::now()->addYear()->year)
@@ -76,7 +76,6 @@ class CourseService
 
     /**
      * Check if offerings pane should be shown
-     * Assumes course type 1 is a 2-hour course
      */
     public function shouldShowOfferingsPane(Course $course): bool
     {

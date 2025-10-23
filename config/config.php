@@ -29,4 +29,9 @@ return [
     'idigbio_event_calendar' => env('IDIGBIO_EVENT_CALENDAR'),
     'google_course_calender_id' => env('GOOGLE_COURSE_CALENDER_ID'),
     'google_credential_file' => env('GOOGLE_CREDENTIAL_FILE'),
+
+    'course_type' => [
+        '2_hour' => 1,
+        '12_hour' => 2,
+    ],
 ];

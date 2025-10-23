@@ -70,11 +70,11 @@ readonly class CoursePresenter
     /**
      * Check if the course has a video
      *
-     * @return bool True if course is 2 Hour type and has video content
+     * @return bool True if course is 2-hour type and has video content
      */
     public function hasVideo(): bool
     {
-        return $this->course->type === '2 Hour' && ! empty($this->course->video);
+        return $this->course->courseType->id === config('config.course_type.2_hour') && ! empty($this->course->video);
     }
 
     /**
@@ -94,7 +94,7 @@ readonly class CoursePresenter
      */
     public function registrationButtonText(): string
     {
-        return $this->course->type === '2 Hour' ? 'Register' : 'Apply';
+        return $this->course->courseType->id === config('config.course_type.2_hour') ? 'Register' : 'Apply';
     }
 
     /**
