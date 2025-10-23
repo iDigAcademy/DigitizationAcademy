@@ -61,7 +61,6 @@ class Team extends Model
         // Listen for database queries that might be reordering operations
         static::bootedIfNotBooted(function () {
             \Illuminate\Support\Facades\DB::listen(function ($query) {
-                \Log::info($query->sql);
                 // Check if this is an UPDATE query on the teams table involving the order column
                 if (stripos($query->sql, 'update') === 0 &&
                     stripos($query->sql, 'teams') !== false &&
