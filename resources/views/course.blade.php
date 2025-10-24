@@ -54,7 +54,7 @@
                     @if($course->course_type_id === config('config.course_type.12_hour'))
                         <x-course-button class="active" value="objectives"/>
                         <x-course-button value="syllabus"/>
-                   ) @endif
+                    @endif
 
                     @if($showOfferingsPane)
                         <x-course-button class="{{ $course->course_type_id === 1 ? 'active' : '' }}" value="offerings"/>
