@@ -267,3 +267,10 @@ task('artisan:filament:assets', function () {
     run('php artisan filament:assets');
     writeln('✅ Filament assets published');
 });
+
+desc('Optimize Filament resources and assets');
+task('artisan:filament:optimize', function () {
+    cd('{{release_or_current_path}}');
+    run('php artisan filament:optimize --ansi');
+    writeln('✅ Filament optimization completed');
+});

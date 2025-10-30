@@ -22,7 +22,7 @@
         </div>
 
         <!-- graphic shapes -->
-        <ul class="list-unstyled shape-group-18">
+        <ul class="list-unstyled shape-group-home">
             <li class="shape shape-1">
                 <img src="{{ asset('images/banner/banner-shape-1.png') }}" alt="Image of a scanned butterfly specimen.">
             </li>

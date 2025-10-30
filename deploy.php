@@ -102,6 +102,7 @@ task('deploy', [
     'artisan:horizon:publish', // Publish Laravel Horizon assets
     'artisan:sweetalert:publish', // Publish Sweet Alert assets
     'artisan:filament:assets',
+    'artisan:filament:optimize',   // Optimize Filament resources and assets
     'artisan:app:deploy-files', // Custom app deployment files
 
     // Phase 4: Database & Updates

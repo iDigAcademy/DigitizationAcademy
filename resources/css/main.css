@@ -1546,9 +1546,44 @@ ul.course-objectives li{
 .shape-group-6 .shape.shape-1 img {
     width: 525px;}
 
-
-
-
+/* Home page specific shape group - not affected by media queries */
+.shape-group-home .shape {
+    position: absolute;
+    z-index: -1; }
+.shape-group-home .shape.shape-1 {
+    top: 0;
+    right: 0;
+    text-align: right;
+    z-index: 3; }
+.shape-group-home .shape.shape-2 {
+    bottom: 0;
+    left: 0; }
+@media only screen and (min-width: 1200px) and (max-width: 1599px) {
+    .shape-group-home .shape.shape-2 img {
+        width: 100%; } }
+@media only screen and (max-width: 1199px) {
+    .shape-group-home .shape.shape-1 img {
+        width: 80%; }
+    .shape-group-home .shape.shape-2 img {
+        width: 80%; } }
+.shape-group-home .shape.shape-7 {
+    top: 0;
+    right: 100px;
+    z-index: -2;
+    text-align: right; }
+@media only screen and (max-width: 1199px) {
+    .shape-group-home .shape.shape-7 img {
+        width: 80%; } }
+@media only screen and (max-width: 991px) {
+    .shape-group-home .shape.shape-1 img {
+        width: 60%; }
+    .shape-group-home .shape.shape-7 img {
+        width: 60%; } }
+@media only screen and (max-width: 767px) {
+    .shape-group-home {
+        display: none !important;
+    }
+}
 
 .shape-group-18 .shape {
     position: absolute;
@@ -1565,17 +1600,6 @@ ul.course-objectives li{
     }
 }
 
-/* Base styles (mobile first - X-Small devices)
-@media only screen and (min-width: 1200px) and (max-width: 1599px) {
-    .shape-group-18 .shape.shape-1 img {
-        width: 70%; } }
-@media only screen and (max-width: 1199px) {
-    .shape-group-18 .shape.shape-1 img {
-        width: 50%; } }
-@media only screen and (max-width: 991px) {
-    .shape-group-18 .shape.shape-1 img {
-        width: 40%; } }
-*/
 .shape-group-18 .shape.shape-2 {
     bottom: 0;
     left: 0; }
