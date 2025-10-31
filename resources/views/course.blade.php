@@ -22,7 +22,7 @@
                             Course fees underwritten by the National Science Foundation.
                         </span>
                     </span> | Offered in {{ $course->language }}
-                    @if($buttonDate)
+                    @if($buttonDate && !is_null($course->events->first()->form_link))
                         | <span class="info-tooltip">
                             <a href="{{ $course->events->first()->form_link }}"
                              class="digi-btn btn-fill-primary course d-inline-flex align-items-center justify-content-center">
