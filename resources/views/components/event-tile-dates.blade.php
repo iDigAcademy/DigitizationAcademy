@@ -15,7 +15,7 @@
         {{ $event->course->courseType->id === config('config.course_type.2_hour') ? 'Registration opens' : 'Application opens' }}:&nbsp;
         </span> {{ date_day_string($event->form_start_date) }}
     </p>
-@elseif($nowBetweenDates)
+@elseif($nowBetweenDates && !is_null($event->form_link))
     <p class="my-auto">
         <span class="text-rose">
             {{ $event->course->courseType->id === config('config.course_type.2_hour') ? 'Registration closes' : 'Application closes' }}:&nbsp;

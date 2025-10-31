@@ -14,17 +14,13 @@ class EventForm
         return $schema
             ->components([
                 Select::make('course_id')
-                    ->relationship('course', 'title')
-                    ->required(),
-                DatePicker::make('start_date')
-                    ->required(),
-                DatePicker::make('end_date')
-                    ->required(),
-                TextInput::make('schedule')
-                    ->required(),
-                DatePicker::make('form_start_date'),
-                DatePicker::make('form_end_date'),
-                TextInput::make('form_link'),
+                    ->relationship('course', 'title')->required(),
+                DatePicker::make('start_date')->required(),
+                DatePicker::make('end_date')->required(),
+                TextInput::make('schedule')->required(),
+                DatePicker::make('form_start_date')->required(),
+                DatePicker::make('form_end_date')->required(),
+                TextInput::make('form_link')->required(),
             ]);
     }
 }
