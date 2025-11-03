@@ -37,14 +37,22 @@ jobs:
       - name: Determine version bump
         id: version_bump
         run: |
-          # Get the latest tag, default to 0.0.0 if no tags exist
-          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "0.0.0")
-          echo "Latest tag: $LATEST_TAG"
-          
-          # Check commit messages in the current push for version bump indicators
-          # Use git log with --grep to search only the pushed commits
-          COMMITS=$(git log ${LATEST_TAG}..HEAD --oneline)
-          echo "Commits since last tag:"
+          # Get the latest tag, check if any tags exist
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+
+          if [ -z "$LATEST_TAG" ]; then
+            echo "No tags found - this is the first release"
+            LATEST_TAG="0.0.0"
+            # For first release, show all commits
+            COMMITS=$(git log --oneline)
+            echo "All commits (first release):"
+          else
+            echo "Latest tag: $LATEST_TAG"
+            # Show commits since last tag
+            COMMITS=$(git log ${LATEST_TAG}..HEAD --oneline)
+            echo "Commits since last tag:"
+          fi
+
           echo "$COMMITS"
           
           # Get the specific commit message for this push
@@ -70,44 +78,60 @@ jobs:
           CURRENT="${{ steps.version_bump.outputs.current_version }}"
           BUMP_TYPE="${{ steps.version_bump.outputs.bump_type }}"
           
-          # Parse current version
-          if [[ $CURRENT =~ ^([0-9]+)\.([0-9]+)\.([0-9]+) ]]; then
-            MAJOR=${BASH_REMATCH[1]}
-            MINOR=${BASH_REMATCH[2]}
-            PATCH=${BASH_REMATCH[3]}
+          # Check if this is the first release (no existing tags)
+          if [ "$CURRENT" = "0.0.0" ]; then
+            echo "First release detected - setting version to 1.0.0"
+            NEW_VERSION="1.0.0"
           else
-            MAJOR=0
-            MINOR=0
-            PATCH=0
+            # Parse current version for subsequent releases
+            if [[ $CURRENT =~ ^([0-9]+)\.([0-9]+)\.([0-9]+) ]]; then
+              MAJOR=${BASH_REMATCH[1]}
+              MINOR=${BASH_REMATCH[2]}
+              PATCH=${BASH_REMATCH[3]}
+            else
+              echo "Error: Could not parse version $CURRENT"
+              exit 1
+            fi
+
+            # Increment based on bump type
+            case $BUMP_TYPE in
+              "major")
+                MAJOR=$((MAJOR + 1))
+                MINOR=0
+                PATCH=0
+                ;;
+              "minor")
+                MINOR=$((MINOR + 1))
+                PATCH=0
+                ;;
+              "patch")
+                PATCH=$((PATCH + 1))
+                ;;
+            esac
+
+            NEW_VERSION="$MAJOR.$MINOR.$PATCH"
           fi
-          
-          # Increment based on bump type
-          case $BUMP_TYPE in
-            "major")
-              MAJOR=$((MAJOR + 1))
-              MINOR=0
-              PATCH=0
-              ;;
-            "minor")
-              MINOR=$((MINOR + 1))
-              PATCH=0
-              ;;
-            "patch")
-              PATCH=$((PATCH + 1))
-              ;;
-          esac
-          
-          NEW_VERSION="$MAJOR.$MINOR.$PATCH"
+
           echo "New version: $NEW_VERSION"
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
 
       - name: Create Release
         id: create_release
         run: |
-          gh release create "${{ steps.new_version.outputs.new_version }}" \
-            --title "Release ${{ steps.new_version.outputs.new_version }}" \
-            --notes "$(cat <<EOF
-          ## What's Changed
+          # Create release notes based on whether this is first release or not
+          if [ "${{ steps.version_bump.outputs.current_version }}" = "0.0.0" ]; then
+            RELEASE_NOTES="## What's Changed
+
+          🎉 **First Release!**
+
+          Auto-generated initial release from main branch.
+
+          **Latest commit:**
+          \`\`\`
+          $COMMIT_MESSAGE
+          \`\`\`"
+          else
+            RELEASE_NOTES="## What's Changed
 
           Auto-generated release from main branch.
 
@@ -116,9 +140,12 @@ jobs:
           $COMMIT_MESSAGE
           \`\`\`
 
-          **Full Changelog**: https://github.com/${{ github.repository }}/compare/${{ steps.version_bump.outputs.current_version }}...${{ steps.new_version.outputs.new_version }}
-          EOF
-          )"
+          **Full Changelog**: https://github.com/${{ github.repository }}/compare/${{ steps.version_bump.outputs.current_version }}...${{ steps.new_version.outputs.new_version }}"
+          fi
+
+          gh release create "${{ steps.new_version.outputs.new_version }}" \
+            --title "Release ${{ steps.new_version.outputs.new_version }}" \
+            --notes "$RELEASE_NOTES"
           echo "tag_name=${{ steps.new_version.outputs.new_version }}" >> $GITHUB_OUTPUT
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
